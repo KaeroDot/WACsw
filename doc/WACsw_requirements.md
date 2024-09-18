@@ -25,7 +25,7 @@
     - [P_CE procedure](#p_ce-procedure)
     - [P_CE inputs](#p_ce-inputs)
     - [P_CE Outputs](#p_ce-outputs)
-- [DS, SS](#ds-ss)
+- [Differential Sampling DS, Sub-sampling SS](#differential-sampling-ds-sub-sampling-ss)
   - [Measurement procedure](#measurement-procedure-1)
   - [Procedure settings](#procedure-settings-1)
   - [Simulated data generator G_DS](#simulated-data-generator-g_ds)
@@ -36,7 +36,7 @@
     - [P_DS/P_SS Procedure](#p_dsp_ss-procedure)
     - [P_DS/P_SS inputs](#p_dsp_ss-inputs)
     - [P_DS/P_SS outputs](#p_dsp_ss-outputs)
-- [Hic sunt leones -- images of dataflow](#hic-sunt-leones----images-of-dataflow)
+- [General overview](#general-overview)
 
 <!-- vim-markdown-toc -->
 
@@ -266,4 +266,8 @@ Single measurement typically 120 MB (40 periods of PJVS triangular waveform).
 1. A_rms_total -- RMS amplitude of the DUT signal calculated from whole data
 1. A_rms_t -- RMS amplitude calculated from every signal period
 
-## Hic sunt leones -- images of dataflow
+## General overview
+![General overview](general_overview.svg)
+
+## Hardware-software coordination
+![General overview](hw_sw.svg)

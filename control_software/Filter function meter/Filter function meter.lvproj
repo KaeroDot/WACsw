@@ -82,7 +82,6 @@
 			<Item Name="Save data.vi" Type="VI" URL="../Utilities/Save data.vi"/>
 			<Item Name="Save settings to file.vi" Type="VI" URL="../Utilities/Save settings to file.vi"/>
 		</Item>
-		<Item Name="test_ac_source.vi" Type="VI" URL="../../../test_ac_source.vi"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="instr.lib" Type="Folder">
 				<Item Name="niScope Acquisition Status.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Acquire/Fetch/niScope Acquisition Status.vi"/>
@@ -456,7 +455,6 @@
 			<Item Name="Advapi32.dll" Type="Document" URL="Advapi32.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
-			<Item Name="Calculation mode.ctl" Type="VI" URL="../Measurement/Type definitions/Calculation mode.ctl"/>
 			<Item Name="GUI Connections.vi" Type="VI" URL="../GUI/GUI Connections.vi"/>
 			<Item Name="GUI Waveform.vi" Type="VI" URL="../GUI/GUI Waveform.vi"/>
 			<Item Name="infolib.lvlib" Type="Library" URL="../external libraries/TWM-1.8.7.0-client/infolib.lvlib"/>
@@ -464,19 +462,12 @@
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
 			<Item Name="lvanlys.dll" Type="Document" URL="/&lt;resource&gt;/lvanlys.dll"/>
-			<Item Name="Measurement ID.ctl" Type="VI" URL="../Measurement/Type definitions/Measurement ID.ctl"/>
 			<Item Name="nilvaiu.dll" Type="Document" URL="nilvaiu.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
 			<Item Name="niScope_32.dll" Type="Document" URL="niScope_32.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
-			<Item Name="Trigger mode.ctl" Type="VI" URL="../Measurement/Type definitions/Trigger mode.ctl"/>
-			<Item Name="TWM Client Cmd Get Status.vi" Type="VI" URL="../external libraries/TWM client/TWM Client Cmd Get Status.vi"/>
-			<Item Name="TWM Client Cmd Set Measurement.vi" Type="VI" URL="../external libraries/TWM client/TWM Client Cmd Set Measurement.vi"/>
-			<Item Name="TWM Client Meas Setup Trig.ctl" Type="VI" URL="../external libraries/TWM client/TWM Client Meas Setup Trig.ctl"/>
-			<Item Name="TWM Client Meas Setup.ctl" Type="VI" URL="../external libraries/TWM client/TWM Client Meas Setup.ctl"/>
-			<Item Name="TWM Client Processing Setup.ctl" Type="VI" URL="../external libraries/TWM client/TWM Client Processing Setup.ctl"/>
 			<Item Name="version.dll" Type="Document" URL="version.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>

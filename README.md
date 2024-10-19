@@ -21,4 +21,7 @@ Yet to do:
 
 Type | Task | status
 -----|------|--------
+filter function   | measurement sw - basic structure | ✔
+filter function   | measurement sw - add calibrator | ❌
+filter function   | measurement sw - add 8508/8588  | ❌
 hw | project just started | ❌/✔

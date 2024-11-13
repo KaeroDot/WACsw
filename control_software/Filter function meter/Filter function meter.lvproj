@@ -79,9 +79,10 @@
 			<Item Name="Make Default FFmeter settings.vi" Type="VI" URL="../Utilities/Make Default FFmeter settings.vi"/>
 			<Item Name="Merge Error Ex.vi" Type="VI" URL="../Utilities/Merge Error Ex.vi"/>
 			<Item Name="Read settings from file.vi" Type="VI" URL="../Utilities/Read settings from file.vi"/>
-			<Item Name="Save data.vi" Type="VI" URL="../Utilities/Save data.vi"/>
 			<Item Name="Save settings to file.vi" Type="VI" URL="../Utilities/Save settings to file.vi"/>
+			<Item Name="XCL Write measurement line.vi" Type="VI" URL="../Utilities/XCL Write measurement line.vi"/>
 		</Item>
+		<Item Name="XCL Write header.vi" Type="VI" URL="../Utilities/XCL Write header.vi"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="instr.lib" Type="Folder">
 				<Item Name="niScope Acquisition Status.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Acquire/Fetch/niScope Acquisition Status.vi"/>
@@ -456,7 +457,6 @@
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
 			<Item Name="GUI Connections.vi" Type="VI" URL="../GUI/GUI Connections.vi"/>
-			<Item Name="GUI Waveform.vi" Type="VI" URL="../GUI/GUI Waveform.vi"/>
 			<Item Name="infolib.lvlib" Type="Library" URL="../external libraries/TWM-1.8.7.0-client/infolib.lvlib"/>
 			<Item Name="kernel32.dll" Type="Document" URL="kernel32.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>

@@ -75,6 +75,7 @@
 		</Item>
 		<Item Name="Utilities" Type="Folder">
 			<Item Name="Check user abort.vi" Type="VI" URL="../Utilities/Check user abort.vi"/>
+			<Item Name="Estimate measurement time.vi" Type="VI" URL="../Utilities/Estimate measurement time.vi"/>
 			<Item Name="Load XCL template.vi" Type="VI" URL="../Utilities/Load XCL template.vi"/>
 			<Item Name="Make Default FFmeter settings.vi" Type="VI" URL="../Utilities/Make Default FFmeter settings.vi"/>
 			<Item Name="Merge Error Ex.vi" Type="VI" URL="../Utilities/Merge Error Ex.vi"/>

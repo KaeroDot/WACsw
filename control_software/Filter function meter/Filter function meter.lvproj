@@ -75,15 +75,17 @@
 		</Item>
 		<Item Name="Utilities" Type="Folder">
 			<Item Name="Check user abort.vi" Type="VI" URL="../Utilities/Check user abort.vi"/>
+			<Item Name="Clear errors from TWM.vi" Type="VI" URL="../Utilities/Clear errors from TWM.vi"/>
 			<Item Name="Estimate measurement time.vi" Type="VI" URL="../Utilities/Estimate measurement time.vi"/>
 			<Item Name="Load XCL template.vi" Type="VI" URL="../Utilities/Load XCL template.vi"/>
 			<Item Name="Make Default FFmeter settings.vi" Type="VI" URL="../Utilities/Make Default FFmeter settings.vi"/>
 			<Item Name="Merge Error Ex.vi" Type="VI" URL="../Utilities/Merge Error Ex.vi"/>
+			<Item Name="Process TWM result.vi" Type="VI" URL="../Utilities/Process TWM result.vi"/>
 			<Item Name="Read settings from file.vi" Type="VI" URL="../Utilities/Read settings from file.vi"/>
 			<Item Name="Save settings to file.vi" Type="VI" URL="../Utilities/Save settings to file.vi"/>
+			<Item Name="XCL Write header.vi" Type="VI" URL="../Utilities/XCL Write header.vi"/>
 			<Item Name="XCL Write measurement line.vi" Type="VI" URL="../Utilities/XCL Write measurement line.vi"/>
 		</Item>
-		<Item Name="XCL Write header.vi" Type="VI" URL="../Utilities/XCL Write header.vi"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="instr.lib" Type="Folder">
 				<Item Name="niScope Acquisition Status.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Acquire/Fetch/niScope Acquisition Status.vi"/>

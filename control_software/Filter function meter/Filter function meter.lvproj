@@ -483,6 +483,46 @@
 			<Item Name="wa32 WaitNamedPipeA.vi" Type="VI" URL="../external libraries/TWM-1.8.7.0-client/wa32 WaitNamedPipeA.vi"/>
 			<Item Name="wa32 WriteFile.vi" Type="VI" URL="../external libraries/TWM-1.8.7.0-client/wa32 WriteFile.vi"/>
 		</Item>
-		<Item Name="Build Specifications" Type="Build"/>
+		<Item Name="Build Specifications" Type="Build">
+			<Item Name="FFmeter" Type="EXE">
+				<Property Name="App_copyErrors" Type="Bool">true</Property>
+				<Property Name="App_INI_aliasGUID" Type="Str">{E8988EE7-88EC-4FCE-957E-4D00CC08ABEE}</Property>
+				<Property Name="App_INI_GUID" Type="Str">{D245FB66-4C2B-4FDD-8EEF-6E66C2E53126}</Property>
+				<Property Name="App_serverConfig.httpPort" Type="Int">8002</Property>
+				<Property Name="App_serverType" Type="Int">0</Property>
+				<Property Name="Bld_buildCacheID" Type="Str">{72090EED-D4EE-4561-8BE7-D8441C87CA05}</Property>
+				<Property Name="Bld_buildSpecName" Type="Str">FFmeter</Property>
+				<Property Name="Bld_excludeInlineSubVIs" Type="Bool">true</Property>
+				<Property Name="Bld_excludeLibraryItems" Type="Bool">true</Property>
+				<Property Name="Bld_excludePolymorphicVIs" Type="Bool">true</Property>
+				<Property Name="Bld_localDestDir" Type="Path">../Filter function meter builds/ver. [VersionNumber]</Property>
+				<Property Name="Bld_localDestDirType" Type="Str">relativeToCommon</Property>
+				<Property Name="Bld_modifyLibraryFile" Type="Bool">true</Property>
+				<Property Name="Bld_previewCacheID" Type="Str">{F9D6AE93-6E67-4B1A-BB85-67503D78EECB}</Property>
+				<Property Name="Bld_version.minor" Type="Int">1</Property>
+				<Property Name="Destination[0].destName" Type="Str">FFmeter.exe</Property>
+				<Property Name="Destination[0].path" Type="Path">../Filter function meter builds/ver. [VersionNumber]/FFmeter.exe</Property>
+				<Property Name="Destination[0].preserveHierarchy" Type="Bool">true</Property>
+				<Property Name="Destination[0].type" Type="Str">App</Property>
+				<Property Name="Destination[1].destName" Type="Str">Support Directory</Property>
+				<Property Name="Destination[1].path" Type="Path">../Filter function meter builds/ver. [VersionNumber]/data</Property>
+				<Property Name="DestinationCount" Type="Int">2</Property>
+				<Property Name="Source[0].itemID" Type="Str">{580A38F7-BD05-45C3-BD5D-40E9645884DD}</Property>
+				<Property Name="Source[0].type" Type="Str">Container</Property>
+				<Property Name="Source[1].destinationIndex" Type="Int">0</Property>
+				<Property Name="Source[1].itemID" Type="Ref">/My Computer/GUI/GUI main.vi</Property>
+				<Property Name="Source[1].sourceInclusion" Type="Str">TopLevel</Property>
+				<Property Name="Source[1].type" Type="Str">VI</Property>
+				<Property Name="SourceCount" Type="Int">2</Property>
+				<Property Name="TgtF_companyName" Type="Str">Czech Metrology Institute</Property>
+				<Property Name="TgtF_fileDescription" Type="Str">FFmeter</Property>
+				<Property Name="TgtF_internalName" Type="Str">FFmeter</Property>
+				<Property Name="TgtF_legalCopyright" Type="Str">Copyright © 2024 Czech Metrology Institute</Property>
+				<Property Name="TgtF_productName" Type="Str">FFmeter</Property>
+				<Property Name="TgtF_targetfileGUID" Type="Str">{FA820359-D1A3-4122-827D-A1BCC7074B2B}</Property>
+				<Property Name="TgtF_targetfileName" Type="Str">FFmeter.exe</Property>
+				<Property Name="TgtF_versionIndependent" Type="Bool">true</Property>
+			</Item>
+		</Item>
 	</Item>
 </Project>

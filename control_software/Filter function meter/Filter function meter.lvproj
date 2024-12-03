@@ -78,6 +78,7 @@
 			<Item Name="Check user abort.vi" Type="VI" URL="../Utilities/Check user abort.vi"/>
 			<Item Name="Clear errors from TWM.vi" Type="VI" URL="../Utilities/Clear errors from TWM.vi"/>
 			<Item Name="Estimate measurement time.vi" Type="VI" URL="../Utilities/Estimate measurement time.vi"/>
+			<Item Name="Get Measurement Path.vi" Type="VI" URL="../Utilities/Get Measurement Path.vi"/>
 			<Item Name="Load XCL template.vi" Type="VI" URL="../Utilities/Load XCL template.vi"/>
 			<Item Name="Make Default FFmeter settings.vi" Type="VI" URL="../Utilities/Make Default FFmeter settings.vi"/>
 			<Item Name="Merge Error Ex.vi" Type="VI" URL="../Utilities/Merge Error Ex.vi"/>

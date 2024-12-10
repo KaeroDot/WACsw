@@ -30,6 +30,8 @@
 			<Item Name="AWG.lvlib" Type="Library" URL="../external libraries/AWG/AWG.lvlib"/>
 			<Item Name="Fluke 5XXX Series Multicalibrators.lvlib" Type="Library" URL="../external libraries/Fluke 5XXX Series Multicalibrator/Fluke 5XXX Series Multicalibrators.lvlib"/>
 			<Item Name="Fluke 8508.lvlib" Type="Library" URL="../external libraries/Fluke 8508/Fluke 8508.lvlib"/>
+			<Item Name="GOLPI library.lvlib" Type="Library" URL="../external libraries/GOLPI 0.7.3.1 source distribution LV 20.0 32 bit/GOLPI library.lvlib"/>
+			<Item Name="LV Process library.lvlib" Type="Library" URL="../external libraries/GOLPI 0.7.3.1 source distribution LV 20.0 32 bit/LV Process library.lvlib"/>
 			<Item Name="TWM Client.lvlib" Type="Library" URL="../external libraries/TWM-1.8.7.0-client/TWM Client.lvlib"/>
 			<Item Name="varilib.lvlib" Type="Library" URL="../external libraries/varilib/varilib.lvlib"/>
 		</Item>
@@ -75,6 +77,13 @@
 			<Item Name="TWM Wait for Measure End.vi" Type="VI" URL="../Measurement/TWM Wait for Measure End.vi"/>
 		</Item>
 		<Item Name="Utilities" Type="Folder">
+			<Item Name="Recalculation related" Type="Folder">
+				<Item Name="Calculate.vi" Type="VI" URL="../Utilities/Recalculation related/Calculate.vi"/>
+				<Item Name="GUI Recalculate.vi" Type="VI" URL="../Utilities/Recalculation related/GUI Recalculate.vi"/>
+				<Item Name="Read Result.vi" Type="VI" URL="../Utilities/Recalculation related/Read Result.vi"/>
+				<Item Name="Start Octave.vi" Type="VI" URL="../Utilities/Recalculation related/Start Octave.vi"/>
+				<Item Name="Stop Octave.vi" Type="VI" URL="../Utilities/Recalculation related/Stop Octave.vi"/>
+			</Item>
 			<Item Name="Check user abort.vi" Type="VI" URL="../Utilities/Check user abort.vi"/>
 			<Item Name="Clear errors from TWM.vi" Type="VI" URL="../Utilities/Clear errors from TWM.vi"/>
 			<Item Name="Estimate measurement time.vi" Type="VI" URL="../Utilities/Estimate measurement time.vi"/>
@@ -354,6 +363,7 @@
 				<Item Name="Get File Extension.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/libraryn.llb/Get File Extension.vi"/>
 				<Item Name="Get LV Class Default Value.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/LVClass/Get LV Class Default Value.vi"/>
 				<Item Name="Get String Text Bounds.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Get String Text Bounds.vi"/>
+				<Item Name="Get System Directory.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/sysdir.llb/Get System Directory.vi"/>
 				<Item Name="Get Text Rect.vi" Type="VI" URL="/&lt;vilib&gt;/picture/picture.llb/Get Text Rect.vi"/>
 				<Item Name="Get Waveform Time Array.vi" Type="VI" URL="/&lt;vilib&gt;/Waveform/WDTOps.llb/Get Waveform Time Array.vi"/>
 				<Item Name="GetFileVersionInfo.vi" Type="VI" URL="/&lt;vilib&gt;/Platform/fileVersionInfo.llb/GetFileVersionInfo.vi"/>
@@ -363,6 +373,7 @@
 				<Item Name="Handle Open Word or Excel File.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/NIReport.llb/Toolkit/Handle Open Word or Excel File.vi"/>
 				<Item Name="I128 Timestamp.ctl" Type="VI" URL="/&lt;vilib&gt;/Waveform/TSOps.llb/I128 Timestamp.ctl"/>
 				<Item Name="imagedata.ctl" Type="VI" URL="/&lt;vilib&gt;/picture/picture.llb/imagedata.ctl"/>
+				<Item Name="List Directory and LLBs.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/libraryn.llb/List Directory and LLBs.vi"/>
 				<Item Name="Longest Line Length in Pixels.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Longest Line Length in Pixels.vi"/>
 				<Item Name="LVBoundsTypeDef.ctl" Type="VI" URL="/&lt;vilib&gt;/Utility/miscctls.llb/LVBoundsTypeDef.ctl"/>
 				<Item Name="LVDateTimeRec.ctl" Type="VI" URL="/&lt;vilib&gt;/Utility/miscctls.llb/LVDateTimeRec.ctl"/>
@@ -406,6 +417,7 @@
 				<Item Name="Read Registry Value Simple.vi" Type="VI" URL="/&lt;vilib&gt;/registry/registry.llb/Read Registry Value Simple.vi"/>
 				<Item Name="Read Registry Value STR.vi" Type="VI" URL="/&lt;vilib&gt;/registry/registry.llb/Read Registry Value STR.vi"/>
 				<Item Name="Read Registry Value.vi" Type="VI" URL="/&lt;vilib&gt;/registry/registry.llb/Read Registry Value.vi"/>
+				<Item Name="Recursive File List.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/libraryn.llb/Recursive File List.vi"/>
 				<Item Name="Registry Handle Master.vi" Type="VI" URL="/&lt;vilib&gt;/registry/registry.llb/Registry Handle Master.vi"/>
 				<Item Name="Registry refnum.ctl" Type="VI" URL="/&lt;vilib&gt;/registry/registry.llb/Registry refnum.ctl"/>
 				<Item Name="Registry RtKey.ctl" Type="VI" URL="/&lt;vilib&gt;/registry/registry.llb/Registry RtKey.ctl"/>
@@ -421,10 +433,12 @@
 				<Item Name="Space Constant.vi" Type="VI" URL="/&lt;vilib&gt;/dlg_ctls.llb/Space Constant.vi"/>
 				<Item Name="STR_ASCII-Unicode.vi" Type="VI" URL="/&lt;vilib&gt;/registry/registry.llb/STR_ASCII-Unicode.vi"/>
 				<Item Name="sub2ShouldUseDefSigName.vi" Type="VI" URL="/&lt;vilib&gt;/express/express input/SimulateSignalBlock.llb/sub2ShouldUseDefSigName.vi"/>
+				<Item Name="subFile Dialog.vi" Type="VI" URL="/&lt;vilib&gt;/express/express input/FileDialogBlock.llb/subFile Dialog.vi"/>
 				<Item Name="subGetSignalName.vi" Type="VI" URL="/&lt;vilib&gt;/express/express input/SimulateSignalBlock.llb/subGetSignalName.vi"/>
 				<Item Name="subInternalTiming.vi" Type="VI" URL="/&lt;vilib&gt;/express/express input/SimulateSignalBlock.llb/subInternalTiming.vi"/>
 				<Item Name="subShouldUseDefSigName.vi" Type="VI" URL="/&lt;vilib&gt;/express/express input/SimulateSignalBlock.llb/subShouldUseDefSigName.vi"/>
 				<Item Name="subSigGeneratorBlock.vi" Type="VI" URL="/&lt;vilib&gt;/express/express input/SimulateSignalBlock.llb/subSigGeneratorBlock.vi"/>
+				<Item Name="System Directory Type.ctl" Type="VI" URL="/&lt;vilib&gt;/Utility/sysdir.llb/System Directory Type.ctl"/>
 				<Item Name="TagReturnType.ctl" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/TagReturnType.ctl"/>
 				<Item Name="Three Button Dialog CORE.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Three Button Dialog CORE.vi"/>
 				<Item Name="Three Button Dialog.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Three Button Dialog.vi"/>
@@ -502,7 +516,7 @@
 				<Property Name="Bld_localDestDirType" Type="Str">relativeToCommon</Property>
 				<Property Name="Bld_modifyLibraryFile" Type="Bool">true</Property>
 				<Property Name="Bld_previewCacheID" Type="Str">{F9D6AE93-6E67-4B1A-BB85-67503D78EECB}</Property>
-				<Property Name="Bld_version.minor" Type="Int">1</Property>
+				<Property Name="Bld_version.minor" Type="Int">2</Property>
 				<Property Name="Destination[0].destName" Type="Str">FFmeter.exe</Property>
 				<Property Name="Destination[0].path" Type="Path">../Filter function meter builds/ver. [VersionNumber]/FFmeter.exe</Property>
 				<Property Name="Destination[0].preserveHierarchy" Type="Bool">true</Property>
@@ -510,7 +524,7 @@
 				<Property Name="Destination[1].destName" Type="Str">Support Directory</Property>
 				<Property Name="Destination[1].path" Type="Path">../Filter function meter builds/ver. [VersionNumber]/data</Property>
 				<Property Name="DestinationCount" Type="Int">2</Property>
-				<Property Name="Source[0].itemID" Type="Str">{580A38F7-BD05-45C3-BD5D-40E9645884DD}</Property>
+				<Property Name="Source[0].itemID" Type="Str">{6976EF5D-5DD8-4CEE-B479-732E6A765158}</Property>
 				<Property Name="Source[0].type" Type="Str">Container</Property>
 				<Property Name="Source[1].destinationIndex" Type="Int">0</Property>
 				<Property Name="Source[1].itemID" Type="Ref">/My Computer/GUI/GUI main.vi</Property>

@@ -13,15 +13,20 @@ Developed in the scope of EPM project *23RPT01 WAC - Wideband AC quantum traceab
 
 [TWM builds](https://github.com/smaslan/TWM-builds)
 
-## Scheme of the software
-N/A
+## Parts
+### Filter function meter
+*FFmeter* measures transfer function of a digitizer using AC-AC transfer method.
+[Builds are here](https://github.com/KaeroDot/WACsw/tree/master/control_software/Filter%20function%20meter%20builds)
+
+### Data processing scheme
+Scheme is in a [separate document](https://github.com/KaeroDot/WACsw/blob/master/doc/WACsw_requirements.md)
 
 ## Status of the project
 Yet to do:
 
 Type | Task | status
 -----|------|--------
-filter function   | measurement sw - basic structure | ✔
-filter function   | measurement sw - add calibrator | ❌
-filter function   | measurement sw - add 8508/8588  | ❌
-hw | project just started | ❌/✔
+FFmeter | basic structure | ✔
+FFmeter | add calibrator Fluke 5720A | ❌
+FFmeter | add calibrator Fluke 5730A | ❌
+FFmeter | add source AFG3110C | ❌

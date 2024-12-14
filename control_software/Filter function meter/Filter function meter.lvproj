@@ -84,18 +84,23 @@
 				<Item Name="Start Octave.vi" Type="VI" URL="../Utilities/Recalculation related/Start Octave.vi"/>
 				<Item Name="Stop Octave.vi" Type="VI" URL="../Utilities/Recalculation related/Stop Octave.vi"/>
 			</Item>
+			<Item Name="Template related" Type="Folder">
+				<Item Name="Load XCL template.vi" Type="VI" URL="../Utilities/Template related/Load XCL template.vi"/>
+				<Item Name="XCL Write header.vi" Type="VI" URL="../Utilities/Template related/XCL Write header.vi"/>
+				<Item Name="XCL Write measurement line.vi" Type="VI" URL="../Utilities/Template related/XCL Write measurement line.vi"/>
+			</Item>
+			<Item Name="Type definitions" Type="Folder">
+				<Item Name="Template definition.ctl" Type="VI" URL="../Utilities/Type definitions/Template definition.ctl"/>
+			</Item>
 			<Item Name="Check user abort.vi" Type="VI" URL="../Utilities/Check user abort.vi"/>
 			<Item Name="Clear errors from TWM.vi" Type="VI" URL="../Utilities/Clear errors from TWM.vi"/>
 			<Item Name="Estimate measurement time.vi" Type="VI" URL="../Utilities/Estimate measurement time.vi"/>
 			<Item Name="Get Measurement Path.vi" Type="VI" URL="../Utilities/Get Measurement Path.vi"/>
-			<Item Name="Load XCL template.vi" Type="VI" URL="../Utilities/Load XCL template.vi"/>
 			<Item Name="Make Default FFmeter settings.vi" Type="VI" URL="../Utilities/Make Default FFmeter settings.vi"/>
 			<Item Name="Merge Error Ex.vi" Type="VI" URL="../Utilities/Merge Error Ex.vi"/>
 			<Item Name="Process TWM result.vi" Type="VI" URL="../Utilities/Process TWM result.vi"/>
 			<Item Name="Read settings from file.vi" Type="VI" URL="../Utilities/Read settings from file.vi"/>
 			<Item Name="Save settings to file.vi" Type="VI" URL="../Utilities/Save settings to file.vi"/>
-			<Item Name="XCL Write header.vi" Type="VI" URL="../Utilities/XCL Write header.vi"/>
-			<Item Name="XCL Write measurement line.vi" Type="VI" URL="../Utilities/XCL Write measurement line.vi"/>
 		</Item>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="instr.lib" Type="Folder">

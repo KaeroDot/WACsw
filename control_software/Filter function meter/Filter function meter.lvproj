@@ -522,7 +522,7 @@
 				<Property Name="Bld_localDestDirType" Type="Str">relativeToCommon</Property>
 				<Property Name="Bld_modifyLibraryFile" Type="Bool">true</Property>
 				<Property Name="Bld_previewCacheID" Type="Str">{F9D6AE93-6E67-4B1A-BB85-67503D78EECB}</Property>
-				<Property Name="Bld_version.minor" Type="Int">2</Property>
+				<Property Name="Bld_version.minor" Type="Int">3</Property>
 				<Property Name="Destination[0].destName" Type="Str">FFmeter.exe</Property>
 				<Property Name="Destination[0].path" Type="Path">../Filter function meter builds/ver. [VersionNumber]/FFmeter.exe</Property>
 				<Property Name="Destination[0].preserveHierarchy" Type="Bool">true</Property>
@@ -530,7 +530,7 @@
 				<Property Name="Destination[1].destName" Type="Str">Support Directory</Property>
 				<Property Name="Destination[1].path" Type="Path">../Filter function meter builds/ver. [VersionNumber]/data</Property>
 				<Property Name="DestinationCount" Type="Int">2</Property>
-				<Property Name="Source[0].itemID" Type="Str">{6976EF5D-5DD8-4CEE-B479-732E6A765158}</Property>
+				<Property Name="Source[0].itemID" Type="Str">{B4177475-4D04-40FD-9822-8498997A7EE9}</Property>
 				<Property Name="Source[0].type" Type="Str">Container</Property>
 				<Property Name="Source[1].destinationIndex" Type="Int">0</Property>
 				<Property Name="Source[1].itemID" Type="Ref">/My Computer/GUI/GUI main.vi</Property>

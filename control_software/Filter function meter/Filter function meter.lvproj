@@ -71,7 +71,6 @@
 				<Item Name="Measuement properties.ctl" Type="VI" URL="../Measurement/Type definitions/Measuement properties.ctl"/>
 			</Item>
 			<Item Name="Measure.vi" Type="VI" URL="../Measurement/Measure.vi"/>
-			<Item Name="Read offset of AC-DC element.vi" Type="VI" URL="../Measurement/Read offset of AC-DC element.vi"/>
 			<Item Name="Set TWM Measurement.vi" Type="VI" URL="../Measurement/Set TWM Measurement.vi"/>
 			<Item Name="Set TWM Processing.vi" Type="VI" URL="../Measurement/Set TWM Processing.vi"/>
 			<Item Name="TWM Wait for Measure End.vi" Type="VI" URL="../Measurement/TWM Wait for Measure End.vi"/>
@@ -102,6 +101,7 @@
 			<Item Name="Read settings from file.vi" Type="VI" URL="../Utilities/Read settings from file.vi"/>
 			<Item Name="Save settings to file.vi" Type="VI" URL="../Utilities/Save settings to file.vi"/>
 		</Item>
+		<Item Name="FF.ico" Type="Document" URL="../resources/FF.ico"/>
 		<Item Name="test_twm.vi" Type="VI" URL="../test_twm.vi"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="instr.lib" Type="Folder">
@@ -530,7 +530,8 @@
 				<Property Name="Destination[1].destName" Type="Str">Support Directory</Property>
 				<Property Name="Destination[1].path" Type="Path">../Filter function meter builds/ver. [VersionNumber]/data</Property>
 				<Property Name="DestinationCount" Type="Int">2</Property>
-				<Property Name="Source[0].itemID" Type="Str">{B4177475-4D04-40FD-9822-8498997A7EE9}</Property>
+				<Property Name="Exe_iconItemID" Type="Ref">/My Computer/FF.ico</Property>
+				<Property Name="Source[0].itemID" Type="Str">{610C7295-FF0B-4F68-8ECA-37793321A281}</Property>
 				<Property Name="Source[0].type" Type="Str">Container</Property>
 				<Property Name="Source[1].destinationIndex" Type="Int">0</Property>
 				<Property Name="Source[1].itemID" Type="Ref">/My Computer/GUI/GUI main.vi</Property>

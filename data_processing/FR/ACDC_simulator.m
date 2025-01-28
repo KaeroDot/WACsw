@@ -1,22 +1,24 @@
-% Very simple simulator of a Single Junction Thermoconverter (AC/DC transfer
-% standard). Works only from 10 Hz to 10 MHz. Outside the range outputs are set
-% to NaN. AC/DC transfer curve is similar to a real data.
+% -- [acdc_difference, dc_voltage] = ACDC_simulator(f)
+% -- [acdc_difference, dc_voltage] = ACDC_simulator(f, verbose)
+%    Very simple simulator of a Single Junction Thermoconverter (AC/DC transfer
+%    standard). Works only from 10 Hz to 10 MHz. Outside the range outputs are set
+%    to NaN. AC/DC transfer curve is similar to a real data.
 %
-% Missing implementation: voltage dependence `n` as in this equation of AC/DC
-% difference: delta = (U_outAC - U_outDC)./(n.*U_outDC)
+%    Missing implementation: voltage dependence `n` as in this equation of AC/DC
+%    difference: delta = (U_outAC - U_outDC)./(n.*U_outDC)
 %
-% Inputs:
-%   f - vector of input measurement frequencies (Hz).
-%   verbose - if nonzero, a plot of AC/DC difference is created. optional
+%    Inputs:
+%      f - vector of input measurement frequencies (Hz).
+%      verbose - if nonzero, a plot of AC/DC difference is created. optional
 %
-% Outputs:
-%   acdc_difference - AC/DC difference of the SJTC (V/V)
-%   dc_voltage - DC output of the SJTC (V)
+%    Outputs:
+%      acdc_difference - AC/DC difference of the SJTC (V/V)
+%      dc_voltage - DC output of the SJTC (V)
 %
-% Example:
-%   ACDC_simulator(logspace(1, 7, 1e3), 1);
+%    Example:
+%      ACDC_simulator(logspace(1, 7, 1e3), 1);
 
-function [acdc_difference dc_voltage] = ACDC_simulator(f, verbose)
+function [acdc_difference, dc_voltage] = ACDC_simulator(f, verbose)
     % Check inputs %<<<1
     if ~isnumeric(f)
         error('ACDC_simulator: input `f` must be numeric.')
@@ -25,7 +27,7 @@ function [acdc_difference dc_voltage] = ACDC_simulator(f, verbose)
     f(f < 10) = NaN;
     f(f > 1e7) = NaN;
 
-    if ~exist('verbose')
+    if ~exist('verbose', 'var')
         verbose = [];
     end
     if isempty(verbose)
@@ -59,7 +61,7 @@ function [acdc_difference dc_voltage] = ACDC_simulator(f, verbose)
         figure
         hold on
         semilogx(f, acdc_difference.*1e6, 'o')
-        title('Simulated AC/DC difference of a thermoconverter')
+        title(sprintf('ACDC_simulator.m\nSimulated AC/DC difference of a thermoconverter'), 'interpreter', 'none')
         xlabel('signal frequency (Hz)')
         ylabel('AC/DC differenece (uV/V)')
         hold off
@@ -67,5 +69,7 @@ function [acdc_difference dc_voltage] = ACDC_simulator(f, verbose)
 
 end % function ACDC_simulator
 
-%!demo
+%!demo %<<<1
 %! ACDC_simulator(logspace(1, 7, 1e3), 1);
+
+% vim settings modeline: vim: foldmarker=%<<<,%>>> fdm=marker fen ft=matlab

@@ -1,0 +1,22 @@
+% type of the correction
+type:: acdctransfer
+
+% name of the transducer
+name:: Dummy AC/DC transfer standard
+
+% serial number of the transducer
+serial number:: dummy 01
+
+% names of the ranges as they appear in the  identification
+#startmatrix:: range identifiers
+    10
+    1000
+#endmatrix:: range identifiers
+
+% links to the range corrections of particular ranges:
+#startmatrix:: range correction paths
+  csv\10V.csv
+  csv\1000V.csv
+#endmatrix:: range correction paths
+
+allow interpolation:: 1

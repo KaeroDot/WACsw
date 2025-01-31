@@ -33,6 +33,11 @@ FFmeter | basic structure | ✔
 FFmeter | schematics, templates | ✔
 FFmeter | measurement tests | ✔
 FFmeter | documentation | ½ (tooltips ok, how to ok, video missing)
-FFmeter | add calibrator Fluke 5720A | ½ (not yet tested)
-FFmeter | add calibrator Fluke 5730A | ½ (not yet tested)
-FFmeter | add source AFG3110C | ❌
+FFmeter | add calibrator Fluke 5720A | ✔
+FFmeter | add calibrator Fluke 5730A | ✔
+FFmeter | add source AFG3110C | ½ (not yet tested)
+FFmeter | add AC/DC standard corrections | ½ (works in script, missing in template)
+FFmeter | start result calculation from GUI (using script) | ❌
+FFmeter | finalize fitting of frequency response - find out best method | ❌
+FFmeter | suggestion - alternate sampling and dc measurement instead of simultaneous | must be thought out
+FFmeter | suggestion - measurement of sensitivity at the start | must be thought out

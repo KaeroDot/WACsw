@@ -42,7 +42,7 @@
 % plot(t, y);
 
 function [y, n, Upjvs, Upjvs1period, Spjvs, tsamples] = pjvs_wvfrm_generator2(fs, L, t, f, A, ph, fstep, phstep, fm, waveformtype)
-    % constants %<<<1
+    % Constants %<<<1
     % for debugging:
     % (do not use for large/long waveforms, the plot will take forever to
     % render!)
@@ -81,7 +81,7 @@ function [y, n, Upjvs, Upjvs1period, Spjvs, tsamples] = pjvs_wvfrm_generator2(fs
     if isempty(A) A = 1; end
     if isempty(ph) ph = 0; end
     if isempty(fstep) fstep = 10; end
-    if isempty(phstep) phstep = 0; end
+    if isempty(phstep) phstep = -0.3142; end
     if isempty(fm) fm = 75e9; end
     if isempty(waveformtype) waveformtype = possiblewaveformtypes(1); end % sine
 
@@ -134,6 +134,7 @@ function [y, n, Upjvs, Upjvs1period, Spjvs, tsamples] = pjvs_wvfrm_generator2(fs
     end % if
 
     % find out times of PJVS step changes %<<<1
+    % (independent on timestamps of samples)
     % maximum time:
     tmax = tsamples(end);
     % calculate initial time delay given by the phase of PJVS steps:
@@ -262,6 +263,21 @@ function [y, n, Upjvs, Upjvs1period, Spjvs, tsamples] = pjvs_wvfrm_generator2(fs
             % end
     end % for
 
+    % Ensure Spjvs proper values
+    %
+    % ensure start and ends of record as PJVS segments
+    Spjvs(Spjvs < 1) = [];
+    Spjvs(Spjvs > numel(y) + 1) = [];
+    if Spjvs(1) ~= 1
+        Spjvs = [1 Spjvs];
+    end
+    if Spjvs(end) ~= numel(y) + 1
+        % because Spjvs marks start of step, next
+        % step is after the last data sample
+        Spjvs(end+1) = numel(y) + 1;
+    end
+        %
+
     % DEBUG - part only for debugging or detailed inspection %<<<1
     if DEBUG
         % print out some information
@@ -272,6 +288,11 @@ function [y, n, Upjvs, Upjvs1period, Spjvs, tsamples] = pjvs_wvfrm_generator2(fs
         end
         disp('---')
         disp('pjvs_wvfrm_generator2 DEBUG informations:')
+        printf('Change of quantum number by 1 is equal to: %.4g V\n', VS);
+        % To move phase of steps by half sample: that is ratio of 0.5*sampling
+        % period to step period times 2*pi.
+        tmp = (0.5./fs)./(1./fstep).*2.*pi;
+        printf('PJVS phase to shift steps by half sample time: %.4f rad\n', tmp);
         disp('Number of samples per PJVS steps:')
         disp(samplesperstep)
         printf('Total number of all samples in all PJVS steps:: %d\n', sum(samplesperstep));
@@ -289,7 +310,6 @@ function [y, n, Upjvs, Upjvs1period, Spjvs, tsamples] = pjvs_wvfrm_generator2(fs
         printf('No. of calculated PJVS steps: %d\n', numel(Ustep));
         printf('No. of used PJVS steps: %d\n', numel(Upjvs));
         printf('No. of used PJVS steps in one period of reference waveform: %d\n', numel(Upjvs1period));
-        disp('---')
 
         % overview plot
         figure()
@@ -298,7 +318,7 @@ function [y, n, Upjvs, Upjvs1period, Spjvs, tsamples] = pjvs_wvfrm_generator2(fs
         % plot(tU, y, 'o-r')
         plot(tstepmiddle, Ustep, 'or', 'markersize', 10, 'linewidth', 2)
         plot(tsamples, y, 'x-b')
-        plot(tsamples(Spjvs), y(Spjvs), 'ok', 'markersize', 6, 'linewidth', 2)
+        plot(tsamples(Spjvs(1:end-1)), y(Spjvs(1:end-1)), 'ok', 'markersize', 6, 'linewidth', 2)
         ylims = ylim;
         % plot times of step change
         for j = 1:numel(tstepchange)
@@ -308,11 +328,11 @@ function [y, n, Upjvs, Upjvs1period, Spjvs, tsamples] = pjvs_wvfrm_generator2(fs
         for j = 2:numel(tstepchange)
             plot([tstepchange(j-1) tstepchange(j)], [Ustep(j-1) Ustep(j-1)], '-r')
         end
-        legend('reference waveform', 'PJVS at middle of the step', 'PJVS at samples', 'Step switch', 'time of a step change')
+        legend('reference waveform at samples', 'PJVS at middle of the step', 'PJVS at samples', 'Step switch at samples', 'time of a step change')
         hold off
         xlabel('t (s)')
         ylabel('voltage (V)')
-        title('full plot')
+        title(sprintf('pjvs_wvfrm_generator2.m'), 'interpreter', 'none')
     end % if DEBUG
 
 end % function

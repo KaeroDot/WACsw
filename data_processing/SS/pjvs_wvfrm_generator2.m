@@ -157,23 +157,21 @@ function [y, n, Upjvs, Upjvs1period, Spjvs, tsamples] = pjvs_wvfrm_generator2(fs
     tstepmiddle = (t2-t1)./2 + t1;
 
     % PJVS steps values and reference waveforms %<<<1
+    w = 2*pi*f;
     if waveformtype == 1 % sine waveform
-        w = 2*pi*f;
         % samples of reference waveform at sample times:
         Usamples = A*sin(w*tsamples + ph);
         % average voltages of reference waveform at time of middle of the step:
         U = A.*(cos(w.*t1 + ph) - cos(w.*t2 + ph))./(w.*(t2-t1));
     elseif waveformtype == 2 % triangle waveform
-        % get time delay from phase:
-        delay = ph./(2*pi);
         % samples of reference waveform at sample times:
-        Usamples = 4*A/T*abs( mod(tsamples        - T/4 + delay, T) - T/2 ) - A;
+        Usamples = 2*A*abs(mod((w.*tsamples    + ph)/pi, 2) - 1) - 2*A/2;
         % average voltages of reference waveform at time of middle of the PJVS step:
         % XXX! the U value is incorrect for PJVS step where triangle change
         % the slope! There should be integral, as in sine function, but I have
         % no idea how to integrate floor function without resorting to a
         % piecewise calculation.
-        U        = 4*A/T*abs( mod(tstepmiddle - T/4 + delay, T) - T/2 ) - A;
+        U =        2*A*abs(mod((w.*tstepmiddle + ph)/pi, 2) - 1) - 2*A/2;
     elseif waveformtype == 3 % saw waveform
         % get time delay from phase:
         delay = ph./(2*pi);
@@ -221,6 +219,7 @@ function [y, n, Upjvs, Upjvs1period, Spjvs, tsamples] = pjvs_wvfrm_generator2(fs
     n = [];
     % create quantized samples for every time section of PJVS steps:
     for j = 1 : numel(tstepchange)-1
+        % extremely slow method, caused by searching in next two lines
         leftlimit = tsamples >= tstepchange(j);
         rightlimit = tsamples < tstepchange(j+1);
         idx = and(leftlimit, rightlimit);

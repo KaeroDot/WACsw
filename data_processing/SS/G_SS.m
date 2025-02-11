@@ -15,47 +15,82 @@ function [M_SS] = G_SS(verbose);
     verbose = ~(~(verbose));
 
     % Nominal values %<<<1
-    f = 10;
-    A = 1;
-    ph = 0;
-    fs = 1e3;
-    f_envelope = 1;
-    A_envelope = A;
-    ph_envelope = 0.5*pi; % if phase incorrect, rms does not work!
-    fstep = 10*f_envelope;
-    L = 1000*fs;  % for limited, this works only for value 1, not for 0.5 or 5 or 10!XXX
-    phstep = 0.0314;
-    fm = 1e14;
-    waveformtype = 2;
-                % THIS SEEMS CORRECT, after testing return to these values:
-                % % Nominal values are according Ralf Behr and Luis Palafox 2021 Metrologia 58 025010.
-                % % DUT signal frequency:
-                % f = 100e3;
-                % % DUT signal amplitude:
-                % A = 1;
-                % % DUT signal phase:
-                % ph = 0;
-                % % sampling frequency (MS/s):
-                % fs = 10e6;
-                % % PJVS envelope signal frequency (Hz):
-                % f_envelope = 1e3;
-                % % PJVS envelope Amplitude (V):
-                % A_envelope = 1;
-                % % PJVS envelope phase (rad):
-                % ph_envelope = 0;
-                % % PJVS step change frequency (Hz):
-                % % (number of PJVS steps in a single envelope (Hz) is given by ratio
-                % % fstep/f_envelope)
-                % fstep = 40e3;
-                % % Length of the record (samples):
-                % % one period of the PJVS signal
-                % L = fix(1.*fs./f_envelope);
-                % % phstep - phase of the PJVS steps (rad), scalar.
-                % phstep = 0;%pi + 0.012566;
-                % % fm - microwave frequency (Hz), scalar.
-                % fm = 75e9;
-                % % waveformtype - 1: sine, 2: triangular, 3: sawtooth, 4: rectangular.
-                % waveformtype = 2;
+    predefined_values = 2;
+    if predefined_values == 1
+        % These values are working and produce simple plots:
+        f = 10;
+        A = 1;
+        ph = 0;
+        fs = 1e3;
+        f_envelope = 1;
+        A_envelope = A;
+        ph_envelope = 0*pi;
+        fstep = 10*f_envelope;
+        L = 1e3;
+        phstep = 0.0314;
+        fm = 1e14;
+        waveformtype = 2;
+    elseif predefined_values == 2
+        % These values are according Ralf Behr and Luis Palafox 2021 Metrologia 58 025010.
+        % DUT signal frequency:
+        f = 100e3;
+        % DUT signal amplitude:
+        A = 1;
+        % DUT signal phase:
+        ph = 0;
+        % sampling frequency (MS/s):
+        fs = 10e6;
+        % PJVS envelope signal frequency (Hz):
+        f_envelope = 20;
+        % PJVS envelope Amplitude (V):
+        A_envelope = 1;
+        % PJVS envelope phase (rad):
+        ph_envelope = 0;
+        % PJVS step change frequency (Hz):
+        % (number of PJVS steps in a single envelope (Hz) is given by ratio
+        % fstep/f_envelope)
+        fstep = 40.*f_envelope;
+        % Length of the record (samples):
+        % one period of the PJVS signal
+        L = fix(1.*fs./f_envelope);
+        % phstep - phase of the PJVS steps (rad), scalar.
+        phstep = 0;
+        % fm - microwave frequency (Hz), scalar.
+        fm = 75e9;
+        % waveformtype - 1: sine, 2: triangular, 3: sawtooth, 4: rectangular.
+        waveformtype = 2;
+        % number of samples to be removed at start/end of PJVS step:
+        Rs = 0;
+        Re = Rs;
+    elseif predefined_values == 3
+        % testing values
+        f = 544;
+        A = 1;
+        ph = 0;
+        fs = 500e3;
+        f_envelope = 32;
+        A_envelope = A;
+        ph_envelope = 0; %*pi;
+        fstep = 16*f_envelope;
+        L = 1.*fs./f_envelope;
+        phstep = 0;
+        fm = 75e9;
+        waveformtype = 2;
+        Rs = 0;
+        Re = Rs;
+    end
+
+                    % % calculate condition according Ihlenfeld, ‘Investigations on extending the
+                    % % frequency range of PJVS based AC voltage calibrations by coherent
+                    % % subsampling’, in CPEM 2016, Ottawa, ON, Canada: IEEE, Jul. 2016, pp. 1–2.
+                    % % doi: 10.1109/CPEM.2016.7539732:
+                    % % f_n = f_J ( n*N + 1 ) => n = (f_n./f_J - 1)./N
+                    % % where n must be integer (condition), f_n is frequency of DUT signal, N is number of pjvs steps, f_J is PJVS envelope frequency
+                    % % f = f_envelope * (n * fstep./f_envelope + 1);
+                    % n = (f./f_envelope - 1) ./ (fstep./f_envelope) ;
+                    % if not(n == fix(n))
+                    %     error('bad synchro') %XXX better description
+                    % end
 
     % generate PJVS step function:
     [y_pjvs, n, Upjvs, Upjvs1period, Spjvs, tsamples] = pjvs_wvfrm_generator2(fs, L, [], f_envelope, A_envelope, ph_envelope, fstep, phstep, fm, waveformtype);
@@ -79,6 +114,9 @@ function [M_SS] = G_SS(verbose);
     M_SS.f.v = f;
     M_SS.f_envelope.v = f_envelope;
     M_SS.f_step.v = fstep;
+    M_SS.A_nominal.v = A;
+    M_SS.Rs.v = Rs;
+    M_SS.Re.v = Re;
 
     % Verbose info and figure %<<<1
 	if verbose
@@ -102,12 +140,12 @@ function [M_SS] = G_SS(verbose);
         y_usefull = y;
         y_usefull(idx) = NaN;
         % time as inverse of period of triangular pjvs waveform:
-        % (only for plot)
+        % (only for this plot)
         tsamples_inv = tsamples.*f_envelope;
 		figure
 		hold on
-        plot(tsamples, y_pjvs, 'g-');
-        plot(tsamples, y_dut, 'g-.');
+        plot(tsamples_inv, y_pjvs, 'g-');
+        plot(tsamples_inv, y_dut, 'g-.');
         plot(tsamples_inv, y, '+r');
         plot(tsamples_inv, y_usefull, 'kx');
         xl = xlim();

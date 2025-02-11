@@ -15,7 +15,7 @@ function [M_SS] = G_SS(verbose);
     verbose = ~(~(verbose));
 
     % Nominal values %<<<1
-    predefined_values = 2;
+    predefined_values = 1;
     if predefined_values == 1
         % These values are working and produce simple plots:
         f = 10;
@@ -30,6 +30,8 @@ function [M_SS] = G_SS(verbose);
         phstep = 0.0314;
         fm = 1e14;
         waveformtype = 2;
+        Rs = 0;
+        Re = Rs;
     elseif predefined_values == 2
         % These values are according Ralf Behr and Luis Palafox 2021 Metrologia 58 025010.
         % DUT signal frequency:
@@ -60,23 +62,23 @@ function [M_SS] = G_SS(verbose);
         % waveformtype - 1: sine, 2: triangular, 3: sawtooth, 4: rectangular.
         waveformtype = 2;
         % number of samples to be removed at start/end of PJVS step:
-        Rs = 0;
+        Rs = fs./f; % one period of the signal
         Re = Rs;
     elseif predefined_values == 3
         % testing values
-        f = 544;
-        A = 1;
+        f = 100;
+        A = 0.9;
         ph = 0;
-        fs = 500e3;
-        f_envelope = 32;
+        fs = 100e3;
+        f_envelope = 1;
         A_envelope = A;
         ph_envelope = 0; %*pi;
-        fstep = 16*f_envelope;
+        fstep = 10*f_envelope;
         L = 1.*fs./f_envelope;
         phstep = 0;
         fm = 75e9;
         waveformtype = 2;
-        Rs = 0;
+        Rs = fs./f;
         Re = Rs;
     end
 

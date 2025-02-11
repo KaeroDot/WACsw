@@ -20,8 +20,8 @@ function [A_rms, A_fft, t_sorted, y_sorted] = P_SS(M_SS, verbose);
             % XXX where to get the amplitude of uknown DUT signal?!!!
             % limit = 2.*A./steps_in_envelope;
             % limit = 2.*1./steps_in_envelope;
-    limit = mean(abs(diff(M_SS.Upjvs.v)));
-    idx = not(and(M_SS.y.v < limit, M_SS.y.v > -1.*limit));
+    limit = mode(abs(diff(M_SS.Upjvs.v)))./2; % 1.3 is arbitrary value. XXX fix
+    idx = not(and(M_SS.y.v <= limit, M_SS.y.v > -1.*limit));
     y_usefull = M_SS.y.v;
     y_usefull(idx) = NaN;
                                                 t_usefull = M_SS.t.v;
@@ -51,12 +51,6 @@ function [A_rms, A_fft, t_sorted, y_sorted] = P_SS(M_SS, verbose);
         % cell with samples corrected by PJVS voltage:
         y{j} = y_usefull(ids : ide) - M_SS.Upjvs.v(j);
         yf{j} = M_SS.y.v(ids : ide) - M_SS.Upjvs.v(j);
-
-        idx = isnan(y{j});
-        y{j}(idx) = [];
-        t{j}(idx) = [];
-
-
         % remove transients:
         if M_SS.Rs.v > 0
             t{j} = t{j}(M_SS.Rs.v + 1 : end);
@@ -66,6 +60,12 @@ function [A_rms, A_fft, t_sorted, y_sorted] = P_SS(M_SS, verbose);
             t{j} = t{j}(1 : end - M_SS.Re.v);
             y{j} = y{j}(1 : end - M_SS.Re.v);
         end
+
+        idx = isnan(y{j});
+        y{j}(idx) = [];
+        t{j}(idx) = [];
+
+
     end % for j
 
     % sort data:
@@ -90,7 +90,7 @@ function [A_rms, A_fft, t_sorted, y_sorted] = P_SS(M_SS, verbose);
 
     % calculate amplitude from RMS value %<<<1
     A_rms = sqrt(mean(y_sorted.^2)).*sqrt(2);
-    [tmp1, tmp2] = ampphspectrum(y_sorted, M_SS.fs.v, verbose);
+    [tmp1, tmp2] = ampphspectrum(y_sorted, M_SS.fs.v, verbose, 'log');
     A_fft = max(tmp2);
 
     % Verbose info and figure %<<<1
@@ -98,6 +98,7 @@ function [A_rms, A_fft, t_sorted, y_sorted] = P_SS(M_SS, verbose);
         % print out some information
         disp('---')
         disp('P_SS verbose informations:')
+        printf('calculated limit: %.7f\n', limit)
         printf('Amplitude calculated from RMS value of limited samples: %.7f\n', A_rms)
         tmp = sqrt(mean([yf{:}].^2)).*sqrt(2);
         printf('RMS value of all samples: %.7f\n', tmp)

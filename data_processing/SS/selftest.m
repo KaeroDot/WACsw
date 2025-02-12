@@ -1,9 +1,11 @@
 clear all, close all
 % simulation setup:
 
-verbose = 0;
+verbose = 1;
 M_SS = G_SS(verbose);
 [A_rms, A_fft] = P_SS(M_SS, verbose);
+disp('---')
+disp('selftest results:')
 printf('Nominal amplitude (V): %.7f\n', M_SS.A_nominal.v)
 printf('Calculated amplitude from RMS value (V): %.7f\n', A_rms)
 printf('... error (uV): %.3f\n', 1e6.*(M_SS.A_nominal.v - A_rms))

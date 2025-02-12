@@ -15,17 +15,17 @@ function [M_SS] = G_SS(verbose);
     verbose = ~(~(verbose));
 
     % Nominal values %<<<1
-    predefined_values = 1;
+    predefined_values = 3;
     if predefined_values == 1
         % These values are working and produce simple plots:
-        f = 10;
+        f = 100;
         A = 1;
         ph = 0;
         fs = 1e3;
         f_envelope = 1;
         A_envelope = A;
         ph_envelope = 0*pi;
-        fstep = 10*f_envelope;
+        fstep = 40*f_envelope;
         L = 1e3;
         phstep = 0.0314;
         fm = 1e14;
@@ -73,7 +73,7 @@ function [M_SS] = G_SS(verbose);
         f_envelope = 1;
         A_envelope = A;
         ph_envelope = 0; %*pi;
-        fstep = 10*f_envelope;
+        fstep = 40*f_envelope;
         L = 1.*fs./f_envelope;
         phstep = 0;
         fm = 75e9;
@@ -95,7 +95,8 @@ function [M_SS] = G_SS(verbose);
                     % end
 
     % generate PJVS step function:
-    [y_pjvs, n, Upjvs, Upjvs1period, Spjvs, tsamples] = pjvs_wvfrm_generator2(fs, L, [], f_envelope, A_envelope, ph_envelope, fstep, phstep, fm, waveformtype);
+    % [y_pjvs, n, Upjvs, Upjvs1period, Spjvs, tsamples] = pjvs_wvfrm_generator2(fs, L, [], f_envelope, A_envelope, ph_envelope, fstep, phstep, fm, waveformtype);
+    [y_pjvs, n, Upjvs, Upjvs1period, Spjvs, tsamples] = pjvs_triangle_generator(fs, L, [], f_envelope, A_envelope, [], fstep, [], fm, [], verbose);
 
     % DUT signal:
     y_dut = A.*sin(2.*pi.*f.*tsamples + ph); % add offset XXX: + linspace(0, -1, numel(tsamples));

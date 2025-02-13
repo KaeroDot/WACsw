@@ -1,4 +1,7 @@
 function [A_rms, A_fft, t_sorted, y] = P_SS(M_SS, verbose);
+    % ensure nan package is loaded:
+    % This should be in some top-layer script XXX
+    pkg load nan
 
     % Check inputs %<<<1
     % XXX check M_SS
@@ -30,15 +33,18 @@ function [A_rms, A_fft, t_sorted, y] = P_SS(M_SS, verbose);
     idx = not(and(M_SS.y.v <= limit, M_SS.y.v > -1.*limit));
     y_usefull = M_SS.y.v;
     y_usefull(idx) = NaN;
+
+    % for every triangle period:
     for p = 1:trianginrecord
+        % Cut out one triangle period:
         y = y_usefull(samplesintriangle .* (p-1) + 1 : samplesintriangle .* p);
 
         % Split data by PJVS steps
         samples_in_step = M_SS.fs.v./M_SS.f_step.v;
         y = reshape(y, samples_in_step, [])';
+        % Now every row is data from a single PJVS step.
         % Remove PJVS voltages:
         y = y - M_SS.Upjvs.v(:);
-        % Now every row is data from a single PJVS step
 
         % Remove transients:
         if M_SS.Rs.v + M_SS.Re.v > size(y, 2)

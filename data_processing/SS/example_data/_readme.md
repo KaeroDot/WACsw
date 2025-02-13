@@ -31,6 +31,7 @@ The third column is the type-A uncertainty for the 2nd column.
 Every row in a file is a single record.
 
 PXI setting: 4 MSa/s, 10 V range, Auto offset, Gain = 1.000152, 40 periods 
+
 Calibrator:  100 kHz, 1 V nom which is about 110 ppm low at 1 kHz
 
 # File with PJVS waveform:

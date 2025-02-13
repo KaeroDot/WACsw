@@ -2,9 +2,9 @@ clearvars -except data
 close all
 % simulation setup:
 
-verbose = 1;
+verbose = 0;
 % M_SS = check_gen_M_SS(); % XXX finish
-fn = 'example_data/All recorded points .txt';
+fn = 'example_data/All recorded points .mat';
 if not(exist('data', 'var'))
     data = importdata(fn);
 end
@@ -51,7 +51,6 @@ pjvsdata = [
 0.009250000	-0.424402174; ...
 0.009500000	-0.282838284; ...
 0.009750000	-0.141563890; ...
-0.010000000	0.000000000; ...
 ];
 
 
@@ -62,7 +61,7 @@ M_SS.f.v = 100e3; % seems to be ok
 M_SS.f_envelope.v = 20; % seems to be ok
 steps_in_period = 40; % seems to be ok
 
-M_SS.y.v = data(1, 1:200e3); % TAKE ONLY ONE PERIOD OF TRIANGLE FOR THIS TESTING
+M_SS.y.v = data(1, :); %(1, 1:200e3); % TAKE ONLY ONE PERIOD OF TRIANGLE FOR THIS TESTING
 Ts = 1/M_SS.fs.v;
 M_SS.t.v = Ts.*[1 : numel(M_SS.y.v)] - Ts;
 M_SS.f_step.v = steps_in_period.*M_SS.f_envelope.v;
@@ -71,16 +70,18 @@ M_SS.Spjvs.v = [ 1 Sstep.*[1 : steps_in_period] numel(M_SS.y.v)+1 ];
 M_SS.Rs.v = M_SS.fs.v/M_SS.f.v; % multiples of 100 kHz waveform
 M_SS.Re.v = M_SS.Rs.v;
 M_SS.Upjvs.v = pjvsdata(:, 2);
-plot(M_SS.t.v, M_SS.y.v);
+if verbose
+    plot(M_SS.t.v, M_SS.y.v);
+end
 
 [A_rms, A_fft] = P_SS(M_SS, verbose);
-M_SS.A_nominal.v = 1; % XXX not sure if this is correct!
+M_SS.A_nominal.v = sqrt(2); % XXX not sure if this is correct!
 disp('---')
 printf('Nominal amplitude (V): %.7f\n', M_SS.A_nominal.v)
-printf('Calculated amplitude from RMS value (V): %.7f\n', A_rms)
-printf('... error (uV): %.3f\n', 1e6.*(M_SS.A_nominal.v - A_rms))
-printf('Calculated amplitude from FFT value (V): %.7f\n', A_fft)
-printf('... error (uV): %.3f\n', 1e6.*(M_SS.A_nominal.v - A_fft))
+printf('Calculated mean amplitude from RMS value (V): %.7f\n', mean(A_rms))
+printf('... error (uV): %.3f\n', 1e6.*(M_SS.A_nominal.v - mean(A_rms) ))
+printf('Calculated amplitude from FFT value (V): %.7f\n', mean(A_fft) )
+printf('... error (uV): %.3f\n', 1e6.*(M_SS.A_nominal.v - mean(A_fft) ))
 
 % vim settings modeline: vim: foldmarker=%<<<,%>>> fdm=marker fen ft=octave textwidth=80 tabstop=4 shiftwidth=4
 

@@ -13,7 +13,7 @@
 %    Example:
 %      [f digitizer_FR] = P_FR(read_M_FR_from_spreadsheet('my_measurement_data.xls'), 1)
 
-function [f, digitizer_FR, ac_source_stability] = P_FR(M_FR, verbose);
+function [f, digitizer_FR, ac_source_stability, FR_fit] = P_FR(M_FR, verbose);
 
     % Check inputs %<<<1
     if not(isstruct(M_FR))

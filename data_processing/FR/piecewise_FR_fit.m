@@ -1,4 +1,7 @@
 function piecewise_fit = piecewise_FR_fit(f, FR, M_FR, verbose)
+    % XXX should fit error or fit gain? gain: 1+err, error: err
+    % XXX maybe replace M_FR by only fs, other things are not needed at all, or take f and FR from M_FR!
+
     % Check inputs %<<<1
     % XXX check also other inputs
     if isempty(verbose)
@@ -18,7 +21,7 @@ function piecewise_fit = piecewise_FR_fit(f, FR, M_FR, verbose)
     % degree of polynomials:
     max_pol_degree = 3;
 
-    % Calculation 
+    % Calculation %<<<1
     % convert frequency to relative to sampling:
     f_rel = f.v ./ M_FR.fs.v;
 
@@ -54,7 +57,7 @@ function piecewise_fit = piecewise_FR_fit(f, FR, M_FR, verbose)
     end % if method
 
 
-    % Verbose plots 
+    % Verbose plots %<<<1
     if verbose
         % make number of fit points 10x the number of measurement points 
         % XXX 2DO
@@ -83,4 +86,4 @@ function piecewise_fit = piecewise_FR_fit(f, FR, M_FR, verbose)
 
 end % function fit_FR_piecewise
 
-% vim settings modeline: vim: foldmarker=, fdm=marker fen ft=matlab
+% vim settings modeline: vim: foldmarker=%<<<,%>>> fdm=marker fen ft=matlab

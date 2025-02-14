@@ -45,9 +45,10 @@ PJVS setting: 40 steps, triangular waveform, 20 Hz.
 
 ## Testing of the software
 For testing of the software, the data are saved as follows:
+
 - First record from file `All recorded points .txt` is saved as `example_record.mat`.
 - Data from file `1 V amplitude 70 dreieck 40 samples.txt` is saved as `example_pjvs_voltages.txt`.
 - Data from file `Cable error simple readout_352.txt` is saved as `example_cable_error.txt`.
-- Data from file `relative f 4 MSa_s filter ppm.txt` is saved as `example_digitizer_rf.txt`.
+- Data from file `relative f 4 MSa_s filter ppm.txt` is saved as `example_digitizer_fr.txt`.
 - These files are part of the repository on github: `https://github.com/KaeroDot/WACsw/tree/master/data_processing/SS/example_data`
 - The result can be calulated by running `/data_processing/SS/test_example_data` in GNU Octave/Matlab environment.

@@ -77,6 +77,9 @@ function [f, digitizer_FR, ac_source_stability] = P_FR(M_FR, verbose);
     % stability of ac source as measured by thermal transfer element and voltmeter:
     ac_source_stability.v = Udc(:,2);
 
+    % fit frequency response by a piecewise polynomial:
+    FR_fit = piecewise_FR_fit(f, digitizer_FR, M_FR, verbose);
+
     if verbose
         figure
         plot(f.v, digitizer_FR.v - 1, '-')

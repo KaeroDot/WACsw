@@ -9,8 +9,7 @@
 %      M_FR - structure with frequency response measurement. Optional.
 %
 %    Outputs:
-%      acdc_difference - AC/DC difference of the SJTC (V/V)
-%      dc_voltage - DC output of the SJTC (V)
+%      M_FR - initialized structure with all required fields.
 %
 %    Example:
 %      M_FR = check_gen_M_FR();

@@ -89,8 +89,8 @@ function [M_FR, simulated_digitizer_FR] = G_FR(verbose); %f, A, noise, tf_dig_A,
     M_FR.A.u = 1e-6.*ones(size(f_real)); % digitizer amplitude XXX
     M_FR.Udc.v = Udc;
     M_FR.Udc.u = 1e-6.*ones(size(M_FR.Udc.v)); % dc readings uncertainties - for now just some number! XXX
-    M_FR.Udc.r = repmat(M_FR.Udc.v, 1, M_FR.dc_readings.v); % dc readings - readings
-    M_FR.A.y = []; %XXX 2DO here generate the samples! Maybe this will not be needed. This can be very large! 20 GB of data! Or maybe better path to files!
+    M_FR.Udc.r = repmat(M_FR.Udc.v, 1, M_FR.dc_readings.v); % dc readings - readings XXX move readings outside .r, that should be randomized values?
+    M_FR.y.v = []; %XXX 2DO here generate the samples! Maybe this will not be needed. This can be very large! 20 GB of data! Or maybe better path to files!
 
     % Verbose figure %<<<1
 	if verbose

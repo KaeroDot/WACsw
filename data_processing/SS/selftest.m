@@ -2,7 +2,8 @@ clear all, close all
 % simulation setup:
 
 verbose = 1;
-M_SS = G_SS(verbose);
+M_SS = conditions_M_SS(M_SS);
+M_SS = G_SS(M_SS, verbose);
 [A_rms, A_fft] = P_SS(M_SS, verbose);
 disp('---')
 disp('selftest results:')

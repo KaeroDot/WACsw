@@ -56,7 +56,6 @@ function piecewise_fit = piecewise_FR_fit(f, FR, M_FR, verbose)
         error(sprintf('piecewise_FR_fit: unknown method `%s`!', method))
     end % if method
 
-
     % Verbose plots %<<<1
     if verbose
         % make number of fit points 10x the number of measurement points 

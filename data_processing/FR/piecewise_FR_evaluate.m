@@ -19,6 +19,12 @@ function y_all = piecewise_FR_evaluate(piecewise_fit, f, fs)
     else
         error(sprintf('piecewise_FR_fit: unknown method `%s`!', piecewise_fit.method))
     end % if method
+
+    if any(isnan(y_all))
+        % XXX maybe change to extrapolate?!
+        warning('piecewise_FR_evaluate: fit evaluation resulted in NaN values! These values were replaced by 1!')
+        y_all(isnan(y_all)) = 1;
+    end
 end % function piecewise_FR_evaluate
 
-% vim settings modeline: vim: foldmarker=, fdm=marker fen ft=matlab
+% vim settings modeline: vim: foldmarker=%<<<,%>>> fdm=marker fen ft=matlab

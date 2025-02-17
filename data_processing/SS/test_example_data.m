@@ -56,4 +56,13 @@ printf('... error (uV): %.3f\n', 1e6.*(M_SS.A_nominal.v - mean(A_rms) ))
 printf('Calculated amplitude from FFT value (V): %.7f\n', mean(A_fft) )
 printf('... error (uV): %.3f\n', 1e6.*(M_SS.A_nominal.v - mean(A_fft) ))
 
+% XXX think it out:
+% - Total calibrator error without cable compensation is calculated as -335 uV
+%   for 100 kHz.
+% - Cable error based on the manually processed data is about -350 uV/V,
+%   that is -495 uV for amplitude, or -346 uV of RMS value
+% - So the final calibrator error is about -160 uV of amplitude, that is about
+%   -113 uV of RMS value.
+% - Example data shows calibrator error of -110 ppm of RMS value at 1 kHz.
+
 % vim settings modeline: vim: foldmarker=%<<<,%>>> fdm=marker fen ft=octave textwidth=80 tabstop=4 shiftwidth=4

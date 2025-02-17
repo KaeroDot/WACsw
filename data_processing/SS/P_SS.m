@@ -1,4 +1,4 @@
-function [A_rms, A_fft, t_sorted, y] = P_SS(M_SS, verbose);
+function [A_rms, A_fft, t_sorted, y] = P_SS(M_SS, piecewise_fit, verbose);
     % ensure nan package is loaded:
     % This should be in some top-layer script XXX
     pkg load nan
@@ -14,15 +14,35 @@ function [A_rms, A_fft, t_sorted, y] = P_SS(M_SS, verbose);
     % ensure verbose is logical:
     verbose = ~(~(verbose));
 
+    % Correct for digitizer frequency response %<<<1
+    % Build frequency vector (spacing is df=fs/N):
+    % (for details see ampphspectrum.m in alg_SP-WFFT in QWTB)
+    N = numel(M_SS.y.v);
+    % XXX suppose even number of samples!
+    f = M_SS.fs.v./N.*[0:N/2 - 1];
+    % Evaluate FR fit for fft frequencies:
+    fitfreqs = piecewise_FR_evaluate(piecewise_fit, f, M_SS.fs);
+    % Get inverse values to achieve compensation of the digitizer frequency response:
+    fitfreqs = -1.*(fitfreqs - 1) + 1;
+    % Construct the whole filter for both negative and positive frequencies:
+    % XXX is the filter correct?
+    % XXX what if numel(F) is odd number?!
+    fftfilter = [fitfreqs conj(fliplr(fitfreqs))];
+    % Calculate fft:
+    F = fft(M_SS.y.v);
+    % Apply filter:
+    F = F.*fftfilter;
+    % Calculate inverse fft
+    y_filtered = real(ifft(F));
+
     % Process waveform %<<<1
     % This is strictly coherent method. Anything else will fail drastically.
-
     % number of steps per one period of pjvs signal:
     steps_in_envelope = M_SS.f_step.v/M_SS.f_envelope.v;
     % number of samples in one triangle period:
     samplesintriangle = M_SS.fs.v./M_SS.f_envelope.v;
     % how many periods of the triangle waveform in the record?:
-    trianginrecord = numel(M_SS.y.v)./samplesintriangle;
+    trianginrecord = numel(y_filtered)./samplesintriangle;
                         % check if everything here is integer! XXX
     % votlage limit needed to cover whole signal by subsampling:
             % XXX where to get the amplitude of uknown DUT signal?!!!
@@ -30,8 +50,8 @@ function [A_rms, A_fft, t_sorted, y] = P_SS(M_SS, verbose);
     limit = mode(abs(diff(M_SS.Upjvs.v)))./2;
     % Cut out data with too high voltage (thus remove samples too much
     % influenced by digitizer gain)
-    idx = not(and(M_SS.y.v <= limit, M_SS.y.v > -1.*limit));
-    y_usefull = M_SS.y.v;
+    idx = not(and(y_filtered <= limit, y_filtered > -1.*limit));
+    y_usefull = y_filtered;
     y_usefull(idx) = NaN;
 
     % for every triangle period:

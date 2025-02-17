@@ -39,5 +39,23 @@ FFmeter | add source AFG3110C | ½ (not yet tested)
 FFmeter | add AC/DC standard corrections | ½ (works in script, missing in template)
 FFmeter | start result calculation from GUI (using script) | ❌
 FFmeter | finalize fitting of frequency response - find out best method | ❌
-FFmeter | suggestion - alternate sampling and dc measurement instead of simultaneous | must be thought out
-FFmeter | suggestion - measurement of sensitivity at the start | must be thought out
+FFmeter | ❗suggestion - alternate sampling and dc measurement instead of simultaneous | must be thought out
+FFmeter | ❗suggestion - measurement of sensitivity at the start | must be thought out
+processing frequency response | simulator | ✔
+processing frequency response | simulator documentation | ❌
+processing frequency response | processing | ✔
+processing frequency response | processing documentation | ❌
+processing frequency response | test | ✔
+processing frequency response | test documentation | ❌
+processing cable error | simulator | ❌
+processing cable error | simulator documentation | ❌
+processing cable error | processing | ❌
+processing cable error | processing documentation | ❌
+processing cable error | test | ❌
+processing cable error | test documentation | ❌
+processing subsampling | simulator | ✔
+processing subsampling | simulator documentation  | ❌
+processing subsampling | processing | ½ (seems to be working, needs more tests)
+processing subsampling | processing documentation  | ❌
+processing subsampling | test | ½ (seems to be working)
+processing subsampling | test documentation  | ❌

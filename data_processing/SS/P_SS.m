@@ -16,7 +16,6 @@ function [A_rms, A_fft, t_sorted, y] = P_SS(M_SS, piecewise_fit, verbose);
 
     % Correct for digitizer frequency response %<<<1
     % Build frequency vector (spacing is df=fs/N):
-    % (for details see ampphspectrum.m in alg_SP-WFFT in QWTB)
     N = numel(M_SS.y.v);
     % XXX suppose even number of samples!
     f = M_SS.fs.v./N.*[0:N/2 - 1];
@@ -25,7 +24,7 @@ function [A_rms, A_fft, t_sorted, y] = P_SS(M_SS, piecewise_fit, verbose);
     % Get inverse values to achieve compensation of the digitizer frequency response:
     fitfreqs = -1.*(fitfreqs - 1) + 1;
     % Construct the whole filter for both negative and positive frequencies:
-    % XXX is the filter correct?
+    % XXX is the filter correct? most probably yes!
     % XXX what if numel(F) is odd number?!
     fftfilter = [fitfreqs conj(fliplr(fitfreqs))];
     % Calculate fft:
@@ -53,6 +52,7 @@ function [A_rms, A_fft, t_sorted, y] = P_SS(M_SS, piecewise_fit, verbose);
     idx = not(and(y_filtered <= limit, y_filtered > -1.*limit));
     y_usefull = y_filtered;
     y_usefull(idx) = NaN;
+    % XXX here should come some check that at least some data are not NaN. Or maybe later when split by PJVS steps?
 
     % for every triangle period:
     for p = 1:trianginrecord
@@ -91,7 +91,8 @@ function [A_rms, A_fft, t_sorted, y] = P_SS(M_SS, piecewise_fit, verbose);
         % amplitude from RMS:
         A_rms(p) = sqrt(mean(y_avg .^ 2)) .* sqrt(2);
         % amplitude from FFT:
-        [tmp1, tmp2] = ampphspectrum(y_avg, M_SS.fs.v, verbose, 'log');
+        % [tmp1, tmp2] = ampphspectrum(y_avg, M_SS.fs.v, verbose, 'log'); % XXX this verbose cause two plots per every period!
+        [tmp1, tmp2] = ampphspectrum(y_avg, M_SS.fs.v, 0, 'log'); % XXX this verbose cause two plots per every period!
         A_fft(p) = max(tmp2); % not the best idea! find proper frequency bin! XXX
     end % for p = 1:trianginrecord
 
@@ -103,7 +104,9 @@ function [A_rms, A_fft, t_sorted, y] = P_SS(M_SS, piecewise_fit, verbose);
         printf('calculated limit: %.7f\n', limit)
         printf('mean of amplitudes calculated from RMS value of limited samples: %.7f\n', mean(A_rms))
         yf = reshape(M_SS.y.v, samples_in_step, [])';
-        yf = yf - M_SS.Upjvs.v(:);
+        % XXX quick fix for multiple periods:
+        periods_in_record = numel(yf)./samplesintriangle;
+        yf = yf - repmat(M_SS.Upjvs.v(:), periods_in_record, 1);
         tmp = sqrt(mean([yf(:)].^2)).*sqrt(2);
         printf('RMS value of all samples: %.7f\n', tmp)
 
@@ -111,19 +114,22 @@ function [A_rms, A_fft, t_sorted, y] = P_SS(M_SS, piecewise_fit, verbose);
         % make plots for last triangle period
         figure()
         hold on
-        errorbar(t, y_avg, y_std, '#-x')
+        errorbar(t, y_avg, y_std, '#~-x')
         xlabel('time (s)')
         ylabel('voltage (V)')
         title(sprintf('P_SS.m\naveraged subsampled waveform'), 'interpreter', 'none')
         hold off
 
-        figure()
-        hold on
-        plot(yf,'-xr')
-        hold off
-        xlabel('sample count')
-        ylabel('voltage (V)')
-        title(sprintf('P_SS.m\nDUT signal (samples withjjt PJVS steps)'), 'interpreter', 'none')
+        % XXX an image with std of the averaged waveform, and number of points used to average, could be very usefull
+
+        % is it usefull anymore?:
+                % figure()
+                % hold on
+                % plot(yf,'.r')
+                % hold off
+                % xlabel('sample count')
+                % ylabel('voltage (V)')
+                % title(sprintf('P_SS.m\nDUT signal (samples withjjt PJVS steps)'), 'interpreter', 'none')
     end % if verbose
 
 end % function P_SS

@@ -44,20 +44,30 @@ M_SS.Upjvs.v = pjvsdata(:, 2); % PJVS reference voltages
 % Calculate %<<<1
 
 if verbose
+    figure()
     plot(M_SS.t.v, M_SS.y.v);
+    xlabel('time (s)')
+    ylabel('voltage (V)')
+    title(sprintf('test_example_data.m\nexample record'), 'interpreter', 'none')
 end
 
 [A_rms, A_fft] = P_SS(M_SS, piecewise_fit, verbose);
 M_SS.A_nominal.v = sqrt(2); % nominal voltage set on DUT
 disp('---')
 printf('Nominal amplitude (V): %.7f\n', M_SS.A_nominal.v)
-printf('Calculated mean amplitude from RMS value (V): %.7f\n', mean(A_rms))
-printf('... error (uV): %.3f\n', 1e6.*(M_SS.A_nominal.v - mean(A_rms) ))
-printf('Calculated amplitude from FFT value (V): %.7f\n', mean(A_fft) )
-printf('... error (uV): %.3f\n', 1e6.*(M_SS.A_nominal.v - mean(A_fft) ))
+printf('Calculated mean amplitude (from RMS) (V): %.7f\n', mean(A_rms))
+printf('... error to nominal (uV): %.3f\n', 1e6.*(M_SS.A_nominal.v - mean(A_rms) ))
+printf('Calculated amplitude (from FFT) (V): %.7f\n', mean(A_fft) )
+printf('... error to nominal (uV): %.3f\n', 1e6.*(M_SS.A_nominal.v - mean(A_fft) ))
 
 % XXX think it out:
-% - Total calibrator error without cable compensation is calculated as -335 uV
+% Result of this script:
+%       Nominal amplitude (V): 1.4142136
+%       Calculated mean amplitude (from RMS) (V): 1.4145496
+%       ... error to nominal (uV): -335.995
+%       Calculated amplitude from (from FFT) (V): 1.4145494
+%       ... error to nominal (uV): -335.869
+% - Total calibrator error without cable compensation is calculated as -336 uV
 %   for 100 kHz.
 % - Cable error based on the manually processed data is about -350 uV/V,
 %   that is -495 uV for amplitude, or -346 uV of RMS value
@@ -65,4 +75,20 @@ printf('... error (uV): %.3f\n', 1e6.*(M_SS.A_nominal.v - mean(A_fft) ))
 %   -113 uV of RMS value.
 % - Example data shows calibrator error of -110 ppm of RMS value at 1 kHz.
 
-% vim settings modeline: vim: foldmarker=%<<<,%>>> fdm=marker fen ft=octave textwidth=80 tabstop=4 shiftwidth=4
+% Plot cable error function:
+cable_error_data = load('example_data/example_cable_error.txt');
+
+if verbose
+    figure()
+    hold on
+    plot(cable_error_data(:, 1), cable_error_data(:, 2), '-xb')
+    plot(cable_error_data(:, 1), cable_error_data(:, 2) - cable_error_data(:, 3), '-r')
+    plot(cable_error_data(:, 1), cable_error_data(:, 2) + cable_error_data(:, 3), '-r')
+    legend('cable error', 'type A uncertainty')
+    xlabel('frequency (Hz)')
+    ylabel('relative cable error (uV/V)')
+    title(sprintf('test_example_data.m\nexample cable error relative to 500 Hz'), 'interpreter', 'none')
+    hold off
+end
+
+% vim settings modeline: vim: foldmarker=%<<<,%>>> fdm=marker fen ft=matlab textwidth=80 tabstop=4 shiftwidth=4

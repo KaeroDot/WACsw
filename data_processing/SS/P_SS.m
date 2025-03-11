@@ -134,4 +134,4 @@ function [A_rms, A_fft, t_sorted, y] = P_SS(M_SS, piecewise_fit, verbose);
 
 end % function P_SS
 
-% vim settings modeline: vim: foldmarker=%<<<,%>>> fdm=marker fen ft=matlab
+% vim settings modeline: vim: foldmarker=%<<<,%>>> fdm=marker fen ft=matlab textwidth=80 tabstop=4 shiftwidth=4

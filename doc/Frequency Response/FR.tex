@@ -1,0 +1,65 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xcolor}
+
+\title{Frequency response measurement}
+\begin{document}
+\maketitle
+
+\section*{Equations}
+Digitizer: amplitude $D(f)$, gain $G(f)$.
+
+ACDC: DC voltage $U$, gain $\Delta(f)$.
+
+Source: Amplitude $Z(f,t)$.
+
+Given equations:
+
+\begin{align}
+	D(f, t) & = Z(f, t) \cdot G(f)      \\
+	U(f, t) & = Z(f, t) \cdot \Delta(f)
+\end{align}
+
+Assuming:
+
+\begin{align}
+	t_H \approx t_L \implies Z\big|{t_H} = Z{t_L}
+\end{align}
+
+Then:
+
+\begin{align}
+	D(f) & = Z(f) \cdot G(f)      \\
+	U(f) & = Z(f) \cdot \Delta(f)
+\end{align}
+
+Measurements:
+
+\begin{align}
+	G_H & = \frac{D_H}{Z_H}, \quad G_L = \frac{D_L}{Z_L}           \\
+	Z_H & = \frac{U_H}{\Delta_H}, \quad Z_L = \frac{U_L}{\Delta_L}
+\end{align}
+
+Combining the equations:
+
+\begin{align}
+	\frac{G_H}{G_L} = \frac{D_H \cdot \Delta_H}{U_H} \cdot \frac{U_L}{D_L \cdot \Delta_L}
+\end{align}
+
+\textcolor{red}{\text{DC offset is not result of measurement and processing!}}
+
+AC-DC measurements:
+
+\begin{align}
+	\Delta_L        & = 1 + \delta(f)                                    \\
+	U_{\rm AC_{in}} & = U_{\rm DC_{in}} \cdot (1 + \delta \cdot 10^{-1})
+\end{align}
+
+With:
+
+\begin{align}
+	\delta_{792} = \frac{U_{\rm out_{AC}} - U_{\rm out_{DC}}}{n\cdot U_{\rm out_{DC}}}
+\end{align}
+
+\end{document}

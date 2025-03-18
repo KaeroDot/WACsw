@@ -42,5 +42,4 @@ printf('... error (uV): %.3f\n', 1e6.*(M_SS.A_nominal.v - A_rms))
 printf('Calculated amplitude from FFT value (V): %.7f\n', A_fft)
 printf('... error (uV): %.3f\n', 1e6.*(M_SS.A_nominal.v - A_fft))
 
-% vim settings modeline: vim: foldmarker=%<<<,%>>> fdm=marker fen ft=octave textwidth=80 tabstop=4 shiftwidth=4
-
+% vim settings modeline: vim: foldmarker=%<<<,%>>> fdm=marker fen ft=matlab textwidth=80 tabstop=4 shiftwidth=4

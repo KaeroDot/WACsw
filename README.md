@@ -14,7 +14,9 @@ Developed in the scope of EPM project *23RPT01 WAC - Wideband AC quantum traceab
 [TWM builds](https://github.com/smaslan/TWM-builds)
 
 ## Parts
+
 ### Filter function meter
+
 *FFmeter* measures transfer function of a digitizer using AC-AC transfer method.
 
 [Builds are here](https://github.com/KaeroDot/WACsw/tree/master/control_software/Filter%20function%20meter%20builds)
@@ -22,9 +24,11 @@ Developed in the scope of EPM project *23RPT01 WAC - Wideband AC quantum traceab
 [How to install and run](https://github.com/KaeroDot/WACsw/blob/master/control_software/Filter%20function%20meter%20builds/How%20to%20install%20and%20run%20FFmeter.md)
 
 ### Data processing scheme
+
 Scheme is in a [separate document](https://github.com/KaeroDot/WACsw/blob/master/doc/WACsw_requirements.md)
 
 ## Status of the project
+
 Yet to do:
 
 Type | Task | status
@@ -55,7 +59,7 @@ processing cable error | test | ❌
 processing cable error | test documentation | ❌
 processing subsampling | simulator | ✔
 processing subsampling | simulator documentation  | ❌
-processing subsampling | processing | ½ (seems to be working, needs more tests)
+processing subsampling | processing | ✔
 processing subsampling | processing documentation  | ❌
-processing subsampling | test | ½ (seems to be working)
+processing subsampling | test | ✔
 processing subsampling | test documentation  | ❌

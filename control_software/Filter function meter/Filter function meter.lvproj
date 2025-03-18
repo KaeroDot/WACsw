@@ -13,6 +13,9 @@
 		<Property Name="server.vi.callsEnabled" Type="Bool">true</Property>
 		<Property Name="server.vi.propertiesEnabled" Type="Bool">true</Property>
 		<Property Name="specify.custom.address" Type="Bool">false</Property>
+		<Item Name="CE Measurement" Type="Folder">
+			<Item Name="CE Measure.vi" Type="VI" URL="../CE Measurement/CE Measure.vi"/>
+		</Item>
 		<Item Name="external libraries" Type="Folder">
 			<Item Name="externals needed for AWG" Type="Folder">
 				<Item Name="3458A Sampling Rate.ctl" Type="VI" URL="../external libraries/externals needed for AWG/3458A Sampling Rate.ctl"/>
@@ -53,8 +56,6 @@
 				<Item Name="FR Measuement properties.ctl" Type="VI" URL="../FR Measurement/Type definitions/FR Measuement properties.ctl"/>
 			</Item>
 			<Item Name="FR Measure.vi" Type="VI" URL="../FR Measurement/FR Measure.vi"/>
-			<Item Name="FR Set TWM Measurement.vi" Type="VI" URL="../FR Measurement/FR Set TWM Measurement.vi"/>
-			<Item Name="FR Set TWM Processing.vi" Type="VI" URL="../FR Measurement/FR Set TWM Processing.vi"/>
 			<Item Name="FR TWM Wait for Measure End.vi" Type="VI" URL="../FR Measurement/FR TWM Wait for Measure End.vi"/>
 		</Item>
 		<Item Name="FR Utilities" Type="Folder">
@@ -101,11 +102,16 @@
 				<Item Name="Start Octave.vi" Type="VI" URL="../Utilities/Recalculation related/Start Octave.vi"/>
 				<Item Name="Stop Octave.vi" Type="VI" URL="../Utilities/Recalculation related/Stop Octave.vi"/>
 			</Item>
-			<Item Name="Type definitions" Type="Folder"/>
+			<Item Name="Type definitions" Type="Folder">
+				<Item Name="Sampling properties.ctl" Type="VI" URL="../Utilities/Type definitions/Sampling properties.ctl"/>
+			</Item>
 			<Item Name="Check user abort.vi" Type="VI" URL="../Utilities/Check user abort.vi"/>
 			<Item Name="Clear errors from TWM.vi" Type="VI" URL="../Utilities/Clear errors from TWM.vi"/>
 			<Item Name="Merge Error Ex.vi" Type="VI" URL="../Utilities/Merge Error Ex.vi"/>
 			<Item Name="Process TWM result.vi" Type="VI" URL="../Utilities/Process TWM result.vi"/>
+			<Item Name="Set TWM Measurement.vi" Type="VI" URL="../Utilities/Set TWM Measurement.vi"/>
+			<Item Name="Set TWM Processing.vi" Type="VI" URL="../Utilities/Set TWM Processing.vi"/>
+			<Item Name="TWM Measure.vi" Type="VI" URL="../Utilities/TWM Measure.vi"/>
 		</Item>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="instr.lib" Type="Folder">

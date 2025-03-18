@@ -102,6 +102,7 @@
 			<Item Name="Save settings to file.vi" Type="VI" URL="../Utilities/Save settings to file.vi"/>
 		</Item>
 		<Item Name="FF.ico" Type="Document" URL="../resources/FF.ico"/>
+		<Item Name="test-delete.vi" Type="VI" URL="../test-delete.vi"/>
 		<Item Name="test_twm.vi" Type="VI" URL="../test_twm.vi"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="instr.lib" Type="Folder">
@@ -522,7 +523,7 @@
 				<Property Name="Bld_localDestDirType" Type="Str">relativeToCommon</Property>
 				<Property Name="Bld_modifyLibraryFile" Type="Bool">true</Property>
 				<Property Name="Bld_previewCacheID" Type="Str">{F9D6AE93-6E67-4B1A-BB85-67503D78EECB}</Property>
-				<Property Name="Bld_version.minor" Type="Int">3</Property>
+				<Property Name="Bld_version.minor" Type="Int">4</Property>
 				<Property Name="Destination[0].destName" Type="Str">FFmeter.exe</Property>
 				<Property Name="Destination[0].path" Type="Path">../Filter function meter builds/ver. [VersionNumber]/FFmeter.exe</Property>
 				<Property Name="Destination[0].preserveHierarchy" Type="Bool">true</Property>
@@ -531,7 +532,7 @@
 				<Property Name="Destination[1].path" Type="Path">../Filter function meter builds/ver. [VersionNumber]/data</Property>
 				<Property Name="DestinationCount" Type="Int">2</Property>
 				<Property Name="Exe_iconItemID" Type="Ref">/My Computer/FF.ico</Property>
-				<Property Name="Source[0].itemID" Type="Str">{610C7295-FF0B-4F68-8ECA-37793321A281}</Property>
+				<Property Name="Source[0].itemID" Type="Str">{66020D8C-FEF3-4534-9603-9C326A2AFEBB}</Property>
 				<Property Name="Source[0].type" Type="Str">Container</Property>
 				<Property Name="Source[1].destinationIndex" Type="Int">0</Property>
 				<Property Name="Source[1].itemID" Type="Ref">/My Computer/GUI/GUI main.vi</Property>

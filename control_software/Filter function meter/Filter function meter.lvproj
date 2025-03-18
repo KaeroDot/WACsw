@@ -35,6 +35,43 @@
 			<Item Name="TWM Client.lvlib" Type="Library" URL="../external libraries/TWM-1.8.7.0-client/TWM Client.lvlib"/>
 			<Item Name="varilib.lvlib" Type="Library" URL="../external libraries/varilib/varilib.lvlib"/>
 		</Item>
+		<Item Name="FR GUI" Type="Folder">
+			<Item Name="Type definitions" Type="Folder">
+				<Item Name="FFmeter settings.ctl" Type="VI" URL="../FR GUI/Type definitions/FFmeter settings.ctl"/>
+			</Item>
+			<Item Name="FR GUI About Dialog.vi" Type="VI" URL="../FR GUI/FR GUI About Dialog.vi"/>
+			<Item Name="FR GUI AC Source setup.vi" Type="VI" URL="../FR GUI/FR GUI AC Source setup.vi"/>
+			<Item Name="FR GUI Connections.vi" Type="VI" URL="../FR GUI/FR GUI Connections.vi"/>
+			<Item Name="FR GUI DC meter setup.vi" Type="VI" URL="../FR GUI/FR GUI DC meter setup.vi"/>
+			<Item Name="FR GUI main.vi" Type="VI" URL="../FR GUI/FR GUI main.vi"/>
+			<Item Name="FR GUI Measurement setup.vi" Type="VI" URL="../FR GUI/FR GUI Measurement setup.vi"/>
+			<Item Name="FR GUI Recalculate.vi" Type="VI" URL="../FR GUI/FR GUI Recalculate.vi"/>
+			<Item Name="FR GUI TWM setup.vi" Type="VI" URL="../FR GUI/FR GUI TWM setup.vi"/>
+		</Item>
+		<Item Name="FR Measurement" Type="Folder">
+			<Item Name="Type definitions" Type="Folder">
+				<Item Name="FR Measuement properties.ctl" Type="VI" URL="../FR Measurement/Type definitions/FR Measuement properties.ctl"/>
+			</Item>
+			<Item Name="FR Measure.vi" Type="VI" URL="../FR Measurement/FR Measure.vi"/>
+			<Item Name="FR Set TWM Measurement.vi" Type="VI" URL="../FR Measurement/FR Set TWM Measurement.vi"/>
+			<Item Name="FR Set TWM Processing.vi" Type="VI" URL="../FR Measurement/FR Set TWM Processing.vi"/>
+			<Item Name="FR TWM Wait for Measure End.vi" Type="VI" URL="../FR Measurement/FR TWM Wait for Measure End.vi"/>
+		</Item>
+		<Item Name="FR Utilities" Type="Folder">
+			<Item Name="Template related" Type="Folder">
+				<Item Name="FR Load XCL template.vi" Type="VI" URL="../FR Utilities/Template related/FR Load XCL template.vi"/>
+				<Item Name="FR XCL Write header.vi" Type="VI" URL="../FR Utilities/Template related/FR XCL Write header.vi"/>
+				<Item Name="FR XCL Write measurement line.vi" Type="VI" URL="../FR Utilities/Template related/FR XCL Write measurement line.vi"/>
+			</Item>
+			<Item Name="Type definitions" Type="Folder">
+				<Item Name="FR Template definition.ctl" Type="VI" URL="../FR Utilities/Type definitions/FR Template definition.ctl"/>
+			</Item>
+			<Item Name="FR Estimate measurement time.vi" Type="VI" URL="../FR Utilities/FR Estimate measurement time.vi"/>
+			<Item Name="FR Get Measurement Path.vi" Type="VI" URL="../FR Utilities/FR Get Measurement Path.vi"/>
+			<Item Name="FR Make Default FRmeter settings.vi" Type="VI" URL="../FR Measurement/FR Make Default FRmeter settings.vi"/>
+			<Item Name="FR Read settings from file.vi" Type="VI" URL="../FR Utilities/FR Read settings from file.vi"/>
+			<Item Name="FR Save settings to file.vi" Type="VI" URL="../FR Utilities/FR Save settings to file.vi"/>
+		</Item>
 		<Item Name="General AC source" Type="Folder">
 			<Item Name="Type definitions" Type="Folder">
 				<Item Name="AC Source type.ctl" Type="VI" URL="../General AC source/Type definitions/AC Source type.ctl"/>
@@ -54,56 +91,22 @@
 			<Item Name="Read DC meter.vi" Type="VI" URL="../General DC meter/Read DC meter.vi"/>
 			<Item Name="Stop DC meter.vi" Type="VI" URL="../General DC meter/Stop DC meter.vi"/>
 		</Item>
-		<Item Name="GUI" Type="Folder">
-			<Item Name="Type definitions" Type="Folder">
-				<Item Name="FFmeter settings.ctl" Type="VI" URL="../GUI/Type definitions/FFmeter settings.ctl"/>
-			</Item>
-			<Item Name="About Dialog.vi" Type="VI" URL="../GUI/About Dialog.vi"/>
-			<Item Name="GUI AC Source setup.vi" Type="VI" URL="../GUI/GUI AC Source setup.vi"/>
-			<Item Name="GUI Connections.vi" Type="VI" URL="../GUI/GUI Connections.vi"/>
-			<Item Name="GUI DC meter setup.vi" Type="VI" URL="../GUI/GUI DC meter setup.vi"/>
-			<Item Name="GUI main.vi" Type="VI" URL="../GUI/GUI main.vi"/>
-			<Item Name="GUI Measurement setup.vi" Type="VI" URL="../GUI/GUI Measurement setup.vi"/>
-			<Item Name="GUI TWM setup.vi" Type="VI" URL="../GUI/GUI TWM setup.vi"/>
-		</Item>
-		<Item Name="Measurement" Type="Folder">
-			<Item Name="Type definitions" Type="Folder">
-				<Item Name="Measuement properties.ctl" Type="VI" URL="../Measurement/Type definitions/Measuement properties.ctl"/>
-			</Item>
-			<Item Name="Measure.vi" Type="VI" URL="../Measurement/Measure.vi"/>
-			<Item Name="Set TWM Measurement.vi" Type="VI" URL="../Measurement/Set TWM Measurement.vi"/>
-			<Item Name="Set TWM Processing.vi" Type="VI" URL="../Measurement/Set TWM Processing.vi"/>
-			<Item Name="TWM Wait for Measure End.vi" Type="VI" URL="../Measurement/TWM Wait for Measure End.vi"/>
+		<Item Name="resources" Type="Folder">
+			<Item Name="FR.ico" Type="Document" URL="../resources/FR.ico"/>
 		</Item>
 		<Item Name="Utilities" Type="Folder">
 			<Item Name="Recalculation related" Type="Folder">
 				<Item Name="Calculate.vi" Type="VI" URL="../Utilities/Recalculation related/Calculate.vi"/>
-				<Item Name="GUI Recalculate.vi" Type="VI" URL="../Utilities/Recalculation related/GUI Recalculate.vi"/>
 				<Item Name="Read Result.vi" Type="VI" URL="../Utilities/Recalculation related/Read Result.vi"/>
 				<Item Name="Start Octave.vi" Type="VI" URL="../Utilities/Recalculation related/Start Octave.vi"/>
 				<Item Name="Stop Octave.vi" Type="VI" URL="../Utilities/Recalculation related/Stop Octave.vi"/>
 			</Item>
-			<Item Name="Template related" Type="Folder">
-				<Item Name="Load XCL template.vi" Type="VI" URL="../Utilities/Template related/Load XCL template.vi"/>
-				<Item Name="XCL Write header.vi" Type="VI" URL="../Utilities/Template related/XCL Write header.vi"/>
-				<Item Name="XCL Write measurement line.vi" Type="VI" URL="../Utilities/Template related/XCL Write measurement line.vi"/>
-			</Item>
-			<Item Name="Type definitions" Type="Folder">
-				<Item Name="Template definition.ctl" Type="VI" URL="../Utilities/Type definitions/Template definition.ctl"/>
-			</Item>
+			<Item Name="Type definitions" Type="Folder"/>
 			<Item Name="Check user abort.vi" Type="VI" URL="../Utilities/Check user abort.vi"/>
 			<Item Name="Clear errors from TWM.vi" Type="VI" URL="../Utilities/Clear errors from TWM.vi"/>
-			<Item Name="Estimate measurement time.vi" Type="VI" URL="../Utilities/Estimate measurement time.vi"/>
-			<Item Name="Get Measurement Path.vi" Type="VI" URL="../Utilities/Get Measurement Path.vi"/>
-			<Item Name="Make Default FFmeter settings.vi" Type="VI" URL="../Utilities/Make Default FFmeter settings.vi"/>
 			<Item Name="Merge Error Ex.vi" Type="VI" URL="../Utilities/Merge Error Ex.vi"/>
 			<Item Name="Process TWM result.vi" Type="VI" URL="../Utilities/Process TWM result.vi"/>
-			<Item Name="Read settings from file.vi" Type="VI" URL="../Utilities/Read settings from file.vi"/>
-			<Item Name="Save settings to file.vi" Type="VI" URL="../Utilities/Save settings to file.vi"/>
 		</Item>
-		<Item Name="FF.ico" Type="Document" URL="../resources/FF.ico"/>
-		<Item Name="test-delete.vi" Type="VI" URL="../test-delete.vi"/>
-		<Item Name="test_twm.vi" Type="VI" URL="../test_twm.vi"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="instr.lib" Type="Folder">
 				<Item Name="niScope Acquisition Status.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Acquire/Fetch/niScope Acquisition Status.vi"/>
@@ -508,44 +511,44 @@
 			<Item Name="wa32 WriteFile.vi" Type="VI" URL="../external libraries/TWM-1.8.7.0-client/wa32 WriteFile.vi"/>
 		</Item>
 		<Item Name="Build Specifications" Type="Build">
-			<Item Name="FFmeter" Type="EXE">
+			<Item Name="FRmeter" Type="EXE">
 				<Property Name="App_copyErrors" Type="Bool">true</Property>
 				<Property Name="App_INI_aliasGUID" Type="Str">{E8988EE7-88EC-4FCE-957E-4D00CC08ABEE}</Property>
 				<Property Name="App_INI_GUID" Type="Str">{D245FB66-4C2B-4FDD-8EEF-6E66C2E53126}</Property>
 				<Property Name="App_serverConfig.httpPort" Type="Int">8002</Property>
 				<Property Name="App_serverType" Type="Int">0</Property>
 				<Property Name="Bld_buildCacheID" Type="Str">{72090EED-D4EE-4561-8BE7-D8441C87CA05}</Property>
-				<Property Name="Bld_buildSpecName" Type="Str">FFmeter</Property>
+				<Property Name="Bld_buildSpecName" Type="Str">FRmeter</Property>
 				<Property Name="Bld_excludeInlineSubVIs" Type="Bool">true</Property>
 				<Property Name="Bld_excludeLibraryItems" Type="Bool">true</Property>
 				<Property Name="Bld_excludePolymorphicVIs" Type="Bool">true</Property>
-				<Property Name="Bld_localDestDir" Type="Path">../Filter function meter builds/ver. [VersionNumber]</Property>
+				<Property Name="Bld_localDestDir" Type="Path">../Frequency Response meter builds/ver. [VersionNumber]</Property>
 				<Property Name="Bld_localDestDirType" Type="Str">relativeToCommon</Property>
 				<Property Name="Bld_modifyLibraryFile" Type="Bool">true</Property>
 				<Property Name="Bld_previewCacheID" Type="Str">{F9D6AE93-6E67-4B1A-BB85-67503D78EECB}</Property>
 				<Property Name="Bld_version.minor" Type="Int">4</Property>
-				<Property Name="Destination[0].destName" Type="Str">FFmeter.exe</Property>
-				<Property Name="Destination[0].path" Type="Path">../Filter function meter builds/ver. [VersionNumber]/FFmeter.exe</Property>
+				<Property Name="Destination[0].destName" Type="Str">FRmeter.exe</Property>
+				<Property Name="Destination[0].path" Type="Path">../Frequency Response meter builds/ver. [VersionNumber]/FRmeter.exe</Property>
 				<Property Name="Destination[0].preserveHierarchy" Type="Bool">true</Property>
 				<Property Name="Destination[0].type" Type="Str">App</Property>
 				<Property Name="Destination[1].destName" Type="Str">Support Directory</Property>
-				<Property Name="Destination[1].path" Type="Path">../Filter function meter builds/ver. [VersionNumber]/data</Property>
+				<Property Name="Destination[1].path" Type="Path">../Frequency Response meter builds/ver. [VersionNumber]/data</Property>
 				<Property Name="DestinationCount" Type="Int">2</Property>
-				<Property Name="Exe_iconItemID" Type="Ref">/My Computer/FF.ico</Property>
-				<Property Name="Source[0].itemID" Type="Str">{66020D8C-FEF3-4534-9603-9C326A2AFEBB}</Property>
+				<Property Name="Exe_iconItemID" Type="Ref">/My Computer/resources/FR.ico</Property>
+				<Property Name="Source[0].itemID" Type="Str">{52637CF9-DDB2-44DA-BB9F-BB08CDD7FD16}</Property>
 				<Property Name="Source[0].type" Type="Str">Container</Property>
 				<Property Name="Source[1].destinationIndex" Type="Int">0</Property>
-				<Property Name="Source[1].itemID" Type="Ref">/My Computer/GUI/GUI main.vi</Property>
+				<Property Name="Source[1].itemID" Type="Ref">/My Computer/FR GUI/FR GUI main.vi</Property>
 				<Property Name="Source[1].sourceInclusion" Type="Str">TopLevel</Property>
 				<Property Name="Source[1].type" Type="Str">VI</Property>
 				<Property Name="SourceCount" Type="Int">2</Property>
 				<Property Name="TgtF_companyName" Type="Str">Czech Metrology Institute</Property>
-				<Property Name="TgtF_fileDescription" Type="Str">FFmeter</Property>
-				<Property Name="TgtF_internalName" Type="Str">FFmeter</Property>
+				<Property Name="TgtF_fileDescription" Type="Str">FRmeter</Property>
+				<Property Name="TgtF_internalName" Type="Str">FRmeter</Property>
 				<Property Name="TgtF_legalCopyright" Type="Str">Copyright © 2024 Czech Metrology Institute</Property>
-				<Property Name="TgtF_productName" Type="Str">FFmeter</Property>
+				<Property Name="TgtF_productName" Type="Str">FRmeter</Property>
 				<Property Name="TgtF_targetfileGUID" Type="Str">{FA820359-D1A3-4122-827D-A1BCC7074B2B}</Property>
-				<Property Name="TgtF_targetfileName" Type="Str">FFmeter.exe</Property>
+				<Property Name="TgtF_targetfileName" Type="Str">FRmeter.exe</Property>
 				<Property Name="TgtF_versionIndependent" Type="Bool">true</Property>
 			</Item>
 		</Item>

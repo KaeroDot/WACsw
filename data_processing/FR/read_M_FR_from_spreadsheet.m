@@ -134,6 +134,9 @@ function M_FR = read_M_FR_from_spreadsheet(filename, verbose)
     % if number of rows is odd, remove also the last one:
     if rem(numel(M_FR.f.v), 2)
         rows_to_remove(end+1) = numel(M_FR.f.v);
+        if verbose
+            printf('read_M_FR_from_spreadsheet: odd number of rows (%d), removing last one.\n', numel(M_FR.f.v));
+        end
     end
     % this should not happen, but just in case:
     rows_to_remove(rows_to_remove > numel(M_FR.f.v)) = []; % Ensure no out-of-bounds indices
@@ -147,6 +150,22 @@ function M_FR = read_M_FR_from_spreadsheet(filename, verbose)
     M_FR.Udc.v(rows_to_remove, :) = [];
     M_FR.Udc.u(rows_to_remove, :) = [];
     M_FR.Udc.r(rows_to_remove, :) = [];
+
+    % Ensure even row is with measurement frequency, even row is with base frequency %<<<1
+    if M_FR.f.v(1) < M_FR.f.v(2)
+        % if first frequency is smaller than second, swap even and odd rows:
+        M_FR.f.v = swap_even_odd_rows(M_FR.f.v);
+        M_FR.M.v = swap_even_odd_rows(M_FR.M.v);
+        M_FR.t.v = swap_even_odd_rows(M_FR.t.v);
+        M_FR.A.v = swap_even_odd_rows(M_FR.A.v);
+        M_FR.A.u = swap_even_odd_rows(M_FR.A.u);
+        M_FR.Udc.v = swap_even_odd_rows(M_FR.Udc.v);
+        M_FR.Udc.u = swap_even_odd_rows(M_FR.Udc.u);
+        M_FR.Udc.r = swap_even_odd_rows(M_FR.Udc.r);
+        if verbose
+            printf('read_M_FR_from_spreadsheet: data starts with base (low) frequency, swapping even and odd rows.\n');
+        end
+    end
 
 end % function read_M_FR_from_spreadsheet(filename)
 
@@ -162,5 +181,12 @@ function res = shift_limits_get_matrix(idx, limits, An) %<<<1
     idx(4) = min( idx(4) - limits.numlimits(2, 1) + 1, size(An, 2) );
     res = An( idx(1) : idx(3), idx(2) : idx(4) );
 end % function shift_limits_get_matrix
+
+function res = swap_even_odd_rows(M)
+    % Swap even and odd rows in a matrix
+    res = M;
+    res(1:2:end-1, :) = M(2:2:end, :);
+    res(2:2:end, :) = M(1:2:end-1, :);
+end % function swap_even_odd_rows
 
 % vim settings modeline: vim: foldmarker=%<<<,%>>> fdm=marker fen ft=matlab

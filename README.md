@@ -45,6 +45,7 @@ FFmeter | start result calculation from GUI (using script) | ❌
 FFmeter | finalize fitting of frequency response - find out best method | ❌
 FFmeter | ❗suggestion - alternate sampling and dc measurement instead of simultaneous | must be thought out
 FFmeter | ❗suggestion - measurement of sensitivity at the start | must be thought out
+FFmeter | ❗suggestion - implement K2182A nanovoltmeter | needed for PMJTC
 processing frequency response | simulator | ✔
 processing frequency response | simulator documentation | ❌
 processing frequency response | processing | ✔

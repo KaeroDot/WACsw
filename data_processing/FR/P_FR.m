@@ -85,21 +85,21 @@ function [f, digitizer_FR, ac_source_stability, FR_fit] = P_FR(M_FR, verbose);
         plot(f.v, digitizer_FR.v - 1, '-')
         xlabel('signal frequency (Hz)')
         ylabel('gain error (V/V)')
-        title(sprintf('P_FR.m\nTransfer function of the digitizer `%s`', M_FR.digitizer_id.v), 'interpreter', 'none')
+        title(sprintf('P_FR.m\nFrequency response of the digitizer `%s`', M_FR.digitizer_id.v), 'interpreter', 'none')
 
-        % tohle je OK, jen odpoznamkovat pro final: XXX
+        % ac source stability
         figure
         plot((tv(:,1) - tv(1,1))./3600, ac_source_stability.v - ac_source_stability.v(1))
         xlabel('time from the first measurement (h)')
         ylabel('change of signal amplitude from the first reading (V)')
-        title(sprintf('P_FR.m\nstability of ac source `%s`\n as measured by AC-DC standard and dc voltmeter `%s`', M_FR.ac_source_id.v, M_FR.dc_meter_id.v), 'interpreter', 'none')
+        title(sprintf('P_FR.m\nstability of AC source `%s`\n as measured by AC-DC standard and DC voltmeter `%s`', M_FR.ac_source_id.v, M_FR.dc_meter_id.v), 'interpreter', 'none')
 
-        % still not OK: XXX
-        figure
-        semilogx(f_meas(:,1), Udc(:,1)./Udc(:,2) - 1)
-        xlabel('signal frequency (Hz)')
-        ylabel('error (V)')
-		title(sprintf('P_FR.m\nAC/DC error (if ac source frequency independent) of `%s`\n as measured by AC/DC standard and voltmeter `%s`', M_FR.ac_source_id.v, M_FR.dc_meter_id.v), 'interpreter', 'none')
+		% % This figure is not usefull and probably nonsense
+		% figure
+		% semilogx(f_meas(:,1), Udc(:,1)./Udc(:,2) - 1)
+		% xlabel('signal frequency (Hz)')
+		% ylabel('error (V)')
+		% title(sprintf('P_FR.m\nAC/DC error of `%s`\n(if amplitude of AC source is frequency independent)\n as measured by AC/DC standard and voltmeter `%s`', M_FR.ac_source_id.v, M_FR.dc_meter_id.v), 'interpreter', 'none')
     end
 
 end % function P_FR

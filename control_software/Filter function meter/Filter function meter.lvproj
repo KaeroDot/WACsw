@@ -13,6 +13,9 @@
 		<Property Name="server.vi.callsEnabled" Type="Bool">true</Property>
 		<Property Name="server.vi.propertiesEnabled" Type="Bool">true</Property>
 		<Property Name="specify.custom.address" Type="Bool">false</Property>
+		<Item Name="CE GUI" Type="Folder">
+			<Item Name="temporary CE GUI main.vi" Type="VI" URL="../CE GUI/temporary CE GUI main.vi"/>
+		</Item>
 		<Item Name="CE Measurement" Type="Folder">
 			<Item Name="CE Measure.vi" Type="VI" URL="../CE Measurement/CE Measure.vi"/>
 		</Item>
@@ -28,6 +31,34 @@
 				<Item Name="NI DAQ init.vi" Type="VI" URL="../external libraries/externals needed for AWG/NI DAQ init.vi"/>
 				<Item Name="NI DAQ start.vi" Type="VI" URL="../external libraries/externals needed for AWG/NI DAQ start.vi"/>
 				<Item Name="NI DAQ stop.vi" Type="VI" URL="../external libraries/externals needed for AWG/NI DAQ stop.vi"/>
+			</Item>
+			<Item Name="kei2182v6" Type="Folder">
+				<Item Name="GPIB Receive Message.vi" Type="VI" URL="../external libraries/kei2182v6.llb/GPIB Receive Message.vi"/>
+				<Item Name="GPIB Send Message.vi" Type="VI" URL="../external libraries/kei2182v6.llb/GPIB Send Message.vi"/>
+				<Item Name="Keithley 2182 Analog Output.vi" Type="VI" URL="../external libraries/kei2182v6.llb/Keithley 2182 Analog Output.vi"/>
+				<Item Name="Keithley 2182 Basic Math Config.vi" Type="VI" URL="../external libraries/kei2182v6.llb/Keithley 2182 Basic Math Config.vi"/>
+				<Item Name="Keithley 2182 Buffer Config.vi" Type="VI" URL="../external libraries/kei2182v6.llb/Keithley 2182 Buffer Config.vi"/>
+				<Item Name="Keithley 2182 Buffer Math Config.vi" Type="VI" URL="../external libraries/kei2182v6.llb/Keithley 2182 Buffer Math Config.vi"/>
+				<Item Name="Keithley 2182 Buffer Read.vi" Type="VI" URL="../external libraries/kei2182v6.llb/Keithley 2182 Buffer Read.vi"/>
+				<Item Name="Keithley 2182 Calc Read.vi" Type="VI" URL="../external libraries/kei2182v6.llb/Keithley 2182 Calc Read.vi"/>
+				<Item Name="Keithley 2182 Data Format.vi" Type="VI" URL="../external libraries/kei2182v6.llb/Keithley 2182 Data Format.vi"/>
+				<Item Name="Keithley 2182 DCV Config.vi" Type="VI" URL="../external libraries/kei2182v6.llb/Keithley 2182 DCV Config.vi"/>
+				<Item Name="Keithley 2182 Display Config.vi" Type="VI" URL="../external libraries/kei2182v6.llb/Keithley 2182 Display Config.vi"/>
+				<Item Name="Keithley 2182 Enable Status Registers.vi" Type="VI" URL="../external libraries/kei2182v6.llb/Keithley 2182 Enable Status Registers.vi"/>
+				<Item Name="Keithley 2182 Hard Reset.vi" Type="VI" URL="../external libraries/kei2182v6.llb/Keithley 2182 Hard Reset.vi"/>
+				<Item Name="Keithley 2182 Initiate/Abort.vi" Type="VI" URL="../external libraries/kei2182v6.llb/Keithley 2182 Initiate/Abort.vi"/>
+				<Item Name="Keithley 2182 Limits Config.vi" Type="VI" URL="../external libraries/kei2182v6.llb/Keithley 2182 Limits Config.vi"/>
+				<Item Name="Keithley 2182 Measurement Mode.vi" Type="VI" URL="../external libraries/kei2182v6.llb/Keithley 2182 Measurement Mode.vi"/>
+				<Item Name="Keithley 2182 One Shot Measure.vi" Type="VI" URL="../external libraries/kei2182v6.llb/Keithley 2182 One Shot Measure.vi"/>
+				<Item Name="Keithley 2182 Read Status Registers.vi" Type="VI" URL="../external libraries/kei2182v6.llb/Keithley 2182 Read Status Registers.vi"/>
+				<Item Name="Keithley 2182 Reading Hold Window.vi" Type="VI" URL="../external libraries/kei2182v6.llb/Keithley 2182 Reading Hold Window.vi"/>
+				<Item Name="Keithley 2182 Scan Config.vi" Type="VI" URL="../external libraries/kei2182v6.llb/Keithley 2182 Scan Config.vi"/>
+				<Item Name="Keithley 2182 Set &amp; Enable SRQ.vi" Type="VI" URL="../external libraries/kei2182v6.llb/Keithley 2182 Set &amp; Enable SRQ.vi"/>
+				<Item Name="Keithley 2182 System Commands.vi" Type="VI" URL="../external libraries/kei2182v6.llb/Keithley 2182 System Commands.vi"/>
+				<Item Name="Keithley 2182 Temp Config.vi" Type="VI" URL="../external libraries/kei2182v6.llb/Keithley 2182 Temp Config.vi"/>
+				<Item Name="Keithley 2182 Trigger Config.vi" Type="VI" URL="../external libraries/kei2182v6.llb/Keithley 2182 Trigger Config.vi"/>
+				<Item Name="Keithley 2182 Units Config.vi" Type="VI" URL="../external libraries/kei2182v6.llb/Keithley 2182 Units Config.vi"/>
+				<Item Name="Read SCPI Error Queue (GPIB).vi" Type="VI" URL="../external libraries/kei2182v6.llb/Read SCPI Error Queue (GPIB).vi"/>
 			</Item>
 			<Item Name="3458A Basic Driver.lvlib" Type="Library" URL="../external libraries/3458A Basic Driver/3458A Basic Driver.lvlib"/>
 			<Item Name="AWG.lvlib" Type="Library" URL="../external libraries/AWG/AWG.lvlib"/>

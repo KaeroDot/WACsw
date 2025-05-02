@@ -86,6 +86,7 @@
 			<Item Name="Type definitions" Type="Folder">
 				<Item Name="FR Measuement properties.ctl" Type="VI" URL="../FR Measurement/Type definitions/FR Measuement properties.ctl"/>
 			</Item>
+			<Item Name="FR Do Single Measurement.vi" Type="VI" URL="../FR Measurement/FR Do Single Measurement.vi"/>
 			<Item Name="FR Measure.vi" Type="VI" URL="../FR Measurement/FR Measure.vi"/>
 			<Item Name="FR TWM Wait for Measure End.vi" Type="VI" URL="../FR Measurement/FR TWM Wait for Measure End.vi"/>
 		</Item>
@@ -144,7 +145,6 @@
 			<Item Name="Set TWM Processing.vi" Type="VI" URL="../Utilities/Set TWM Processing.vi"/>
 			<Item Name="TWM Measure.vi" Type="VI" URL="../Utilities/TWM Measure.vi"/>
 		</Item>
-		<Item Name="FR Do Single Measurement.vi" Type="VI" URL="../FR Measurement/FR Do Single Measurement.vi"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="instr.lib" Type="Folder">
 				<Item Name="niScope Acquisition Status.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Acquire/Fetch/niScope Acquisition Status.vi"/>

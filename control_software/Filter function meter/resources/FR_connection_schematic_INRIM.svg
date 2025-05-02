@@ -1,0 +1,700 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="949.0463256835938"
+   height="647.0971069335938"
+   overflow="hidden"
+   version="1.1"
+   id="svg162"
+   sodipodi:docname="Schematic PMJTC_PXI5922.svg"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   inkscape:export-filename="/home/martin/metrologie/WAC/2025-03 Bruno measurements/Schematic PMJTC_PXI5922.png"
+   inkscape:export-xdpi="200"
+   inkscape:export-ydpi="200"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs166" />
+  <sodipodi:namedview
+     id="namedview164"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="0.6720093496953021"
+     inkscape:cx="456.0948447204955"
+     inkscape:cy="279.0139751552787"
+     inkscape:window-width="1626"
+     inkscape:window-height="1023"
+     inkscape:window-x="1024"
+     inkscape:window-y="115"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer2"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="backrougnd rectangle"
+     style="display:inline"
+     transform="translate(-36.34651184082031,-72.21248626708984)">
+    <rect
+       x="36.34651184082031"
+       y="72.21248626708984"
+       width="949.0463256835938"
+       height="647.0971069335938"
+       fill="#ffffff"
+       id="rect2"
+       style="display:inline;stroke-width:0.816314" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer1"
+     inkscape:label="Layer 1"
+     style="display:inline"
+     sodipodi:insensitive="true"
+     transform="translate(-36.34651184082031,-72.21248626708984)">
+    <text
+       font-family="'Aptos Display', 'Aptos Display_MSFontService', sans-serif"
+       font-weight="400"
+       font-size="27px"
+       id="text4"
+       x="416.6700134277344"
+       y="52"
+       style="display:inline">Schematic</text>
+    <text
+       font-family="'Aptos Display', 'Aptos Display_MSFontService', sans-serif"
+       font-weight="400"
+       font-size="27px"
+       id="text6"
+       x="549.6699829101562"
+       y="52"
+       style="display:inline">AC/DC</text>
+    <text
+       font-family="'Aptos Display', 'Aptos Display_MSFontService', sans-serif"
+       font-weight="400"
+       font-size="27px"
+       id="text8"
+       x="638.6699829101562"
+       y="52"
+       style="display:inline">–</text>
+    <text
+       font-family="'Aptos Display', 'Aptos Display_MSFontService', sans-serif"
+       font-weight="400"
+       font-size="27px"
+       id="text10"
+       x="656.6699829101562"
+       y="52"
+       style="display:inline">PXI</text>
+    <text
+       font-family="'Aptos Display', 'Aptos Display_MSFontService', sans-serif"
+       font-weight="400"
+       font-size="27px"
+       id="text12"
+       x="705.6699829101562"
+       y="52"
+       style="display:inline">digital</text>
+    <text
+       font-family="'Aptos Display', 'Aptos Display_MSFontService', sans-serif"
+       font-weight="400"
+       font-size="27px"
+       id="text14"
+       x="781.6699829101562"
+       y="52"
+       style="display:inline">filter</text>
+    <path
+       d="M 54,255.334 C 54,244.656 62.656,236 73.3336,236 H 209.666 c 10.678,0 19.334,8.656 19.334,19.334 v 77.332 C 229,343.344 220.344,352 209.666,352 H 73.3336 C 62.656,352 54,343.344 54,332.666 Z"
+       stroke="#042433"
+       stroke-width="2"
+       stroke-miterlimit="8"
+       fill="#156082"
+       fill-rule="evenodd"
+       id="path16"
+       style="display:inline;fill:#81a5b6;fill-opacity:1" />
+    <text
+       font-family="Aptos, Aptos_MSFontService, sans-serif"
+       font-weight="400"
+       font-size="24px"
+       id="text18"
+       x="106.4410018920898"
+       y="295"
+       style="display:inline">F5730A</text>
+    <path
+       d="M 427,374.167 C 427,366.343 433.343,360 441.167,360 H 497.833 c 7.824,0 14.167,6.343 14.167,14.167 V 456.833 C 512,464.657 505.657,471 497.833,471 H 441.167 C 433.343,471 427,464.657 427,456.833 Z"
+       stroke="#042433"
+       stroke-width="2"
+       stroke-miterlimit="8"
+       fill="#b4e5a2"
+       fill-rule="evenodd"
+       id="path20"
+       style="display:inline" />
+    <path
+       d="M 407,115.834 C 407,104.328 416.328,95 427.834,95 h 83.332 C 522.672,95 532,104.328 532,115.834 v 93.332 C 532,220.672 522.672,230 511.166,230 H 427.834 C 416.328,230 407,220.672 407,209.166 Z"
+       stroke="#042433"
+       stroke-width="2"
+       stroke-miterlimit="8"
+       fill="#ffc000"
+       fill-rule="evenodd"
+       id="path22"
+       style="display:inline" />
+    <text
+       font-family="Aptos, Aptos_MSFontService, sans-serif"
+       font-weight="400"
+       font-size="24px"
+       id="text24"
+       x="429.9859924316406"
+       y="170"
+       style="display:inline">PXI5922</text>
+    <text
+       font-family="Aptos, Aptos_MSFontService, sans-serif"
+       font-weight="400"
+       font-size="24px"
+       id="text26"
+       x="448.4039916992188"
+       y="423"
+       style="display:inline">TVC</text>
+    <path
+       d="m 343,577.5 c 0,-10.217 8.283,-18.5 18.5,-18.5 h 216 c 10.2169999999996,0 18.5,8.283 18.5,18.5 v 74 c 0,10.2169999999996 -8.2830000000004,18.5 -18.5,18.5 h -216 C 351.283,670 343,661.7169999999996 343,651.5 Z"
+       stroke="#042433"
+       stroke-width="2"
+       stroke-miterlimit="8"
+       fill="#b4e5a2"
+       fill-rule="evenodd"
+       id="path28"
+       style="display:inline" />
+    <text
+       font-family="Aptos, Aptos_MSFontService, sans-serif"
+       font-weight="400"
+       font-size="24px"
+       id="text30"
+       x="418.5429992675781"
+       y="628"
+       style="display:inline">HP3458</text>
+    <path
+       d="m 439,273.834 c 0,-5.431 4.403,-9.834 9.834,-9.834 h 41.332 c 5.431,0 9.834,4.403 9.834,9.834 v 39.332 c 0,5.431 -4.403,9.834 -9.834,9.834 H 448.834 C 443.403,323 439,318.597 439,313.166 Z"
+       stroke="#042433"
+       stroke-width="2"
+       stroke-miterlimit="8"
+       fill="#b4e5a2"
+       fill-rule="evenodd"
+       id="path32"
+       style="display:inline" />
+    <path
+       d="M 469.059,296.054 228.996,295 l 0.008,-2 240.064,1.054 z m 0.022,-5 C 471.29,291.063 473.073,292.862 473.063,295.071 473.054,297.28 471.255,299.063 469.046,299.054 c -2.209,-0.01 -3.992,-1.809 -3.983,-4.018 0.01,-2.209 1.809,-3.992 4.018,-3.982 z M 228.982,298 c -2.209,-0.01 -3.992,-1.808 -3.982,-4.018 0.01,-2.209 1.808,-3.992 4.018,-3.982 2.209,0.01 3.992,1.808 3.982,4.018 -0.01,2.209 -1.808,3.992 -4.018,3.982 z"
+       fill="#ff0000"
+       id="path34"
+       style="display:inline" />
+    <text
+       font-family="Aptos, Aptos_MSFontService, sans-serif"
+       font-weight="400"
+       font-size="16px"
+       id="text36"
+       x="384.8909912109375"
+       y="327"
+       style="display:inline">T</text>
+    <text
+       font-family="Aptos, Aptos_MSFontService, sans-serif"
+       font-weight="400"
+       font-size="16px"
+       id="text38"
+       x="391.8909912109375"
+       y="327"
+       style="display:inline">-</text>
+    <text
+       font-family="Aptos, Aptos_MSFontService, sans-serif"
+       font-weight="400"
+       font-size="16px"
+       id="text40"
+       x="396.8909912109375"
+       y="327"
+       style="display:inline">node</text>
+    <path
+       d="M 438.526,285.281 243,283"
+       stroke="#000000"
+       stroke-width="2"
+       stroke-miterlimit="8"
+       fill="none"
+       fill-rule="evenodd"
+       id="path42"
+       style="display:inline" />
+    <path
+       d="M 439.526,305.281 244,303"
+       stroke="#000000"
+       stroke-width="2"
+       stroke-miterlimit="8"
+       fill="none"
+       fill-rule="evenodd"
+       id="path44"
+       style="display:inline" />
+    <path
+       d="m 245.443,284.026 c 4.946,3.638 4.512,12.63 -0.97,20.083"
+       stroke="#156082"
+       stroke-width="2"
+       stroke-miterlimit="8"
+       fill="none"
+       fill-rule="evenodd"
+       id="path46"
+       style="display:inline" />
+    <path
+       d="m 460,230 v 34.499"
+       stroke="#156082"
+       stroke-width="2"
+       stroke-miterlimit="8"
+       fill="none"
+       fill-rule="evenodd"
+       id="path48"
+       style="display:inline" />
+    <path
+       d="m 480,230 v 34.499"
+       stroke="#156082"
+       stroke-width="2"
+       stroke-miterlimit="8"
+       fill="none"
+       fill-rule="evenodd"
+       id="path50"
+       style="display:inline" />
+    <path
+       d="m 480,323 v 36.864"
+       stroke="#156082"
+       stroke-width="2"
+       stroke-miterlimit="8"
+       fill="none"
+       fill-rule="evenodd"
+       id="path52"
+       style="display:inline" />
+    <path
+       d="m 460,323 v 36.864"
+       stroke="#156082"
+       stroke-width="2"
+       stroke-miterlimit="8"
+       fill="none"
+       fill-rule="evenodd"
+       id="path54"
+       style="display:inline" />
+    <path
+       d="m 453,458 v 113.454 h -2 V 458 Z m -5,0 c 0,-2.209 1.791,-4 4,-4 2.209,0 4,1.791 4,4 0,2.209 -1.791,4 -4,4 -2.209,0 -4,-1.791 -4,-4 z m 8,113.454 c 0,2.2099999999997 -1.791,4 -4,4 -2.209,0 -4,-1.7900000000003 -4,-4 0,-2.2089999999999 1.791,-4 4,-4 2.209,0 4,1.7910000000001 4,4 z"
+       fill="#156082"
+       id="path56"
+       style="display:inline" />
+    <path
+       d="m 483,458 v 113.454 h -2 V 458 Z m -5,0 c 0,-2.209 1.791,-4 4,-4 2.209,0 4,1.791 4,4 0,2.209 -1.791,4 -4,4 -2.209,0 -4,-1.791 -4,-4 z m 8,113.454 c 0,2.2099999999997 -1.791,4 -4,4 -2.209,0 -4,-1.7900000000003 -4,-4 0,-2.2089999999999 1.791,-4 4,-4 2.209,0 4,1.7910000000001 4,4 z"
+       fill="#156082"
+       id="path58"
+       style="display:inline" />
+    <text
+       font-family="Aptos, Aptos_MSFontService, sans-serif"
+       font-weight="400"
+       font-size="24px"
+       id="text60"
+       x="470.8389892578125"
+       y="600"
+       style="display:inline">H</text>
+    <text
+       font-family="Aptos, Aptos_MSFontService, sans-serif"
+       font-weight="400"
+       font-size="24px"
+       id="text62"
+       x="445.7260131835938"
+       y="600"
+       style="display:inline">L</text>
+    <path
+       d="m 440.041,540.734 c 16.182,-14.442 40.441,-13.667 54.183,1.731"
+       stroke="#156082"
+       stroke-width="2"
+       stroke-miterlimit="8"
+       fill="none"
+       fill-rule="evenodd"
+       id="path64"
+       style="display:inline" />
+    <path
+       d="m 493.461,480.015 c -15.803,14.855 -40.074,14.708 -54.21,-0.33"
+       stroke="#156082"
+       stroke-width="2"
+       stroke-miterlimit="8"
+       fill="none"
+       fill-rule="evenodd"
+       id="path66"
+       style="display:inline" />
+    <path
+       d="m 494.7,479 -0.699633,63.9416999999999"
+       stroke="#156082"
+       stroke-width="2"
+       stroke-miterlimit="8"
+       fill="none"
+       fill-rule="evenodd"
+       id="path68"
+       style="display:inline" />
+    <path
+       d="m 438,479 v 63.533"
+       stroke="#156082"
+       stroke-width="2"
+       stroke-miterlimit="8"
+       fill="none"
+       fill-rule="evenodd"
+       id="path70"
+       style="display:inline" />
+    <path
+       d="m 437.621,542.873 -4.76,-1.947 0.661,0.033 L 432.737,541.19 l 0.34,-0.176 -0.689,0.5459999999999 0.024,-0.019 -1.513,1.28 -1.6,0.611 -1.483,0.447 0.417,-0.2490000000003 L 426.788,545.07 l 0.014,-0.015 -1.2269999999999,1.2719999999999 0.067,-0.077 -1.0810000000001,1.377 0.081,-0.12 -1.007,1.7539999999999 L 423.725,549.051 l -0.451,1.501 -0.565,1.605 -1.937,2.63 -1.995,2.404 0.217,-0.477 -0.961,5.896 -0.554,1.9919999999997 0.015,-0.062 -0.412,1.9559999999999 L 417.103,566.306 l -0.087,5.352 v -0.033 l 0.087,5.359 -2,0.032 L 415.016,571.642 l 0.089,-5.465 0.439,-2.081 0.548,-1.9690000000001 L 416.068,562.234 l 0.996,-6.111 2.1499999999999,-2.591 -0.036,0.046 L 421.01,551.091 l -0.138,0.2619999999999 0.507,-1.4430000000001 -0.014,0.043 L 421.843,548.365 l 1.1,-1.9160000000001 L 424.1,544.975 l 1.269,-1.3150000000002 1.63,-1.6239999999999 L 428.688,541.527 428.619,541.55 430.027,541.013 429.738,541.1839999999998 431.132,540.004 l 0.854,-0.678 1.308,-0.384 5.085,2.08 z m 2.127,-4.524 c 1.987,0.966 2.815,3.3589999999998 1.85,5.346 -0.965,1.987 -3.359,2.8159999999998 -5.346,1.8499999999998 C 434.265,544.58 433.437,542.186 434.402,540.1989999999999 435.367,538.2119999999996 437.761,537.384 439.748,538.349 Z m -19.645,38.5859999999999 C 420.139,579.144 418.377,580.964 416.168,580.999 c -2.209,0.036 -4.028,-1.725 -4.064,-3.934 -0.036,-2.2090000000004 1.725,-4.0290000000001 3.934,-4.0640000000003 2.209,-0.036 4.029,1.7249999999998 4.065,3.9340000000002 z"
+       fill="#042433"
+       id="path72"
+       style="display:inline" />
+    <text
+       font-family="Aptos, Aptos_MSFontService, sans-serif"
+       font-weight="400"
+       font-size="24px"
+       id="text74"
+       x="364.0480041503906"
+       y="599"
+       style="display:inline">Guard</text>
+    <path
+       d="m 552,312 -17,34 -17,-34 z"
+       stroke="#042433"
+       stroke-width="2"
+       stroke-miterlimit="8"
+       fill="#156082"
+       fill-rule="evenodd"
+       id="path76"
+       style="display:inline" />
+    <text
+       fill="#ffffff"
+       font-family="Aptos, Aptos_MSFontService, sans-serif"
+       font-weight="400"
+       font-size="24px"
+       transform="scale(-1)"
+       id="text78"
+       x="-540.301025390625"
+       y="-313"
+       style="display:inline">v</text>
+    <path
+       d="m 500,293 h 35.6 v 18.957 h -2 V 294 l 1,1 H 500 Z m 0,5 c -2.209,0 -4,-1.791 -4,-4 0,-2.209 1.791,-4 4,-4 2.209,0 4,1.791 4,4 0,2.209 -1.791,4 -4,4 z m 38.6,13.957 c 0,2.209 -1.7900000000001,4 -4,4 -2.2090000000002,0 -4,-1.791 -4,-4 0,-2.209 1.7909999999998,-4 4,-4 2.2099999999999,0 4,1.791 4,4 z"
+       fill="#156082"
+       id="path80"
+       style="display:inline" />
+    <text
+       font-family="Aptos, Aptos_MSFontService, sans-serif"
+       font-weight="400"
+       font-size="24px"
+       id="text82"
+       x="269.2990112304688"
+       y="152"
+       style="display:inline">GND</text>
+    <path
+       d="m 762,286.501 c 0,-12.427 10.074,-22.501 22.5,-22.501 h 158 c 12.426,0 22.5,10.074 22.5,22.501 V 376.499 C 965,388.926 954.926,399 942.5,399 h -158 c -12.426,0 -22.5,-10.074 -22.5,-22.501 z"
+       stroke="#00b0f0"
+       stroke-width="2"
+       stroke-miterlimit="8"
+       fill="#96dcf8"
+       fill-rule="evenodd"
+       id="path84"
+       style="display:inline" />
+    <text
+       font-family="Aptos, Aptos_MSFontService, sans-serif"
+       font-weight="400"
+       font-size="24px"
+       id="text86"
+       x="847.64501953125"
+       y="315"
+       style="display:inline">PC</text>
+    <text
+       font-family="Aptos, Aptos_MSFontService, sans-serif"
+       font-weight="400"
+       font-size="24px"
+       id="text88"
+       x="847.64501953125"
+       y="344"
+       style="display:inline">TWM</text>
+    <path
+       d="m 532,162 h 340.603 v 101.891 h 1.2099999999999"
+       stroke="#156082"
+       stroke-width="2"
+       stroke-miterlimit="8"
+       fill="none"
+       fill-rule="evenodd"
+       id="path90"
+       style="display:inline" />
+    <path
+       d="m 703,143 c 0,-11.046 8.73,-20 19.5,-20 10.7699999999998,0 19.5,8.954 19.5,20 0,11.046 -8.7300000000002,20 -19.5,20 -10.77,0 -19.5,-8.954 -19.5,-20 z"
+       stroke="#042433"
+       stroke-width="2"
+       stroke-miterlimit="8"
+       fill="#156082"
+       fill-rule="evenodd"
+       id="path92"
+       style="display:inline" />
+    <text
+       font-family="Aptos, Aptos_MSFontService, sans-serif"
+       font-weight="400"
+       font-size="24px"
+       id="text94"
+       x="757.322998046875"
+       y="121"
+       style="display:inline">Optical</text>
+    <text
+       font-family="Aptos, Aptos_MSFontService, sans-serif"
+       font-weight="400"
+       font-size="24px"
+       id="text96"
+       x="757.322998046875"
+       y="150"
+       style="display:inline">Link</text>
+    <path
+       d="M 872.5339999999996,397.925 V 707.0159999999998 H 151 V 350.9999"
+       stroke="#156082"
+       stroke-width="2"
+       stroke-miterlimit="8"
+       fill="none"
+       fill-rule="evenodd"
+       id="path98"
+       style="display:inline" />
+    <path
+       d="m 511,706.759 0.847769,-36.7591"
+       stroke="#156082"
+       stroke-width="2"
+       stroke-miterlimit="8"
+       fill="none"
+       fill-rule="evenodd"
+       id="path100"
+       style="display:inline" />
+    <path
+       d="m 873,514.5 c 0,-11.322 8.73,-20.5 19.5,-20.5 10.7699999999998,0 19.5,9.178 19.5,20.5 0,11.322 -8.7300000000002,20.5 -19.5,20.5 -10.77,0 -19.5,-9.178 -19.5,-20.5 z"
+       stroke="#042433"
+       stroke-width="2"
+       stroke-miterlimit="8"
+       fill="#156082"
+       fill-rule="evenodd"
+       id="path102"
+       style="display:inline" />
+    <text
+       font-family="Aptos, Aptos_MSFontService, sans-serif"
+       font-weight="400"
+       font-size="24px"
+       id="text104"
+       x="633.2009887695312"
+       y="699"
+       style="display:inline">GPIB</text>
+    <text
+       font-family="Aptos, Aptos_MSFontService, sans-serif"
+       font-weight="400"
+       font-size="24px"
+       id="text106"
+       x="743.3327026367188"
+       y="506.0387268066406"
+       style="display:inline">USB</text>
+    <text
+       font-family="Aptos, Aptos_MSFontService, sans-serif"
+       font-weight="400"
+       font-size="24px"
+       id="text108"
+       x="793.3327026367188"
+       y="506.0387268066406"
+       style="display:inline">-</text>
+    <text
+       font-family="Aptos, Aptos_MSFontService, sans-serif"
+       font-weight="400"
+       font-size="24px"
+       id="text110"
+       x="801.3327026367188"
+       y="506.0387268066406"
+       style="display:inline">GPIB</text>
+    <text
+       font-family="Aptos, Aptos_MSFontService, sans-serif"
+       font-weight="400"
+       font-size="24px"
+       id="text112"
+       x="743.3327026367188"
+       y="535.0387573242188"
+       style="display:inline">optical</text>
+    <text
+       font-family="Aptos, Aptos_MSFontService, sans-serif"
+       font-weight="400"
+       font-size="24px"
+       id="text114"
+       x="743.3327026367188"
+       y="564.0387573242188"
+       style="display:inline">link</text>
+    <path
+       d="m 353,128 -17,34 -17,-34 z"
+       stroke="#042433"
+       stroke-width="2"
+       stroke-miterlimit="8"
+       fill="#156082"
+       fill-rule="evenodd"
+       id="path116"
+       style="display:inline" />
+    <path
+       d="m 244.6917865848777,303.5721589225975 1e-13,10.8598410774026 L 229,314.432 v 8.432"
+       stroke="#156082"
+       stroke-width="2"
+       stroke-miterlimit="8"
+       fill="none"
+       fill-rule="evenodd"
+       id="path118"
+       style="display:inline"
+       sodipodi:nodetypes="cccc" />
+    <text
+       font-family="Aptos, Aptos_MSFontService, sans-serif"
+       font-weight="400"
+       font-size="24px"
+       id="text120"
+       x="239.3780059814453"
+       y="344"
+       style="display:inline">Floatting</text>
+    <text
+       font-family="Aptos, Aptos_MSFontService, sans-serif"
+       font-weight="400"
+       font-size="24px"
+       id="text122"
+       x="239.3780059814453"
+       y="373"
+       style="display:inline">output</text>
+    <text
+       font-family="Aptos, Aptos_MSFontService, sans-serif"
+       font-weight="400"
+       font-size="24px"
+       id="text124"
+       x="206.3529968261719"
+       y="290"
+       style="display:inline">H</text>
+    <text
+       font-family="Aptos, Aptos_MSFontService, sans-serif"
+       font-weight="400"
+       font-size="24px"
+       id="text126"
+       x="208.3739929199219"
+       y="321"
+       style="display:inline">L</text>
+    <text
+       font-family="Aptos, Aptos_MSFontService, sans-serif"
+       font-weight="400"
+       font-size="24px"
+       id="text128"
+       x="530.5139770507812"
+       y="443"
+       style="display:inline">PMJTC</text>
+    <text
+       font-family="Aptos, Aptos_MSFontService, sans-serif"
+       font-weight="400"
+       font-size="24px"
+       id="text130"
+       x="530.5139770507812"
+       y="472"
+       style="display:inline">Isolated</text>
+    <text
+       font-family="Aptos, Aptos_MSFontService, sans-serif"
+       font-weight="400"
+       font-size="24px"
+       id="text132"
+       x="530.5139770507812"
+       y="501"
+       style="display:inline">output</text>
+    <path
+       d="M 336,127.192 V 113 h 70.499"
+       stroke="#156082"
+       stroke-width="2"
+       stroke-miterlimit="8"
+       fill="none"
+       fill-rule="evenodd"
+       id="path134"
+       style="display:inline" />
+    <text
+       font-family="Aptos, Aptos_MSFontService, sans-serif"
+       font-weight="400"
+       font-size="24px"
+       id="text136"
+       x="284.0599975585938"
+       y="102"
+       style="display:inline">PXI chassis</text>
+    <path
+       d="m 321,564 -17,34 -17,-34 z"
+       stroke="#042433"
+       stroke-width="2"
+       stroke-miterlimit="8"
+       fill="#156082"
+       fill-rule="evenodd"
+       id="path138"
+       style="display:inline" />
+    <path
+       d="M 438.071,542 H 304 v 21.6153"
+       stroke="#156082"
+       stroke-width="2"
+       stroke-miterlimit="8"
+       fill="none"
+       fill-rule="evenodd"
+       id="path140"
+       style="display:inline" />
+    <text
+       font-family="Aptos, Aptos_MSFontService, sans-serif"
+       font-weight="400"
+       font-size="24px"
+       id="text142"
+       x="219.468994140625"
+       y="504"
+       style="display:inline">Bifilar</text>
+    <text
+       font-family="Aptos, Aptos_MSFontService, sans-serif"
+       font-weight="400"
+       font-size="24px"
+       id="text144"
+       x="284.468994140625"
+       y="504"
+       style="display:inline">shielded</text>
+    <text
+       font-family="Aptos, Aptos_MSFontService, sans-serif"
+       font-weight="400"
+       font-size="24px"
+       id="text146"
+       x="219.468994140625"
+       y="533"
+       style="display:inline">cable</text>
+    <path
+       d="m 375.194,494.019 56.262,11.13 -0.388,1.962 -56.262,-11.13 z m 55.536,7.928 7.072,5.477 -8.624,2.371 z"
+       fill="#156082"
+       id="path148"
+       style="display:inline" />
+    <text
+       font-family="Aptos, Aptos_MSFontService, sans-serif"
+       font-weight="400"
+       font-size="24px"
+       id="text150"
+       x="557.5360107421875"
+       y="335"
+       style="display:inline">GND</text>
+    <text
+       font-family="Aptos, Aptos_MSFontService, sans-serif"
+       font-weight="400"
+       font-size="24px"
+       id="text152"
+       x="236.2380065917969"
+       y="591"
+       style="display:inline">GND</text>
+    <path
+       d="m 458,230.5 c 0,-6.351 5.149,-11.5 11.5,-11.5 6.351,0 11.5,5.149 11.5,11.5 0,6.351 -5.149,11.5 -11.5,11.5 -6.351,0 -11.5,-5.149 -11.5,-11.5 z"
+       stroke="#042433"
+       stroke-width="2"
+       stroke-miterlimit="8"
+       fill="#ffffff"
+       fill-rule="evenodd"
+       id="path154"
+       style="display:inline" />
+    <path
+       d="m 458,362 c 0,-6.075 5.149,-11 11.5,-11 6.351,0 11.5,4.925 11.5,11 0,6.075 -5.149,11 -11.5,11 -6.351,0 -11.5,-4.925 -11.5,-11 z"
+       stroke="#042433"
+       stroke-width="2"
+       stroke-miterlimit="8"
+       fill="#ffffff"
+       fill-rule="evenodd"
+       id="path156"
+       style="display:inline" />
+    <path
+       d="m 470,230 v 131.993 h -2 V 230 Z m -5,0 c 0,-2.209 1.791,-4 4,-4 2.209,0 4,1.791 4,4 0,2.209 -1.791,4 -4,4 -2.209,0 -4,-1.791 -4,-4 z m 8,131.993 c 0,2.209 -1.791,4 -4,4 -2.209,0 -4,-1.791 -4,-4 0,-2.209 1.791,-4 4,-4 2.209,0 4,1.791 4,4 z"
+       fill="#ff0000"
+       id="path158"
+       style="display:inline" />
+  </g>
+</svg>

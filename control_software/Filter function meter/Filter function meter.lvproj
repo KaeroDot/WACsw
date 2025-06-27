@@ -616,7 +616,7 @@
 				<Property Name="Bld_localDestDirType" Type="Str">relativeToCommon</Property>
 				<Property Name="Bld_modifyLibraryFile" Type="Bool">true</Property>
 				<Property Name="Bld_previewCacheID" Type="Str">{F9D6AE93-6E67-4B1A-BB85-67503D78EECB}</Property>
-				<Property Name="Bld_version.minor" Type="Int">5</Property>
+				<Property Name="Bld_version.minor" Type="Int">6</Property>
 				<Property Name="Destination[0].destName" Type="Str">FRmeter.exe</Property>
 				<Property Name="Destination[0].path" Type="Path">../Frequency Response meter builds/ver. [VersionNumber]/FRmeter.exe</Property>
 				<Property Name="Destination[0].preserveHierarchy" Type="Bool">true</Property>
@@ -625,7 +625,7 @@
 				<Property Name="Destination[1].path" Type="Path">../Frequency Response meter builds/ver. [VersionNumber]/data</Property>
 				<Property Name="DestinationCount" Type="Int">2</Property>
 				<Property Name="Exe_iconItemID" Type="Ref">/My Computer/resources/FR.ico</Property>
-				<Property Name="Source[0].itemID" Type="Str">{C78C7FC9-F462-47C4-910B-4D2D621BC076}</Property>
+				<Property Name="Source[0].itemID" Type="Str">{ADC5377D-7336-4FB8-B77D-6F13072EA89E}</Property>
 				<Property Name="Source[0].type" Type="Str">Container</Property>
 				<Property Name="Source[1].destinationIndex" Type="Int">0</Property>
 				<Property Name="Source[1].itemID" Type="Ref">/My Computer/FR GUI/FR GUI main.vi</Property>

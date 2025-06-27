@@ -4,48 +4,69 @@
 \usepackage{xcolor}
 
 \title{Frequency response measurement}
+\author{WAC consortium}
 \begin{document}
 \maketitle
 
 \section*{Equations}
-Digitizer: amplitude $D(f)$, gain $G(f)$.
+Definitions:
+\begin{itemize}
+	\item Digitizer: measures amplitude $D(f)$, have got frequency dependent gain $G(f)$. Time dependence of the gain is neglected.
+	\item Thermal transfer standard: $U$ is output DC voltage measured by the multimeter, and the overall gain is $\Delta(f)$. Thermal transfer standard and the multimeter are supposed to be stable in time.
+	\item AC source: generates signal of amplitude with non-negligible time and frequency dependence $Z(f,t)$.
+\end{itemize}
 
-ACDC: DC voltage $U$, gain $\Delta(f)$.
-
-Source: Amplitude $Z(f,t)$.
-
-Given equations:
-
+One measurement of the AC source by digitizer and by the thermal transfer
+standard is expressed as:
 \begin{align}
 	D(f, t) & = Z(f, t) \cdot G(f)      \\
 	U(f, t) & = Z(f, t) \cdot \Delta(f)
 \end{align}
 
-Assuming:
-
-\begin{align}
-	t_H \approx t_L \implies Z\big|{t_H} = Z{t_L}
-\end{align}
-
-Then:
-
+If the measurement by digitizer and by the themral transfer standard is done simultaneously, or almost simultaneously, then:
 \begin{align}
 	D(f) & = Z(f) \cdot G(f)      \\
 	U(f) & = Z(f) \cdot \Delta(f)
 \end{align}
 
-Measurements:
 
+Two measurements are done, for measured and reference frequencies marked as
+$f_\text{M}$ and $f_\text{R}$. If these measurements are done right after
+another, then the time dependence of the AC source can be neglected and only
+frequency dependence is taken into account:
 \begin{align}
-	G_H & = \frac{D_H}{Z_H}, \quad G_L = \frac{D_L}{Z_L}           \\
-	Z_H & = \frac{U_H}{\Delta_H}, \quad Z_L = \frac{U_L}{\Delta_L}
+	t_\text{R} \approx t_\text{M} \implies Z\big|_{t_\text{R}} = Z\big|_{t_\text{M}}
 \end{align}
 
+Then we can write both measurements as:
+\begin{align}
+	D(f_\text{M}) & = Z(f_\text{M}) \cdot      G(f_\text{M}) \\
+	U(f_\text{M}) & = Z(f_\text{M}) \cdot \Delta(f_\text{M}) \\
+	D(f_\text{R}) & = Z(f_\text{R}) \cdot      G(f_\text{R}) \\
+	U(f_\text{R}) & = Z(f_\text{R}) \cdot \Delta(f_\text{R})
+\end{align}
+
+% Measurements:
+%
+% \begin{align}
+% 	G_H & = \frac{D_H}{Z_H}, \quad G_L = \frac{D_L}{Z_L}           \\
+% 	Z_H & = \frac{U_H}{\Delta_H}, \quad Z_L = \frac{U_L}{\Delta_L}
+% \end{align}
+%
 Combining the equations:
 
+% \begin{align}
+% 	\frac{G_{f_\text{M}}}{G_{f_\text{R}}} = \frac{D_{f_\text{M}} \cdot \Delta_{f_\text{M}}}{U_{f_\text{M}}} \cdot \frac{U_{f_\text{R}}}{D_{f_\text{R}} \cdot \Delta_{f_\text{R}}}
+% \end{align}
 \begin{align}
-	\frac{G_H}{G_L} = \frac{D_H \cdot \Delta_H}{U_H} \cdot \frac{U_L}{D_L \cdot \Delta_L}
+	\frac{G(f_\text{M})}{G(f_\text{R})} = \frac{D(f_\text{M})}{D(f_\text{R})} \cdot \frac{U(f_\text{R})}{U(f_\text{M})} \cdot \frac{\Delta(f_\text{M})}{\Delta(f_\text{R})}
 \end{align}
+
+
+For $f_\text{M}$ varied through whole input bandwidth of the digitizer, the
+ratio returns the frequency response of the digitizer related to the gain at
+reference frequency $f_\text{R}$. If the reference frequency is small enough,
+the gain $G_{f_\text{R}}$ can be measured using DC method.
 
 \textcolor{red}{\text{DC offset is not result of measurement and processing!}}
 

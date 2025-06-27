@@ -130,6 +130,8 @@
 		<Item Name="Utilities" Type="Folder">
 			<Item Name="Recalculation related" Type="Folder">
 				<Item Name="Calculate.vi" Type="VI" URL="../Utilities/Recalculation related/Calculate.vi"/>
+				<Item Name="Calculation result path.vi" Type="VI" URL="../Utilities/Recalculation related/Calculation result path.vi"/>
+				<Item Name="Ensure qwtb_info exist.vi" Type="VI" URL="../Utilities/Recalculation related/Ensure qwtb_info exist.vi"/>
 				<Item Name="Read Result.vi" Type="VI" URL="../Utilities/Recalculation related/Read Result.vi"/>
 				<Item Name="Start Octave.vi" Type="VI" URL="../Utilities/Recalculation related/Start Octave.vi"/>
 				<Item Name="Stop Octave.vi" Type="VI" URL="../Utilities/Recalculation related/Stop Octave.vi"/>
@@ -145,6 +147,7 @@
 			<Item Name="Set TWM Processing.vi" Type="VI" URL="../Utilities/Set TWM Processing.vi"/>
 			<Item Name="TWM Measure.vi" Type="VI" URL="../Utilities/TWM Measure.vi"/>
 		</Item>
+		<Item Name="afg_test.vi" Type="VI" URL="../afg_test.vi"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="instr.lib" Type="Folder">
 				<Item Name="niScope Acquisition Status.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Acquire/Fetch/niScope Acquisition Status.vi"/>
@@ -421,6 +424,9 @@
 				<Item Name="Handle Open Word or Excel File.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/NIReport.llb/Toolkit/Handle Open Word or Excel File.vi"/>
 				<Item Name="I128 Timestamp.ctl" Type="VI" URL="/&lt;vilib&gt;/Waveform/TSOps.llb/I128 Timestamp.ctl"/>
 				<Item Name="imagedata.ctl" Type="VI" URL="/&lt;vilib&gt;/picture/picture.llb/imagedata.ctl"/>
+				<Item Name="Less Comparable.lvclass" Type="LVClass" URL="/&lt;vilib&gt;/Comparison/Less/Less Comparable/Less Comparable.lvclass"/>
+				<Item Name="Less Functor.lvclass" Type="LVClass" URL="/&lt;vilib&gt;/Comparison/Less/Less Functor/Less Functor.lvclass"/>
+				<Item Name="Less.vim" Type="VI" URL="/&lt;vilib&gt;/Comparison/Less.vim"/>
 				<Item Name="List Directory and LLBs.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/libraryn.llb/List Directory and LLBs.vi"/>
 				<Item Name="Longest Line Length in Pixels.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Longest Line Length in Pixels.vi"/>
 				<Item Name="LVBoundsTypeDef.ctl" Type="VI" URL="/&lt;vilib&gt;/Utility/miscctls.llb/LVBoundsTypeDef.ctl"/>
@@ -478,6 +484,8 @@
 				<Item Name="Set Bold Text.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Set Bold Text.vi"/>
 				<Item Name="Set String Value.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Set String Value.vi"/>
 				<Item Name="Simple Error Handler.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Simple Error Handler.vi"/>
+				<Item Name="Sort 1D Array Core.vim" Type="VI" URL="/&lt;vilib&gt;/Array/Helpers/Sort 1D Array Core.vim"/>
+				<Item Name="Sort 1D Array.vim" Type="VI" URL="/&lt;vilib&gt;/Array/Sort 1D Array.vim"/>
 				<Item Name="Space Constant.vi" Type="VI" URL="/&lt;vilib&gt;/dlg_ctls.llb/Space Constant.vi"/>
 				<Item Name="STR_ASCII-Unicode.vi" Type="VI" URL="/&lt;vilib&gt;/registry/registry.llb/STR_ASCII-Unicode.vi"/>
 				<Item Name="sub2ShouldUseDefSigName.vi" Type="VI" URL="/&lt;vilib&gt;/express/express input/SimulateSignalBlock.llb/sub2ShouldUseDefSigName.vi"/>
@@ -549,6 +557,50 @@
 			<Item Name="wa32 WriteFile.vi" Type="VI" URL="../external libraries/TWM-1.8.7.0-client/wa32 WriteFile.vi"/>
 		</Item>
 		<Item Name="Build Specifications" Type="Build">
+			<Item Name="afg_test" Type="EXE">
+				<Property Name="App_copyErrors" Type="Bool">true</Property>
+				<Property Name="App_INI_aliasGUID" Type="Str">{F2B638AE-B6FF-4C19-B1F1-1E83104C934A}</Property>
+				<Property Name="App_INI_GUID" Type="Str">{DC305922-85F3-4880-A67E-837F1D4F52F8}</Property>
+				<Property Name="App_serverConfig.httpPort" Type="Int">8002</Property>
+				<Property Name="App_serverType" Type="Int">0</Property>
+				<Property Name="Bld_autoIncrement" Type="Bool">true</Property>
+				<Property Name="Bld_buildCacheID" Type="Str">{F2B260D5-B6CD-49D9-80DB-3E7B523CBD9D}</Property>
+				<Property Name="Bld_buildSpecName" Type="Str">afg_test</Property>
+				<Property Name="Bld_excludeInlineSubVIs" Type="Bool">true</Property>
+				<Property Name="Bld_excludeLibraryItems" Type="Bool">true</Property>
+				<Property Name="Bld_excludePolymorphicVIs" Type="Bool">true</Property>
+				<Property Name="Bld_localDestDir" Type="Path">../builds/NI_AB_PROJECTNAME/afg_test</Property>
+				<Property Name="Bld_localDestDirType" Type="Str">relativeToCommon</Property>
+				<Property Name="Bld_modifyLibraryFile" Type="Bool">true</Property>
+				<Property Name="Bld_previewCacheID" Type="Str">{4E8AFB6E-D956-4659-97A5-3C48292F0AE6}</Property>
+				<Property Name="Bld_version.build" Type="Int">5</Property>
+				<Property Name="Bld_version.major" Type="Int">1</Property>
+				<Property Name="Destination[0].destName" Type="Str">afg_test.exe</Property>
+				<Property Name="Destination[0].path" Type="Path">../builds/NI_AB_PROJECTNAME/afg_test/afg_test.exe</Property>
+				<Property Name="Destination[0].preserveHierarchy" Type="Bool">true</Property>
+				<Property Name="Destination[0].type" Type="Str">App</Property>
+				<Property Name="Destination[1].destName" Type="Str">Support Directory</Property>
+				<Property Name="Destination[1].path" Type="Path">../builds/NI_AB_PROJECTNAME/afg_test/data</Property>
+				<Property Name="DestinationCount" Type="Int">2</Property>
+				<Property Name="Source[0].itemID" Type="Str">{C9A85614-8E8D-428D-9921-4F8603B8BC1E}</Property>
+				<Property Name="Source[0].type" Type="Str">Container</Property>
+				<Property Name="Source[1].destinationIndex" Type="Int">0</Property>
+				<Property Name="Source[1].itemID" Type="Ref">/My Computer/afg_test.vi</Property>
+				<Property Name="Source[1].properties[0].type" Type="Str">Run when opened</Property>
+				<Property Name="Source[1].properties[0].value" Type="Bool">false</Property>
+				<Property Name="Source[1].propertiesCount" Type="Int">1</Property>
+				<Property Name="Source[1].sourceInclusion" Type="Str">TopLevel</Property>
+				<Property Name="Source[1].type" Type="Str">VI</Property>
+				<Property Name="SourceCount" Type="Int">2</Property>
+				<Property Name="TgtF_companyName" Type="Str">Cesky metrologicky institut</Property>
+				<Property Name="TgtF_fileDescription" Type="Str">afg_test</Property>
+				<Property Name="TgtF_internalName" Type="Str">afg_test</Property>
+				<Property Name="TgtF_legalCopyright" Type="Str">Copyright © 2025 Cesky metrologicky institut</Property>
+				<Property Name="TgtF_productName" Type="Str">afg_test</Property>
+				<Property Name="TgtF_targetfileGUID" Type="Str">{205F54FA-13ED-434A-8833-B4ECB77145AA}</Property>
+				<Property Name="TgtF_targetfileName" Type="Str">afg_test.exe</Property>
+				<Property Name="TgtF_versionIndependent" Type="Bool">true</Property>
+			</Item>
 			<Item Name="FRmeter" Type="EXE">
 				<Property Name="App_copyErrors" Type="Bool">true</Property>
 				<Property Name="App_INI_aliasGUID" Type="Str">{E8988EE7-88EC-4FCE-957E-4D00CC08ABEE}</Property>

@@ -15,7 +15,7 @@ verbose = 1;
 % generate simulated measurement data:
 [M_FR, simulated_digitizer_FR] = G_FR(verbose);
 % process measurement:
-[f, measured_digitizer_FR, ac_source_stability] = P_FR(M_FR, verbose);
+[f, measured_digitizer_FR, ac_source_stability, FR_fit] = P_FR(M_FR, verbose);
 
 figure
 plot(M_FR.f.v, simulated_digitizer_FR.v - 1, '.b', f.v, measured_digitizer_FR.v - 1, '-r')

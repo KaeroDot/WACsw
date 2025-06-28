@@ -55,22 +55,30 @@ function [f, digitizer_FR, ac_source_stability, FR_fit] = P_FR(M_FR, verbose);
     % Reshape data %<<<1
     % Now samples are processed into M_FR.A.v and M_FR.A.u
     % check data are correct
-    % suppose second measurement is base frequency, and every even also base
+    % suppose second measurement is reference frequency, and every even also reference
     % reshape measurement points
-    % (first collumn will be measured frequency, second collumn will be base (reference) frequency)
+    % (first collumn will be measured frequency, second collumn will be reference frequency)
     f_meas = reshape(M_FR.f.v, 2, [])'; % signal frequencies
     tv = reshape(M_FR.t.v, 2, [])'; % time of reading
     Av = reshape(M_FR.A.v, 2, [])'; % amplitude as measured by digitizer
     Udc = reshape(M_FR.Udc.v, 2, [])'; % ACDC standard dc voltage output as as measured by voltmeter
 
-    % fix XXX move it outside. Add properties of acdcsimulator to M_FF
-    % get calibration values of the ACDC standard:
+    % fix XXX move it outside. Add properties of acdcsimulator to M_FF?
+    % get calibration values of the ACDC standard (ac dc errors):
     [acdc_differenceL dc_voltage(:, 1)] = ACDC_simulator(f_meas(:, 1));
     [acdc_differenceR dc_voltage(:, 2)] = ACDC_simulator(f_meas(:, 2));
 
     % Calculate results %<<<1
-    % measured frequency response of the digitizer:
-    digitizer_FR.v = Av(:,1).*dc_voltage(:, 1)./Udc(:,1) .* Udc(:,2)./(Av(:,2).*dc_voltage(:, 2));
+    % measured frequency response of the digitizer, calculated as:
+    %   AC signal amplitude from digitizer at measured frequency /
+    %   AC signal amplitude from digitizer at reference frequency
+    %   *
+    %   multimeter dc voltage at reference frequency /
+    %   multimeter dc voltage at measured frequency
+    %   *
+    %   AC/DC error at measured frequency /
+    %   AC/DC error at reference frequency
+    digitizer_FR.v = Av(:, 1)./Av(:, 2) .* Udc(:, 2)./Udc(:, 1) .* dc_voltage(:, 1)./dc_voltage(:, 2);
     % freuencies of measurement points:
     f.v = f_meas(:,1);
 

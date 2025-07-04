@@ -6,7 +6,7 @@
 %
 %    Outputs:
 %      M_FR - structure with frequency response measurement.
-%	   simulated_digitizer_FR - frequency response of simulated digitizer.
+%      simulated_digitizer_FR - frequency response of simulated digitizer.
 %
 %    Example:
 %      M_FR = G_FR(1);
@@ -61,7 +61,7 @@ function [M_FR, simulated_digitizer_FR] = G_FR(verbose); %f, A, noise, tf_dig_A,
     end
 
     % get output of AC/DC standard:
-    [acdc_difference dc_voltage] = ACDC_simulator(f_real);
+    [acdc_difference dc_voltage acdc_corrections_path] = ACDC_simulator(f_real);
 
     % voltage measured by digitizer:
     simulated_digitizer_FR.v = NI5922_FR_simulator(f_real, fs);
@@ -75,8 +75,8 @@ function [M_FR, simulated_digitizer_FR] = G_FR(verbose); %f, A, noise, tf_dig_A,
     % Generate measurement data structure:
     M_FR.A_nominal.v = ac_source_A_nominal;
     M_FR.fs.v = fs;
-    M_FR.ac_dc_settle_time.v = '0';
-    M_FR.ac_dc_warm_up_time.v = '0';
+    M_FR.acdc_settle_time.v = '0';
+    M_FR.acdc_warm_up_time.v = '0';
     M_FR.dc_readings.v = 10;
     M_FR.alg_id.v = 'TWM-WRMS';
     M_FR.ac_source_id.v = 'simulated_AC_source';
@@ -86,10 +86,11 @@ function [M_FR, simulated_digitizer_FR] = G_FR(verbose); %f, A, noise, tf_dig_A,
     M_FR.M.v = f_real; % multiples of periods in record - same number of periods as the frequency
     M_FR.t.v = t;
     M_FR.A.v = Adigitizer;
-    M_FR.A.u = 1e-6.*ones(size(f_real)); % digitizer amplitude XXX
+    M_FR.A.u = 1e-6.*ones(size(f_real)); % digitizer amplitude uncertainty XXXXXXXXXXXXXX XXX FIXME 2DO
     M_FR.Udc.v = Udc;
-    M_FR.Udc.u = 1e-6.*ones(size(M_FR.Udc.v)); % dc readings uncertainties - for now just some number! XXX
+    M_FR.Udc.u = 1e-6.*ones(size(M_FR.Udc.v)); % dc readings uncertainties - for now just some number! XXXXXXXXXXXXXXXXX XXX FIXME 2DO
     M_FR.Udc.r = repmat(M_FR.Udc.v, 1, M_FR.dc_readings.v); % dc readings - readings XXX move readings outside .r, that should be randomized values?
+    M_FR.acdc_corrections_path.v = acdc_corrections_path; % path to the file with corrections of the AC/DC transfer standard
     M_FR.y.v = []; %XXX 2DO here generate the samples! Maybe this will not be needed. This can be very large! 20 GB of data! Or maybe better path to files!
 
     % Verbose figure %<<<1

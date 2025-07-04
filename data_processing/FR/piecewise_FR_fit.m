@@ -11,8 +11,8 @@ function piecewise_fit = piecewise_FR_fit(f, FR, M_FR, verbose)
     verbose = ~(~(verbose));
 
     % Constants 
-    method = 'polynomial';
-    % method = 'spline';
+    % method = 'polynomial';
+    method = 'spline';
 
     % number of regions of the piecewise fitting:
     regions = 30;

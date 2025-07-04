@@ -29,8 +29,8 @@ function M_FR = read_M_FR_from_spreadsheet(filename, verbose)
     % Counting from 1 - as every normal person does.)
     idx_A_nominal           = [2, 5, 2, 5]; % Nominal amplitude
     idx_fs                  = [3, 5, 3, 5]; % Sampling frequency
-    idx_ac_dc_settle_time   = [4, 5, 4, 5]; % AC/DC settle time
-    idx_ac_dc_warm_up_time  = [5, 5, 5, 5]; % AC/DC warm-up time
+    idx_acdc_settle_time   = [4, 5, 4, 5]; % AC/DC settle time
+    idx_acdc_warm_up_time  = [5, 5, 5, 5]; % AC/DC warm-up time
     idx_dc_readings         = [6, 5, 6, 5]; % DC readings
     idx_alg_id              = [7, 5, 7, 5]; % Algorithm ID
     idx_simultaneous_meas   = [8, 5, 8, 5]; % Simultaneous measurement?
@@ -55,8 +55,8 @@ function M_FR = read_M_FR_from_spreadsheet(filename, verbose)
     % Parse data and populate the M_FR structure
     M_FR.A_nominal.v            = shift_limits_get_matrix(idx_A_nominal,          limits.numlimits, An)(:);
     M_FR.fs.v                   = shift_limits_get_matrix(idx_fs,                 limits.numlimits, An)(:);
-    M_FR.ac_dc_settle_time.v    = shift_limits_get_matrix(idx_ac_dc_settle_time,  limits.numlimits, An)(:);
-    M_FR.ac_dc_warm_up_time.v   = shift_limits_get_matrix(idx_ac_dc_warm_up_time, limits.numlimits, An)(:);
+    M_FR.acdc_settle_time.v    = shift_limits_get_matrix(idx_acdc_settle_time,  limits.numlimits, An)(:);
+    M_FR.acdc_warm_up_time.v   = shift_limits_get_matrix(idx_acdc_warm_up_time, limits.numlimits, An)(:);
     M_FR.dc_readings.v          = shift_limits_get_matrix(idx_dc_readings,        limits.numlimits, An)(:);
     M_FR.alg_id.v               = shift_limits_get_matrix(idx_alg_id,             limits.txtlimits, Ra){1};
     M_FR.simultaneous_meas.v    = shift_limits_get_matrix(idx_simultaneous_meas,  limits.numlimits, An)(:);

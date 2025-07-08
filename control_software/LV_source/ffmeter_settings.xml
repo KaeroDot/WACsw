@@ -27,7 +27,7 @@
 <Name>status ref</Name>
 <RefKind>LV Object</RefKind>
 <RefType>Control</RefType>
-<Val>0xE5C00069</Val>
+<Val>0x16000048</Val>
 </Refnum>
 </Cluster>
 <String>
@@ -38,19 +38,19 @@
 <Name>Measurement status ref</Name>
 <RefKind>LV Object</RefKind>
 <RefType>Control</RefType>
-<Val>0xE5D00004</Val>
+<Val>0x16100049</Val>
 </Refnum>
 <Refnum>
 <Name>TWM Status ref</Name>
 <RefKind>LV Object</RefKind>
 <RefType>Control</RefType>
-<Val>0xE5E0000B</Val>
+<Val>0x1620004A</Val>
 </Refnum>
 <Refnum>
 <Name>Abort ref</Name>
 <RefKind>LV Object</RefKind>
 <RefType>Control</RefType>
-<Val>0xE3D0000A</Val>
+<Val>0x14100029</Val>
 </Refnum>
 <Cluster>
 <Name>DC meter</Name>
@@ -76,7 +76,7 @@
 <Name>status ref</Name>
 <RefKind>LV Object</RefKind>
 <RefType>Control</RefType>
-<Val>0xE5F0002B</Val>
+<Val>0x1630004B</Val>
 </Refnum>
 </Cluster>
 <Cluster>
@@ -128,7 +128,7 @@
 </Array>
 <Path>
 <Name>Measurement template file</Name>
-<Val>M:\pracovni\martin\wac\mereni cerven\FR_NI5922_2025-05-09_finished\4MSs.xlsx</Val>
+<Val>D:\martin\WAC\WACsw - github\control_software\LV_source\Template\Example of FF meter template.xlsx</Val>
 </Path>
 <I32>
 <Name>Row of START keyword</Name>
@@ -179,22 +179,22 @@
 <Name>Skip waiting ref</Name>
 <RefKind>LV Object</RefKind>
 <RefType>Control</RefType>
-<Val>0xE5B00055</Val>
+<Val>0x15F00047</Val>
 </Refnum>
 <Cluster>
 <Name>Octave paths</Name>
 <NumElts>3</NumElts>
 <Path>
 <Name>GNU Octave path</Name>
-<Val>C:\Program Files\GNU Octave\Octave-6.2.0\mingw64\bin\octave-cli.exe</Val>
+<Val></Val>
 </Path>
 <Path>
 <Name>TWM+QWTB path</Name>
-<Val>C:\Users\labina\Desktop\TWM-1.8.7.0-full\octprog\qwtb</Val>
+<Val></Val>
 </Path>
 <Path>
 <Name>lvlib path</Name>
-<Val>D:\martin\WAC\WACsw - github\control_software\Filter function meter\external libraries\GOLPI 0.7.3.1 source distribution LV 20.0 32 bit\lv_proc.dll</Val>
+<Val>D:\martin\WAC\WACsw - github\control_software\LV_source\external libraries\GOLPI 0.7.3.1 source distribution LV 20.0 32 bit\lv_proc.dll</Val>
 </Path>
 </Cluster>
 <Cluster>

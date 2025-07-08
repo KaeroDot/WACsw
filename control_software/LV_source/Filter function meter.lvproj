@@ -99,9 +99,10 @@
 			<Item Name="Type definitions" Type="Folder">
 				<Item Name="FR Template definition.ctl" Type="VI" URL="../FR Utilities/Type definitions/FR Template definition.ctl"/>
 			</Item>
+			<Item Name="Check user abort.vi" Type="VI" URL="../FR Utilities/Check user abort.vi"/>
 			<Item Name="FR Estimate measurement time.vi" Type="VI" URL="../FR Utilities/FR Estimate measurement time.vi"/>
 			<Item Name="FR Get Measurement Path.vi" Type="VI" URL="../FR Utilities/FR Get Measurement Path.vi"/>
-			<Item Name="FR Make Default FRmeter settings.vi" Type="VI" URL="../FR Measurement/FR Make Default FRmeter settings.vi"/>
+			<Item Name="FR Make Default FRmeter settings.vi" Type="VI" URL="../FR Utilities/FR Make Default FRmeter settings.vi"/>
 			<Item Name="FR Read settings from file.vi" Type="VI" URL="../FR Utilities/FR Read settings from file.vi"/>
 			<Item Name="FR Save settings to file.vi" Type="VI" URL="../FR Utilities/FR Save settings to file.vi"/>
 		</Item>
@@ -128,18 +129,17 @@
 			<Item Name="FR.ico" Type="Document" URL="../resources/FR.ico"/>
 		</Item>
 		<Item Name="Utilities" Type="Folder">
-			<Item Name="Recalculation related" Type="Folder">
-				<Item Name="Calculate.vi" Type="VI" URL="../Utilities/Recalculation related/Calculate.vi"/>
-				<Item Name="Calculation result path.vi" Type="VI" URL="../Utilities/Recalculation related/Calculation result path.vi"/>
-				<Item Name="Ensure qwtb_info exist.vi" Type="VI" URL="../Utilities/Recalculation related/Ensure qwtb_info exist.vi"/>
-				<Item Name="Read Result.vi" Type="VI" URL="../Utilities/Recalculation related/Read Result.vi"/>
-				<Item Name="Start Octave.vi" Type="VI" URL="../Utilities/Recalculation related/Start Octave.vi"/>
-				<Item Name="Stop Octave.vi" Type="VI" URL="../Utilities/Recalculation related/Stop Octave.vi"/>
+			<Item Name="Calculation related" Type="Folder">
+				<Item Name="Calculate.vi" Type="VI" URL="../Utilities/Calculation related/Calculate.vi"/>
+				<Item Name="Calculation result path.vi" Type="VI" URL="../Utilities/Calculation related/Calculation result path.vi"/>
+				<Item Name="Ensure qwtb_info exist.vi" Type="VI" URL="../Utilities/Calculation related/Ensure qwtb_info exist.vi"/>
+				<Item Name="Read Result.vi" Type="VI" URL="../Utilities/Calculation related/Read Result.vi"/>
+				<Item Name="Start Octave.vi" Type="VI" URL="../Utilities/Calculation related/Start Octave.vi"/>
+				<Item Name="Stop Octave.vi" Type="VI" URL="../Utilities/Calculation related/Stop Octave.vi"/>
 			</Item>
 			<Item Name="Type definitions" Type="Folder">
 				<Item Name="Sampling properties.ctl" Type="VI" URL="../Utilities/Type definitions/Sampling properties.ctl"/>
 			</Item>
-			<Item Name="Check user abort.vi" Type="VI" URL="../Utilities/Check user abort.vi"/>
 			<Item Name="Clear errors from TWM.vi" Type="VI" URL="../Utilities/Clear errors from TWM.vi"/>
 			<Item Name="Merge Error Ex.vi" Type="VI" URL="../Utilities/Merge Error Ex.vi"/>
 			<Item Name="Process TWM result.vi" Type="VI" URL="../Utilities/Process TWM result.vi"/>
@@ -147,7 +147,6 @@
 			<Item Name="Set TWM Processing.vi" Type="VI" URL="../Utilities/Set TWM Processing.vi"/>
 			<Item Name="TWM Measure.vi" Type="VI" URL="../Utilities/TWM Measure.vi"/>
 		</Item>
-		<Item Name="afg_test.vi" Type="VI" URL="../afg_test.vi"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="instr.lib" Type="Folder">
 				<Item Name="niScope Acquisition Status.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Acquire/Fetch/niScope Acquisition Status.vi"/>
@@ -424,9 +423,6 @@
 				<Item Name="Handle Open Word or Excel File.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/NIReport.llb/Toolkit/Handle Open Word or Excel File.vi"/>
 				<Item Name="I128 Timestamp.ctl" Type="VI" URL="/&lt;vilib&gt;/Waveform/TSOps.llb/I128 Timestamp.ctl"/>
 				<Item Name="imagedata.ctl" Type="VI" URL="/&lt;vilib&gt;/picture/picture.llb/imagedata.ctl"/>
-				<Item Name="Less Comparable.lvclass" Type="LVClass" URL="/&lt;vilib&gt;/Comparison/Less/Less Comparable/Less Comparable.lvclass"/>
-				<Item Name="Less Functor.lvclass" Type="LVClass" URL="/&lt;vilib&gt;/Comparison/Less/Less Functor/Less Functor.lvclass"/>
-				<Item Name="Less.vim" Type="VI" URL="/&lt;vilib&gt;/Comparison/Less.vim"/>
 				<Item Name="List Directory and LLBs.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/libraryn.llb/List Directory and LLBs.vi"/>
 				<Item Name="Longest Line Length in Pixels.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Longest Line Length in Pixels.vi"/>
 				<Item Name="LVBoundsTypeDef.ctl" Type="VI" URL="/&lt;vilib&gt;/Utility/miscctls.llb/LVBoundsTypeDef.ctl"/>
@@ -484,8 +480,6 @@
 				<Item Name="Set Bold Text.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Set Bold Text.vi"/>
 				<Item Name="Set String Value.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Set String Value.vi"/>
 				<Item Name="Simple Error Handler.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Simple Error Handler.vi"/>
-				<Item Name="Sort 1D Array Core.vim" Type="VI" URL="/&lt;vilib&gt;/Array/Helpers/Sort 1D Array Core.vim"/>
-				<Item Name="Sort 1D Array.vim" Type="VI" URL="/&lt;vilib&gt;/Array/Sort 1D Array.vim"/>
 				<Item Name="Space Constant.vi" Type="VI" URL="/&lt;vilib&gt;/dlg_ctls.llb/Space Constant.vi"/>
 				<Item Name="STR_ASCII-Unicode.vi" Type="VI" URL="/&lt;vilib&gt;/registry/registry.llb/STR_ASCII-Unicode.vi"/>
 				<Item Name="sub2ShouldUseDefSigName.vi" Type="VI" URL="/&lt;vilib&gt;/express/express input/SimulateSignalBlock.llb/sub2ShouldUseDefSigName.vi"/>
@@ -585,7 +579,7 @@
 				<Property Name="Source[0].itemID" Type="Str">{C9A85614-8E8D-428D-9921-4F8603B8BC1E}</Property>
 				<Property Name="Source[0].type" Type="Str">Container</Property>
 				<Property Name="Source[1].destinationIndex" Type="Int">0</Property>
-				<Property Name="Source[1].itemID" Type="Ref">/My Computer/afg_test.vi</Property>
+				<Property Name="Source[1].itemID" Type="Ref"></Property>
 				<Property Name="Source[1].properties[0].type" Type="Str">Run when opened</Property>
 				<Property Name="Source[1].properties[0].value" Type="Bool">false</Property>
 				<Property Name="Source[1].propertiesCount" Type="Int">1</Property>

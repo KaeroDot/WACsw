@@ -27,7 +27,7 @@
 <Name>status ref</Name>
 <RefKind>LV Object</RefKind>
 <RefType>Control</RefType>
-<Val>0x16000048</Val>
+<Val>0x23F000A6</Val>
 </Refnum>
 </Cluster>
 <String>
@@ -38,19 +38,19 @@
 <Name>Measurement status ref</Name>
 <RefKind>LV Object</RefKind>
 <RefType>Control</RefType>
-<Val>0x16100049</Val>
+<Val>0x240000A8</Val>
 </Refnum>
 <Refnum>
 <Name>TWM Status ref</Name>
 <RefKind>LV Object</RefKind>
 <RefType>Control</RefType>
-<Val>0x1620004A</Val>
+<Val>0x241000A7</Val>
 </Refnum>
 <Refnum>
 <Name>Abort ref</Name>
 <RefKind>LV Object</RefKind>
 <RefType>Control</RefType>
-<Val>0x14100029</Val>
+<Val>0x220000BC</Val>
 </Refnum>
 <Cluster>
 <Name>DC meter</Name>
@@ -76,7 +76,7 @@
 <Name>status ref</Name>
 <RefKind>LV Object</RefKind>
 <RefType>Control</RefType>
-<Val>0x1630004B</Val>
+<Val>0x242000A9</Val>
 </Refnum>
 </Cluster>
 <Cluster>
@@ -179,7 +179,7 @@
 <Name>Skip waiting ref</Name>
 <RefKind>LV Object</RefKind>
 <RefType>Control</RefType>
-<Val>0x15F00047</Val>
+<Val>0x23E000A5</Val>
 </Refnum>
 <Cluster>
 <Name>Octave paths</Name>

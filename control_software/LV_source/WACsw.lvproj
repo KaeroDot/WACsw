@@ -14,6 +14,9 @@
 		<Property Name="server.vi.propertiesEnabled" Type="Bool">true</Property>
 		<Property Name="specify.custom.address" Type="Bool">false</Property>
 		<Item Name="CE GUI" Type="Folder">
+			<Item Name="Type definitions" Type="Folder">
+				<Item Name="CEmeter settings.ctl" Type="VI" URL="../CE GUI/Type definitions/CEmeter settings.ctl"/>
+			</Item>
 			<Item Name="temporary CE GUI main.vi" Type="VI" URL="../CE GUI/temporary CE GUI main.vi"/>
 		</Item>
 		<Item Name="CE Measurement" Type="Folder">
@@ -71,7 +74,7 @@
 		</Item>
 		<Item Name="FR GUI" Type="Folder">
 			<Item Name="Type definitions" Type="Folder">
-				<Item Name="FFmeter settings.ctl" Type="VI" URL="../FR GUI/Type definitions/FFmeter settings.ctl"/>
+				<Item Name="FRmeter settings.ctl" Type="VI" URL="../FR GUI/Type definitions/FRmeter settings.ctl"/>
 			</Item>
 			<Item Name="FR GUI About Dialog.vi" Type="VI" URL="../FR GUI/FR GUI About Dialog.vi"/>
 			<Item Name="FR GUI AC Source setup.vi" Type="VI" URL="../FR GUI/FR GUI AC Source setup.vi"/>
@@ -99,7 +102,7 @@
 			<Item Name="Type definitions" Type="Folder">
 				<Item Name="FR Template definition.ctl" Type="VI" URL="../FR Utilities/Type definitions/FR Template definition.ctl"/>
 			</Item>
-			<Item Name="Check user abort.vi" Type="VI" URL="../FR Utilities/Check user abort.vi"/>
+			<Item Name="FR Check user abort.vi" Type="VI" URL="../FR Utilities/FR Check user abort.vi"/>
 			<Item Name="FR Estimate measurement time.vi" Type="VI" URL="../FR Utilities/FR Estimate measurement time.vi"/>
 			<Item Name="FR Get Measurement Path.vi" Type="VI" URL="../FR Utilities/FR Get Measurement Path.vi"/>
 			<Item Name="FR Make Default FRmeter settings.vi" Type="VI" URL="../FR Utilities/FR Make Default FRmeter settings.vi"/>
@@ -111,6 +114,7 @@
 				<Item Name="AC Source type.ctl" Type="VI" URL="../General AC source/Type definitions/AC Source type.ctl"/>
 				<Item Name="AC Source.ctl" Type="VI" URL="../General AC source/Type definitions/AC Source.ctl"/>
 			</Item>
+			<Item Name="AC Source manual control GUI.vi" Type="VI" URL="../General AC source/AC Source manual control GUI.vi"/>
 			<Item Name="AC Source Type to AC Source lib type.vi" Type="VI" URL="../General AC source/AC Source Type to AC Source lib type.vi"/>
 			<Item Name="Init AC Source.vi" Type="VI" URL="../General AC source/Init AC Source.vi"/>
 			<Item Name="Start AC Source.vi" Type="VI" URL="../General AC source/Start AC Source.vi"/>
@@ -138,8 +142,11 @@
 				<Item Name="Stop Octave.vi" Type="VI" URL="../Utilities/Calculation related/Stop Octave.vi"/>
 			</Item>
 			<Item Name="Type definitions" Type="Folder">
+				<Item Name="Common properties.ctl" Type="VI" URL="../Utilities/Type definitions/Common properties.ctl"/>
+				<Item Name="Measurement properties.ctl" Type="VI" URL="../Utilities/Type definitions/Measurement properties.ctl"/>
 				<Item Name="Sampling properties.ctl" Type="VI" URL="../Utilities/Type definitions/Sampling properties.ctl"/>
 			</Item>
+			<Item Name="Check user abort.vi" Type="VI" URL="../Utilities/Check user abort.vi"/>
 			<Item Name="Clear errors from TWM.vi" Type="VI" URL="../Utilities/Clear errors from TWM.vi"/>
 			<Item Name="Merge Error Ex.vi" Type="VI" URL="../Utilities/Merge Error Ex.vi"/>
 			<Item Name="Process TWM result.vi" Type="VI" URL="../Utilities/Process TWM result.vi"/>

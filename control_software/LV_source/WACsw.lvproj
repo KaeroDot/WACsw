@@ -141,6 +141,16 @@
 				<Item Name="Start Octave.vi" Type="VI" URL="../Utilities/Calculation related/Start Octave.vi"/>
 				<Item Name="Stop Octave.vi" Type="VI" URL="../Utilities/Calculation related/Stop Octave.vi"/>
 			</Item>
+			<Item Name="Figure Window" Type="Folder">
+				<Item Name="Close Figure.vi" Type="VI" URL="../Utilities/Figure Window/Close Figure.vi"/>
+				<Item Name="Example for Figure Window.vi" Type="VI" URL="../Utilities/Figure Window/Example for Figure Window.vi"/>
+				<Item Name="Figure Window.vi" Type="VI" URL="../Utilities/Figure Window/Figure Window.vi"/>
+				<Item Name="rectangle zoom.ctl" Type="VI" URL="../Utilities/Figure Window/rectangle zoom.ctl"/>
+				<Item Name="Start Figure.vi" Type="VI" URL="../Utilities/Figure Window/Start Figure.vi"/>
+				<Item Name="x zoom.ctl" Type="VI" URL="../Utilities/Figure Window/x zoom.ctl"/>
+				<Item Name="y zoom.ctl" Type="VI" URL="../Utilities/Figure Window/y zoom.ctl"/>
+				<Item Name="zoom out.ctl" Type="VI" URL="../Utilities/Figure Window/zoom out.ctl"/>
+			</Item>
 			<Item Name="Type definitions" Type="Folder">
 				<Item Name="Common properties.ctl" Type="VI" URL="../Utilities/Type definitions/Common properties.ctl"/>
 				<Item Name="Measurement properties.ctl" Type="VI" URL="../Utilities/Type definitions/Measurement properties.ctl"/>
@@ -488,6 +498,7 @@
 				<Item Name="Set String Value.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Set String Value.vi"/>
 				<Item Name="Simple Error Handler.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Simple Error Handler.vi"/>
 				<Item Name="Space Constant.vi" Type="VI" URL="/&lt;vilib&gt;/dlg_ctls.llb/Space Constant.vi"/>
+				<Item Name="Stall Data Flow.vim" Type="VI" URL="/&lt;vilib&gt;/Utility/Stall Data Flow.vim"/>
 				<Item Name="STR_ASCII-Unicode.vi" Type="VI" URL="/&lt;vilib&gt;/registry/registry.llb/STR_ASCII-Unicode.vi"/>
 				<Item Name="sub2ShouldUseDefSigName.vi" Type="VI" URL="/&lt;vilib&gt;/express/express input/SimulateSignalBlock.llb/sub2ShouldUseDefSigName.vi"/>
 				<Item Name="subFile Dialog.vi" Type="VI" URL="/&lt;vilib&gt;/express/express input/FileDialogBlock.llb/subFile Dialog.vi"/>

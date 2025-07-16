@@ -39,6 +39,25 @@
 				<Item Name="NI DAQ start.vi" Type="VI" URL="../external libraries/externals needed for AWG/NI DAQ start.vi"/>
 				<Item Name="NI DAQ stop.vi" Type="VI" URL="../external libraries/externals needed for AWG/NI DAQ stop.vi"/>
 			</Item>
+			<Item Name="JV modified NPL Bias source" Type="Folder">
+				<Item Name="Basic NPL DS Write-Read external.vi" Type="VI" URL="../external libraries/JV modified NPL Bias source/Basic NPL DS Write-Read external.vi"/>
+				<Item Name="Calc_time.vi" Type="VI" URL="../external libraries/JV modified NPL Bias source/Calc_time.vi"/>
+				<Item Name="DataSocketCluster external.ctl" Type="VI" URL="../external libraries/JV modified NPL Bias source/DataSocketCluster external.ctl"/>
+				<Item Name="Generate_Voltage_array_check_size.vi" Type="VI" URL="../external libraries/JV modified NPL Bias source/Generate_Voltage_array_check_size.vi"/>
+				<Item Name="Initialise_bias_source.vi" Type="VI" URL="../external libraries/JV modified NPL Bias source/Initialise_bias_source.vi"/>
+				<Item Name="JOSY Binarray Datasocket cmd external.vi" Type="VI" URL="../external libraries/JV modified NPL Bias source/JOSY Binarray Datasocket cmd external.vi"/>
+				<Item Name="JV PJVS GUI control.vi" Type="VI" URL="../external libraries/JV modified NPL Bias source/JV PJVS GUI control.vi"/>
+				<Item Name="NI 5413 initialise.vi" Type="VI" URL="../external libraries/JV modified NPL Bias source/NI 5413 initialise.vi"/>
+				<Item Name="Send DC.vi" Type="VI" URL="../external libraries/JV modified NPL Bias source/Send DC.vi"/>
+				<Item Name="Send_AC.vi" Type="VI" URL="../external libraries/JV modified NPL Bias source/Send_AC.vi"/>
+				<Item Name="Send_amplitude_return_voltages.vi" Type="VI" URL="../external libraries/JV modified NPL Bias source/Send_amplitude_return_voltages.vi"/>
+				<Item Name="Send_command_and_check_response_number.vi" Type="VI" URL="../external libraries/JV modified NPL Bias source/Send_command_and_check_response_number.vi"/>
+				<Item Name="Send_command_and_check_response_string.vi" Type="VI" URL="../external libraries/JV modified NPL Bias source/Send_command_and_check_response_string.vi"/>
+				<Item Name="Send_zero_DC.vi" Type="VI" URL="../external libraries/JV modified NPL Bias source/Send_zero_DC.vi"/>
+				<Item Name="Set_up_waveform.vi" Type="VI" URL="../external libraries/JV modified NPL Bias source/Set_up_waveform.vi"/>
+				<Item Name="test.vi" Type="VI" URL="../external libraries/JV modified NPL Bias source/test.vi"/>
+				<Item Name="vi Mode external.ctl" Type="VI" URL="../external libraries/JV modified NPL Bias source/vi Mode external.ctl"/>
+			</Item>
 			<Item Name="kei2182v6" Type="Folder">
 				<Item Name="GPIB Receive Message.vi" Type="VI" URL="../external libraries/kei2182v6.llb/GPIB Receive Message.vi"/>
 				<Item Name="GPIB Send Message.vi" Type="VI" URL="../external libraries/kei2182v6.llb/GPIB Send Message.vi"/>
@@ -68,6 +87,7 @@
 				<Item Name="Read SCPI Error Queue (GPIB).vi" Type="VI" URL="../external libraries/kei2182v6.llb/Read SCPI Error Queue (GPIB).vi"/>
 			</Item>
 			<Item Name="3458A Basic Driver.lvlib" Type="Library" URL="../external libraries/3458A Basic Driver/3458A Basic Driver.lvlib"/>
+			<Item Name="ACSVcontrol-driver.lvlib" Type="Library" URL="../external libraries/acsvcontrol-driver/ACSVcontrol-driver.lvlib"/>
 			<Item Name="AWG.lvlib" Type="Library" URL="../external libraries/AWG/AWG.lvlib"/>
 			<Item Name="Fluke 5XXX Series Multicalibrators.lvlib" Type="Library" URL="../external libraries/Fluke 5XXX Series Multicalibrator/Fluke 5XXX Series Multicalibrators.lvlib"/>
 			<Item Name="Fluke 8508.lvlib" Type="Library" URL="../external libraries/Fluke 8508/Fluke 8508.lvlib"/>
@@ -100,9 +120,6 @@
 			</Item>
 			<Item Name="FR Estimate measurement time.vi" Type="VI" URL="../FR Utilities/FR Estimate measurement time.vi"/>
 			<Item Name="FR Get Measurement Path.vi" Type="VI" URL="../FR Utilities/FR Get Measurement Path.vi"/>
-			<Item Name="FR Make Default FRmeter settings.vi" Type="VI" URL="../FR Utilities/FR Make Default FRmeter settings.vi"/>
-			<Item Name="FR Read settings from file.vi" Type="VI" URL="../FR Utilities/FR Read settings from file.vi"/>
-			<Item Name="FR Save settings to file.vi" Type="VI" URL="../FR Utilities/FR Save settings to file.vi"/>
 		</Item>
 		<Item Name="General AC source" Type="Folder">
 			<Item Name="Type definitions" Type="Folder">
@@ -124,11 +141,24 @@
 			<Item Name="Read DC meter.vi" Type="VI" URL="../General DC meter/Read DC meter.vi"/>
 			<Item Name="Stop DC meter.vi" Type="VI" URL="../General DC meter/Stop DC meter.vi"/>
 		</Item>
+		<Item Name="General PJVS driver" Type="Folder">
+			<Item Name="Type definitions" Type="Folder">
+				<Item Name="PJVS Type.ctl" Type="VI" URL="../General PJVS driver/Type definitions/PJVS Type.ctl"/>
+				<Item Name="PJVS.ctl" Type="VI" URL="../General PJVS driver/Type definitions/PJVS.ctl"/>
+			</Item>
+			<Item Name="Close PJVS.vi" Type="VI" URL="../General PJVS driver/Close PJVS.vi"/>
+			<Item Name="Initialize PJVS.vi" Type="VI" URL="../General PJVS driver/Initialize PJVS.vi"/>
+			<Item Name="QPSsettings.ctl" Type="VI" URL="../General PJVS driver/QPSsettings.ctl"/>
+			<Item Name="Start PJVS.vi" Type="VI" URL="../General PJVS driver/Start PJVS.vi"/>
+			<Item Name="Stop PJVS.vi" Type="VI" URL="../General PJVS driver/Stop PJVS.vi"/>
+			<Item Name="Test PJVS.vi" Type="VI" URL="../General PJVS driver/Test PJVS.vi"/>
+		</Item>
 		<Item Name="Main GUI" Type="Folder">
 			<Item Name="GUI About Dialog.vi" Type="VI" URL="../Main GUI/GUI About Dialog.vi"/>
 			<Item Name="GUI AC Source setup.vi" Type="VI" URL="../Main GUI/GUI AC Source setup.vi"/>
 			<Item Name="GUI DC meter setup.vi" Type="VI" URL="../Main GUI/GUI DC meter setup.vi"/>
 			<Item Name="GUI main.vi" Type="VI" URL="../Main GUI/GUI main.vi"/>
+			<Item Name="GUI PJVS setup.vi" Type="VI" URL="../Main GUI/GUI PJVS setup.vi"/>
 			<Item Name="GUI TWM setup.vi" Type="VI" URL="../Main GUI/GUI TWM setup.vi"/>
 		</Item>
 		<Item Name="resources" Type="Folder">
@@ -169,7 +199,7 @@
 			<Item Name="Make Default settings.vi" Type="VI" URL="../Utilities/Make Default settings.vi"/>
 			<Item Name="Merge Error Ex.vi" Type="VI" URL="../Utilities/Merge Error Ex.vi"/>
 			<Item Name="Process TWM result.vi" Type="VI" URL="../Utilities/Process TWM result.vi"/>
-			<Item Name="Read settings from file.vi" Type="VI" URL="../FR Utilities/Read settings from file.vi"/>
+			<Item Name="Read settings from file.vi" Type="VI" URL="../Utilities/Read settings from file.vi"/>
 			<Item Name="Save settings to file.vi" Type="VI" URL="../Utilities/Save settings to file.vi"/>
 			<Item Name="Set TWM Measurement.vi" Type="VI" URL="../Utilities/Set TWM Measurement.vi"/>
 			<Item Name="Set TWM Processing.vi" Type="VI" URL="../Utilities/Set TWM Processing.vi"/>
@@ -177,6 +207,18 @@
 		</Item>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="instr.lib" Type="Folder">
+				<Item Name="niFgen Abort Generation.vi" Type="VI" URL="/&lt;instrlib&gt;/niFgen/niFgen.llb/niFgen Abort Generation.vi"/>
+				<Item Name="niFgen Close.vi" Type="VI" URL="/&lt;instrlib&gt;/niFgen/niFgen.llb/niFgen Close.vi"/>
+				<Item Name="niFgen Configure Output Mode.vi" Type="VI" URL="/&lt;instrlib&gt;/niFgen/niFgen.llb/niFgen Configure Output Mode.vi"/>
+				<Item Name="niFgen Configure Sample Clock Source.vi" Type="VI" URL="/&lt;instrlib&gt;/niFgen/niFgen.llb/niFgen Configure Sample Clock Source.vi"/>
+				<Item Name="niFgen Configure Standard Waveform.vi" Type="VI" URL="/&lt;instrlib&gt;/niFgen/niFgen.llb/niFgen Configure Standard Waveform.vi"/>
+				<Item Name="niFgen Get Session Reference.vi" Type="VI" URL="/&lt;instrlib&gt;/niFgen/niFgen.llb/niFgen Get Session Reference.vi"/>
+				<Item Name="niFgen Initialize With Channels.vi" Type="VI" URL="/&lt;instrlib&gt;/niFgen/niFgen.llb/niFgen Initialize With Channels.vi"/>
+				<Item Name="niFgen Initiate Generation.vi" Type="VI" URL="/&lt;instrlib&gt;/niFgen/niFgen.llb/niFgen Initiate Generation.vi"/>
+				<Item Name="niFgen IVI Error Converter.vi" Type="VI" URL="/&lt;instrlib&gt;/niFgen/niFgen.llb/niFgen IVI Error Converter.vi"/>
+				<Item Name="niFgen Output Mode.ctl" Type="VI" URL="/&lt;instrlib&gt;/niFgen/niFgen.llb/niFgen Output Mode.ctl"/>
+				<Item Name="niFgen Waveform Type.ctl" Type="VI" URL="/&lt;instrlib&gt;/niFgen/niFgen.llb/niFgen Waveform Type.ctl"/>
+				<Item Name="niFgen_ctl Sample Clock Source Values (Ring).ctl" Type="VI" URL="/&lt;instrlib&gt;/niFgen/niFgen.llb/niFgen_ctl Sample Clock Source Values (Ring).ctl"/>
 				<Item Name="niScope Acquisition Status.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Acquire/Fetch/niScope Acquisition Status.vi"/>
 				<Item Name="niScope Actual Record Length.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/Configure/Horizontal/niScope Actual Record Length.vi"/>
 				<Item Name="niScope Close.vi" Type="VI" URL="/&lt;instrlib&gt;/niScope/niScope Close.vi"/>
@@ -249,10 +291,12 @@
 				<Item Name="Check Path.vi" Type="VI" URL="/&lt;vilib&gt;/picture/jpeg.llb/Check Path.vi"/>
 				<Item Name="Check Special Tags.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Check Special Tags.vi"/>
 				<Item Name="Clear Errors.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Clear Errors.vi"/>
+				<Item Name="Close File+.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Close File+.vi"/>
 				<Item Name="Close Registry Key.vi" Type="VI" URL="/&lt;vilib&gt;/registry/registry.llb/Close Registry Key.vi"/>
 				<Item Name="compatCalcOffset.vi" Type="VI" URL="/&lt;vilib&gt;/_oldvers/_oldvers.llb/compatCalcOffset.vi"/>
 				<Item Name="compatFileDialog.vi" Type="VI" URL="/&lt;vilib&gt;/_oldvers/_oldvers.llb/compatFileDialog.vi"/>
 				<Item Name="compatOpenFileOperation.vi" Type="VI" URL="/&lt;vilib&gt;/_oldvers/_oldvers.llb/compatOpenFileOperation.vi"/>
+				<Item Name="compatReadText.vi" Type="VI" URL="/&lt;vilib&gt;/_oldvers/_oldvers.llb/compatReadText.vi"/>
 				<Item Name="Convert property node font to graphics font.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Convert property node font to graphics font.vi"/>
 				<Item Name="Create ActiveX Event Queue.vi" Type="VI" URL="/&lt;vilib&gt;/Platform/ax-events.llb/Create ActiveX Event Queue.vi"/>
 				<Item Name="Create Error Clust.vi" Type="VI" URL="/&lt;vilib&gt;/Platform/ax-events.llb/Create Error Clust.vi"/>
@@ -424,6 +468,7 @@
 				<Item Name="ex_WaveformAttribsPlus.ctl" Type="VI" URL="/&lt;vilib&gt;/express/express shared/transition.llb/ex_WaveformAttribsPlus.ctl"/>
 				<Item Name="FileVersionInfo.vi" Type="VI" URL="/&lt;vilib&gt;/Platform/fileVersionInfo.llb/FileVersionInfo.vi"/>
 				<Item Name="FileVersionInformation.ctl" Type="VI" URL="/&lt;vilib&gt;/Platform/fileVersionInfo.llb/FileVersionInformation.ctl"/>
+				<Item Name="Find First Error.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Find First Error.vi"/>
 				<Item Name="Find Tag.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Find Tag.vi"/>
 				<Item Name="FindCloseTagByName.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/xml.llb/FindCloseTagByName.vi"/>
 				<Item Name="FindElement.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/xml.llb/FindElement.vi"/>
@@ -451,11 +496,16 @@
 				<Item Name="Handle Open Word or Excel File.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/NIReport.llb/Toolkit/Handle Open Word or Excel File.vi"/>
 				<Item Name="I128 Timestamp.ctl" Type="VI" URL="/&lt;vilib&gt;/Waveform/TSOps.llb/I128 Timestamp.ctl"/>
 				<Item Name="imagedata.ctl" Type="VI" URL="/&lt;vilib&gt;/picture/picture.llb/imagedata.ctl"/>
+				<Item Name="Less Comparable.lvclass" Type="LVClass" URL="/&lt;vilib&gt;/Comparison/Less/Less Comparable/Less Comparable.lvclass"/>
+				<Item Name="Less Functor.lvclass" Type="LVClass" URL="/&lt;vilib&gt;/Comparison/Less/Less Functor/Less Functor.lvclass"/>
+				<Item Name="Less.vim" Type="VI" URL="/&lt;vilib&gt;/Comparison/Less.vim"/>
 				<Item Name="List Directory and LLBs.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/libraryn.llb/List Directory and LLBs.vi"/>
 				<Item Name="Longest Line Length in Pixels.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Longest Line Length in Pixels.vi"/>
 				<Item Name="LVBoundsTypeDef.ctl" Type="VI" URL="/&lt;vilib&gt;/Utility/miscctls.llb/LVBoundsTypeDef.ctl"/>
 				<Item Name="LVDateTimeRec.ctl" Type="VI" URL="/&lt;vilib&gt;/Utility/miscctls.llb/LVDateTimeRec.ctl"/>
 				<Item Name="LVRectTypeDef.ctl" Type="VI" URL="/&lt;vilib&gt;/Utility/miscctls.llb/LVRectTypeDef.ctl"/>
+				<Item Name="LVRowAndColumnTypeDef.ctl" Type="VI" URL="/&lt;vilib&gt;/Utility/miscctls.llb/LVRowAndColumnTypeDef.ctl"/>
+				<Item Name="LVRowAndColumnUnsignedTypeDef.ctl" Type="VI" URL="/&lt;vilib&gt;/Utility/miscctls.llb/LVRowAndColumnUnsignedTypeDef.ctl"/>
 				<Item Name="LVSelectionTypeDef.ctl" Type="VI" URL="/&lt;vilib&gt;/Utility/miscctls.llb/LVSelectionTypeDef.ctl"/>
 				<Item Name="MoveMemory.vi" Type="VI" URL="/&lt;vilib&gt;/Platform/fileVersionInfo.llb/MoveMemory.vi"/>
 				<Item Name="Nearest Freq in Int Cycles.vi" Type="VI" URL="/&lt;vilib&gt;/express/express input/SimulateSignalConfig.llb/Nearest Freq in Int Cycles.vi"/>
@@ -475,6 +525,7 @@
 				<Item Name="Not Found Dialog.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Not Found Dialog.vi"/>
 				<Item Name="Number of Waveform Samples.vi" Type="VI" URL="/&lt;vilib&gt;/Waveform/WDTOps.llb/Number of Waveform Samples.vi"/>
 				<Item Name="OccFireType.ctl" Type="VI" URL="/&lt;vilib&gt;/Platform/ax-events.llb/OccFireType.ctl"/>
+				<Item Name="Open File+.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Open File+.vi"/>
 				<Item Name="Open Registry Key.vi" Type="VI" URL="/&lt;vilib&gt;/registry/registry.llb/Open Registry Key.vi"/>
 				<Item Name="Open URL in Default Browser (path).vi" Type="VI" URL="/&lt;vilib&gt;/Platform/browser.llb/Open URL in Default Browser (path).vi"/>
 				<Item Name="Open URL in Default Browser (string).vi" Type="VI" URL="/&lt;vilib&gt;/Platform/browser.llb/Open URL in Default Browser (string).vi"/>
@@ -484,10 +535,16 @@
 				<Item Name="ParseXMLFragments.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/xml.llb/ParseXMLFragments.vi"/>
 				<Item Name="Path to URL inner.vi" Type="VI" URL="/&lt;vilib&gt;/printing/PathToURL.llb/Path to URL inner.vi"/>
 				<Item Name="Path to URL.vi" Type="VI" URL="/&lt;vilib&gt;/printing/PathToURL.llb/Path to URL.vi"/>
+				<Item Name="Read Delimited Spreadsheet (DBL).vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Read Delimited Spreadsheet (DBL).vi"/>
+				<Item Name="Read Delimited Spreadsheet (I64).vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Read Delimited Spreadsheet (I64).vi"/>
+				<Item Name="Read Delimited Spreadsheet (string).vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Read Delimited Spreadsheet (string).vi"/>
+				<Item Name="Read Delimited Spreadsheet.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Read Delimited Spreadsheet.vi"/>
+				<Item Name="Read File+ (string).vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Read File+ (string).vi"/>
 				<Item Name="Read From XML File(array).vi" Type="VI" URL="/&lt;vilib&gt;/Utility/xml.llb/Read From XML File(array).vi"/>
 				<Item Name="Read From XML File(string).vi" Type="VI" URL="/&lt;vilib&gt;/Utility/xml.llb/Read From XML File(string).vi"/>
 				<Item Name="Read From XML File.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/xml.llb/Read From XML File.vi"/>
 				<Item Name="Read JPEG File.vi" Type="VI" URL="/&lt;vilib&gt;/picture/jpeg.llb/Read JPEG File.vi"/>
+				<Item Name="Read Lines From File (with error IO).vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Read Lines From File (with error IO).vi"/>
 				<Item Name="Read PNG File.vi" Type="VI" URL="/&lt;vilib&gt;/picture/png.llb/Read PNG File.vi"/>
 				<Item Name="Read Registry Value DWORD.vi" Type="VI" URL="/&lt;vilib&gt;/registry/registry.llb/Read Registry Value DWORD.vi"/>
 				<Item Name="Read Registry Value Simple STR.vi" Type="VI" URL="/&lt;vilib&gt;/registry/registry.llb/Read Registry Value Simple STR.vi"/>
@@ -506,8 +563,14 @@
 				<Item Name="Search and Replace Pattern.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Search and Replace Pattern.vi"/>
 				<Item Name="Select Event Type.ctl" Type="VI" URL="/&lt;vilib&gt;/Instr/_visa.llb/Select Event Type.ctl"/>
 				<Item Name="Set Bold Text.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Set Bold Text.vi"/>
+				<Item Name="Set Busy.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/cursorutil.llb/Set Busy.vi"/>
+				<Item Name="Set Cursor (Cursor ID).vi" Type="VI" URL="/&lt;vilib&gt;/Utility/cursorutil.llb/Set Cursor (Cursor ID).vi"/>
+				<Item Name="Set Cursor (Icon Pict).vi" Type="VI" URL="/&lt;vilib&gt;/Utility/cursorutil.llb/Set Cursor (Icon Pict).vi"/>
+				<Item Name="Set Cursor.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/cursorutil.llb/Set Cursor.vi"/>
 				<Item Name="Set String Value.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Set String Value.vi"/>
 				<Item Name="Simple Error Handler.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Simple Error Handler.vi"/>
+				<Item Name="Sort 1D Array Core.vim" Type="VI" URL="/&lt;vilib&gt;/Array/Helpers/Sort 1D Array Core.vim"/>
+				<Item Name="Sort 1D Array.vim" Type="VI" URL="/&lt;vilib&gt;/Array/Sort 1D Array.vim"/>
 				<Item Name="Space Constant.vi" Type="VI" URL="/&lt;vilib&gt;/dlg_ctls.llb/Space Constant.vi"/>
 				<Item Name="Stall Data Flow.vim" Type="VI" URL="/&lt;vilib&gt;/Utility/Stall Data Flow.vim"/>
 				<Item Name="STR_ASCII-Unicode.vi" Type="VI" URL="/&lt;vilib&gt;/registry/registry.llb/STR_ASCII-Unicode.vi"/>
@@ -524,6 +587,7 @@
 				<Item Name="Timestamp Add.vi" Type="VI" URL="/&lt;vilib&gt;/Waveform/TSOps.llb/Timestamp Add.vi"/>
 				<Item Name="Timestamp Subtract.vi" Type="VI" URL="/&lt;vilib&gt;/Waveform/TSOps.llb/Timestamp Subtract.vi"/>
 				<Item Name="Trim Whitespace.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Trim Whitespace.vi"/>
+				<Item Name="Unset Busy.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/cursorutil.llb/Unset Busy.vi"/>
 				<Item Name="VerQueryValue.vi" Type="VI" URL="/&lt;vilib&gt;/Platform/fileVersionInfo.llb/VerQueryValue.vi"/>
 				<Item Name="VISA Flush IO Buffer Mask.ctl" Type="VI" URL="/&lt;vilib&gt;/Instr/_visa.llb/VISA Flush IO Buffer Mask.ctl"/>
 				<Item Name="VISA GPIB Control REN Mode.ctl" Type="VI" URL="/&lt;vilib&gt;/Instr/_visa.llb/VISA GPIB Control REN Mode.ctl"/>
@@ -556,19 +620,25 @@
 			<Item Name="Advapi32.dll" Type="Document" URL="Advapi32.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
-			<Item Name="FR Measuement properties.ctl" Type="VI" URL="../FR Measurement/Type definitions/FR Measuement properties.ctl"/>
-			<Item Name="FRmeter settings.ctl" Type="VI" URL="../FR GUI/Type definitions/FRmeter settings.ctl"/>
+			<Item Name="AWG type.ctl" Type="VI" URL="../General AWG/Type definitions/AWG type.ctl"/>
+			<Item Name="AWG.ctl" Type="VI" URL="../General AWG/Type definitions/AWG.ctl"/>
 			<Item Name="infolib.lvlib" Type="Library" URL="../external libraries/TWM-1.8.7.0-client/infolib.lvlib"/>
 			<Item Name="kernel32.dll" Type="Document" URL="kernel32.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
 			<Item Name="lvanlys.dll" Type="Document" URL="/&lt;resource&gt;/lvanlys.dll"/>
+			<Item Name="Measuement properties.ctl" Type="VI" URL="../Measurement/Type definitions/Measuement properties.ctl"/>
+			<Item Name="Measurement ID.ctl" Type="VI" URL="../Measurement/Type definitions/Measurement ID.ctl"/>
+			<Item Name="niFgen_32.dll" Type="Document" URL="niFgen_32.dll">
+				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
+			</Item>
 			<Item Name="nilvaiu.dll" Type="Document" URL="nilvaiu.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
 			<Item Name="niScope_32.dll" Type="Document" URL="niScope_32.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
+			<Item Name="Trigger mode.ctl" Type="VI" URL="../Measurement/Type definitions/Trigger mode.ctl"/>
 			<Item Name="version.dll" Type="Document" URL="version.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>

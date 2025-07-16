@@ -15,11 +15,15 @@
 		<Property Name="specify.custom.address" Type="Bool">false</Property>
 		<Item Name="CE GUI" Type="Folder">
 			<Item Name="Type definitions" Type="Folder">
-				<Item Name="CEmeter settings.ctl" Type="VI" URL="../CE GUI/Type definitions/CEmeter settings.ctl"/>
+				<Item Name="CE meter settings.ctl" Type="VI" URL="../CE GUI/Type definitions/CE meter settings.ctl"/>
 			</Item>
+			<Item Name="CE GUI Measurement setup.vi" Type="VI" URL="../CE GUI/CE GUI Measurement setup.vi"/>
 			<Item Name="temporary CE GUI main.vi" Type="VI" URL="../CE GUI/temporary CE GUI main.vi"/>
 		</Item>
 		<Item Name="CE Measurement" Type="Folder">
+			<Item Name="Type definitions" Type="Folder">
+				<Item Name="CE measurement.ctl" Type="VI" URL="../CE Measurement/Type definitions/CE measurement.ctl"/>
+			</Item>
 			<Item Name="CE Measure.vi" Type="VI" URL="../CE Measurement/CE Measure.vi"/>
 		</Item>
 		<Item Name="external libraries" Type="Folder">
@@ -73,21 +77,13 @@
 			<Item Name="varilib.lvlib" Type="Library" URL="../external libraries/varilib/varilib.lvlib"/>
 		</Item>
 		<Item Name="FR GUI" Type="Folder">
-			<Item Name="Type definitions" Type="Folder">
-				<Item Name="FRmeter settings.ctl" Type="VI" URL="../FR GUI/Type definitions/FRmeter settings.ctl"/>
-			</Item>
-			<Item Name="FR GUI About Dialog.vi" Type="VI" URL="../FR GUI/FR GUI About Dialog.vi"/>
-			<Item Name="FR GUI AC Source setup.vi" Type="VI" URL="../FR GUI/FR GUI AC Source setup.vi"/>
 			<Item Name="FR GUI Connections.vi" Type="VI" URL="../FR GUI/FR GUI Connections.vi"/>
-			<Item Name="FR GUI DC meter setup.vi" Type="VI" URL="../FR GUI/FR GUI DC meter setup.vi"/>
-			<Item Name="FR GUI main.vi" Type="VI" URL="../FR GUI/FR GUI main.vi"/>
 			<Item Name="FR GUI Measurement setup.vi" Type="VI" URL="../FR GUI/FR GUI Measurement setup.vi"/>
 			<Item Name="FR GUI Recalculate.vi" Type="VI" URL="../FR GUI/FR GUI Recalculate.vi"/>
-			<Item Name="FR GUI TWM setup.vi" Type="VI" URL="../FR GUI/FR GUI TWM setup.vi"/>
 		</Item>
 		<Item Name="FR Measurement" Type="Folder">
 			<Item Name="Type definitions" Type="Folder">
-				<Item Name="FR Measuement properties.ctl" Type="VI" URL="../FR Measurement/Type definitions/FR Measuement properties.ctl"/>
+				<Item Name="FR measuement.ctl" Type="VI" URL="../FR Measurement/Type definitions/FR measuement.ctl"/>
 			</Item>
 			<Item Name="FR Do Single Measurement.vi" Type="VI" URL="../FR Measurement/FR Do Single Measurement.vi"/>
 			<Item Name="FR Measure.vi" Type="VI" URL="../FR Measurement/FR Measure.vi"/>
@@ -100,9 +96,8 @@
 				<Item Name="FR XCL Write measurement line.vi" Type="VI" URL="../FR Utilities/Template related/FR XCL Write measurement line.vi"/>
 			</Item>
 			<Item Name="Type definitions" Type="Folder">
-				<Item Name="FR Template definition.ctl" Type="VI" URL="../FR Utilities/Type definitions/FR Template definition.ctl"/>
+				<Item Name="FR template.ctl" Type="VI" URL="../FR Utilities/Type definitions/FR template.ctl"/>
 			</Item>
-			<Item Name="FR Check user abort.vi" Type="VI" URL="../FR Utilities/FR Check user abort.vi"/>
 			<Item Name="FR Estimate measurement time.vi" Type="VI" URL="../FR Utilities/FR Estimate measurement time.vi"/>
 			<Item Name="FR Get Measurement Path.vi" Type="VI" URL="../FR Utilities/FR Get Measurement Path.vi"/>
 			<Item Name="FR Make Default FRmeter settings.vi" Type="VI" URL="../FR Utilities/FR Make Default FRmeter settings.vi"/>
@@ -129,8 +124,21 @@
 			<Item Name="Read DC meter.vi" Type="VI" URL="../General DC meter/Read DC meter.vi"/>
 			<Item Name="Stop DC meter.vi" Type="VI" URL="../General DC meter/Stop DC meter.vi"/>
 		</Item>
+		<Item Name="Main GUI" Type="Folder">
+			<Item Name="GUI About Dialog.vi" Type="VI" URL="../Main GUI/GUI About Dialog.vi"/>
+			<Item Name="GUI AC Source setup.vi" Type="VI" URL="../Main GUI/GUI AC Source setup.vi"/>
+			<Item Name="GUI DC meter setup.vi" Type="VI" URL="../Main GUI/GUI DC meter setup.vi"/>
+			<Item Name="GUI main.vi" Type="VI" URL="../Main GUI/GUI main.vi"/>
+			<Item Name="GUI TWM setup.vi" Type="VI" URL="../Main GUI/GUI TWM setup.vi"/>
+		</Item>
 		<Item Name="resources" Type="Folder">
 			<Item Name="FR.ico" Type="Document" URL="../resources/FR.ico"/>
+		</Item>
+		<Item Name="SS GUI" Type="Folder"/>
+		<Item Name="SS Measurement" Type="Folder">
+			<Item Name="Type definitions" Type="Folder">
+				<Item Name="SS measurement.ctl" Type="VI" URL="../SS Measurement/Type definitions/SS measurement.ctl"/>
+			</Item>
 		</Item>
 		<Item Name="Utilities" Type="Folder">
 			<Item Name="Calculation related" Type="Folder">
@@ -153,13 +161,16 @@
 			</Item>
 			<Item Name="Type definitions" Type="Folder">
 				<Item Name="Common properties.ctl" Type="VI" URL="../Utilities/Type definitions/Common properties.ctl"/>
-				<Item Name="Measurement properties.ctl" Type="VI" URL="../Utilities/Type definitions/Measurement properties.ctl"/>
 				<Item Name="Sampling properties.ctl" Type="VI" URL="../Utilities/Type definitions/Sampling properties.ctl"/>
+				<Item Name="Type definitions to be saved.ctl" Type="VI" URL="../Utilities/Type definitions/Type definitions to be saved.ctl"/>
 			</Item>
 			<Item Name="Check user abort.vi" Type="VI" URL="../Utilities/Check user abort.vi"/>
 			<Item Name="Clear errors from TWM.vi" Type="VI" URL="../Utilities/Clear errors from TWM.vi"/>
+			<Item Name="Make Default settings.vi" Type="VI" URL="../Utilities/Make Default settings.vi"/>
 			<Item Name="Merge Error Ex.vi" Type="VI" URL="../Utilities/Merge Error Ex.vi"/>
 			<Item Name="Process TWM result.vi" Type="VI" URL="../Utilities/Process TWM result.vi"/>
+			<Item Name="Read settings from file.vi" Type="VI" URL="../FR Utilities/Read settings from file.vi"/>
+			<Item Name="Save settings to file.vi" Type="VI" URL="../Utilities/Save settings to file.vi"/>
 			<Item Name="Set TWM Measurement.vi" Type="VI" URL="../Utilities/Set TWM Measurement.vi"/>
 			<Item Name="Set TWM Processing.vi" Type="VI" URL="../Utilities/Set TWM Processing.vi"/>
 			<Item Name="TWM Measure.vi" Type="VI" URL="../Utilities/TWM Measure.vi"/>
@@ -545,6 +556,8 @@
 			<Item Name="Advapi32.dll" Type="Document" URL="Advapi32.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
+			<Item Name="FR Measuement properties.ctl" Type="VI" URL="../FR Measurement/Type definitions/FR Measuement properties.ctl"/>
+			<Item Name="FRmeter settings.ctl" Type="VI" URL="../FR GUI/Type definitions/FRmeter settings.ctl"/>
 			<Item Name="infolib.lvlib" Type="Library" URL="../external libraries/TWM-1.8.7.0-client/infolib.lvlib"/>
 			<Item Name="kernel32.dll" Type="Document" URL="kernel32.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
@@ -640,7 +653,7 @@
 				<Property Name="Source[0].itemID" Type="Str">{495FA00A-AF13-4389-A9CF-75EAF19CDB62}</Property>
 				<Property Name="Source[0].type" Type="Str">Container</Property>
 				<Property Name="Source[1].destinationIndex" Type="Int">0</Property>
-				<Property Name="Source[1].itemID" Type="Ref">/My Computer/FR GUI/FR GUI main.vi</Property>
+				<Property Name="Source[1].itemID" Type="Ref"></Property>
 				<Property Name="Source[1].sourceInclusion" Type="Str">TopLevel</Property>
 				<Property Name="Source[1].type" Type="Str">VI</Property>
 				<Property Name="SourceCount" Type="Int">2</Property>

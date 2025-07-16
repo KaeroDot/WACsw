@@ -3,3 +3,4 @@ control_software/Filter function meter/ffmeter_settings.xml
 control_software/Filter function meter/Filter function meter.aliases
 /control_software/Filter function meter/Template/Example of FF meter template_data
 control_software/Filter function meter/Template/~$Example of FF meter template.xlsx
+control_software/LV_source/wacsw_settings.xml

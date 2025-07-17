@@ -171,6 +171,8 @@
 			<Item Name="Type definitions" Type="Folder">
 				<Item Name="SS measurement.ctl" Type="VI" URL="../SS Measurement/Type definitions/SS measurement.ctl"/>
 			</Item>
+			<Item Name="SS measure.vi" Type="VI" URL="../SS Measurement/SS measure.vi"/>
+			<Item Name="SS process.vi" Type="VI" URL="../SS Measurement/SS process.vi"/>
 		</Item>
 		<Item Name="Utilities" Type="Folder">
 			<Item Name="Calculation related" Type="Folder">

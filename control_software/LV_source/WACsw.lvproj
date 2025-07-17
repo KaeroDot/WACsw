@@ -164,7 +164,9 @@
 		<Item Name="resources" Type="Folder">
 			<Item Name="FR.ico" Type="Document" URL="../resources/FR.ico"/>
 		</Item>
-		<Item Name="SS GUI" Type="Folder"/>
+		<Item Name="SS GUI" Type="Folder">
+			<Item Name="SS GUI Measurement setup.vi" Type="VI" URL="../SS GUI/SS GUI Measurement setup.vi"/>
+		</Item>
 		<Item Name="SS Measurement" Type="Folder">
 			<Item Name="Type definitions" Type="Folder">
 				<Item Name="SS measurement.ctl" Type="VI" URL="../SS Measurement/Type definitions/SS measurement.ctl"/>

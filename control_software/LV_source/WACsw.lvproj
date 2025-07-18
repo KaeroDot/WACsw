@@ -137,6 +137,7 @@
 				<Item Name="DC meter type.ctl" Type="VI" URL="../General DC meter/Type definitions/DC meter type.ctl"/>
 				<Item Name="DC meter.ctl" Type="VI" URL="../General DC meter/Type definitions/DC meter.ctl"/>
 			</Item>
+			<Item Name="DC meter manual control GUI.vi" Type="VI" URL="../General DC meter/DC meter manual control GUI.vi"/>
 			<Item Name="Init DC meter.vi" Type="VI" URL="../General DC meter/Init DC meter.vi"/>
 			<Item Name="Read DC meter.vi" Type="VI" URL="../General DC meter/Read DC meter.vi"/>
 			<Item Name="Stop DC meter.vi" Type="VI" URL="../General DC meter/Stop DC meter.vi"/>
@@ -148,6 +149,7 @@
 			</Item>
 			<Item Name="Close PJVS.vi" Type="VI" URL="../General PJVS driver/Close PJVS.vi"/>
 			<Item Name="Initialize PJVS.vi" Type="VI" URL="../General PJVS driver/Initialize PJVS.vi"/>
+			<Item Name="PJVS manual control GUI.vi" Type="VI" URL="../General PJVS driver/PJVS manual control GUI.vi"/>
 			<Item Name="QPSsettings.ctl" Type="VI" URL="../General PJVS driver/QPSsettings.ctl"/>
 			<Item Name="Start PJVS.vi" Type="VI" URL="../General PJVS driver/Start PJVS.vi"/>
 			<Item Name="Stop PJVS.vi" Type="VI" URL="../General PJVS driver/Stop PJVS.vi"/>

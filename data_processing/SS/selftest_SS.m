@@ -2,17 +2,19 @@ clear all, close all
 addpath('../FR')
 % simulation setup:
 
-verbose = 0;
+verbose = 3;
 % first simulate FR:
 % generate simulated measurement data:
 [M_FR, simulated_digitizer_FR] = G_FR(verbose);
 % process measurement:
-[f, measured_digitizer_FR, ac_source_stability, FR_fit] = P_FR(M_FR, verbose);
+[f, measured_digitizer_FR, ac_source_stability, FR_fit] = P_FR(M_FR, '', verbose);
 
+% Generate simulated subsampling measurement:
 % M_SS = conditions_M_SS(check_gen_M_SS());
-% M_SS = G_SS(M_SS, verbose);
+% Use set of prefefined values no. 2:
 M_SS = G_SS(2, verbose);
 
+% Modify samples according to the digitizer frequency response:
 % add modification of samples according the FR of the digitizer.
 % XXX This should go into selfstanding script
 % Evaluate FR fit for fft frequencies:
@@ -33,10 +35,12 @@ F = F.*fftfilter;
 y_filtered = real(ifft(F));
 M_SS.y.v = y_filtered;
 
+% TODO Cable error measurement and simualtion will come here!
+
+% Process simulated subsampling measurement:
 [A_rms, A_fft] = P_SS(M_SS, FR_fit, verbose);
-disp('---')
-disp('selftest results:')
-printf('Nominal amplitude (V): %.7f\n', M_SS.A_nominal.v)
+disp('SS selftest results:')
+printf('Nominal amplitude (V): %.7f\n')
 printf('Calculated amplitude from RMS value (V): %.7f\n', A_rms)
 printf('... error (uV): %.3f\n', 1e6.*(M_SS.A_nominal.v - A_rms))
 printf('Calculated amplitude from FFT value (V): %.7f\n', A_fft)

@@ -16,6 +16,7 @@
 % phstep - ignored
 % fm - microwave frequency (Hz), scalar.
 % waveformtype - ignored
+% verbose = verbosity level
 %
 % Outputs:
 % y - samples of the quantized reference waveform (V).
@@ -26,10 +27,10 @@
 % tsamples - times of samples of y (s).
 %
 % Example:
-% [y, n, Upjvs, Upjvs1period, Spjvs, tsamples] = pjvs_wvfrm_generator2();
+% [y, n, Upjvs, Upjvs1period, Spjvs, tsamples] = pjvs_triangle_generator();
 % plot(t, y);
 
-function [y, n, Upjvs, Upjvs1period, Spjvs, tsamples] = pjvs_wvfrm_generator2(fs, L, t, f, A, ph, fstep, phstep, fm, waveformtype, verbose)
+function [y, n, Upjvs, Upjvs1period, Spjvs, tsamples] = pjvs_triangle_generator(fs, L, t, f, A, ph, fstep, phstep, fm, waveformtype, verbose)
     % Constants %<<<1
 
     % Josephson constant, 2e/h:
@@ -185,8 +186,8 @@ function [y, n, Upjvs, Upjvs1period, Spjvs, tsamples] = pjvs_wvfrm_generator2(fs
 end % function
 
 % tests  %<<<1
-% XXX NOT OK! OLD! FIX! XXX
-% XXX more tests should be present
+% TODO NOT OK! OLD! FIX! XXX
+% TODO more tests should be present
 %!test
 %!shared fs, L, t, f, A, ph, fstep, phstep, fm, waveformtype, y, n, Upjvs, Upjvs1period, Spjvs, tsamples
 %! fs = 1000;
@@ -215,6 +216,7 @@ end % function
 %!assert(size(n, 2) == 11);
 
 % demo %<<<1
+% TODO NOT OK! OLD! FIX! XXX
 % terrible inputs and nice figure:
 %!demo
 %! fs = 100;
@@ -232,4 +234,4 @@ end % function
 %! ylabel('sampled PJVS voltage (V)')
 %! title('PJVS steps')
 
-% vim settings modeline: vim: foldmarker=%<<<,%>>> fdm=marker fen ft=octave textwidth=80 tabstop=4 shiftwidth=4
+% vim settings modeline: vim: foldmarker=%<<<,%>>> fdm=marker fen ft=matlab textwidth=80 tabstop=4 shiftwidth=4

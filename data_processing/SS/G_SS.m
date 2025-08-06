@@ -7,6 +7,11 @@
 % OR
 %   predefined_values
 %   [verbose]
+%
+% predefined_values can take 1, 2, 3
+%   1: to produce simple plots
+%   2: according Ralf Behr and Luis Palafox 2021 Metrologia 58 025010
+%   3: values for testing
 
 function [M_SS] = G_SS(varargin);
 

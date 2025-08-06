@@ -25,6 +25,10 @@ function [acdc_difference dc_voltage acdc_corrections_path] = ACDC_simulator(f, 
     % name and directory of the info files:
     info_dir_path = fullfile('acdc_standard_data', 'simulated_acdc');
     csv_dir_path = fullfile(info_dir_path, 'csv');
+    % ensure the directories exist:
+    if ~exist(fullfile(pwd, csv_dir_path), 'dir')
+        mkdir(csv_dir_path);
+    end
     acdc_corrections_path = fullfile(info_dir_path, 'simulated_acdc.info');
     csv_file_path = fullfile(csv_dir_path, '1000.csv');
     % header of the info file:

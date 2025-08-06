@@ -37,6 +37,13 @@ function [f, digitizer_FR, ac_source_stability, FR_fit] = P_FR(M_FR, acdc_correc
         error('P_FR: number of measurement points is odd, it should be even. M_FR.f.v must be a vector with even numbers!')
     end
 
+    if ~exist('acdc_corrections_path', 'var')
+        acdc_corrections_path = '';
+    end
+    if not(ischar(acdc_corrections_path))
+        error('P_FR: second input must be empty, empty string or a string with path to the AC/DC transfer standard corrections file!')
+    end
+
     if ~exist('verbose', 'var')
         verbose = [];
     end

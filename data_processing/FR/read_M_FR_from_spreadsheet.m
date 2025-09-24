@@ -97,10 +97,10 @@ function M_FR = read_M_FR_from_spreadsheet(filename, verbose)
         data = M_FR.(mandatory_fields{i}).v;
         % Check for empty data
         if isempty(data)
-            error('read_M_FR_from_spreadsheet: Quantity `%s.v` is empty. The spreadsheet is probably not according expected template.', fields{i});
+            error('read_M_FR_from_spreadsheet: Quantity `%s.v` is empty. The spreadsheet is probably not according expected template.', mandatory_fields{i});
         end
         if ~isnumeric(data)
-            error('read_M_FR_from_spreadsheet: Quantity `%s.v` should be numeric but is not. The spreadsheet is probably not according expected template.', fields{i});
+            error('read_M_FR_from_spreadsheet: Quantity `%s.v` should be numeric but is not. The spreadsheet is probably not according expected template.', mandatory_fields{i});
         end
     end
 

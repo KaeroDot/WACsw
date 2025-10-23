@@ -1,3 +1,4 @@
+% this script checks the frequency response measurement
 clear all; close all
 
 addpath('acdc')

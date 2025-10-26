@@ -1,4 +1,4 @@
-% Function calculates relative error caues by cable impedance for low frequencies.
+% Function calculates relative error caused by cable impedance for low frequencies.
 % For equations see D. Zhao, H. E. van den Brom, and E. Houtzager, ‘Mitigating voltage lead errors of an AC Josephson voltage standard by impedance matching’, Measurement Science and Technology, vol. 28, no. 9, p. 095004, Sept. 2017, doi: 10.1088/1361-6501/aa7aba.
 % 
 % Inputs:
@@ -14,7 +14,7 @@ function err_rel = cable_error(f, L)
     % capacitance per unit length
     % c = 25.40 pF/ft = 83.33 pF/m;
     c = 83.33e-12;
-    nu = 1/sqrt(l.*c) % propagation velocity in the cable (m/s)
+    nu = 1/sqrt(l.*c); % propagation velocity in the cable (m/s)
 
     % cable error
     % simplest case - suppose impedance of PJVS is Z_s ≈ 0, DUT is of high

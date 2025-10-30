@@ -5,43 +5,42 @@ addpath('../FR')
 verbose = 1;
 % first simulate FR:
 % generate simulated measurement data:
-[M_FR, simulated_digitizer_FR] = G_FR(verbose);
+% (no verbose because only CE is relevant here)
+[M_FR, simulated_digitizer_FR] = G_FR(0);
 % process measurement:
-[f, measured_digitizer_FR, ac_source_stability, FR_fit] = P_FR(M_FR, '', verbose);
+% (no verbose because only CE is relevant here)
+[f, measured_digitizer_FR, ac_source_stability, FR_fit] = P_FR(M_FR, '', 0);
 
 % Generate simulated CE measurement:
-M_CE = G_CE(????, verbose);
-
-                                    % Modify samples according to the digitizer frequency response:
-                                    % add modification of samples according the FR of the digitizer.
-                                    % XXX This should go into selfstanding script
-                                    % Evaluate FR fit for fft frequencies:
-                                    % Build frequency vector (spacing is df=fs/N):
-                                    N = numel(M_SS.y.v);
-                                    % XXX suppose even number of samples!
-                                    f = M_SS.fs.v./N.*[0:N/2 - 1];
-                                    fitfreqs = piecewise_FR_evaluate(FR_fit, f, M_SS.fs);
-                                    % Construct the whole filter for both negative and positive frequencies:
-                                    % XXX is the filter correct?
-                                    % XXX what if numel(F) is odd number?!
-                                    fftfilter = [fitfreqs conj(fliplr(fitfreqs))];
-                                    % Calculate fft:
-                                    F = fft(M_SS.y.v);
-                                    % Apply filter:
-                                    F = F.*fftfilter;
-                                    % Calculate inverse fft
-                                    y_filtered = real(ifft(F));
-                                    M_SS.y.v = y_filtered;
-
-% TODO Cable error measurement and simualtion will come here!
+M_CE = G_CE(FR_fit, verbose);
 
 % Process simulated CE measurement:
-[A_rms, A_fft] = P_CE(M_SS, FR_fit, verbose);
-disp('CE selftest results:')
-                                printf('Nominal amplitude (V): %.7f\n')
-                                printf('Calculated amplitude from RMS value (V): %.7f\n', A_rms)
-                                printf('... error (uV): %.3f\n', 1e6.*(M_SS.A_nominal.v - A_rms))
-                                printf('Calculated amplitude from FFT value (V): %.7f\n', A_fft)
-                                printf('... error (uV): %.3f\n', 1e6.*(M_SS.A_nominal.v - A_fft))
+[CE_fit] = P_CE(M_CE, FR_fit, verbose);
+
+% evaluate simulation
+% simualted cable error for measurement poings:
+simulated_err_rel_PJVS = cable_error(M_CE.f.v, M_CE.l_PJVS.v);
+% calculated cable error from fit:
+calculated_err_rel_PJVS = curve_CE_evaluate(CE_fit, M_CE.f.v);
+
+% calculate surface between simulated and calculated error curves:
+area = trapz(M_CE.f.v, abs(simulated_err_rel_PJVS - 1 - calculated_err_rel_PJVS));
+
+% TODO relative errors? some output is 1.0001, other 0.0001, FIX!
+
+if verbose
+    disp('CE selftest results:')
+    fprintf('Total absolute error between simulated and calculated cable error (uV·Hz): %.3f\n', 1e6.*area);
+
+    figure;
+    hold on;
+    plot(M_CE.f.v, 1e6.*(simulated_err_rel_PJVS - 1), 'xb-', 'LineWidth', 1.5);
+    plot(M_CE.f.v, 1e6.*(calculated_err_rel_PJVS), 'xr-', 'LineWidth', 1.5);
+    legend('Simulated cable error (full PJVS length)', 'Calculated cable error (short length unknown for calculation)');
+    xlabel('Frequency (Hz)');
+    ylabel('Relative error (uV/V)'); % TODO is it really relative?
+    title(sprintf('selftest_CE.m\nComparison of simulated and calculated cable error\ncurves difference: %g uV.Hz', 1e6.*area), 'interpreter', 'none');
+    hold off;
+end
 
 % vim settings modeline: vim: foldmarker=%<<<,%>>> fdm=marker fen ft=matlab textwidth=80 tabstop=4 shiftwidth=4

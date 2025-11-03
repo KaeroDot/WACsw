@@ -43,4 +43,23 @@ if verbose
     hold off;
 end
 
-% vim settings modeline: vim: foldmarker=%<<<,%>>> fdm=marker fen ft=matlab textwidth=80 tabstop=4 shiftwidth=4
+% Now do the same but with two CE measurements (first one is made before SS
+% measurement, second one is made after SS measurement)
+% TODO add time drift between both CE measurements
+
+% Generate second simulated CE measurement:
+M_CE(2) = G_CE(FR_fit, verbose);
+% Process second simulated CE measurement:
+[CE_fit(2)] = P_CE(M_CE(2), FR_fit, verbose);
+% make a fit average
+CE_fit_int = interpolate_CE_fits(CE_fit);
+% evaluate simulation
+% calculated cable error from fit:
+calculated_err_rel_PJVS_int = curve_CE_evaluate(CE_fit_int, M_CE(1).f.v);
+
+% calculate surface between simulated and calculated error curves:
+area = trapz(M_CE(1).f.v, abs(simulated_err_rel_PJVS - 1 - calculated_err_rel_PJVS_int));
+
+if verbose
+    fprintf('Total absolute error between simulated and calculated cable error for interpolated CE_fit (uV·Hz): %.3f\n', 1e6.*area);
+end

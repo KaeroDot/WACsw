@@ -1,44 +1,33 @@
 clear all, close all
 addpath('../FR')
+addpath('../CE')
 % simulation setup:
 
 verbose = 3;
-% first simulate FR:
-% generate simulated measurement data:
-[M_FR, simulated_digitizer_FR] = G_FR(verbose);
-% process measurement:
-[f, measured_digitizer_FR, ac_source_stability, FR_fit] = P_FR(M_FR, '', verbose);
+% Generate simulated FR measurement and process it:
+% (no verbose because only SS is relevant here)
+[M_FR, simulated_digitizer_FR] = G_FR(0);
+[f, measured_digitizer_FR, ac_source_stability, FR_fit] = P_FR(M_FR, '', 0);
 
+% Generate simulated CE measurement before SS and process it:
+% (no verbose because only SS is relevant here)
+M_CE(1) = G_CE(FR_fit, 0);
+[CE_fit(1)] = P_CE(M_CE(1), FR_fit, 0);
 % Generate simulated subsampling measurement:
 % M_SS = conditions_M_SS(check_gen_M_SS());
 % Use set of prefefined values no. 2:
 M_SS = G_SS(2, verbose);
+% Generate simulated CE measurements after SS and process it:
+M_CE(2) = G_CE(FR_fit, 0);
+[CE_fit(2)] = P_CE(M_CE(2), FR_fit, 0);
+% apply both CE fits (before and after SS) by combining them:
+CE_fit_int = interpolate_CE_fits(CE_fit);
 
-% Modify samples according to the digitizer frequency response:
-% add modification of samples according the FR of the digitizer.
-% XXX This should go into selfstanding script
-% Evaluate FR fit for fft frequencies:
-% Build frequency vector (spacing is df=fs/N):
-N = numel(M_SS.y.v);
-% XXX suppose even number of samples!
-f = M_SS.fs.v./N.*[0:N/2 - 1];
-fitfreqs = piecewise_FR_evaluate(FR_fit, f, M_SS.fs);
-% Construct the whole filter for both negative and positive frequencies:
-% XXX is the filter correct?
-% XXX what if numel(F) is odd number?!
-fftfilter = [fitfreqs conj(fliplr(fitfreqs))];
-% Calculate fft:
-F = fft(M_SS.y.v);
-% Apply filter:
-F = F.*fftfilter;
-% Calculate inverse fft
-y_filtered = real(ifft(F));
+y_filtered = apply_CE_FR_on_samples(M_SS, FR_fit, CE_fit_int, 1, verbose);
 M_SS.y.v = y_filtered;
 
-% TODO Cable error measurement and simualtion will come here!
-
 % Process simulated subsampling measurement:
-[A_rms, A_fft] = P_SS(M_SS, FR_fit, verbose);
+[A_rms, A_fft] = P_SS(M_SS, FR_fit, CE_fit_int, verbose);
 disp('SS selftest results:')
 printf('Nominal amplitude (V): %.7f\n')
 printf('Calculated amplitude from RMS value (V): %.7f\n', A_rms)

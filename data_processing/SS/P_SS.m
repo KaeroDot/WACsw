@@ -1,4 +1,4 @@
-function [A_rms, A_fft, t_sorted, y] = P_SS(M_SS, piecewise_fit, verbose);
+function [A_rms, A_fft, t_sorted, y] = P_SS(M_SS, FR_fit, CE_fit, verbose);
     % ensure nan package is loaded:
     % This should be in some top-layer script XXX
     pkg load nan
@@ -14,25 +14,9 @@ function [A_rms, A_fft, t_sorted, y] = P_SS(M_SS, piecewise_fit, verbose);
     % ensure verbose is logical:
     verbose = ~(~(verbose));
 
-    % Correct for digitizer frequency response %<<<1
-    % Build frequency vector (spacing is df=fs/N):
-    N = numel(M_SS.y.v);
-    % XXX suppose even number of samples!
-    f = M_SS.fs.v./N.*[0:N/2 - 1];
-    % Evaluate FR fit for fft frequencies:
-    fitfreqs = piecewise_FR_evaluate(piecewise_fit, f, M_SS.fs);
-    % Get inverse values to achieve compensation of the digitizer frequency response:
-    fitfreqs = -1.*(fitfreqs - 1) + 1;
-    % Construct the whole filter for both negative and positive frequencies:
-    % XXX is the filter correct? most probably yes!
-    % XXX what if numel(F) is odd number?!
-    fftfilter = [fitfreqs conj(fliplr(fitfreqs))];
-    % Calculate fft:
-    F = fft(M_SS.y.v);
-    % Apply filter:
-    F = F.*fftfilter;
-    % Calculate inverse fft
-    y_filtered = real(ifft(F));
+    % Correct for cable error and digitizer freqquency response %<<<1
+    % direction set to zero to remove errors
+    y_filtered = apply_CE_FR_on_samples(M_SS, FR_fit, CE_fit, 0, verbose);
 
     % Process waveform %<<<1
     % This is strictly coherent method. Anything else will fail drastically.

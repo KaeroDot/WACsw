@@ -21,7 +21,7 @@ M_CE = G_CE(FR_fit, verbose);
 % simualted cable error for measurement poings:
 simulated_err_rel_PJVS = cable_error(M_CE.f.v, M_CE.l_PJVS.v);
 % calculated cable error from fit:
-calculated_err_rel_PJVS = curve_CE_evaluate(CE_fit, M_CE.f.v);
+calculated_err_rel_PJVS = CE_fit_evaluate(CE_fit, M_CE.f.v);
 
 % calculate surface between simulated and calculated error curves:
 area = trapz(M_CE.f.v, abs(simulated_err_rel_PJVS - 1 - calculated_err_rel_PJVS));
@@ -52,10 +52,10 @@ M_CE(2) = G_CE(FR_fit, verbose);
 % Process second simulated CE measurement:
 [CE_fit(2)] = P_CE(M_CE(2), FR_fit, verbose);
 % make a fit average
-CE_fit_int = interpolate_CE_fits(CE_fit);
+CE_fit_int = CE_fits_interpolate(CE_fit);
 % evaluate simulation
 % calculated cable error from fit:
-calculated_err_rel_PJVS_int = curve_CE_evaluate(CE_fit_int, M_CE(1).f.v);
+calculated_err_rel_PJVS_int = CE_fit_evaluate(CE_fit_int, M_CE(1).f.v);
 
 % calculate surface between simulated and calculated error curves:
 area = trapz(M_CE(1).f.v, abs(simulated_err_rel_PJVS - 1 - calculated_err_rel_PJVS_int));

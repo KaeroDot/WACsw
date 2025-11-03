@@ -21,7 +21,7 @@ M_SS = G_SS(2, verbose);
 M_CE(2) = G_CE(FR_fit, 0);
 [CE_fit(2)] = P_CE(M_CE(2), FR_fit, 0);
 % apply both CE fits (before and after SS) by combining them:
-CE_fit_int = interpolate_CE_fits(CE_fit);
+CE_fit_int = CE_fits_interpolate(CE_fit);
 
 y_filtered = apply_CE_FR_on_samples(M_SS, FR_fit, CE_fit_int, 1, verbose);
 M_SS.y.v = y_filtered;

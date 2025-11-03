@@ -40,15 +40,15 @@ function [CE_fit] = P_CE(M_CE, FR_fit, verbose);
     %TODO: more complex case even for higher frequencies.
     M_CE.L.v = M_CE.l_PJVS.v - M_CE.l_short.v; % length difference (m)
     % Make the fit:
-    CE_fit = curve_CE_fit(f(:, 1), A(:, 2) - A(:, 1), M_CE);
+    CE_fit = CE_fit_make(f(:, 1), A(:, 2) - A(:, 1), M_CE);
 
     % plot figures if verbose %<<<1
     if verbose
         % fit at measurement points:
-        fit_data_y = curve_CE_evaluate(CE_fit, f(:, 1));
+        fit_data_y = CE_fit_evaluate(CE_fit, f(:, 1));
         % fit for 10x multiple points to make a line:
         fit_line_x = linspace(min(f(:, 1)), max(f(:, 1)), 10*numel(f(:, 1)));
-        fit_line_y = curve_CE_evaluate(CE_fit, fit_line_x);
+        fit_line_y = CE_fit_evaluate(CE_fit, fit_line_x);
 
         figure;
         hold on;

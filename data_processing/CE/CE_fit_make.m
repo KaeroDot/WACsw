@@ -1,5 +1,4 @@
 % Fit cable error model to frequency-amplitude dependece 
-% fit = CE_fit(freqs, A_v)
 %   Inputs:
 %       f - frequency vector
 %       A - amplitude vector
@@ -13,7 +12,7 @@
 %       .freqs     - input frequency vector
 %       .A_v       - input amplitude vector
 
-function fit = curve_CE_fit(f, A, M_CE)
+function fit = CE_fit_make(f, A, M_CE)
     %TODO use better model
     % cable error model = 2.*pi.^2.*(f.*L./nu).^2; % err = V(L)./V_s
     L = M_CE.L.v; % length difference (m)
@@ -30,6 +29,6 @@ function fit = curve_CE_fit(f, A, M_CE)
     fit.fit.J = J;
     fit.fit.COVB = COVB;
     fit.fit.MSE = MSE;
-end % function curve_CE_fit
+end % function CE_fit_make
 
 % vim settings modeline: vim: foldmarker=%<<<,%>>> fdm=marker fen ft=matlab textwidth=80 tabstop=4 shiftwidth=4

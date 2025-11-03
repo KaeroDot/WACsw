@@ -57,10 +57,10 @@ function y_filtered = apply_CE_FR_on_samples(M_SS, FR_fit, CE_fit, direction, ve
         end
     end
     % TODO not good - piecewise_FR_evaluate returns 1.000something, but
-    % curve_CE_evaluate returns 0.00something
+    % CE_fit_evaluate returns 0.00something
     if not(isempty(CE_fit))
         % Evaluate CE fit for DFT frequencies:
-        CE_gain = curve_CE_evaluate(CE_fit, f);
+        CE_gain = CE_fit_evaluate(CE_fit, f);
         CE_gain = 1 + CE_gain;
         if direction
             % add the effect of CE:

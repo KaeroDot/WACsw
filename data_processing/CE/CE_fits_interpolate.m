@@ -12,7 +12,7 @@
 %   - All input CE_fit structures must use the same fit method.
 %
 
-function CE_fit_int = interpolate_CE_fits(CE_fit)
+function CE_fit_int = CE_fits_interpolate(CE_fit)
     % check inputs:
     all_methods = {CE_fit.method};
 
@@ -36,4 +36,4 @@ function CE_fit_int = interpolate_CE_fits(CE_fit)
     CE.fit.MSE = []; % TODO I have no idea how to interpolate R, COVB, MSE
 
     % TODO time of measurments should be intput: t1, t2, and also t_int as time for which we want to interpolate
-end % function interpolate_CE_fits
+end % function CE_fits_interpolate

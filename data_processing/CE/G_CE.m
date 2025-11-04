@@ -68,7 +68,7 @@ function [M_CE] = G_CE(FR_fit, verbose);
     M_CE.M.v = f_signal_all_meas; % multiples of periods in record - same number of periods as the frequency
     M_CE.t.v = t;
     M_CE.A.v = A;
-    M_CE.FR_fit.v = FR_fit;
+    M_CE.FR_fit = FR_fit;
     M_CE.L.v = [L_long L_short];
 
     % Verbose figure %<<<1

@@ -1,4 +1,4 @@
-function [CE_fit] = P_CE(M_CE, FR_fit, verbose);
+function [CE_fit] = P_CE(M_CE, verbose);
     % calcualte ratio, relate to lowest frequency, fit by line equation, display error at 100 kHz.
 
 
@@ -30,7 +30,7 @@ function [CE_fit] = P_CE(M_CE, FR_fit, verbose);
     % TODO change to existing function:
     % evaluate FR fit at measurement frequencies:
     % Evaluate FR fit for fft frequencies:
-    fitfreqs = piecewise_FR_evaluate(FR_fit, f, M_CE.fs);
+    fitfreqs = piecewise_FR_evaluate(M_CE.FR_fit, f, M_CE.fs);
     % Get inverse values to achieve compensation of the digitizer frequency response:
     fitfreqs = -1.*(fitfreqs - 1) + 1;
     % Get corrected amplitudes:

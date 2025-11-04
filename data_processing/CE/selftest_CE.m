@@ -15,7 +15,7 @@ verbose = 1;
 M_CE = G_CE(FR_fit, verbose);
 
 % Process simulated CE measurement:
-[CE_fit] = P_CE(M_CE, FR_fit, verbose);
+[CE_fit] = P_CE(M_CE, verbose);
 
 % evaluate simulation
 % simualted cable error for measurement points:
@@ -50,7 +50,7 @@ end
 % Generate second simulated CE measurement:
 M_CE(2) = G_CE(FR_fit, verbose);
 % Process second simulated CE measurement:
-[CE_fit(2)] = P_CE(M_CE(2), FR_fit, verbose);
+[CE_fit(2)] = P_CE(M_CE(2), verbose);
 % make a fit average
 CE_fit_int = CE_fits_interpolate(CE_fit);
 % evaluate simulation

@@ -18,32 +18,32 @@ M_CE = G_CE(FR_fit, verbose);
 [CE_fit] = P_CE(M_CE, FR_fit, verbose);
 
 % evaluate simulation
-% simualted cable error for measurement poings:
-simulated_err_rel_PJVS = cable_error(M_CE.f.v, M_CE.l_PJVS.v);
+% simualted cable error for measurement points:
+V_ratio_long_sim = simulate_cable(M_CE.f.v, M_CE.L.v(1));
 % calculated cable error from fit:
-calculated_err_rel_PJVS = CE_fit_evaluate(CE_fit, M_CE.f.v);
+V_ratio_long_calc = CE_fit_evaluate(CE_fit, M_CE.f.v);
 
-% calculate surface between simulated and calculated error curves:
-area = trapz(M_CE.f.v, abs(simulated_err_rel_PJVS - 1 - calculated_err_rel_PJVS));
+% calculate surface between simulated and calculated ratio curves:
+area = trapz(M_CE.f.v, abs(V_ratio_long_sim - V_ratio_long_calc));
 
 % TODO relative errors? some output is 1.0001, other 0.0001, FIX!
 
 if verbose
     disp('CE selftest results:')
-    fprintf('Total absolute error between simulated and calculated cable error (uV·Hz): %.3f\n', 1e6.*area);
+    fprintf('Curve area between simulated and calculated voltage ratios (uV·Hz): %.3f\n', 1e6.*area);
 
     figure;
     hold on;
-    plot(M_CE.f.v, 1e6.*(simulated_err_rel_PJVS - 1), 'xb-', 'LineWidth', 1.5);
-    plot(M_CE.f.v, 1e6.*(calculated_err_rel_PJVS), 'xr-', 'LineWidth', 1.5);
-    legend('Simulated cable error (full PJVS length)', 'Calculated cable error (short length unknown for calculation)');
+    plot(M_CE.f.v, 1e6.*(V_ratio_long_sim - 1), 'xb-', 'LineWidth', 1.5);
+    plot(M_CE.f.v, 1e6.*(V_ratio_long_calc - 1), 'xr-', 'LineWidth', 1.5);
+    legend('Simulated voltage ratio for long (PJVS) cable', 'Calculated voltage ratio for long cable');
     xlabel('Frequency (Hz)');
     ylabel('Relative error (uV/V)'); % TODO is it really relative?
-    title(sprintf('selftest_CE.m\nComparison of simulated and calculated cable error\ncurves difference: %g uV.Hz', 1e6.*area), 'interpreter', 'none');
+    title(sprintf('selftest_CE.m\nComparison of simulated and calculated voltage errors caused by cable lengths\ncurves difference: %g uV.Hz', 1e6.*area), 'interpreter', 'none');
     hold off;
 end
 
-% Now do the same but with two CE measurements (first one is made before SS
+% Now do the same but with second CE measurements (first one is made before SS
 % measurement, second one is made after SS measurement)
 % TODO add time drift between both CE measurements
 
@@ -55,11 +55,11 @@ M_CE(2) = G_CE(FR_fit, verbose);
 CE_fit_int = CE_fits_interpolate(CE_fit);
 % evaluate simulation
 % calculated cable error from fit:
-calculated_err_rel_PJVS_int = CE_fit_evaluate(CE_fit_int, M_CE(1).f.v);
+V_ratio_long_int_calc = CE_fit_evaluate(CE_fit_int, M_CE(1).f.v);
 
 % calculate surface between simulated and calculated error curves:
-area = trapz(M_CE(1).f.v, abs(simulated_err_rel_PJVS - 1 - calculated_err_rel_PJVS_int));
+area_int = trapz(M_CE(1).f.v, abs(V_ratio_long_sim - V_ratio_long_int_calc));
 
 if verbose
-    fprintf('Total absolute error between simulated and calculated cable error for interpolated CE_fit (uV·Hz): %.3f\n', 1e6.*area);
+    fprintf('Curve area between simulated and calculated voltage ratios for interpolated CE_fit (uV·Hz): %.3f\n', 1e6.*area_int);
 end

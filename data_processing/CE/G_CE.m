@@ -26,9 +26,9 @@ function [M_CE] = G_CE(FR_fit, verbose);
 
     % Constants %<<<1
     % length of the cable to the PJVS chip (m):
-    l_PJVS = 5.1;
+    L_long = 5.1;
     % length of the cable to the short (m):
-    l_short = 0.1;
+    L_short = 0.1;
     % signal (measurement) frequencies (Hz):
     f_signal = linspace(50, 100e3, 10);
     % double the frequencies because two readings per frequency (short and PJVS):
@@ -44,29 +44,19 @@ function [M_CE] = G_CE(FR_fit, verbose);
     t_one_reading = 10;
 
     % Simulate measurement %<<<1
-    % get amplitudes of the drifting AC source:
+    % get voltages of the drifting AC source:
     [A_source, total_err_rel_ppm, t] = AC_source_error_simulator(f_signal_all_meas, A_nominal, [], t_one_reading);
-    % generate cable errors for both short and PJVS:
-    err_rel_PJVS = cable_error(f_signal, l_PJVS);
-    err_rel_short = cable_error(f_signal, l_short);
-    % get all cable errors according the measurement order (first short, then PJVS):
-    err_rel_no_FR = [err_rel_short; err_rel_PJVS](:)';
+    % generate voltage ratios at end of cable for both short and long (PJVS) cable lengths:
+    V_ratio_long = simulate_cable(f_signal, L_long);
+    V_ratio_short = simulate_cable(f_signal, L_short);
+    % get all voltage ratios according the measurement order (first long (PJVS), then short):
+    V_ratio_no_FR = [V_ratio_long; V_ratio_short](:)';
     % only for plotting purposes:
-    A_no_FR = A_source .* err_rel_no_FR;
-
-                                    %     % times of readings (two readings per signal frequency):
-                                    %     starttime = time();
-                                    %     t = starttime + t_one_reading .* [1 : 1 : 2.*numel(f_signal)] - t_one_reading;
-                                    %     t = t(:);
-                                    % % amplitude of the source - time dependent linear drift that starts at nominal amplitude:
-                                    % % (no frequency dependence of ac source!)
-                                    % % ac source drift in V/s:
-                                    % ac_drift = ac_change./(numel(t).*t_one_reading);
-                                    % A_source = A_nominal + ac_drift .* (t - t(1));
-    % get relative error from FR fit to simulate measurement by a real digitizer:
-    FR_err_rel = piecewise_FR_evaluate(FR_fit, f_signal_all_meas, fs);
-    err_rel = FR_err_rel .* err_rel_no_FR;
-    A = A_source .* err_rel;
+    A_no_FR = A_source .* V_ratio_no_FR;
+    % get digitizer gain  from FR fit to simulate measurement by a real digitizer:
+    FR_gain = piecewise_FR_evaluate(FR_fit, f_signal_all_meas, fs);
+    V_ratio = FR_gain .* V_ratio_no_FR;
+    A = A_source .* V_ratio;
 
     % Set output structure %<<<1
     M_CE.A_nominal.v = A_nominal;
@@ -79,23 +69,22 @@ function [M_CE] = G_CE(FR_fit, verbose);
     M_CE.t.v = t;
     M_CE.A.v = A;
     M_CE.FR_fit.v = FR_fit;
-    M_CE.l_PJVS.v = l_PJVS;
-    M_CE.l_short.v = l_short;
+    M_CE.L.v = [L_long L_short];
 
     % Verbose figure %<<<1
 	if verbose
         % double y-axis plot of the generated cable errors:
 		figure
 		hold on
-        [ax, h1, h2] = plotyy(f_signal, 1e6.*(err_rel_PJVS-1), f_signal, 1e6.*(err_rel_short-1));
+        [ax, h1, h2] = plotyy(f_signal, 1e6.*(V_ratio_long-1), f_signal, 1e6.*(V_ratio_short-1));
         set(h1, 'Color', 'b');
         set(h2, 'Color', 'r');
-        legend([h1; h2], {'PJVS', 'short'}, 'location', 'northwest');
-        ylabel(ax(1), 'Cable error PJVS (uV/V)');
-        ylabel(ax(2), 'Cable error short (uV/V)');
+        legend([h1; h2], {'long (PJVS)', 'short'}, 'location', 'northwest');
+        ylabel(ax(1), 'Amplitude error caused by long (PJVS) cable (uV/V)');
+        ylabel(ax(2), 'Amplitude error caused by short cable (uV/V)');
         xlabel('Time (s)');
         grid on
-		title(sprintf('G_CE.m\nsimulated cable errors, PJVS cable length: %.3g m, short cable length: %.3g m', l_PJVS, l_short), 'interpreter', 'none');
+		title(sprintf('G_CE.m\nsimulated errors caused by cable, long (PJVS) cable length: %.3g m, short cable length: %.3g m', L_long, L_short), 'interpreter', 'none');
         hold off
 
         % second figure - generated amplitudes and drift:
@@ -106,8 +95,8 @@ function [M_CE] = G_CE(FR_fit, verbose);
         plot(t(:) - t(1), 1e6.*(A(:) - 1), 'bx-');
         xlabel('Measurement time (s)');
         ylabel('Voltage error from nominal (uV)');
-        title(sprintf('G_CE.m\nSimulated amplitudes including cable errors and source drift\nFirst reading at selected frequency is with short, second is with PJVS short'), 'interpreter', 'none');
-        legend('Source voltage', 'Voltage at digitizer input', 'Voltage measured by digitizer');
+        title(sprintf('G_CE.m\nSimulated amplitudes including cable errors and source drift\nFirst reading at selected frequency is with long (PJVS) cable, second is with short'), 'interpreter', 'none');
+        legend('AC source voltage', 'Voltage at digitizer input', 'Voltage measured by digitizer due to FR');
         grid on
         hold off
     end

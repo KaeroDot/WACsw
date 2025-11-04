@@ -29,7 +29,7 @@ M_SS.y.v = y_filtered;
 % Process simulated subsampling measurement:
 [A_rms, A_fft] = P_SS(M_SS, FR_fit, CE_fit_int, verbose);
 disp('SS selftest results:')
-printf('Nominal amplitude (V): %.7f\n')
+% printf('Nominal amplitude (V): %.7f\n')
 printf('Calculated amplitude from RMS value (V): %.7f\n', A_rms)
 printf('... error (uV): %.3f\n', 1e6.*(M_SS.A_nominal.v - A_rms))
 printf('Calculated amplitude from FFT value (V): %.7f\n', A_fft)

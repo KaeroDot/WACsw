@@ -40,6 +40,7 @@ function y_filtered = apply_CE_FR_on_samples(M_SS, FR_fit, CE_fit, direction, ve
     % create DFT filter %<<<1
     % initialize:
     err_rel_total = ones(size(f));
+    % freuncy response of the digitizer
     if not(isempty(FR_fit))
         % Evaluate FR fit for DFT frequencies:
         FR_gain = piecewise_FR_evaluate(FR_fit, f, M_SS.fs);
@@ -56,12 +57,10 @@ function y_filtered = apply_CE_FR_on_samples(M_SS, FR_fit, CE_fit, direction, ve
             warning('apply_CE_FR_on_samples: FR_fit is empty! FR response will not be applied to the samples!')
         end
     end
-    % TODO not good - piecewise_FR_evaluate returns 1.000something, but
-    % CE_fit_evaluate returns 0.00something
+    % cable error:
     if not(isempty(CE_fit))
         % Evaluate CE fit for DFT frequencies:
         CE_gain = CE_fit_evaluate(CE_fit, f);
-        CE_gain = 1 + CE_gain;
         if direction
             % add the effect of CE:
             err_rel_total = err_rel_total ./ (CE_gain);

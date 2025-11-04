@@ -19,14 +19,15 @@ function [CE_fit] = P_CE(M_CE, FR_fit, verbose);
 
     % Reshape data %<<<1
     % check data are correct
-    % suppose first measurement is for l_PJVS, every second measurement is for l_short
+    % suppose first measurement is for L_long (PJVS), every second measurement is for L_short
     % reshape measurement points
-    % (first collumn will be l_PJVS frequency, second collumn will be l_short frequency)
+    % (first collumn will be L_long (PJVS) frequency, second collumn will be L_short frequency)
     f = reshape(M_CE.f.v, 2, [])'; % signal frequencies
     t = reshape(M_CE.t.v, 2, [])'; % time of reading
     A = reshape(M_CE.A.v, 2, [])'; % amplitude as measured by digitizer, already corrected for digitizer FR
 
     % Correct for digitizer frequency response %<<<1
+    % TODO change to existing function:
     % evaluate FR fit at measurement frequencies:
     % Evaluate FR fit for fft frequencies:
     fitfreqs = piecewise_FR_evaluate(FR_fit, f, M_CE.fs);
@@ -36,11 +37,8 @@ function [CE_fit] = P_CE(M_CE, FR_fit, verbose);
     A = A .* fitfreqs;
 
     % Calculate cable error %<<<1
-    % simplest case - suppose impedance of PJVS is Z_s ≈ 0, DUT is of high
-    %TODO: more complex case even for higher frequencies.
-    M_CE.L.v = M_CE.l_PJVS.v - M_CE.l_short.v; % length difference (m)
     % Make the fit:
-    CE_fit = CE_fit_make(f(:, 1), A(:, 2) - A(:, 1), M_CE);
+    CE_fit = CE_fit_make(f(:, 1), A(:, 1), A(:, 2), M_CE.L.v(1), M_CE.L.v(2));
 
     % plot figures if verbose %<<<1
     if verbose
@@ -52,12 +50,12 @@ function [CE_fit] = P_CE(M_CE, FR_fit, verbose);
 
         figure;
         hold on;
-        plot(f(:, 1), 1e6.*(A(:, 2) - A(:, 1)), 'bo', 'DisplayName', 'Measured cable error');
-        plot(f(:, 1), 1e6.*fit_data_y, 'r*', 'DisplayName', 'Fitted cable error at measurement points');
-        plot(fit_line_x, 1e6.*fit_line_y, 'k-', 'DisplayName', 'Fitted cable error line');
+        plot(f(:, 1), 1e6.*(A(:, 1)./A(:, 2) - 1), 'bo', 'DisplayName', 'Measured voltage error');
+        plot(f(:, 1), 1e6.*(fit_data_y - 1), 'r*', 'DisplayName', 'Fitted voltage error at measurement points');
+        plot(fit_line_x, 1e6.*(fit_line_y - 1), 'k-', 'DisplayName', 'Fitted voltage error model line');
         xlabel('Frequency (Hz)');
-        ylabel('Cable error (uV)');
-        title(sprintf('P_CE.m\nCable error vs frequency'), 'interpreter', 'none');
+        ylabel('Voltage error error (uV/V)');
+        title(sprintf('P_CE.m\nVoltage errors caused by cable'), 'interpreter', 'none');
         legend('show');
         grid on;
     end % if verbose

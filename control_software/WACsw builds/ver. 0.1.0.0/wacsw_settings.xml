@@ -1,0 +1,596 @@
+<?xml version='1.0' standalone='yes' ?>
+<LVData xmlns="http://www.ni.com/LVData">
+<Version>20.0.1</Version>
+<Cluster>
+<Name>TD to be saved</Name>
+<NumElts>8</NumElts>
+<Cluster>
+<Name>Common properties</Name>
+<NumElts>9</NumElts>
+<Refnum>
+<Name>Measurement status ref</Name>
+<RefKind>LV Object</RefKind>
+<RefType>Control</RefType>
+<Val>0x06C0004A</Val>
+</Refnum>
+<Refnum>
+<Name>TWM Status ref</Name>
+<RefKind>LV Object</RefKind>
+<RefType>Control</RefType>
+<Val>0x06D0004B</Val>
+</Refnum>
+<Refnum>
+<Name>Abort ref</Name>
+<RefKind>LV Object</RefKind>
+<RefType>Control</RefType>
+<Val>0x02800006</Val>
+</Refnum>
+<Refnum>
+<Name>Skip waiting ref</Name>
+<RefKind>LV Object</RefKind>
+<RefType>Control</RefType>
+<Val>0x06B00049</Val>
+</Refnum>
+<Path>
+<Name>GNU Octave path</Name>
+<Val>C:\Program Files\GNU Octave\Octave-6.2.0\mingw64\bin</Val>
+</Path>
+<Path>
+<Name>TWM+QWTB path</Name>
+<Val>C:\Users\labina\Desktop\TWM-1.8.7.0-full\octprog</Val>
+</Path>
+<Path>
+<Name>lvlib path</Name>
+<Val>D:\martin\WAC\WACsw - github\control_software\WACsw builds\ver. 0.1.0.0\WACsw.exe\Utilities</Val>
+</Path>
+<String>
+<Name>TWM pipe</Name>
+<Val>\\.\pipe\TWM:server</Val>
+</String>
+<Refnum>
+<Name>PJVS status ref</Name>
+<RefKind>LV Object</RefKind>
+<RefType>Control</RefType>
+<Val>0x0700004E</Val>
+</Refnum>
+</Cluster>
+<Cluster>
+<Name>AC Source</Name>
+<NumElts>4</NumElts>
+<EW>
+<Name>AC Source type</Name>
+<Choice>Fluke 5XXX calibrator</Choice>
+<Choice>Tektronix AFG3000 series</Choice>
+<Choice>dummy</Choice>
+<Choice>Agilent 331xxA to 332xxA</Choice>
+<Choice>Agilent 335xxA to 336xxA</Choice>
+<Val>2</Val>
+</EW>
+<Refnum>
+<Name>VISA</Name>
+<RefKind>VISA</RefKind>
+<Val></Val>
+</Refnum>
+<DBL>
+<Name>Ref. clock (Hz)</Name>
+<Val>0.00000000000000</Val>
+</DBL>
+<Refnum>
+<Name>status ref</Name>
+<RefKind>LV Object</RefKind>
+<RefType>Control</RefType>
+<Val>0x06E0004C</Val>
+</Refnum>
+</Cluster>
+<Cluster>
+<Name>DC meter</Name>
+<NumElts>4</NumElts>
+<EW>
+<Name>DC meter type</Name>
+<Choice>H/A/K 3458</Choice>
+<Choice>Fluke 8508A</Choice>
+<Choice>dummy</Choice>
+<Choice>Keithley 2182</Choice>
+<Val>2</Val>
+</EW>
+<Refnum>
+<Name>DC meter VISA</Name>
+<RefKind>VISA</RefKind>
+<Val></Val>
+</Refnum>
+<DBL>
+<Name>NPLC</Name>
+<Val>10.00000000000000</Val>
+</DBL>
+<Refnum>
+<Name>status ref</Name>
+<RefKind>LV Object</RefKind>
+<RefType>Control</RefType>
+<Val>0x06F0004D</Val>
+</Refnum>
+</Cluster>
+<Cluster>
+<Name>CE measurement</Name>
+<NumElts>9</NumElts>
+<Array>
+<Name>Signal frequencies (Hz)</Name>
+<Dimsize>1</Dimsize>
+<DBL>
+<Name>Numeric</Name>
+<Val>1000.00000000000000</Val>
+</DBL>
+</Array>
+<Array>
+<Name>Signal amplitudes (V)</Name>
+<Dimsize>1</Dimsize>
+<DBL>
+<Name>Numeric</Name>
+<Val>1.00000000000000</Val>
+</DBL>
+</Array>
+<Array>
+<Name>Sampling frequencies (Hz)</Name>
+<Dimsize>1</Dimsize>
+<DBL>
+<Name>Numeric</Name>
+<Val>10000000.00000000000000</Val>
+</DBL>
+</Array>
+<Array>
+<Name>Record lengths (multiples of periods)</Name>
+<Dimsize>1</Dimsize>
+<DBL>
+<Name>Numeric</Name>
+<Val>100.00000000000000</Val>
+</DBL>
+</Array>
+<Path>
+<Name>TWM data root directory</Name>
+<Val>C:\Users\labina\Documents\CE_measurement</Val>
+</Path>
+<Array>
+<Name>TWM mreasurements directories</Name>
+<Dimsize>1</Dimsize>
+<Path>
+<Name>TWM directory</Name>
+<Val>C:\Users\labina\Documents\CE_measurement\CE_measurement_0001</Val>
+</Path>
+</Array>
+<Boolean>
+<Name>Calculate RMS from samples</Name>
+<Val>1</Val>
+</Boolean>
+<String>
+<Name>RMS algorithm</Name>
+<Val>TWM-WFFT</Val>
+</String>
+<DBL>
+<Name>Settle down after AC source change (s)</Name>
+<Val>1.00000000000000</Val>
+</DBL>
+</Cluster>
+<Cluster>
+<Name>FR measurement</Name>
+<NumElts>15</NumElts>
+<Array>
+<Name>Measurement frequencies (Hz)</Name>
+<Dimsize>3</Dimsize>
+<DBL>
+<Name>Numeric</Name>
+<Val>1000.00000000000000</Val>
+</DBL>
+<DBL>
+<Name>Numeric</Name>
+<Val>1000000.00000000000000</Val>
+</DBL>
+<DBL>
+<Name>Numeric</Name>
+<Val>1000.00000000000000</Val>
+</DBL>
+</Array>
+<DBL>
+<Name>Sampling frequency (Hz)</Name>
+<Val>10000000.00000000000000</Val>
+</DBL>
+<DBL>
+<Name>Signal amplitude (V)</Name>
+<Val>1.00000000000000</Val>
+</DBL>
+<DBL>
+<Name>AC-DC settle time (s)</Name>
+<Val>10.00000000000000</Val>
+</DBL>
+<Array>
+<Name>Record length (multiples of period)</Name>
+<Dimsize>3</Dimsize>
+<DBL>
+<Name>Numeric</Name>
+<Val>1000.00000000000000</Val>
+</DBL>
+<DBL>
+<Name>Numeric</Name>
+<Val>1000000.00000000000000</Val>
+</DBL>
+<DBL>
+<Name>Numeric</Name>
+<Val>1000.00000000000000</Val>
+</DBL>
+</Array>
+<Path>
+<Name>Measurement template file</Name>
+<Val>D:\martin\WAC\WACsw - github\control_software\WACsw builds\ver. 0.1.0.0\Template\Example of FF meter template.xlsx</Val>
+</Path>
+<I32>
+<Name>Row of START keyword</Name>
+<Val>9</Val>
+</I32>
+<I32>
+<Name>Row of STOP keyword</Name>
+<Val>14</Val>
+</I32>
+<Boolean>
+<Name>Calculate RMS from samples</Name>
+<Val>1</Val>
+</Boolean>
+<DBL>
+<Name>AC-DC warm up time (s)</Name>
+<Val>300.00000000000000</Val>
+</DBL>
+<Array>
+<Name>Measurement template line</Name>
+<Dimsize>3</Dimsize>
+<I32>
+<Name>Numeric</Name>
+<Val>9</Val>
+</I32>
+<I32>
+<Name>Numeric</Name>
+<Val>10</Val>
+</I32>
+<I32>
+<Name>Numeric</Name>
+<Val>11</Val>
+</I32>
+</Array>
+<I32>
+<Name>DC meter readings No.</Name>
+<Val>10</Val>
+</I32>
+<String>
+<Name>Algorithm</Name>
+<Val>TWM_WFFT</Val>
+</String>
+<Boolean>
+<Name>Simultaneous measurement</Name>
+<Val>1</Val>
+</Boolean>
+<Boolean>
+<Name>Recalculate-skip already calculated</Name>
+<Val>0</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>FR template</Name>
+<NumElts>17</NumElts>
+<I32>
+<Name>Keywords column</Name>
+<Val>0</Val>
+</I32>
+<I32>
+<Name>Sig. freq. column</Name>
+<Val>1</Val>
+</I32>
+<I32>
+<Name>Rec. len. column</Name>
+<Val>2</Val>
+</I32>
+<I32>
+<Name>Meas. points. row min to read</Name>
+<Val>10</Val>
+</I32>
+<I32>
+<Name>Meas. points. row max to read</Name>
+<Val>100000</Val>
+</I32>
+<I32>
+<Name>Properties column</Name>
+<Val>4</Val>
+</I32>
+<I32>
+<Name>Properties row start</Name>
+<Val>1</Val>
+</I32>
+<I32>
+<Name>Properties row end</Name>
+<Val>5</Val>
+</I32>
+<String>
+<Name>Keyword START regexp</Name>
+<Val>[Ss][Tt][Aa][Rr][Tt]</Val>
+</String>
+<String>
+<Name>Keyword STOP regexp</Name>
+<Val>[Ss][Tt][Oo][Pp]</Val>
+</String>
+<I32>
+<Name>HW data column</Name>
+<Val>7</Val>
+</I32>
+<I32>
+<Name>HW data row start</Name>
+<Val>1</Val>
+</I32>
+<I32>
+<Name>HW data row end</Name>
+<Val>3</Val>
+</I32>
+<I32>
+<Name>TIme and date column start</Name>
+<Val>3</Val>
+</I32>
+<I32>
+<Name>Digitizer value column start </Name>
+<Val>4</Val>
+</I32>
+<I32>
+<Name>DC mean column start </Name>
+<Val>6</Val>
+</I32>
+<I32>
+<Name>DC readings column start</Name>
+<Val>10</Val>
+</I32>
+</Cluster>
+<Cluster>
+<Name>PJVS</Name>
+<NumElts>6</NumElts>
+<EW>
+<Name>PJVS type</Name>
+<Choice>AC-supraVOLTcontrol</Choice>
+<Choice>JV modified NPL bias control</Choice>
+<Choice>Manual PJVS</Choice>
+<Choice>VTT PJVS</Choice>
+<Val>0</Val>
+</EW>
+<Refnum>
+<Name>Status Refnum</Name>
+<RefKind>LV Object</RefKind>
+<RefType>Control</RefType>
+<Val>0x00000000</Val>
+</Refnum>
+<Cluster>
+<Name>AC-supraVOLTcontrol</Name>
+<NumElts>4</NumElts>
+<String>
+<Name>IP address:port (0.0.0.0:0000)</Name>
+<Val>127.0.0.1:8080</Val>
+</String>
+<Cluster>
+<Name>Timeouts</Name>
+<NumElts>9</NumElts>
+<I32>
+<Name>TCP Read &amp; Write (ms)</Name>
+<Val>7000</Val>
+</I32>
+<I32>
+<Name>Sensors readout</Name>
+<Val>5000</Val>
+</I32>
+<I32>
+<Name>PJVS setup</Name>
+<Val>5000</Val>
+</I32>
+<I32>
+<Name>Nullmeter readout</Name>
+<Val>5000</Val>
+</I32>
+<I32>
+<Name>Multiplexer setup</Name>
+<Val>3000</Val>
+</I32>
+<I32>
+<Name>57XX setup</Name>
+<Val>15000</Val>
+</I32>
+<I32>
+<Name>Generator setup</Name>
+<Val>5000</Val>
+</I32>
+<I32>
+<Name>Synthesizer setup</Name>
+<Val>3000</Val>
+</I32>
+<I32>
+<Name>Sampler readout</Name>
+<Val>10000</Val>
+</I32>
+</Cluster>
+<Boolean>
+<Name>Simulation mode</Name>
+<Val>0</Val>
+</Boolean>
+<Boolean>
+<Name>Debug mode</Name>
+<Val>0</Val>
+</Boolean>
+</Cluster>
+<Cluster>
+<Name>NPL bias source</Name>
+<NumElts>1</NumElts>
+<Cluster>
+<Name>DataSocketCluster</Name>
+<NumElts>6</NumElts>
+<String>
+<Name>Server Machine</Name>
+<Val></Val>
+</String>
+<String>
+<Name>Client Machine</Name>
+<Val></Val>
+</String>
+<String>
+<Name>Data</Name>
+<Val></Val>
+</String>
+<DBL>
+<Name>TimeStamp</Name>
+<Val>0.00000000000000</Val>
+</DBL>
+<I32>
+<Name>Count</Name>
+<Val>0</Val>
+</I32>
+<String>
+<Name>Target Process</Name>
+<Val></Val>
+</String>
+</Cluster>
+</Cluster>
+<Cluster>
+<Name>Manual PJVS</Name>
+<NumElts>3</NumElts>
+<DBL>
+<Name>PJVS frequency (Hz)</Name>
+<Val>1000.00000000000000</Val>
+</DBL>
+<Array>
+<Name>Reference voltages (V)</Name>
+<Dimsize>0</Dimsize>
+<DBL>
+<Name>Uref (V)</Name>
+<Val></Val>
+</DBL>
+</Array>
+<Path>
+<Name>File with PJVS voltages</Name>
+<Val></Val>
+</Path>
+</Cluster>
+<Cluster>
+<Name>VTT PJVS</Name>
+<NumElts>1</NumElts>
+<String>
+<Name>some VTT only property</Name>
+<Val></Val>
+</String>
+</Cluster>
+</Cluster>
+<Cluster>
+<Name>SS measurement</Name>
+<NumElts>20</NumElts>
+<Array>
+<Name>Signal frequencies (Hz)</Name>
+<Dimsize>1</Dimsize>
+<DBL>
+<Name>Numeric</Name>
+<Val>100000.00000000000000</Val>
+</DBL>
+</Array>
+<Array>
+<Name>Signal amplitudes (V)</Name>
+<Dimsize>1</Dimsize>
+<DBL>
+<Name>Numeric</Name>
+<Val>0.10000000000000</Val>
+</DBL>
+</Array>
+<Array>
+<Name>Sampling frequencies (Hz)</Name>
+<Dimsize>1</Dimsize>
+<DBL>
+<Name>Numeric</Name>
+<Val>10000000.00000000000000</Val>
+</DBL>
+</Array>
+<Array>
+<Name>Record lengths (multiples of periods)</Name>
+<Dimsize>1</Dimsize>
+<DBL>
+<Name>Numeric</Name>
+<Val>100.00000000000000</Val>
+</DBL>
+</Array>
+<Boolean>
+<Name>Calculate results</Name>
+<Val>1</Val>
+</Boolean>
+<String>
+<Name>Algorithm</Name>
+<Val>TWM-PJVSSubS</Val>
+</String>
+<Array>
+<Name>TWM data directories</Name>
+<Dimsize>1</Dimsize>
+<Path>
+<Name>File Path</Name>
+<Val>C:\Users\labina\Documents\SS_measurement</Val>
+</Path>
+</Array>
+<DBL>
+<Name>Settle down after AC source change (s)</Name>
+<Val>1.00000000000000</Val>
+</DBL>
+<Array>
+<Name>PJVS frequencies (Hz)</Name>
+<Dimsize>1</Dimsize>
+<DBL>
+<Name>Numeric</Name>
+<Val>100.00000000000000</Val>
+</DBL>
+</Array>
+<Array>
+<Name>PJVS reference voltages</Name>
+<Dimsize>0</Dimsize>
+<Dimsize>0</Dimsize>
+<DBL>
+<Name>Numeric</Name>
+<Val></Val>
+</DBL>
+</Array>
+<Array>
+<Name>Requested PJVS steps</Name>
+<Dimsize>1</Dimsize>
+<U32>
+<Name>Numeric</Name>
+<Val>20</Val>
+</U32>
+</Array>
+<Path>
+<Name>FR fit path</Name>
+<Val>&lt;Not A Path&gt;</Val>
+</Path>
+<Boolean>
+<Name>Measure CE</Name>
+<Val>1</Val>
+</Boolean>
+<Boolean>
+<Name>Measure CE before</Name>
+<Val>1</Val>
+</Boolean>
+<Boolean>
+<Name>Measure CE after</Name>
+<Val>1</Val>
+</Boolean>
+<Path>
+<Name>CE fit path</Name>
+<Val>&lt;Not A Path&gt;</Val>
+</Path>
+<Boolean>
+<Name>Measure digitizer gain</Name>
+<Val>1</Val>
+</Boolean>
+<Boolean>
+<Name>Measure digitizer gain before</Name>
+<Val>1</Val>
+</Boolean>
+<Boolean>
+<Name>Measure digitizer gain after</Name>
+<Val>0</Val>
+</Boolean>
+<DBL>
+<Name>Digitizer gain</Name>
+<Val>1.00000000000000</Val>
+</DBL>
+</Cluster>
+</Cluster>
+</LVData>

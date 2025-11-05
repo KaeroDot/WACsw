@@ -26,6 +26,16 @@
 			</Item>
 			<Item Name="CE Measure.vi" Type="VI" URL="../CE Measurement/CE Measure.vi"/>
 		</Item>
+		<Item Name="CE Utilities" Type="Folder">
+			<Item Name="Template related" Type="Folder">
+				<Item Name="CE Load XCL template.vi" Type="VI" URL="../CE Utilities/Template related/CE Load XCL template.vi"/>
+				<Item Name="CE XCL Write header.vi" Type="VI" URL="../CE Utilities/Template related/CE XCL Write header.vi"/>
+				<Item Name="CE XCL Write measurement line.vi" Type="VI" URL="../CE Utilities/Template related/CE XCL Write measurement line.vi"/>
+			</Item>
+			<Item Name="Type definitions" Type="Folder">
+				<Item Name="CE template.ctl" Type="VI" URL="../CE Utilities/Type definitions/CE template.ctl"/>
+			</Item>
+		</Item>
 		<Item Name="external libraries" Type="Folder">
 			<Item Name="externals needed for AWG" Type="Folder">
 				<Item Name="3458A Sampling Rate.ctl" Type="VI" URL="../external libraries/externals needed for AWG/3458A Sampling Rate.ctl"/>
@@ -211,6 +221,7 @@
 			<Item Name="Set TWM Processing.vi" Type="VI" URL="../Utilities/Set TWM Processing.vi"/>
 			<Item Name="TWM Measure.vi" Type="VI" URL="../Utilities/TWM Measure.vi"/>
 		</Item>
+		<Item Name="afg_test.vi" Type="VI" URL="../../../../afg_test.vi"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="instr.lib" Type="Folder">
 				<Item Name="niFgen Abort Generation.vi" Type="VI" URL="/&lt;instrlib&gt;/niFgen/niFgen.llb/niFgen Abort Generation.vi"/>

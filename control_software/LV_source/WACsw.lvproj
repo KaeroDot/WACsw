@@ -17,6 +17,8 @@
 			<Item Name="Type definitions" Type="Folder">
 				<Item Name="CE meter settings.ctl" Type="VI" URL="../CE GUI/Type definitions/CE meter settings.ctl"/>
 			</Item>
+			<Item Name="CE GUI Connections.vi" Type="VI" URL="../CE GUI/CE GUI Connections.vi"/>
+			<Item Name="CE GUI Measurement setup - template.vi" Type="VI" URL="../CE GUI/CE GUI Measurement setup - template.vi"/>
 			<Item Name="CE GUI Measurement setup.vi" Type="VI" URL="../CE GUI/CE GUI Measurement setup.vi"/>
 			<Item Name="temporary CE GUI main.vi" Type="VI" URL="../CE GUI/temporary CE GUI main.vi"/>
 		</Item>
@@ -35,6 +37,7 @@
 			<Item Name="Type definitions" Type="Folder">
 				<Item Name="CE template.ctl" Type="VI" URL="../CE Utilities/Type definitions/CE template.ctl"/>
 			</Item>
+			<Item Name="CE Estimate measurement time.vi" Type="VI" URL="../CE Utilities/CE Estimate measurement time.vi"/>
 		</Item>
 		<Item Name="external libraries" Type="Folder">
 			<Item Name="externals needed for AWG" Type="Folder">

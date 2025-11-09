@@ -26,7 +26,7 @@ function [M_FR, simulated_digitizer_FR] = G_FR(verbose); %f, A, noise, tf_dig_A,
     verbose = ~(~(verbose));
 
     % Constants %<<<1
-    # sampling frequency (MS/s):
+    % sampling frequency (MS/s):
     fs = 4e6;
     % reference/basic signal frequency (Hz):
     f_basic = 1e4;
@@ -57,7 +57,7 @@ function [M_FR, simulated_digitizer_FR] = G_FR(verbose); %f, A, noise, tf_dig_A,
     ac_drift = ac_change./(numel(t).*t_one_reading);
     Asource = ac_source_A_nominal + ac_drift .* (t - t(1));
     if any(Asource <= 0)
-        error('G_FF: amplitude of the AC source decreased to zero % during the simulated measurement due to the source drift!')
+        error('G_FF: amplitude of the AC source decreased to zero during the simulated measurement due to the source drift!')
     end
 
     % get output of AC/DC standard:
@@ -92,6 +92,7 @@ function [M_FR, simulated_digitizer_FR] = G_FR(verbose); %f, A, noise, tf_dig_A,
     M_FR.Udc.r = repmat(M_FR.Udc.v, 1, M_FR.dc_readings.v); % dc readings - readings XXX move readings outside .r, that should be randomized values?
     M_FR.acdc_corrections_path.v = acdc_corrections_path; % path to the file with corrections of the AC/DC transfer standard
     M_FR.y.v = []; %XXX 2DO here generate the samples! Maybe this will not be needed. This can be very large! 20 GB of data! Or maybe better path to files!
+    M_FR.label.v = 'simulated_FR_measurement';
 
     % Verbose figure %<<<1
 	if verbose

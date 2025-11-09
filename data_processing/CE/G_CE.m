@@ -70,6 +70,7 @@ function [M_CE] = G_CE(FR_fit, verbose);
     M_CE.A.v = A;
     M_CE.FR_fit = FR_fit;
     M_CE.L.v = [L_long L_short];
+    M_CE.label.v = 'simulated_CE_measurement';
 
     % Verbose figure %<<<1
 	if verbose

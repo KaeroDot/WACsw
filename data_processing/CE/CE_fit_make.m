@@ -30,7 +30,9 @@ function fit = CE_fit_make(f, V1, V2, L1, L2)
     % voltage lead errors of an AC Josephson voltage standard by impedance
     % matching’, Measurement Science and Technology, vol. 28, no. 9, p. 095004,
     % Sept. 2017, doi: 10.1088/1361-6501/aa7aba.
-    model_fun = @(p, f) 2.*pi.^2.*(f .* L./p(1)).^2;
+    % (using eval so the L is hardcoded into the function and variable L does
+    % not have to be saved together with model_fun)
+    model_fun = eval(sprintf('@(p, f) 2.*pi.^2.*(f .* %.16g./p(1)).^2', L));
     % Initial guess for parameters [a, b]
     p0 = 2e8; % initial guess for nu (m/s) as 66 % of speed of light
     % make the fit. Fitting is done with voltage errors only, because the
@@ -44,11 +46,12 @@ function fit = CE_fit_make(f, V1, V2, L1, L2)
 
     % now make proper function to generate voltage ratio including 1 and put it
     % into the result structure:
-    model_fun = @(p, f) 1 + 2.*pi.^2.*(f .* L./p(1)).^2;
+    model_fun = eval(sprintf('@(p, f) 1 + 2.*pi.^2.*(f .* %.16g./p(1)).^2', L));
 
     % output structure:
     fit.method = 'nlinfit';
-    fit.model_fun = model_fun;
+    % model_fun is saved as string to allow saving into .mat files v7
+    fit.model_fun = func2str(model_fun);
     fit.params = beta;
 end % function CE_fit_make
 

@@ -9,7 +9,9 @@
 %
 function V_ratio = CE_fit_evaluate(CE_fit, f)
     if strcmp(CE_fit.method, 'nlinfit')
-        V_ratio = CE_fit.model_fun(CE_fit.params, f);
+        % function is stored as string, convert to function handle:
+        fun = str2func(CE_fit.model_fun);
+        V_ratio = fun(CE_fit.params, f);
     else
         error('CE_fit_evaluate: unknown fit method `%s`!', CE_fit.method)
     end

@@ -97,6 +97,13 @@ function [f, digitizer_FR, ac_source_stability, FR_fit] = P_FR(M_FR, acdc_correc
     % fit frequency response by a piecewise polynomial:
     FR_fit = piecewise_FR_fit(f, digitizer_FR, M_FR, verbose);
 
+    % Export results %<<<1
+    % create filename:
+    [PATH, NAME, ~] = fileparts(M_FR.label.v);
+    fn = fullfile(PATH, NAME);
+    fn = [fn '_fit.mat'];
+    save('-v7', fn, 'FR_fit');
+
     if verbose
         figure
         plot(f.v, digitizer_FR.v - 1, '-')

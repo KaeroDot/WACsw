@@ -40,6 +40,13 @@ function [CE_fit] = P_CE(M_CE, verbose);
     % Make the fit:
     CE_fit = CE_fit_make(f(:, 1), A(:, 1), A(:, 2), M_CE.L.v(1), M_CE.L.v(2));
 
+    % Export results %<<<1
+    % create filename:
+    [PATH, NAME, ~] = fileparts(M_CE.label.v);
+    fn = fullfile(PATH, NAME);
+    fn = [fn '_fit.mat'];
+    save('-v7', fn, 'CE_fit');
+
     % plot figures if verbose %<<<1
     if verbose
         % fit at measurement points:

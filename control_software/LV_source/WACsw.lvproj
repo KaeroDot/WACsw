@@ -20,12 +20,14 @@
 			<Item Name="CE GUI Connections.vi" Type="VI" URL="../CE GUI/CE GUI Connections.vi"/>
 			<Item Name="CE GUI Measurement setup - template.vi" Type="VI" URL="../CE GUI/CE GUI Measurement setup - template.vi"/>
 			<Item Name="CE GUI Measurement setup.vi" Type="VI" URL="../CE GUI/CE GUI Measurement setup.vi"/>
+			<Item Name="CE GUI Recalculate.vi" Type="VI" URL="../CE GUI/CE GUI Recalculate.vi"/>
 			<Item Name="temporary CE GUI main.vi" Type="VI" URL="../CE GUI/temporary CE GUI main.vi"/>
 		</Item>
 		<Item Name="CE Measurement" Type="Folder">
 			<Item Name="Type definitions" Type="Folder">
 				<Item Name="CE measurement.ctl" Type="VI" URL="../CE Measurement/Type definitions/CE measurement.ctl"/>
 			</Item>
+			<Item Name="CE Do Single Measurement.vi" Type="VI" URL="../CE Measurement/CE Do Single Measurement.vi"/>
 			<Item Name="CE Measure.vi" Type="VI" URL="../CE Measurement/CE Measure.vi"/>
 		</Item>
 		<Item Name="CE Utilities" Type="Folder">
@@ -38,6 +40,7 @@
 				<Item Name="CE template.ctl" Type="VI" URL="../CE Utilities/Type definitions/CE template.ctl"/>
 			</Item>
 			<Item Name="CE Estimate measurement time.vi" Type="VI" URL="../CE Utilities/CE Estimate measurement time.vi"/>
+			<Item Name="CE Get Measurement Path.vi" Type="VI" URL="../CE Utilities/CE Get Measurement Path.vi"/>
 		</Item>
 		<Item Name="external libraries" Type="Folder">
 			<Item Name="externals needed for AWG" Type="Folder">

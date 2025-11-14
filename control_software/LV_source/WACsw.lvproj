@@ -39,6 +39,7 @@
 			<Item Name="Type definitions" Type="Folder">
 				<Item Name="CE template.ctl" Type="VI" URL="../CE Utilities/Type definitions/CE template.ctl"/>
 			</Item>
+			<Item Name="CE Calculate Fit.vi" Type="VI" URL="../CE Utilities/CE Calculate Fit.vi"/>
 			<Item Name="CE Estimate measurement time.vi" Type="VI" URL="../CE Utilities/CE Estimate measurement time.vi"/>
 			<Item Name="CE Get Measurement Path.vi" Type="VI" URL="../CE Utilities/CE Get Measurement Path.vi"/>
 		</Item>
@@ -134,6 +135,7 @@
 			<Item Name="Type definitions" Type="Folder">
 				<Item Name="FR template.ctl" Type="VI" URL="../FR Utilities/Type definitions/FR template.ctl"/>
 			</Item>
+			<Item Name="FR Calculate Fit.vi" Type="VI" URL="../FR Utilities/FR Calculate Fit.vi"/>
 			<Item Name="FR Estimate measurement time.vi" Type="VI" URL="../FR Utilities/FR Estimate measurement time.vi"/>
 			<Item Name="FR Get Measurement Path.vi" Type="VI" URL="../FR Utilities/FR Get Measurement Path.vi"/>
 		</Item>
@@ -194,12 +196,15 @@
 		</Item>
 		<Item Name="Utilities" Type="Folder">
 			<Item Name="Calculation related" Type="Folder">
-				<Item Name="Calculate.vi" Type="VI" URL="../Utilities/Calculation related/Calculate.vi"/>
-				<Item Name="Calculation result path.vi" Type="VI" URL="../Utilities/Calculation related/Calculation result path.vi"/>
+				<Item Name="Change Octave Working Path.vi" Type="VI" URL="../Utilities/Calculation related/Change Octave Working Path.vi"/>
 				<Item Name="Ensure qwtb_info exist.vi" Type="VI" URL="../Utilities/Calculation related/Ensure qwtb_info exist.vi"/>
-				<Item Name="Read Result.vi" Type="VI" URL="../Utilities/Calculation related/Read Result.vi"/>
+				<Item Name="Globals for GOLPI.vi" Type="VI" URL="../Utilities/Calculation related/Globals for GOLPI.vi"/>
+				<Item Name="Octave Add Paths to data processing.vi" Type="VI" URL="../Utilities/Calculation related/Octave Add Paths to data processing.vi"/>
 				<Item Name="Start Octave.vi" Type="VI" URL="../Utilities/Calculation related/Start Octave.vi"/>
 				<Item Name="Stop Octave.vi" Type="VI" URL="../Utilities/Calculation related/Stop Octave.vi"/>
+				<Item Name="TWM Calculate.vi" Type="VI" URL="../Utilities/Calculation related/TWM Calculate.vi"/>
+				<Item Name="TWM calculation result path.vi" Type="VI" URL="../Utilities/Calculation related/TWM calculation result path.vi"/>
+				<Item Name="TWM Read Result.vi" Type="VI" URL="../Utilities/Calculation related/TWM Read Result.vi"/>
 			</Item>
 			<Item Name="Figure Window" Type="Folder">
 				<Item Name="Close Figure.vi" Type="VI" URL="../Utilities/Figure Window/Close Figure.vi"/>
@@ -228,6 +233,7 @@
 			<Item Name="TWM Measure.vi" Type="VI" URL="../Utilities/TWM Measure.vi"/>
 		</Item>
 		<Item Name="afg_test.vi" Type="VI" URL="../../../../afg_test.vi"/>
+		<Item Name="testoct.vi" Type="VI" URL="../testoct.vi"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="instr.lib" Type="Folder">
 				<Item Name="niFgen Abort Generation.vi" Type="VI" URL="/&lt;instrlib&gt;/niFgen/niFgen.llb/niFgen Abort Generation.vi"/>

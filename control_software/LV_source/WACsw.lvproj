@@ -200,6 +200,7 @@
 				<Item Name="Ensure qwtb_info exist.vi" Type="VI" URL="../Utilities/Calculation related/Ensure qwtb_info exist.vi"/>
 				<Item Name="Globals for GOLPI.vi" Type="VI" URL="../Utilities/Calculation related/Globals for GOLPI.vi"/>
 				<Item Name="Octave Add Paths to data processing.vi" Type="VI" URL="../Utilities/Calculation related/Octave Add Paths to data processing.vi"/>
+				<Item Name="Octave Test if Active.vi" Type="VI" URL="../Utilities/Calculation related/Octave Test if Active.vi"/>
 				<Item Name="Start Octave.vi" Type="VI" URL="../Utilities/Calculation related/Start Octave.vi"/>
 				<Item Name="Stop Octave.vi" Type="VI" URL="../Utilities/Calculation related/Stop Octave.vi"/>
 				<Item Name="TWM Calculate.vi" Type="VI" URL="../Utilities/Calculation related/TWM Calculate.vi"/>

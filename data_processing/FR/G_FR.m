@@ -11,7 +11,7 @@
 %    Example:
 %      M_FR = G_FR(1);
 
-function [M_FR, simulated_digitizer_FR] = G_FR(verbose); %f, A, noise, tf_dig_A, tf_dig_ph, ratio, Unom, tf_acdc)
+function [M_FR, simulated_digitizer_FR] = G_FR(verbose, p); %f, A, noise, tf_dig_A, tf_dig_ph, ratio, Unom, tf_acdc) pridany parameter p
 
     % inputs XXX 2DO really ?
 
@@ -40,8 +40,10 @@ function [M_FR, simulated_digitizer_FR] = G_FR(verbose); %f, A, noise, tf_dig_A,
 
     % Make measurement %<<<1
     % list of frequencies where transfer function was measured:
-    f_real = linspace(1e1, 1.0e6, 10000);
-    f_real = linspace(1e4, 1e6, 1e2); % XXX
+    if ~exist('p', 'var') || isempty(p)
+        p = 100; % puvodni hodnota ked je p prazdne
+    end
+    f_real = linspace(1e4, 1e6, p);
     % measurement was interleaved by 'basic' frequency for AC-AC method:
     f_real = [f_real(:)'; f_basic.*ones(size(f_real(:)'))];
     f_real = f_real(:);

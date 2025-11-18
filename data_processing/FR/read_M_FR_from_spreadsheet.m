@@ -173,6 +173,7 @@ function M_FR = read_M_FR_from_spreadsheet(filename, verbose)
             printf('read_M_FR_from_spreadsheet: data starts with base (low) frequency, swapping even and odd rows.\n');
         end
     end
+    M_FR.label.v = filename;
 
 end % function read_M_FR_from_spreadsheet(filename)
 

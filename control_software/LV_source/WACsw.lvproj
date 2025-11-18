@@ -28,6 +28,7 @@
 				<Item Name="CE measurement.ctl" Type="VI" URL="../CE Measurement/Type definitions/CE measurement.ctl"/>
 			</Item>
 			<Item Name="CE Do Single Measurement.vi" Type="VI" URL="../CE Measurement/CE Do Single Measurement.vi"/>
+			<Item Name="CE Measure for SS.vi" Type="VI" URL="../CE Measurement/CE Measure for SS.vi"/>
 			<Item Name="CE Measure.vi" Type="VI" URL="../CE Measurement/CE Measure.vi"/>
 		</Item>
 		<Item Name="CE Utilities" Type="Folder">

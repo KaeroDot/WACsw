@@ -19,6 +19,11 @@ function piecewise_fit = piecewise_FR_fit(f, FR, M_FR, verbose, regions_in)
     % degree of polynomials:
     max_pol_degree = 3;
 
+    % Override regions if provided
+    if exist('regions_in', 'var')
+        regions = regions_in;
+    end
+
     % Calculation %<<<1
     % convert frequency to relative to sampling:
     f_rel = f.v ./ M_FR.fs.v;

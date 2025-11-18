@@ -24,7 +24,7 @@ figure;
 semilogy(regions_list, errors, '-r', 'MarkerSize', 4)
 xlabel('Počet regiónov (n)')
 ylabel('Celková chyba fitu (V)')
-title('zavislost error na regions')
+title('Zavislost erroru na poctu regions')
 
 %plot(M_FR.f.v, simulated_digitizer_FR.v - 1, '.b', f.v, measured_digitizer_FR.v - 1, '-r')
 %title(sprintf('selftest.m\nsimulated and measured frequency response of the digitizer'))

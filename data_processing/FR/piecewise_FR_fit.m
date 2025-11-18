@@ -19,12 +19,12 @@
 %         .fit.polMU           - cell array of centering/scaling for each region
 %
 % Usage:
-%   piecewise_fit = piecewise_FR_fit(f, FR, M_FR, verbose)
+%   piecewise_fit = piecewise_FR_fit(f, FR, M_FR, verbose, regions_in)
 %
-% XXX should fit error or fit gain? gain: 1+err, error: err
-% XXX maybe replace M_FR by only fs, other things are not needed at all, or take f and FR from M_FR!
+    % XXX should fit error or fit gain? gain: 1+err, error: err
+    % XXX maybe replace M_FR by only fs, other things are not needed at all, or take f and FR from M_FR!
 
-function piecewise_fit = piecewise_FR_fit(f, FR, M_FR, verbose)
+function piecewise_fit = piecewise_FR_fit(f, FR, M_FR, verbose, regions_in)
     % Check inputs %<<<1
     % XXX check also other inputs
     if isempty(verbose)
@@ -41,6 +41,11 @@ function piecewise_fit = piecewise_FR_fit(f, FR, M_FR, verbose)
     regions = 30;
     % degree of polynomials:
     max_pol_degree = 3;
+
+    % Override regions if provided
+    if exist('regions_in', 'var')
+        regions = regions_in;
+    end
 
     % Calculation %<<<1
     % convert frequency to relative to sampling:
@@ -77,10 +82,14 @@ function piecewise_fit = piecewise_FR_fit(f, FR, M_FR, verbose)
         error(sprintf('piecewise_FR_fit: unknown method `%s`!', method))
     end % if method
 
+    fit_data_y = piecewise_FR_evaluate(piecewise_fit, f.v, M_FR.fs);
+    idx = not(isnan(fit_data_y));
+    piecewise_fit.total_error = sum(abs(fit_data_y(idx) - FR.v(idx)));
+
     % Verbose plots %<<<1
     if verbose
         % fit at measurement points:
-        fit_data_y = piecewise_FR_evaluate(piecewise_fit, f.v, M_FR.fs);
+
         % fit for 10x multiple points to make a line:
         fit_line_x = linspace(min(f_rel), max(f_rel), 10*numel(f_rel));
         fit_line_x = fit_line_x.*M_FR.fs.v;
@@ -99,8 +108,8 @@ function piecewise_fit = piecewise_FR_fit(f, FR, M_FR, verbose)
         xlabel('measurement frequency (Hz)')
         ylabel('digitizer gain (V/V)')
         % total error:
-        idx = not(isnan(fit_data_y));
-        err = sum(abs(fit_data_y(idx) - FR.v(idx)));
+
+        err = piecewise_fit.total_error;
         title(sprintf('piecewise_FR_fit.m\nmeasured data and fit\ntotal error sum(abs((fit - measured))) = %.3g', err), 'interpreter', 'none')
         hold off
 

@@ -1,4 +1,5 @@
 % XXX proper description
+% Returns errors or what?
 function y_all = piecewise_FR_evaluate(piecewise_fit, f, fs)
     % Check inputs %<<<1
     % XXX

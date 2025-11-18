@@ -1,7 +1,30 @@
-function piecewise_fit = piecewise_FR_fit(f, FR, M_FR, verbose)
-    % XXX should fit error or fit gain? gain: 1+err, error: err
-    % XXX maybe replace M_FR by only fs, other things are not needed at all, or take f and FR from M_FR!
+% Fit frequency response data with piecewise polynomials or splines.
+%
+% Output:
+%   piecewise_fit - structure containing:
+%     .method   - fitting method used ('spline' or 'polynomial')
+%     .regions  - number of regions for piecewise fitting
+%     .limits   - frequency limits of each region (Hz)
+%     .fit      - fit parameters:
+%       For 'spline':
+%         .fit - spline structure as returned by splinefit, with fields:
+%            .breaks   - vector of breakpoints between regions
+%            .coefs    - matrix of spline coefficients for each region
+%            .order    - order of the spline
+%            .pieces   - number of spline pieces (regions)
+%       For 'polynomial':
+%         .fit.max_pol_degree.v - degree of polynomial
+%         .fit.polP            - cell array of polynomial coefficients for each region
+%         .fit.polS            - cell array of polynomial structure for each region
+%         .fit.polMU           - cell array of centering/scaling for each region
+%
+% Usage:
+%   piecewise_fit = piecewise_FR_fit(f, FR, M_FR, verbose)
+%
+% XXX should fit error or fit gain? gain: 1+err, error: err
+% XXX maybe replace M_FR by only fs, other things are not needed at all, or take f and FR from M_FR!
 
+function piecewise_fit = piecewise_FR_fit(f, FR, M_FR, verbose)
     % Check inputs %<<<1
     % XXX check also other inputs
     if isempty(verbose)

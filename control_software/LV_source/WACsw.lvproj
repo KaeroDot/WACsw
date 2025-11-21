@@ -195,6 +195,9 @@
 			<Item Name="SS measure.vi" Type="VI" URL="../SS Measurement/SS measure.vi"/>
 			<Item Name="SS process.vi" Type="VI" URL="../SS Measurement/SS process.vi"/>
 		</Item>
+		<Item Name="SS Utilities" Type="Folder">
+			<Item Name="Save SS measurement.vi" Type="VI" URL="../SS Utilities/Save SS measurement.vi"/>
+		</Item>
 		<Item Name="Utilities" Type="Folder">
 			<Item Name="Calculation related" Type="Folder">
 				<Item Name="Change Octave Working Path.vi" Type="VI" URL="../Utilities/Calculation related/Change Octave Working Path.vi"/>

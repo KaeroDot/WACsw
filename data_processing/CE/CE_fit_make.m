@@ -40,8 +40,8 @@ function fit = CE_fit_make(f, V1, V2, L1, L2)
     % is general quality)
     V_err_rel = V_ratio - 1;
     [beta, R, J, COVB, MSE] = nlinfit (f, V_err_rel, model_fun, p0);
-    if beta <= 0
-        error('CE_fit_make: fitted parameter nu (propagation velocity) is non-physical (<= 0). Fit failed.');
+    if or(beta <= 0, beta >=299792458)
+        error('CE_fit_make: fitted parameter nu (propagation velocity) is non-physical (<= 0 or >=299792458). Fit failed.');
     end
 
     % now make proper function to generate voltage ratio including 1 and put it

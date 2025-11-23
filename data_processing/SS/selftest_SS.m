@@ -12,14 +12,14 @@ verbose = 3;
 % Generate simulated CE measurement before SS and process it:
 % (no verbose because only SS is relevant here)
 M_CE(1) = G_CE(FR_fit, 0);
-[CE_fit(1)] = P_CE(M_CE(1), FR_fit, 0);
+[CE_fit(1)] = P_CE(M_CE(1), 0);
 % Generate simulated subsampling measurement:
 % M_SS = conditions_M_SS(check_gen_M_SS());
 % Use set of prefefined values no. 2:
 M_SS = G_SS(2, verbose);
 % Generate simulated CE measurements after SS and process it:
 M_CE(2) = G_CE(FR_fit, 0);
-[CE_fit(2)] = P_CE(M_CE(2), FR_fit, 0);
+[CE_fit(2)] = P_CE(M_CE(2), 0);
 % apply both CE fits (before and after SS) by combining them:
 CE_fit_int = CE_fits_interpolate(CE_fit);
 

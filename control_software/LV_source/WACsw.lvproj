@@ -197,6 +197,7 @@
 		</Item>
 		<Item Name="SS Utilities" Type="Folder">
 			<Item Name="Save SS measurement.vi" Type="VI" URL="../SS Utilities/Save SS measurement.vi"/>
+			<Item Name="SS Calculate.vi" Type="VI" URL="../SS Utilities/SS Calculate.vi"/>
 		</Item>
 		<Item Name="Utilities" Type="Folder">
 			<Item Name="Calculation related" Type="Folder">

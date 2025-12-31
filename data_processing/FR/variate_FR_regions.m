@@ -4,9 +4,7 @@
 clear all;
 
 % variate number of regions:
-regions_min = 10;
-regions_max = 250;
-regions_list = regions_min:1:regions_max;
+regions_list = 10:250;
 fit_errors = NaN(size(regions_list));
 
 % generate simulated frequency response measurement:

@@ -84,6 +84,7 @@ function piecewise_fit = piecewise_FR_fit(f, FR, M_FR, regions, verbose)
 
     fit_data_y = piecewise_FR_evaluate(piecewise_fit, f.v, M_FR.fs);
     idx = not(isnan(fit_data_y));
+    % TODO FIX change to trapz - integral error!
     piecewise_fit.total_error = sum(abs(fit_data_y(idx) - FR.v(idx)));
 
     % Verbose plots %<<<1

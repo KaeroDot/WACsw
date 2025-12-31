@@ -21,7 +21,7 @@ function y_all = piecewise_FR_evaluate(piecewise_fit, f, fs)
             y_all(idx) = tmp;
         end % for j
     else
-        error(sprintf('piecewise_FR_fit: unknown method `%s`!', piecewise_fit.method))
+        error(sprintf('piecewise_FR_evaluate: unknown method `%s`!', piecewise_fit.method))
     end % if method
 
     if any(isnan(y_all))

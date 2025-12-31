@@ -19,33 +19,33 @@
 %         .fit.polMU           - cell array of centering/scaling for each region
 %
 % Usage:
-%   piecewise_fit = piecewise_FR_fit(f, FR, M_FR, verbose, regions_in)
+%   piecewise_fit = piecewise_FR_fit(f, FR, M_FR, regions_in, verbose)
 %
     % XXX should fit error or fit gain? gain: 1+err, error: err
     % XXX maybe replace M_FR by only fs, other things are not needed at all, or take f and FR from M_FR!
 
-function piecewise_fit = piecewise_FR_fit(f, FR, M_FR, verbose, regions_in)
-    % Check inputs %<<<1
-    % XXX check also other inputs
-    if isempty(verbose)
-        verbose = 0;
-    end
-    % ensure verbose is logical:
-    verbose = ~(~(verbose));
-
-    % Constants 
+function piecewise_fit = piecewise_FR_fit(f, FR, M_FR, regions, verbose)
+    % Constants %<<<1
     % method = 'polynomial';
     method = 'spline';
 
-    % number of regions of the piecewise fitting:
-    regions = 30;
     % degree of polynomials:
     max_pol_degree = 3;
 
-    % Override regions if provided
-    if exist('regions_in', 'var')
-        regions = regions_in;
+    % Check inputs %<<<1
+    % XXX check also other inputs
+    % validate regions
+    if ~exist('regions', 'var') || isempty(regions)
+        regions = 30;
     end
+    validateattributes(regions, {'numeric'}, {'scalar', 'integer', 'positive'});
+    % validate verbose
+    if ~exist('verbose', 'var') || isempty(verbose)
+        verbose = false;
+    else
+        verbose = logical(verbose(1));
+    end
+    validateattributes(verbose, {'logical'}, {'scalar'});
 
     % Calculation %<<<1
     % convert frequency to relative to sampling:

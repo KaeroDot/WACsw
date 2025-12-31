@@ -15,7 +15,7 @@ errors = NaN(size(regions_list));
 
 for k = 1:numel(regions_list)
     r = regions_list(k);
-    pw = piecewise_FR_fit(f, FR, M_FR, 0, r);
+    pw = piecewise_FR_fit(f, FR, M_FR, r, 0);
     errors(k) = pw.total_error;
 end
 

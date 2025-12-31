@@ -11,7 +11,7 @@
 %    Example:
 %      M_FR = G_FR(1);
 
-function [M_FR, simulated_digitizer_FR] = G_FR(verbose, p); %f, A, noise, tf_dig_A, tf_dig_ph, ratio, Unom, tf_acdc) pridany parameter p
+function [M_FR, simulated_digitizer_FR] = G_FR(verbose, p, FR_slope); %f, A, noise, tf_dig_A, tf_dig_ph, ratio, Unom, tf_acdc) pridany parameter p
 
     % inputs XXX 2DO really ?
 
@@ -24,6 +24,13 @@ function [M_FR, simulated_digitizer_FR] = G_FR(verbose, p); %f, A, noise, tf_dig
     end
     % ensure verbose is logical:
     verbose = ~(~(verbose));
+
+    if ~exist('FR_slope', 'var')
+        FR_slope = [];
+    end
+    if isempty(FR_slope)
+        FR_slope = 0; % no slope error by default
+    end
 
     % Constants %<<<1
     % sampling frequency (MS/s):
@@ -67,6 +74,8 @@ function [M_FR, simulated_digitizer_FR] = G_FR(verbose, p); %f, A, noise, tf_dig
 
     % voltage measured by digitizer:
     simulated_digitizer_FR.v = NI5922_FR_simulator(f_real, fs);
+    % apply slope error to the frequency response:
+    simulated_digitizer_FR.v = (1 + FR_slope.*f_real).*simulated_digitizer_FR.v;
     Adigitizer = Asource .* simulated_digitizer_FR.v;
 
     % voltage measured by dc voltmeter:

@@ -197,6 +197,7 @@
 		</Item>
 		<Item Name="SS Utilities" Type="Folder">
 			<Item Name="Save SS measurement.vi" Type="VI" URL="../SS Utilities/Save SS measurement.vi"/>
+			<Item Name="SS Calculate.vi" Type="VI" URL="../SS Utilities/SS Calculate.vi"/>
 		</Item>
 		<Item Name="Utilities" Type="Folder">
 			<Item Name="Calculation related" Type="Folder">
@@ -748,6 +749,7 @@
 				<Property Name="Bld_modifyLibraryFile" Type="Bool">true</Property>
 				<Property Name="Bld_previewCacheID" Type="Str">{F9D6AE93-6E67-4B1A-BB85-67503D78EECB}</Property>
 				<Property Name="Bld_version.minor" Type="Int">2</Property>
+				<Property Name="Bld_version.patch" Type="Int">1</Property>
 				<Property Name="Destination[0].destName" Type="Str">WACsw.exe</Property>
 				<Property Name="Destination[0].path" Type="Path">../WACsw builds/ver. [VersionNumber]/NI_AB_PROJECTNAME.exe</Property>
 				<Property Name="Destination[0].preserveHierarchy" Type="Bool">true</Property>
@@ -756,7 +758,7 @@
 				<Property Name="Destination[1].path" Type="Path">../WACsw builds/ver. [VersionNumber]/data</Property>
 				<Property Name="DestinationCount" Type="Int">2</Property>
 				<Property Name="Exe_iconItemID" Type="Ref">/My Computer/resources/FR.ico</Property>
-				<Property Name="Source[0].itemID" Type="Str">{432D3107-6E4C-4343-9FF5-5FA9C2F0FD1E}</Property>
+				<Property Name="Source[0].itemID" Type="Str">{ECFBE54F-ADA5-4FA6-AB62-D30A24645388}</Property>
 				<Property Name="Source[0].type" Type="Str">Container</Property>
 				<Property Name="Source[1].destinationIndex" Type="Int">0</Property>
 				<Property Name="Source[1].itemID" Type="Ref">/My Computer/Main GUI/GUI main.vi</Property>

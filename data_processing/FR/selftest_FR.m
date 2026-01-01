@@ -6,7 +6,7 @@ addpath('info')
 
 verbose = 1;
 % generate simulated measurement data:
-[M_FR, simulated_digitizer_FR] = G_FR(verbose);
+[M_FR, simulated_digitizer_FR] = G_FR([], verbose);
 % process measurement:
 [f, measured_digitizer_FR, ac_source_stability, FR_fit] = P_FR(M_FR, '', verbose);
 

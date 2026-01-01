@@ -8,7 +8,7 @@ regions_list = 10:250;
 fit_errors = NaN(size(regions_list));
 
 % generate simulated frequency response measurement:
-[M_FR, simulated_digitizer_FR] = G_FR(0);
+[M_FR, simulated_digitizer_FR] = G_FR([], 0);
 f = M_FR.f;
 
 for k = 1:numel(regions_list)

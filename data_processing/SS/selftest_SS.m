@@ -1,4 +1,5 @@
 clear all, close all
+addpath('../FR/info')
 addpath('../FR')
 addpath('../CE')
 % simulation setup:
@@ -6,7 +7,7 @@ addpath('../CE')
 verbose = 3;
 % Generate simulated FR measurement and process it:
 % (no verbose because only SS is relevant here)
-[M_FR, simulated_digitizer_FR] = G_FR(0);
+[M_FR, simulated_digitizer_FR] = G_FR([], 0);
 [f, measured_digitizer_FR, ac_source_stability, FR_fit] = P_FR(M_FR, '', 0);
 
 % Generate simulated CE measurement before SS and process it:

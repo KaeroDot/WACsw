@@ -6,7 +6,7 @@ verbose = 1;
 % first simulate FR:
 % generate simulated measurement data:
 % (no verbose because only CE is relevant here)
-[M_FR, simulated_digitizer_FR] = G_FR(0);
+[M_FR, simulated_digitizer_FR] = G_FR([], 0);
 % process measurement:
 % (no verbose because only CE is relevant here)
 [f, measured_digitizer_FR, ac_source_stability, FR_fit] = P_FR(M_FR, '', 0);

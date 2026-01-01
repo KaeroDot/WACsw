@@ -15,9 +15,10 @@ err_vals = nan(size(P_list));
 % Preallocate a progress display every N steps
 report_every = max(1, floor(numel(P_list)/50));
 for k = 1:numel(P_list)
-    p = P_list(k);
     % Generate simulated measurement
-    [M_FR, simulated_digitizer_FR] = G_FR(verbose, P_list(k));
+    S_FR = struct();
+    S_FR.f_points.v = P_list(k);
+    [M_FR, simulated_digitizer_FR] = G_FR(S_FR, verbose);
     % Process measurement to get fit structure
     [f, measured_digitizer_FR, ac_source_stability, FR_fit] = P_FR(M_FR, '', 0);
     % Evaluate the piecewise fit at the measurement frequencies

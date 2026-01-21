@@ -230,6 +230,7 @@
 			</Item>
 			<Item Name="Check user abort.vi" Type="VI" URL="../Utilities/Check user abort.vi"/>
 			<Item Name="Clear errors from TWM.vi" Type="VI" URL="../Utilities/Clear errors from TWM.vi"/>
+			<Item Name="Error to Warning.vi" Type="VI" URL="../Utilities/Error to Warning.vi"/>
 			<Item Name="Main software paths.vi" Type="VI" URL="../Utilities/Main software paths.vi"/>
 			<Item Name="Make Default settings.vi" Type="VI" URL="../Utilities/Make Default settings.vi"/>
 			<Item Name="Merge Error Ex.vi" Type="VI" URL="../Utilities/Merge Error Ex.vi"/>
@@ -241,6 +242,7 @@
 			<Item Name="TWM Measure.vi" Type="VI" URL="../Utilities/TWM Measure.vi"/>
 		</Item>
 		<Item Name="afg_test.vi" Type="VI" URL="../../../../afg_test.vi"/>
+		<Item Name="test_F5730.vi" Type="VI" URL="../test_F5730.vi"/>
 		<Item Name="testoct.vi" Type="VI" URL="../testoct.vi"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="instr.lib" Type="Folder">
@@ -749,7 +751,7 @@
 				<Property Name="Bld_modifyLibraryFile" Type="Bool">true</Property>
 				<Property Name="Bld_previewCacheID" Type="Str">{F9D6AE93-6E67-4B1A-BB85-67503D78EECB}</Property>
 				<Property Name="Bld_version.minor" Type="Int">2</Property>
-				<Property Name="Bld_version.patch" Type="Int">1</Property>
+				<Property Name="Bld_version.patch" Type="Int">2</Property>
 				<Property Name="Destination[0].destName" Type="Str">WACsw.exe</Property>
 				<Property Name="Destination[0].path" Type="Path">../WACsw builds/ver. [VersionNumber]/NI_AB_PROJECTNAME.exe</Property>
 				<Property Name="Destination[0].preserveHierarchy" Type="Bool">true</Property>
@@ -758,7 +760,7 @@
 				<Property Name="Destination[1].path" Type="Path">../WACsw builds/ver. [VersionNumber]/data</Property>
 				<Property Name="DestinationCount" Type="Int">2</Property>
 				<Property Name="Exe_iconItemID" Type="Ref">/My Computer/resources/FR.ico</Property>
-				<Property Name="Source[0].itemID" Type="Str">{ECFBE54F-ADA5-4FA6-AB62-D30A24645388}</Property>
+				<Property Name="Source[0].itemID" Type="Str">{F64EBF68-8DA2-42D6-8F88-5450B92E27BA}</Property>
 				<Property Name="Source[0].type" Type="Str">Container</Property>
 				<Property Name="Source[1].destinationIndex" Type="Int">0</Property>
 				<Property Name="Source[1].itemID" Type="Ref">/My Computer/Main GUI/GUI main.vi</Property>

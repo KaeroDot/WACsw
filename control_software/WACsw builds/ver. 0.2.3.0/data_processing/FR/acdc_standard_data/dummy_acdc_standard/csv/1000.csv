@@ -1,0 +1,5 @@
+AC/DC difference for dummy AC/DC transfer standard dummy_01, range 1000 V;;;;
+            ; gain       ; gain     ; u(gain)     ; u(gain)
+f (Hz)\U rms (V); 0.0001 ;    1000  ;             ;
+        1   ;     0e-6   ;     0e-6 ;     0.01e-6 ;    0.01e-6
+ 10000000   ;     0e-6   ;     0e-6 ;     0.01e-6 ;    0.01e-6

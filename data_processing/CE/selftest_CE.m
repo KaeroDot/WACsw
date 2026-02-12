@@ -1,5 +1,8 @@
 clear all, close all
-addpath('../FR')
+
+% Setup environment
+run(fullfile(fileparts(fileparts(mfilename('fullpath'))), 'check_and_set_environment.m'));
+
 % simulation setup:
 
 verbose = 1;

@@ -1,8 +1,8 @@
 % this script checks the frequency response measurement
 clear all; close all
 
-addpath('acdc')
-addpath('info')
+% Setup environment
+run(fullfile(fileparts(fileparts(mfilename('fullpath'))), 'check_and_set_environment.m'));
 
 verbose = 1;
 % generate simulated measurement data:

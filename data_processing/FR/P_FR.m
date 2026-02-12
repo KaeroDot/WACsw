@@ -96,7 +96,7 @@ function [f, digitizer_FR, ac_source_stability, FR_fit] = P_FR(M_FR, acdc_correc
 
     % fit frequency response by a piecewise polynomial:
     % (value of regions set to nominal)
-    FR_fit = piecewise_FR_fit(f, digitizer_FR, M_FR, [], verbose);
+    FR_fit = piecewise_FR_fit(f, digitizer_FR, M_FR, verbose);
 
     % Export results %<<<1
     % create filename:

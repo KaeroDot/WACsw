@@ -14,6 +14,7 @@
 %               .A_uncertainty.v  - digitizer amplitude uncertainty (V), default: 1e-6
 %               .Udc_uncertainty.v - DC readings uncertainty (V), default: 1e-6
 %               .dc_readings.v    - number of DC readings, default: 10
+%               .no_fit_regions.v - number of regions for fitting of the FR, default: 20
 %      verbose - if nonzero, a figure will be plotted. Default: 0
 %
 %    Outputs:
@@ -87,6 +88,10 @@ function [M_FR, simulated_digitizer_FR] = G_FR(S_FR, verbose);
     if ~isfield(S_FR, 'dc_readings') || ~isfield(S_FR.dc_readings, 'v') || isempty(S_FR.dc_readings.v)
         S_FR.dc_readings.v = 10;
     end
+    % number of regions for fitting of the FR:
+    if ~isfield(S_FR, 'no_fit_regions') || ~isfield(S_FR.no_fit_regions, 'v') || isempty(S_FR.no_fit_regions.v)
+        S_FR.no_fit_regions.v = 20;
+    end
 
     % Make measurement %<<<1
     % list of frequencies where transfer function was measured:
@@ -147,6 +152,7 @@ function [M_FR, simulated_digitizer_FR] = G_FR(S_FR, verbose);
     M_FR.acdc_corrections_path.v = acdc_corrections_path; % path to the file with corrections of the AC/DC transfer standard
     M_FR.y.v = []; %XXX 2DO here generate the samples! Maybe this will not be needed. This can be very large! 20 GB of data! Or maybe better path to files!
     M_FR.label.v = 'simulated_FR_measurement';
+    M_FR.no_fit_regions.v = S_FR.no_fit_regions.v;
 
     % Verbose figure %<<<1
 	if verbose

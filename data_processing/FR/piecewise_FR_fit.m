@@ -21,10 +21,11 @@
 % Usage:
 %   piecewise_fit = piecewise_FR_fit(f, FR, M_FR, regions_in, verbose)
 %
-    % XXX should fit error or fit gain? gain: 1+err, error: err
-    % XXX maybe replace M_FR by only fs, other things are not needed at all, or take f and FR from M_FR!
+    % TODO should fit error or fit gain? gain: 1+err, error: err
+    % TODO take f and FR from M_FR!
+    % TODO rename piecewise_fit.regions to piecewise_fit.no_fit_regions for consistency with M_FR.regions.v
 
-function piecewise_fit = piecewise_FR_fit(f, FR, M_FR, regions, verbose)
+function piecewise_fit = piecewise_FR_fit(f, FR, M_FR, verbose)
     % Constants %<<<1
     % method = 'polynomial';
     method = 'spline';
@@ -33,12 +34,7 @@ function piecewise_fit = piecewise_FR_fit(f, FR, M_FR, regions, verbose)
     max_pol_degree = 3;
 
     % Check inputs %<<<1
-    % XXX check also other inputs
-    % validate regions
-    if ~exist('regions', 'var') || isempty(regions)
-        regions = 30;
-    end
-    validateattributes(regions, {'numeric'}, {'scalar', 'integer', 'positive'});
+    % TODO check also other inputs
     % validate verbose
     if ~exist('verbose', 'var') || isempty(verbose)
         verbose = false;
@@ -53,10 +49,10 @@ function piecewise_fit = piecewise_FR_fit(f, FR, M_FR, regions, verbose)
 
     % Create first part of output structure
     piecewise_fit.method = method;
-    piecewise_fit.regions = regions;
+    piecewise_fit.regions = M_FR.no_fit_regions.v;
 
     if strcmp(method, 'spline') %<<<1
-        piecewise_fit.fit = splinefit(f_rel, FR.v, regions - 1);
+        piecewise_fit.fit = splinefit(f_rel, FR.v, piecewise_fit.regions - 1);
         piecewise_fit.limits = piecewise_fit.fit.breaks .* M_FR.fs.v;
     elseif strcmp(method, 'polynomial')
     % Polynomial method %<<<1

@@ -2,27 +2,30 @@
 
 ## Project Overview
 
-WACsw is a **quantum metrology system** for wideband AC voltage calibration using Programmable Josephson Voltage Standard (PJVS) technology, operating up to 100 kHz. The project combines LabVIEW control software with MATLAB/Octave data processing for precision AC voltage measurements.
+WACsw is a **quantum metrology system** for wideband AC voltage calibration using Programmable Josephson Voltage Standard (PJVS) technology, operating up to 100 kHz. The project combines LabVIEW control software with MATLAB/GNU Octave data processing for precision AC voltage measurements.
 
 **Project context:** Developed under EPM project 23RPT01 WAC - Wideband AC quantum traceability. See [project page](https://www.cem.es/es/WAC).
 
 ## Measurement Types Explained
 
-1. **FR (Frequency Response):** Calibrates digitizer amplitude/phase response across bandwidth using AC-AC transfer. Long measurement (~2GB data), run infrequently.
+Calibration consists of three measurement types.
 
-2. **CE (Cable Error):** Corrects for cable impedance effects by comparing short vs. PJVS cable paths. Fast measurement (~8MB), run before/after SS measurements.
+1. **FR (Frequency Response):** Measurement is used to estimate digitizer amplitude response across digitizer bandwidth using AC-AC transfer method. FR response is used to correct sub-sampling measurements. FR is time consuming measurement, generates 100 MB to 2GB of data. FR measurement is run infrequently but FR results are needed for every CE and SS measurement.
 
-3. **SS (Sub-Sampling):** PJVS-based DUT calibration using sub-sampling with quantum voltage steps. Requires PJVS hardware + switch.
+2. **CE (Cable Error):** Measurent is used to estiamte cable impedance by comparing short vs. PJVS cable paths. CE is used to correct for cable errors. It is fast measurement, generates tenths of MB of data. CE measurement is run before and optionally also after every SS measurement.
+
+3. **SS (Sub-Sampling):** Measurement is used to calibrate Device Under Test (DUT) amplitude using sub-sampling and PJVS as a voltage reference. It is fast measurement, generates tenths of MB of data. SS measurement requires results from CE and FR.
 
 ## Measurement Workflow
 
-- First a FR measurement is performed to characterize the digitizer.
-- Next a CE measurement is performed to characterize the cable error. FR results are needed to calculate results of CE.
+- First a FR measurement is performed to characterize the digitizer. This measurement can be run once because FR of a digitizer is quite stable.
+- CE measurement is performed to characterize the cable error. FR results are needed to calculate results of CE.
 - Next a SS measurement is performed to calibrate the DUT. Both FR and CE results are needed to calculate results of SS.
+- Optionally second CE measurement is performed right after SS.
 
 ## Software architecture: Two Subsystems
 
-### Control Software (`control_software/`)
+### Control Software
 
 - **Language:** LabVIEW
 - **Purpose:** Real-time measurement control and hardware interfacing
@@ -33,15 +36,17 @@ WACsw is a **quantum metrology system** for wideband AC voltage calibration usin
   - Integration with TWM (TracePQM WattMeter) for digitizer sampling
 - **Builds:** Versioned releases in `WACsw builds/`
 
-### Data Processing (`data_processing/`)
+### Data Processing
 
-- **Language:** MATLAB/GNU Octave (compatible with both)
+- **Language:** MATLAB/GNU Octave (must be compatible with both)
 - **Purpose:** Post-measurement analysis and calibration calculations
 - **Key workflow:** Three measurement types, each with G (Generator), P (Processor) functions:
   - **FR (Frequency Response):** `G_FR.m` generates simulated data, `P_FR.m` processes real measurements
   - **CE (Cable Error):** `G_CE.m` generates simulated cable error, `P_CE.m` calculates corrections
   - **SS (Sub-Sampling):** `G_SS.m` simulates PJVS sampling, `P_SS.m` applies FR/CE corrections
 - **Testing:** Each subsystem has `selftest_*.m` scripts (e.g., `selftest_FR.m`, `selftest_CE.m`)
+- **Data:** Example and testing data are stored in `example_data` directory.
+- **Evaluation:** Functions to evaluate impact of various properties or calculation methods on final result of sub-sampling measurement.
 
 ### Function Naming Pattern for Data Processing
 
@@ -67,8 +72,8 @@ Processing functions return fit structures for correction application:
 
 ### MATLAB/Octave Compatibility
 
-- Use `isOctave()` helper function (see `check_environment.m`) for conditional code
-- Avoid MATLAB-only functions; avoid GNU Octave only functions; avoid Octave code extensions to keep compatibility with Matlab
+- Use `isOctave()` helper function (see `check_and_set_environment.m`) for conditional code
+- Avoid MATLAB-only functions; avoid GNU Octave only functions; avoid Octave code extensions to keep compatibility with Matlab,
 
 ### Verbosity Control in Data Processing
 

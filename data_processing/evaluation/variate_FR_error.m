@@ -68,3 +68,4 @@ xlim([-0.5 0.5])
 ylim([-22 22])
 grid on;
 saveas(gcf, fullfile(results_dir, 'FR_slope_error_dependence.png'));
+csvwrite(fullfile(results_dir, 'FR_slope_error_dependence.csv'), [slope_error_list(:).*1e9, (A_rms_values(:) - 1).*1e6]);

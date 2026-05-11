@@ -90,7 +90,7 @@ function [M_FR, simulated_digitizer_FR] = G_FR(S_FR, verbose);
     end
     % number of regions for fitting of the FR:
     if ~isfield(S_FR, 'no_fit_regions') || ~isfield(S_FR.no_fit_regions, 'v') || isempty(S_FR.no_fit_regions.v)
-        S_FR.no_fit_regions.v = 20;
+        S_FR.no_fit_regions.v = 20; % TODO where to set default values of M_FR? check_gen_M_FR?
     end
 
     % Make measurement %<<<1

@@ -1,6 +1,6 @@
 # Simple switch "PJVS Short MUX"
 
-Two BNC inputs switch to one BNC output:
+Two BNC inputs switch between BNC outputs:
 
 ```ascii
      ──●                             ──●            
@@ -14,17 +14,39 @@ Input2                          Input2   ╱
      ──●                             ──●            
 ```
 
+Actual required connection for sub-sampling with Device Under Test (DUT, i.e. AC source), Programmable Josephson Voltage Standard (PJVS) and digitizer:
+
+![Schematic](front_image.png)
+
+To keep the short as short as possible, one input is shorted directly on the PCB.
+
+This simple switch realize both "Switch" and "Box" in the PTB setup, as presented in paper [R. Behr and L. Palafox, ‘An AC quantum voltmeter for frequencies up to 100 kHz using sub-sampling’, Metrologia, vol. 58, no. 2, p. 025010, Mar. 2021, doi: 10.1088/1681-7575/abe453.](https://iopscience.iop.org/article/10.1088/1681-7575/abe453):
+
+![PTB setup](PTB_setup.png)
+
 ## Properties
 
 - Controlled by:
   - DC signal >= 2.5 V
   - AC signal > 3 V peak-to-peak, frequency bandwidth larger than 10 MHz.
   - Manual control
-- Can be controlled directly by National Instruments 5922 digitizer when using 10 MHz external clock. The clock is driven to PFI output on the digitizer and used as AC signal to switch the relay.
-- Input control signal is decoupled from rest of the circuit by an opto-coupler.
+- Can be controlled directly by National Instruments 5922 digitizer when using
+10 MHz external clock. The clock is driven to PFI output on the digitizer and
+used as AC signal to switch the relay.
+- Input control signal is decoupled from rest of the circuit by an
+opto-coupler.
 - Powered by lithium 9 V battery that should last 17 years in idle mode.
 - Bistable switching relay is double-pole, so the resistance should be very low.
-- Two pieces of the switching relays can be mounted, however the break-before-make will not be guaranteed and two relays are not suitable for PJVS operation!
+- Two pieces of the switching relays can be mounted, however the
+break-before-make will not be guaranteed and two relays are not suitable for
+PJVS operation!
+- Shielded part with AC control input to prevent interference with the rest of PCB.
+
+The AC or DC control works only if the manual control switch is opened.
+
+Print handle on 3D printer using [STL file](handle/handle.stl) and put it on
+the BNC connectors on the side of digitizer for easier connecting to the
+digitizer.
 
 ## Bill of materials
 
@@ -54,3 +76,24 @@ R 51                | 2  | R EU_R0805
 R 100               | 1  | R EU_R0805
 R 2k2               | 2  | R EU_R0805
 R 10k               | 1  | R EU_R0805
+
+## Photos
+
+### Soldered PCB
+
+![PCB soldered bottom](photos/PCB_soldered_bottom.jpg)
+![PCB soldered top](photos/PCB_soldered_top.jpg)
+
+### HF shield
+
+![HF shield bottom](photos/HF_shield_bottom.jpg)
+![HF shield top](photos/HF_shield_top_1.jpg)
+![HF shield side](photos/HF_shield_side.jpg)
+
+### Switch in the case
+
+![In case](photos/In_case.jpg)
+![Front](photos/Front.jpg)
+![Side 1](photos/Side_1.jpg)
+![Side 2](photos/Side_2.jpg)
+![Top](photos/Top.jpg)

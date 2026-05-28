@@ -28,14 +28,15 @@
 				<Item Name="CE measurement.ctl" Type="VI" URL="../CE Measurement/Type definitions/CE measurement.ctl"/>
 			</Item>
 			<Item Name="CE Do Single Measurement.vi" Type="VI" URL="../CE Measurement/CE Do Single Measurement.vi"/>
-			<Item Name="CE Measure for SS.vi" Type="VI" URL="../CE Measurement/CE Measure for SS.vi"/>
 			<Item Name="CE Measure.vi" Type="VI" URL="../CE Measurement/CE Measure.vi"/>
 		</Item>
 		<Item Name="CE Utilities" Type="Folder">
 			<Item Name="Template related" Type="Folder">
+				<Property Name="NI.SortType" Type="Int">3</Property>
 				<Item Name="CE Load XCL template.vi" Type="VI" URL="../CE Utilities/Template related/CE Load XCL template.vi"/>
 				<Item Name="CE XCL Write header.vi" Type="VI" URL="../CE Utilities/Template related/CE XCL Write header.vi"/>
 				<Item Name="CE XCL Write measurement line.vi" Type="VI" URL="../CE Utilities/Template related/CE XCL Write measurement line.vi"/>
+				<Item Name="Modify CE template to Single point CE template.vi" Type="VI" URL="../CE Utilities/Template related/Modify CE template to Single point CE template.vi"/>
 			</Item>
 			<Item Name="Type definitions" Type="Folder">
 				<Item Name="CE template.ctl" Type="VI" URL="../CE Utilities/Type definitions/CE template.ctl"/>
@@ -196,6 +197,8 @@
 			<Item Name="SS process.vi" Type="VI" URL="../SS Measurement/SS process.vi"/>
 		</Item>
 		<Item Name="SS Utilities" Type="Folder">
+			<Item Name="Copy CE template files for SS.vi" Type="VI" URL="../SS Utilities/Copy CE template files for SS.vi"/>
+			<Item Name="Create CE measurements for SS.vi" Type="VI" URL="../SS Utilities/Create CE measurements for SS.vi"/>
 			<Item Name="Save SS measurement.vi" Type="VI" URL="../SS Utilities/Save SS measurement.vi"/>
 			<Item Name="SS Calculate.vi" Type="VI" URL="../SS Utilities/SS Calculate.vi"/>
 		</Item>

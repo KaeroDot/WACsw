@@ -94,6 +94,8 @@ R 10k               | 1  | R EU_R0805
 
 ![In case](photos/In_case.jpg)
 ![Front](photos/Front.jpg)
+![Back](photos/Back.jpg)
 ![Side 1](photos/Side_1.jpg)
 ![Side 2](photos/Side_2.jpg)
 ![Top](photos/Top.jpg)
+![Handles](photos/Handles.jpg)

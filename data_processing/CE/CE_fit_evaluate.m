@@ -12,6 +12,10 @@ function V_ratio = CE_fit_evaluate(CE_fit, f)
         % function is stored as string, convert to function handle:
         fun = str2func(CE_fit.model_fun);
         V_ratio = fun(CE_fit.params, f);
+    elseif strcmp(CE_fit.method, 'average')
+        % function is stored as string, convert to function handle:
+        fun = str2func(CE_fit.model_fun);
+        V_ratio = fun(CE_fit.params, f);
     else
         error('CE_fit_evaluate: unknown fit method `%s`!', CE_fit.method)
     end

@@ -35,8 +35,8 @@ function [M_SS, FR_fit, CE_fit] = read_M_SS_from_sampled_data(SS_info_filename, 
 
     % FR fit
     new_FR_fit_path_relative = infogettext(SS_info, 'new FR fit path relative');
-    FR_fit_loaded = load(fullfile(SS_info_dir, new_FR_fit_path_relative));
-    FR_fit = FR_fit_loaded.FR_fit;
+    new_FR_fit_path_absolute = load(fullfile(SS_info_dir, new_FR_fit_path_relative));
+    FR_fit = new_FR_fit_path_absolute.FR_fit;
 
     % CE fit
     measure_CE = infogetnumber(SS_info, 'Measure CE');
@@ -45,16 +45,18 @@ function [M_SS, FR_fit, CE_fit] = read_M_SS_from_sampled_data(SS_info_filename, 
         measure_CE_after = infogetnumber(SS_info, 'Measure CE after');
         if measure_CE_before
             new_CE_template_path_before_relative = infogettext(SS_info, 'new CE template path before relative');
+            new_CE_template_path_before_absolute = fullfile(SS_info_dir, new_CE_template_path_before_relative);
             % load template, and calculate CE fit:
             if verbose disp(' read_M_SS_from_sampled_data: loading and calculating CE template (measurement before SS) from file...'); end
-            M_CE_before = read_M_CE_from_spreadsheet(new_CE_template_path_before_relative, verbose);
+            M_CE_before = read_M_CE_from_spreadsheet(new_CE_template_path_before_absolute, verbose);
             CE_fit_before = P_CE(M_CE_before, verbose);
         end % measure_CE_before
         if measure_CE_after
             new_CE_template_path_after_relative = infogettext(SS_info, 'new CE template path after relative');
+            new_CE_template_path_after_absolute = fullfile(SS_info_dir, new_CE_template_path_after_relative);
             % load template, and calculate CE fit:
             if verbose disp(' read_M_SS_from_sampled_data: loading and calculating CE template (measurement after SS) from file...'); end
-            M_CE_after = read_M_CE_from_spreadsheet(new_CE_template_path_after_relative, verbose);
+            M_CE_after = read_M_CE_from_spreadsheet(new_CE_template_path_after_absolute, verbose);
             CE_fit_after = P_CE(M_CE_after, verbose);
         end % measure_CE_after
         if measure_CE_before && measure_CE_after

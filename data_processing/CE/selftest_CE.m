@@ -14,8 +14,14 @@ verbose = 1;
 % (no verbose because only CE is relevant here)
 [f, measured_digitizer_FR, ac_source_stability, FR_fit] = P_FR(M_FR, '', 0);
 
+S_CE = [];
+% Optionaly - set list of frequencies:
+S_CE.f_signal.v = linspace(50, 100e3, 100);
+% or a single point measurement:
+% S_CE.f_signal.v = 100e3;
+
 % Generate simulated CE measurement:
-M_CE = G_CE(FR_fit, verbose);
+M_CE = G_CE(FR_fit, S_CE, verbose);
 
 % Process simulated CE measurement:
 [CE_fit] = P_CE(M_CE, verbose);
@@ -51,7 +57,7 @@ end
 % TODO add time drift between both CE measurements
 
 % Generate second simulated CE measurement:
-M_CE(2) = G_CE(FR_fit, verbose);
+M_CE(2) = G_CE(FR_fit, S_CE, verbose);
 % Process second simulated CE measurement:
 [CE_fit(2)] = P_CE(M_CE(2), verbose);
 % make a fit average

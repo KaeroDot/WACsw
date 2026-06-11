@@ -1,3 +1,5 @@
+% TODO check size of data first and then use only needed data for single point
+% fit!
 function [CE_fit] = P_CE(M_CE, verbose);
     % calcualte ratio, relate to lowest frequency, fit by line equation, display error at 100 kHz.
 
@@ -23,7 +25,8 @@ function [CE_fit] = P_CE(M_CE, verbose);
     % reshape measurement points
     % (first collumn will be L_long (PJVS) frequency, second collumn will be L_short frequency)
     f = reshape(M_CE.f.v, 2, [])'; % signal frequencies
-    t = reshape(M_CE.t.v, 2, [])'; % time of reading
+    %TODO t is not needed at all, remove!
+    % t = reshape(M_CE.t.v, 2, [])'; % time of reading
     A = reshape(M_CE.A.v, 2, [])'; % amplitude as measured by digitizer, already corrected for digitizer FR
 
     % Correct for digitizer frequency response %<<<1

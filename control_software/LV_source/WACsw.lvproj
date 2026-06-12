@@ -14,14 +14,11 @@
 		<Property Name="server.vi.propertiesEnabled" Type="Bool">true</Property>
 		<Property Name="specify.custom.address" Type="Bool">false</Property>
 		<Item Name="CE GUI" Type="Folder">
-			<Item Name="Type definitions" Type="Folder">
-				<Item Name="CE meter settings.ctl" Type="VI" URL="../CE GUI/Type definitions/CE meter settings.ctl"/>
-			</Item>
+			<Item Name="Type definitions" Type="Folder"/>
 			<Item Name="CE GUI Connections.vi" Type="VI" URL="../CE GUI/CE GUI Connections.vi"/>
 			<Item Name="CE GUI Measurement setup - template.vi" Type="VI" URL="../CE GUI/CE GUI Measurement setup - template.vi"/>
 			<Item Name="CE GUI Measurement setup.vi" Type="VI" URL="../CE GUI/CE GUI Measurement setup.vi"/>
 			<Item Name="CE GUI Recalculate.vi" Type="VI" URL="../CE GUI/CE GUI Recalculate.vi"/>
-			<Item Name="temporary CE GUI main.vi" Type="VI" URL="../CE GUI/temporary CE GUI main.vi"/>
 		</Item>
 		<Item Name="CE Measurement" Type="Folder">
 			<Item Name="Type definitions" Type="Folder">
@@ -170,7 +167,6 @@
 			<Item Name="Close PJVS.vi" Type="VI" URL="../General PJVS driver/Close PJVS.vi"/>
 			<Item Name="Initialize PJVS.vi" Type="VI" URL="../General PJVS driver/Initialize PJVS.vi"/>
 			<Item Name="PJVS manual control GUI.vi" Type="VI" URL="../General PJVS driver/PJVS manual control GUI.vi"/>
-			<Item Name="QPSsettings.ctl" Type="VI" URL="../General PJVS driver/QPSsettings.ctl"/>
 			<Item Name="Start PJVS.vi" Type="VI" URL="../General PJVS driver/Start PJVS.vi"/>
 			<Item Name="Stop PJVS.vi" Type="VI" URL="../General PJVS driver/Stop PJVS.vi"/>
 			<Item Name="Test PJVS.vi" Type="VI" URL="../General PJVS driver/Test PJVS.vi"/>
@@ -184,7 +180,7 @@
 			<Item Name="GUI TWM setup.vi" Type="VI" URL="../Main GUI/GUI TWM setup.vi"/>
 		</Item>
 		<Item Name="resources" Type="Folder">
-			<Item Name="FR.ico" Type="Document" URL="../resources/FR.ico"/>
+			<Item Name="wac.ico" Type="Document" URL="../resources/wac.ico"/>
 		</Item>
 		<Item Name="SS GUI" Type="Folder">
 			<Item Name="SS GUI Measurement setup.vi" Type="VI" URL="../SS GUI/SS GUI Measurement setup.vi"/>
@@ -662,15 +658,11 @@
 			<Item Name="Advapi32.dll" Type="Document" URL="Advapi32.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
-			<Item Name="AWG type.ctl" Type="VI" URL="../General AWG/Type definitions/AWG type.ctl"/>
-			<Item Name="AWG.ctl" Type="VI" URL="../General AWG/Type definitions/AWG.ctl"/>
 			<Item Name="infolib.lvlib" Type="Library" URL="../external libraries/TWM-1.8.7.0-client/infolib.lvlib"/>
 			<Item Name="kernel32.dll" Type="Document" URL="kernel32.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
 			<Item Name="lvanlys.dll" Type="Document" URL="/&lt;resource&gt;/lvanlys.dll"/>
-			<Item Name="Measuement properties.ctl" Type="VI" URL="../Measurement/Type definitions/Measuement properties.ctl"/>
-			<Item Name="Measurement ID.ctl" Type="VI" URL="../Measurement/Type definitions/Measurement ID.ctl"/>
 			<Item Name="niFgen_32.dll" Type="Document" URL="niFgen_32.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
@@ -680,7 +672,6 @@
 			<Item Name="niScope_32.dll" Type="Document" URL="niScope_32.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
-			<Item Name="Trigger mode.ctl" Type="VI" URL="../Measurement/Type definitions/Trigger mode.ctl"/>
 			<Item Name="version.dll" Type="Document" URL="version.dll">
 				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
 			</Item>
@@ -762,8 +753,8 @@
 				<Property Name="Destination[1].destName" Type="Str">Support Directory</Property>
 				<Property Name="Destination[1].path" Type="Path">../WACsw builds/ver. [VersionNumber]/data</Property>
 				<Property Name="DestinationCount" Type="Int">2</Property>
-				<Property Name="Exe_iconItemID" Type="Ref">/My Computer/resources/FR.ico</Property>
-				<Property Name="Source[0].itemID" Type="Str">{1F5907C5-F3D7-4B2B-A7CC-F246A9D0829C}</Property>
+				<Property Name="Exe_iconItemID" Type="Ref">/My Computer/resources/wac.ico</Property>
+				<Property Name="Source[0].itemID" Type="Str">{A25FFB37-293E-4808-AB91-7081B62FA48C}</Property>
 				<Property Name="Source[0].type" Type="Str">Container</Property>
 				<Property Name="Source[1].destinationIndex" Type="Int">0</Property>
 				<Property Name="Source[1].itemID" Type="Ref">/My Computer/Main GUI/GUI main.vi</Property>

@@ -2,11 +2,6 @@
 % MRs and after MRe. Calculates mean and std for segments, removes PRs and PRe
 
 function [s_y, s_mean, s_std, s_uA] = pjvs_split_segments(y, Spjvs, MRs, MRe, PRs, PRe, dbg)
-    PRs
-    PRe
-    MRs
-    MRe
-
     % Remove points masked by MRs and MRe
     y = y(MRs + 1 : end - MRe);
     % Change Spjvs indexes to match removed points:

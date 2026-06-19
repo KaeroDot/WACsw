@@ -11,7 +11,7 @@
 %               .ph.v - 'triangular' wave phase (rad), default: 0
 %               .L.v - record length (samples), default: 160e3
 %               .fs.v - sampling frequency (Hz), default: 4e6
-%               .noise.v - signal noise sigma (V), default: 0.1e-6
+%               .noise.v - signal noise sigma (V), default: 0.05e-6
 %               .fseg.v - frequency of PJVS segments (Hz), default: 1000
 %               .phseg.v - phase of PJVS segments (rad), default: 0
 %               .fm.v - microwave frequency (Hz), default: 70e9
@@ -73,7 +73,7 @@ function [M_DC] = G_DC(S_DC, verbose);
     end
     % signal noise sigma (V):
     if ~isfield(S_DC, 'noise') || ~isfield(S_DC.noise, 'v') || isempty(S_DC.noise.v)
-        S_DC.noise.v = 0.1e-6;
+        S_DC.noise.v = 0.05e-6;
     end
     % frequency of PJVS segments (Hz):
     if ~isfield(S_DC, 'fseg') || ~isfield(S_DC.fseg, 'v') || isempty(S_DC.fseg.v)

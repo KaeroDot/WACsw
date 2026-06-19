@@ -1,4 +1,36 @@
-function [ycal, newPRs, newPRe] = P_DC(M_DC, verbose)
+% -- [DC_fit, newPRs, newPRe] = P_DC(M_DC, verbose)
+% Process data from digitizer DC gain calibration measurement.
+% Identifies PJVS step segments in the sampled waveform, computes segment
+% means and uncertainties, reconstructs PJVS reference voltages, and returns
+% calibrated ADC gain coefficients.
+%
+%    Inputs:
+%      M_DC    - structure with digitizer DC gain calibration measurement data.
+%                Required fields:
+%                  .y.v          - sampled waveform (V)
+%                  .Uref1period.v - PJVS reference voltages for one period (V)
+%                  .fs.v         - sampling frequency (Hz)
+%                  .fseg.v       - frequency of PJVS segments (Hz)
+%                  .MRs.v        - number of masked samples at record start
+%                  .MRe.v        - number of masked samples at record end
+%                  .PRs.v        - number of masked samples after PJVS step change
+%                                  (set negative to auto-detect)
+%                  .PRe.v        - number of masked samples before PJVS step change
+%                                  (set negative to auto-detect)
+%      verbose - if nonzero, diagnostic plots will be generated. Default: 0
+%
+%    Outputs:
+%      DC_fit  - calibrated ADC gain coefficients (result of adc_pjvs_calibration)
+%      newPRs  - auto-detected PRs value (samples masked after PJVS step change);
+%                equals input M_DC.PRs.v if auto-detection was not triggered
+%      newPRe  - auto-detected PRe value (samples masked before PJVS step change);
+%                equals input M_DC.PRe.v if auto-detection was not triggered
+%
+%    Example:
+%      [M_DC] = G_DC([], 0);
+%      [DC_fit, newPRs, newPRe] = P_DC(M_DC, 0);
+
+function [DC_fit, newPRs, newPRe] = P_DC(M_DC, verbose)
 
     % Initialize %<<<1
     % sigconfig structure is leftover from QuantumPower project.
@@ -57,6 +89,11 @@ function [ycal, newPRs, newPRe] = P_DC(M_DC, verbose)
     % Recreate PJVS reference values for whole sampled PJVS waveform section:
     tmpUref = pjvs_ident_Uref(s_mean, M_DC.Uref1period.v, dbg);
 
+    % ADEV calculation and plotting:
+    pjvs_adev(s_y, tmpUref, M_DC.Uref1period.v, dbg); % not calculated if disabled by dbg
+    % calibration of ADC:
+    DC_fit = adc_pjvs_calibration(tmpUref, s_mean, s_uA, dbg);
+
     % debug plots %<<<1
     if dbg.v 
         if dbg.pjvs_segments_first_period
@@ -102,10 +139,6 @@ function [ycal, newPRs, newPRe] = P_DC(M_DC, verbose)
             close
         end % if dbg.pjvs_segments_first_period
     end % if dbg %>>>2
-    % ADEV calculation and plotting:
-    pjvs_adev(s_y, tmpUref, M_DC.Uref1period.v, dbg);
-    % calibration of ADC:
-    ycal = adc_pjvs_calibration(tmpUref, s_mean, s_uA, dbg);
 
 end % function
 

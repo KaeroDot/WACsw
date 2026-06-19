@@ -1,3 +1,4 @@
+% this script checks the measurement of digitizer gain error
 clear all, close all
 
 % Setup environment

@@ -5,7 +5,7 @@
 function check_and_set_environment()
 %% Check and set paths for data processing subdirectories %<<<1
 script_path = fileparts(mfilename('fullpath'));
-required_paths = {'FR', 'CE', 'SS', 'utils', fullfile('utils', 'info')};
+required_paths = {'FR', 'CE', 'SS', 'DC', 'utils', fullfile('utils', 'info')};
 
 for j = 1:numel(required_paths)
     full_path = fullfile(script_path, required_paths{j});

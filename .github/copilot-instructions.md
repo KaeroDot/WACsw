@@ -14,13 +14,16 @@ Calibration consists of three measurement types.
 
 2. **CE (Cable Error):** Measurent is used to estiamte cable impedance by comparing short vs. PJVS cable paths. CE is used to correct for cable errors. It is fast measurement, generates tenths of MB of data. CE measurement is run before and optionally also after every SS measurement.
 
-3. **SS (Sub-Sampling):** Measurement is used to calibrate Device Under Test (DUT) amplitude using sub-sampling and PJVS as a voltage reference. It is fast measurement, generates tenths of MB of data. SS measurement requires results from CE and FR.
+3. **DC (Digitizer Calibration):** Measurement is used to calibrate dc gain of the digitizer using PJVS generated waveform. It is fast measurement, generates tenths of MB of data. DC measurement should not requires results from CE or FR because DC use slow frequencies and influence of CE or FR is very small.
+
+4. **SS (Sub-Sampling):** Measurement is used to calibrate Device Under Test (DUT) amplitude using sub-sampling and PJVS as a voltage reference. It is fast measurement, generates tenths of MB of data. SS measurement requires results from CE, FR and DC.
 
 ## Measurement Workflow
 
 - First a FR measurement is performed to characterize the digitizer. This measurement can be run once because FR of a digitizer is quite stable.
 - CE measurement is performed to characterize the cable error. FR results are needed to calculate results of CE.
-- Next a SS measurement is performed to calibrate the DUT. Both FR and CE results are needed to calculate results of SS.
+- DC measurement is performed to calibrate the digitizer. DC measurement does not require results from CE or FR.
+- Next a SS measurement is performed to calibrate the DUT. All DC, FR and CE results are needed to calculate results of SS.
 - Optionally second CE measurement is performed right after SS.
 
 ## Software architecture: Two Subsystems
@@ -43,6 +46,7 @@ Calibration consists of three measurement types.
 - **Key workflow:** Three measurement types, each with G (Generator), P (Processor) functions:
   - **FR (Frequency Response):** `G_FR.m` generates simulated data, `P_FR.m` processes real measurements
   - **CE (Cable Error):** `G_CE.m` generates simulated cable error, `P_CE.m` calculates corrections
+  - **DC (Cable Error):** `G_DC.m` generates simulated digitizer error, `P_DC.m` calculates corrections
   - **SS (Sub-Sampling):** `G_SS.m` simulates PJVS sampling, `P_SS.m` applies FR/CE corrections
 - **Testing:** Each subsystem has `selftest_*.m` scripts (e.g., `selftest_FR.m`, `selftest_CE.m`)
 - **Data:** Example and testing data are stored in `example_data` directory.
@@ -50,15 +54,16 @@ Calibration consists of three measurement types.
 
 ### Function Naming Pattern for Data Processing
 
-- **G_XX:** Data generator/simulator (e.g., `G_FR`, `G_CE`, `G_SS`)
-- **P_XX:** Data processor (e.g., `P_FR`, `P_CE`, `P_SS`)
-- **M_XX:** Measurement data structure (e.g., `M_FR`, `M_CE`, `M_SS`)
+- **G_XX:** Data generator/simulator (e.g., `G_FR`, `G_CE`, `G_DC`, `G_SS`)
+- **P_XX:** Data processor (e.g., `P_FR`, `P_CE`, `P_DC`, `P_SS`)
+- **M_XX:** Measurement data structure (e.g., `M_FR`, `M_CE`, `M_DC`, `M_SS`)
 
 ## Data Structures in Data Processing
 
 - All measurement functions use structured data. Each data represents structure with `.v` (value), `.u` (uncertainty) fields.
 - FR measurement use structure `M_FR` that contains Frequency Response measurement or simulated data.
 - CE measurement use structure `M_CE` that contains Cable Error measurement or simulated data.
+- DC measurement use structure `M_DC` that contains Digitizer Error measurement or simulated data.
 - SS measurement use structure `M_SS` that contains Sub-Sampling measurement or simulated data.
 
 Structures are initialized with `check_gen_*.m` helper functions.
@@ -69,6 +74,7 @@ Processing functions return fit structures for correction application:
 
 - `FR_fit` - Frequency response fit, used by `piecewise_FR_evaluate()`
 - `CE_fit` - Cable error fit, used by `CE_fit_evaluate()`
+- `DC_fit` - Digitizer gain error fit, used by `DC_fit_evaluate()`
 
 ### MATLAB/Octave Compatibility
 

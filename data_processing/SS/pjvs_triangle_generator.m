@@ -121,7 +121,7 @@ function [y, n, Upjvs, Upjvs1period, Spjvs, tsamples] = pjvs_triangle_generator(
     Upjvs1period = [Upjvs1period Upjvs1period(end-1 : -1 : 2)];
     Upjvs1period = circshift(Upjvs1period, -stepsno/4);
     % triangles for whole record:
-    Upjvs = repmat(Upjvs1period, trianglesinrecord);
+    Upjvs = repmat(Upjvs1period, 1, trianglesinrecord);
 
     % quantum numbers:
     n = Upjvs.*KJ;

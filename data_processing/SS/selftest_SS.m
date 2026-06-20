@@ -8,9 +8,9 @@ run(fullfile(fileparts(fileparts(mfilename('fullpath'))), 'check_and_set_environ
 verbose = 3;
 
 % Generate digitizer linearity calibration:
-M_DC = G_DC([], 0);
-DC_fit = P_DC(M_DC, 0);
-% TODO modify all digitizer measurements by DC_fit! Maybe it is not so critical for ratio of CE or ratio of FR.
+M_DG = G_DG([], 0);
+DG_fit = P_DG(M_DG, 0);
+% TODO modify all digitizer measurements by DG_fit! Maybe it is not so critical for ratio of CE or ratio of FR.
 
 % Generate simulated FR measurement and process it:
 % (no verbose because only SS is relevant here)
@@ -38,7 +38,7 @@ M_SS = G_SS(2, verbose);
 % apply both CE fits (before and after SS) by combining them:
 CE_fit_int = CE_fits_interpolate(CE_fit);
 
-% TODO here should come DC_fit input and apply also linearity correction?
+% TODO here should come DG_fit input and apply also linearity correction?
 y_filtered = apply_CE_FR_on_samples(M_SS, FR_fit, CE_fit_int, 1, verbose);
 M_SS.y.v = y_filtered;
 

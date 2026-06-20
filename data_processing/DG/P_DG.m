@@ -1,11 +1,11 @@
-% -- [DC_fit, newPRs, newPRe] = P_DC(M_DC, verbose)
-% Process data from digitizer DC gain calibration measurement.
+% -- [DG_fit, newPRs, newPRe] = P_DG(M_DG, verbose)
+% Process data from digitizer gain calibration measurement (DG).
 % Identifies PJVS step segments in the sampled waveform, computes segment
 % means and uncertainties, reconstructs PJVS reference voltages, and returns
 % calibrated ADC gain coefficients.
 %
 %    Inputs:
-%      M_DC    - structure with digitizer DC gain calibration measurement data.
+%      M_DG    - structure with digitizer gain calibration measurement (DG) data.
 %                Required fields:
 %                  .y.v          - sampled waveform (V)
 %                  .Uref1period.v - PJVS reference voltages for one period (V)
@@ -20,27 +20,27 @@
 %      verbose - if nonzero, diagnostic plots will be generated. Default: 0
 %
 %    Outputs:
-%      DC_fit  - calibrated ADC gain coefficients (result of adc_pjvs_calibration)
+%      DG_fit  - calibrated ADC gain coefficients (result of adc_pjvs_calibration)
 %      newPRs  - auto-detected PRs value (samples masked after PJVS step change);
-%                equals input M_DC.PRs.v if auto-detection was not triggered
+%                equals input M_DG.PRs.v if auto-detection was not triggered
 %      newPRe  - auto-detected PRe value (samples masked before PJVS step change);
-%                equals input M_DC.PRe.v if auto-detection was not triggered
+%                equals input M_DG.PRe.v if auto-detection was not triggered
 %
 %    Example:
-%      [M_DC] = G_DC([], 0);
-%      [DC_fit, newPRs, newPRe] = P_DC(M_DC, 0);
+%      [M_DG] = G_DG([], 0);
+%      [DG_fit, newPRs, newPRe] = P_DG(M_DG, 0);
 
-function [DC_fit, newPRs, newPRe] = P_DC(M_DC, verbose)
+function [DG_fit, newPRs, newPRe] = P_DG(M_DG, verbose)
 
     % Initialize %<<<1
     % sigconfig structure is leftover from QuantumPower project.
     % (it was simpler to recreate the structure than to modify the functions)
-    sigconfig.fs.v = M_DC.fs.v;
-    sigconfig.fseg.v = M_DC.fseg.v;
-    sigconfig.MRs = M_DC.MRs.v;
-    sigconfig.MRe = M_DC.MRe.v;
-    sigconfig.PRs = M_DC.PRs.v;
-    sigconfig.PRe = M_DC.PRe.v;
+    sigconfig.fs.v = M_DG.fs.v;
+    sigconfig.fseg.v = M_DG.fseg.v;
+    sigconfig.MRs = M_DG.MRs.v;
+    sigconfig.MRe = M_DG.MRe.v;
+    sigconfig.PRs = M_DG.PRs.v;
+    sigconfig.PRe = M_DG.PRe.v;
 
     % dbg structure is leftover from QuantumPower project.
     % (it was simpler to recreate the structure than to modify the functions)
@@ -69,11 +69,11 @@ function [DC_fit, newPRs, newPRe] = P_DC(M_DC, verbose)
     % Get length of PJVS segments in samples (samples between two different PJVS steps):
     segmentlen = sigconfig.fs.v./sigconfig.fseg.v;
     % Find out indexes of PJVS segments automatically:
-    tmpSpjvs = pjvs_ident_segments(M_DC.y.v, sigconfig.MRs, sigconfig.MRe, segmentlen, dbg);
+    tmpSpjvs = pjvs_ident_segments(M_DG.y.v, sigconfig.MRs, sigconfig.MRe, segmentlen, dbg);
 
     % automatically find PRs, PRe:
     if sigconfig.PRs < 0 || sigconfig.PRe < 0
-        [newPRs, newPRe] = pjvs_find_PR(M_DC.y.v, tmpSpjvs, sigconfig, dbg);
+        [newPRs, newPRe] = pjvs_find_PR(M_DG.y.v, tmpSpjvs, sigconfig, dbg);
         % set new values of PRs,PRe:
         sigconfig.PRs = newPRs;
         sigconfig.PRe = newPRe;
@@ -82,17 +82,17 @@ function [DC_fit, newPRs, newPRe] = P_DC(M_DC, verbose)
         error('Error in calculation of PJVS step changes in function "pjvs_ident_segments".')
     end
     % Split the pjvs section into segments, remove PRs,PRe,MRs,MRe, calculate means, std, uA:
-    [s_y, s_mean, s_std, s_uA] = pjvs_split_segments(M_DC.y.v, tmpSpjvs, sigconfig.MRs, sigconfig.MRe, sigconfig.PRs, sigconfig.PRe, dbg);
+    [s_y, s_mean, s_std, s_uA] = pjvs_split_segments(M_DG.y.v, tmpSpjvs, sigconfig.MRs, sigconfig.MRe, sigconfig.PRs, sigconfig.PRe, dbg);
     % Now Spjvs can be incorrect, because trailing
     % segments (first or last one with smaller number of
     % samples than typical) were neglected.
     % Recreate PJVS reference values for whole sampled PJVS waveform section:
-    tmpUref = pjvs_ident_Uref(s_mean, M_DC.Uref1period.v, dbg);
+    tmpUref = pjvs_ident_Uref(s_mean, M_DG.Uref1period.v, dbg);
 
     % ADEV calculation and plotting:
-    pjvs_adev(s_y, tmpUref, M_DC.Uref1period.v, dbg); % not calculated if disabled by dbg
+    pjvs_adev(s_y, tmpUref, M_DG.Uref1period.v, dbg); % not calculated if disabled by dbg
     % calibration of ADC:
-    DC_fit = adc_pjvs_calibration(tmpUref, s_mean, s_uA, dbg);
+    DG_fit = adc_pjvs_calibration(tmpUref, s_mean, s_uA, dbg);
 
     % debug plots %<<<1
     if dbg.v 
@@ -106,7 +106,7 @@ function [DC_fit, newPRs, newPRe] = P_DC(M_DC, verbose)
             % plot, because NaN values cause unnecesary
             % empty space on right side of the plot
             plotlim = 0;
-            for k = 1:numel(M_DC.Uref1period.v)
+            for k = 1:numel(M_DG.Uref1period.v)
                 plot(1e6.*(s_y(:,k) - tmpUref(k)), '-x')
                 legc{end+1} = sprintf('U_{ref}=%.9f', tmpUref(k));
                 plotlim = max(plotlim, sum(~isnan(s_y(:,k))));

@@ -42,6 +42,20 @@
 			<Item Name="CE Estimate measurement time.vi" Type="VI" URL="../CE Utilities/CE Estimate measurement time.vi"/>
 			<Item Name="CE Get Measurement Path.vi" Type="VI" URL="../CE Utilities/CE Get Measurement Path.vi"/>
 		</Item>
+		<Item Name="DG GUI" Type="Folder">
+			<Item Name="DG GUI Measurement setup.vi" Type="VI" URL="../DG GUI/DG GUI Measurement setup.vi"/>
+		</Item>
+		<Item Name="DG Measurement" Type="Folder">
+			<Item Name="Type definitions" Type="Folder">
+				<Item Name="DG measurement.ctl" Type="VI" URL="../DG Measurement/DG measurement.ctl"/>
+			</Item>
+			<Item Name="DG Do Single Measurement.vi" Type="VI" URL="../DG Measurement/DG Do Single Measurement.vi"/>
+			<Item Name="DG Measure.vi" Type="VI" URL="../DG Measurement/DG Measure.vi"/>
+		</Item>
+		<Item Name="DG Utilities" Type="Folder">
+			<Item Name="DG Calculate Fit.vi" Type="VI" URL="../DG Utilities/DG Calculate Fit.vi"/>
+			<Item Name="Save DG measurement.vi" Type="VI" URL="../DG Utilities/Save DG measurement.vi"/>
+		</Item>
 		<Item Name="external libraries" Type="Folder">
 			<Item Name="externals needed for AWG" Type="Folder">
 				<Item Name="3458A Sampling Rate.ctl" Type="VI" URL="../external libraries/externals needed for AWG/3458A Sampling Rate.ctl"/>

@@ -94,8 +94,14 @@ function [DG_fit, newPRs, newPRe] = P_DG(M_DG, verbose)
     % calibration of ADC:
     DG_fit = adc_pjvs_calibration(tmpUref, s_mean, s_uA, dbg);
 
-    % debug plots %<<<1
-    if dbg.v 
+    % Verbose info and figure %<<<1
+    if verbose
+        % print out some information:
+        disp('---')
+        disp('P_DG verbose informations:')
+        printf('digitizer offset: %.7f +- %.7f\n', DG_fit.coefs.v(1), DG_fit.coefs.u(1))
+        printf('digitizer gain: %.7f +- %.7f\n',   DG_fit.coefs.v(2), DG_fit.coefs.u(2))
+
         if dbg.pjvs_segments_first_period
             % plot with segments minus reference value,
             % for first PJVS period:

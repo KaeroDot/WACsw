@@ -249,10 +249,14 @@
 			<Item Name="Merge Error Ex.vi" Type="VI" URL="../Utilities/Merge Error Ex.vi"/>
 			<Item Name="Process TWM result.vi" Type="VI" URL="../Utilities/Process TWM result.vi"/>
 			<Item Name="Read settings from file.vi" Type="VI" URL="../Utilities/Read settings from file.vi"/>
+			<Item Name="Replace or Add DBL.vi" Type="VI" URL="../Utilities/Replace or Add DBL.vi"/>
+			<Item Name="Replace or Add PJVS values into array of clusters.vi" Type="VI" URL="../Utilities/Replace or Add PJVS values into array of clusters.vi"/>
+			<Item Name="Replace or Add U32.vi" Type="VI" URL="../Utilities/Replace or Add U32.vi"/>
 			<Item Name="Save settings to file.vi" Type="VI" URL="../Utilities/Save settings to file.vi"/>
 			<Item Name="Set TWM Measurement.vi" Type="VI" URL="../Utilities/Set TWM Measurement.vi"/>
 			<Item Name="Set TWM Processing.vi" Type="VI" URL="../Utilities/Set TWM Processing.vi"/>
 			<Item Name="TWM Measure.vi" Type="VI" URL="../Utilities/TWM Measure.vi"/>
+			<Item Name="Wait with references.vi" Type="VI" URL="../Utilities/Wait with references.vi"/>
 		</Item>
 		<Item Name="afg_test.vi" Type="VI" URL="../../../../afg_test.vi"/>
 		<Item Name="test_F5730.vi" Type="VI" URL="../test_F5730.vi"/>

@@ -85,8 +85,8 @@ function [M_SS] = G_SS(varargin);
         % f_step/f_envelope)
         M_SS.f_step.v = 40.*M_SS.f_envelope.v;
         % Length of the record (samples):
-        % one period of the PJVS signal
-        M_SS.L.v = fix(1.*M_SS.fs.v./M_SS.f_envelope.v);
+        % two periods of the PJVS signal
+        M_SS.L.v = fix(2.*M_SS.fs.v./M_SS.f_envelope.v);
         % ph_step - phase of the PJVS steps (rad), scalar.
         M_SS.ph_step.v = 0;
         % fm - microwave frequency (Hz), scalar.

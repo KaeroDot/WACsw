@@ -89,17 +89,23 @@ function [M_SS, FR_fit, CE_fit] = read_M_SS_from_sampled_data(SS_info_filename, 
     M_SS.fs.v = infogetnumber(samplessection, 'sampling rate [Sa/s]');
     % get path to the sampled data:
     samplesdatapath = infogettextmatrix(samplessection, 'record sample data files');
+    % get data gain:
+    datagain = infogetmatrix(samplessection, 'record sample data gains [V]');
+    % get data offset:
+    dataoffset = infogetmatrix(samplessection, 'record sample data offsets [V]');
+
     % Convert Windows-style backslashes to system-dependent file separator
     samplesdatapath = strrep(samplesdatapath{1}, '\', filesep);
     samplesdatapath = fullfile(SS_info_dir, TWM_data_directory_relative, samplesdatapath);
     % load sampled data:
     data = load(samplesdatapath);
-    M_SS.y.v = data.y;
+    % scale data to correct values:
+    M_SS.y.v = datagain.*data.y + dataoffset;
 
     % calculate derived data %<<<1
     L = numel(M_SS.y.v);
     trianglesinrecord = L./M_SS.fs.v.*M_SS.f_envelope.v;
-    M_SS.Upjvs.v = repmat(M_SS.Upjvs1period.v, trianglesinrecord);
+    M_SS.Upjvs.v = repmat(M_SS.Upjvs1period.v, 1, trianglesinrecord);
 
     % time vector (TODO think out if really needed for next processing)
     M_SS.t.v = [0 : numel(M_SS.y.v) - 1] ./ M_SS.fs.v;

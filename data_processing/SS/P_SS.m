@@ -37,6 +37,14 @@ function [A_rms, A_fft, t_sorted, y] = P_SS(M_SS, FR_fit, CE_fit, verbose);
     y_usefull = y_filtered;
     y_usefull(idx) = NaN;
     % XXX here should come some check that at least some data are not NaN. Or maybe later when split by PJVS steps?
+    if all(isnan(y_usefull))
+        error('P_SS: all samples are NaN after limit cut! Limit: %.7f V, samples in triangle: %d, triangle periods in record: %d, samples range: %.3f - %.3f V.',
+        limit,
+        samplesintriangle,
+        trianginrecord,
+        min(y_filtered),
+        max(y_filtered))
+    end
 
     % for every triangle period:
     for p = 1:trianginrecord
@@ -48,11 +56,11 @@ function [A_rms, A_fft, t_sorted, y] = P_SS(M_SS, FR_fit, CE_fit, verbose);
         y = reshape(y, samples_in_step, [])';
         % Now every row is data from a single PJVS step.
         % Remove PJVS voltages:
-        y = y - M_SS.Upjvs.v(:);
+        y = y - M_SS.Upjvs1period.v(:);
 
         % Remove transients:
         if M_SS.Rs.v + M_SS.Re.v > size(y, 2)
-            error(sprintf('P_SS: not enough samples to be removed in PJVS step! Rs: %d, Re: %d, samples in step: %d', M_SS.Rs.v, M_SS.Re.v, numel(y{j})))
+            error(sprintf('P_SS: not enough samples to be removed in PJVS step! Rs: %d, Re: %d, samples in step: %d', M_SS.Rs.v, M_SS.Re.v, numel(y{j}))) % XXX this will fail y{j}!
         end
         if M_SS.Rs.v > 0
             y = y(:, M_SS.Rs.v + 1 : end);
@@ -90,7 +98,7 @@ function [A_rms, A_fft, t_sorted, y] = P_SS(M_SS, FR_fit, CE_fit, verbose);
         yf = reshape(M_SS.y.v, samples_in_step, [])';
         % XXX quick fix for multiple periods:
         periods_in_record = numel(yf)./samplesintriangle;
-        yf = yf - repmat(M_SS.Upjvs.v(:), periods_in_record, 1);
+        yf = yf - repmat(M_SS.Upjvs1period.v(:), periods_in_record, 1);
         tmp = sqrt(mean([yf(:)].^2)).*sqrt(2);
         printf('RMS value of all samples: %.7f\n', tmp)
 

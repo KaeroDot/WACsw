@@ -259,6 +259,7 @@
 			<Item Name="Wait with references.vi" Type="VI" URL="../Utilities/Wait with references.vi"/>
 		</Item>
 		<Item Name="afg_test.vi" Type="VI" URL="../../../../afg_test.vi"/>
+		<Item Name="test_33600A.vi" Type="VI" URL="../test_33600A.vi"/>
 		<Item Name="test_F5730.vi" Type="VI" URL="../test_F5730.vi"/>
 		<Item Name="testoct.vi" Type="VI" URL="../testoct.vi"/>
 		<Item Name="Dependencies" Type="Dependencies">

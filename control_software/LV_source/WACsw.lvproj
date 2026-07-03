@@ -84,6 +84,9 @@
 				<Item Name="Send_command_and_check_response_number.vi" Type="VI" URL="../external libraries/JV modified NPL Bias source/Send_command_and_check_response_number.vi"/>
 				<Item Name="Send_command_and_check_response_string.vi" Type="VI" URL="../external libraries/JV modified NPL Bias source/Send_command_and_check_response_string.vi"/>
 				<Item Name="Send_zero_DC.vi" Type="VI" URL="../external libraries/JV modified NPL Bias source/Send_zero_DC.vi"/>
+				<Item Name="Set Ext Clock.vi" Type="VI" URL="../external libraries/JV modified NPL Bias source/Set Ext Clock.vi"/>
+				<Item Name="Set Trig Type.vi" Type="VI" URL="../external libraries/JV modified NPL Bias source/Set Trig Type.vi"/>
+				<Item Name="Set_up_waveform Sine and Triang.vi" Type="VI" URL="../external libraries/JV modified NPL Bias source/Set_up_waveform Sine and Triang.vi"/>
 				<Item Name="Set_up_waveform.vi" Type="VI" URL="../external libraries/JV modified NPL Bias source/Set_up_waveform.vi"/>
 				<Item Name="test.vi" Type="VI" URL="../external libraries/JV modified NPL Bias source/test.vi"/>
 				<Item Name="vi Mode external.ctl" Type="VI" URL="../external libraries/JV modified NPL Bias source/vi Mode external.ctl"/>
@@ -764,7 +767,7 @@
 				<Property Name="Bld_modifyLibraryFile" Type="Bool">true</Property>
 				<Property Name="Bld_previewCacheID" Type="Str">{F9D6AE93-6E67-4B1A-BB85-67503D78EECB}</Property>
 				<Property Name="Bld_version.minor" Type="Int">3</Property>
-				<Property Name="Bld_version.patch" Type="Int">3</Property>
+				<Property Name="Bld_version.patch" Type="Int">4</Property>
 				<Property Name="Destination[0].destName" Type="Str">WACsw.exe</Property>
 				<Property Name="Destination[0].path" Type="Path">../WACsw builds/ver. [VersionNumber]/NI_AB_PROJECTNAME.exe</Property>
 				<Property Name="Destination[0].preserveHierarchy" Type="Bool">true</Property>
@@ -773,7 +776,7 @@
 				<Property Name="Destination[1].path" Type="Path">../WACsw builds/ver. [VersionNumber]/data</Property>
 				<Property Name="DestinationCount" Type="Int">2</Property>
 				<Property Name="Exe_iconItemID" Type="Ref">/My Computer/resources/wac.ico</Property>
-				<Property Name="Source[0].itemID" Type="Str">{6789D80F-7E76-43C3-981A-2D02A15F266F}</Property>
+				<Property Name="Source[0].itemID" Type="Str">{44F915DB-67E5-4BE0-9804-0549B1C51482}</Property>
 				<Property Name="Source[0].type" Type="Str">Container</Property>
 				<Property Name="Source[1].destinationIndex" Type="Int">0</Property>
 				<Property Name="Source[1].itemID" Type="Ref">/My Computer/Main GUI/GUI main.vi</Property>

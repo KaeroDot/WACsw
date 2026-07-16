@@ -1,0 +1,12 @@
+% AUTOMATICALLY GENERATED! DO NOT MODIFY THIS FILE, IT WILL BE OVERWRITTEN!
+% type of the correction
+type:: acdctransfer
+
+% name of the transfer standard
+name:: simulated AC/DC transfer standard, output from ACDC_simulator.m
+
+% serial number of the transducer
+serial number:: simulated_acdc
+
+% AC/DC difference for range 1000 V
+AC/DC difference path:: csv\1000.csv

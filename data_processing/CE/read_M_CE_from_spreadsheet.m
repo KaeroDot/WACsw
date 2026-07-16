@@ -35,15 +35,16 @@ function M_CE = read_M_CE_from_spreadsheet(filename, verbose)
     idx_L_short             = [ 7,  5,    7,  5]; % cable length of short
     idx_L_short_unc         = [ 8,  5,    8,  5]; % cable length of short
     idx_alg_id              = [ 9,  5,    9,  5]; % Algorithm ID
-    idx_FR_fit_path         = [10,  5,   10,  5]; % path to mat file with FR fit
+    idx_alg_Q               = [10,  5,   10,  5]; % Algorithm quantity
+    idx_FR_fit_path         = [11,  5,   11,  5]; % path to mat file with FR fit
     idx_ac_source_id        = [ 2,  8,    2,  8]; % AC source ID
     idx_digitizer_id        = [ 4,  8,    4,  8]; % Digitizer ID
-    idx_f                   = [14,  2, 2000,  2]; % Signal frequency
-    idx_M                   = [14,  3, 2000,  3]; % Record length in periods
-    idx_sw                  = [14,  4, 2000,  4]; % Switch position
-    idx_t                   = [14,  5, 2000,  5]; % TIme of reading
-    idx_A_v                 = [14,  6, 2000,  6]; % Amplitude values
-    idx_A_u                 = [14,  7, 2000,  7]; % Amplitude uncertainties
+    idx_f                   = [15,  2, 2000,  2]; % Signal frequency
+    idx_M                   = [15,  3, 2000,  3]; % Record length in periods
+    idx_sw                  = [15,  4, 2000,  4]; % Switch position
+    idx_t                   = [15,  5, 2000,  5]; % TIme of reading
+    idx_A_v                 = [15,  6, 2000,  6]; % Amplitude values
+    idx_A_u                 = [15,  7, 2000,  7]; % Amplitude uncertainties
 
     % Read and extract data %<<<1
     % Read the Excel file and extract numeric and raw data

@@ -1,28 +1,28 @@
-% Fit frequency response data with piecewise polynomials or splines.
+% Fit frequency-response data with a piecewise spline model.
 %
 % Output:
 %   ppfit - structure containing:
-%     .method   - fitting method used ('spline' or 'polynomial')
-%     .no_fit_regions  - number of regions for piecewise fitting
+%     .method   - fitting method used ('spline')
+%     .no_fit_regions - number of regions for piecewise fitting
 %     .breaks   - frequency limits of each region (Hz)
 %     .fit      - fit parameters:
-%       For 'spline':
-%         .fit - spline structure as returned by splinefit, with fields:
-%            .breaks   - vector of breakpoints between regions
-%                       (Hz relative to sampling frequency)
-%            .coefs    - matrix of spline coefficients for each region
-%            .order    - order of the spline
-%            .pieces   - number of spline pieces (regions)
-%       For 'polynomial':
-%         .fit.max_pol_degree.v - degree of polynomial
-%         .fit.polP            - cell array of polynomial coefficients for each region
-%         .fit.polS            - cell array of polynomial structure for each region
-%         .fit.polMU           - cell array of centering/scaling for each region
+%       .fit - spline structure as returned by splinefit, with fields:
+%          .breaks   - vector of breakpoints between regions
+%                      (relative to sampling frequency)
+%          .coefs    - matrix of spline coefficients for each region
+%          .coefs_u  - standard deviation of Monte Carlo spline coefficients
+%          .order    - order of the spline
+%          .pieces   - number of spline pieces (regions)
+%     .coeffs_r - fits as resulted from Monte Carlo method, one page (3rd
+%                 dimension of matrix) per MC iteration.
+%     .MCM      - number of Monte Carlo iterations used in the fit
 %
 % Usage:
-%   ppfit = piecewise_FR_fit(f, FR, M_FR, verbose)
+%   ppfit = piecewise_FR_fit(FR, M_FR, verbose)
 %
-    % TODO should fit error or fit gain? gain: 1+err, error: err
+% Notes:
+%   The function uses a Monte Carlo loop to randomize FR.v using FR.u and
+%   estimate coefficient uncertainty.
 
 function ppfit = piecewise_FR_fit(FR, M_FR, verbose)
     % Constants %<<<1
@@ -52,6 +52,7 @@ function ppfit = piecewise_FR_fit(FR, M_FR, verbose)
     f_rel = f.v ./ M_FR.fs.v;
 
     % calculate non randomized fit:
+    % ppfit.fit = splinefit(f_rel, FR.v, ppfit.no_fit_regions - 1);
     ppfit.fit = splinefit(f_rel, FR.v, ppfit.no_fit_regions - 1);
     ppfit.breaks = ppfit.fit.breaks .* M_FR.fs.v;
 

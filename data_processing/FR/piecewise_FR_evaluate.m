@@ -1,5 +1,17 @@
-% XXX proper description
-% Returns errors or what?
+% Evaluate a piecewise spline fit and optionally compute uncertainties using Monte Carlo method.
+%
+% Outputs:
+%   y - structure containing:
+%     .v - evaluated fit values at the requested frequencies
+%     .u - standard uncertainty from randomized coefficient evaluation
+%     .r - matrix of randomized fit values, one column per trial
+%
+% Inputs:
+%   ppfit - piecewise fit structure created by piecewise_FR_fit
+%   f - frequency vector at which to evaluate the fit
+%   fs - sampling-frequency structure used to normalize f
+%   randomize - number of Monte Carlo evaluations to return in y.r; if
+%       omitted, all available Monte Carlo realizations are used
 function [y, y_mcm] = piecewise_FR_evaluate(ppfit, f, fs, randomize)
     % Check inputs %<<<1
     % XXX

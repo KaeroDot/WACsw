@@ -1,25 +1,25 @@
 % -- [f, digitizer_FR, ac_source_stability, FR_fit] = P_FR(M_FR, acdc_corrections_path);
 % -- [f, digitizer_FR, ac_source_stability, FR_fit] = P_FR(M_FR, acdc_corrections_path, verbose);
-% Process data from measurement of digitizer frequency response. Calculate
-% frequqency response from a measurement M_FR.
+% Process a digitizer frequency-response measurement and estimate the
+% digitizer gain, source stability, and piecewise fit.
 %
 %    Inputs:
-%      M_FR - structure with frequency response measurement.
-%      acdc_corrections_path - file with AC/DC transfer standard data and corrections.
-%      verbose - if nonzero, a figure with results will be plotted.
+%      M_FR - frequency-response measurement structure.
+%      acdc_corrections_path - path to AC/DC transfer standard data and corrections.
+%      verbose - if nonzero, plots intermediate and final results.
 %
-%      note: Path to the AC/DC file can be specified in
-%      M_FR.acdc_corrections_path.v or as second input in
-%      acdc_corrections_path. The latter is prioritized.
+%      Note: the AC/DC path can be specified in M_FR.acdc_corrections_path.v
+%      or as the second input argument. The function argument takes priority.
 %
 %    Outputs:
-%      f - frequencies of measurement points (Hz)
-%      digitizer_FR - frequency response of the digitizer (V/V)
-%      ac_source_stability - stability of the AC source as measured by the thermal transfer element and voltmeter (V)
-%      FR_fit - piecewise fit of the frequency response
+%      f - measurement frequencies (Hz)
+%      digitizer_FR - digitizer frequency response (V/V)
+%      ac_source_stability - AC source stability estimated from the thermal
+%          transfer element and voltmeter (V)
+%      FR_fit - piecewise fit structure used for later evaluation
 %
 %    Example:
-%      (one should correct data in the measurement template before calculating the frequecy response!)
+%      (check the data in the measurement template before calculating the frequency response)
 %      [f, digitizer_FR, ac_source_stability, FR_fit] = P_FR(...
 %           read_M_FR_from_spreadsheet('Example of FF meter template.xlsx'),...
 %           'acdc_standard_data/dummy_acdc_standard/dummy_acdc.info', ...

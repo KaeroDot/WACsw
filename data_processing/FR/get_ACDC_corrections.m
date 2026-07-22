@@ -8,12 +8,13 @@
 %
 %    Outputs:
 %      acdc_diff - AC/DC corrections for each reading in M_FR
+%      u_acdc_diff - AC/DC correction uncertainties for each reading in M_FR
 %      acdctransfer - structure with all data for AC/DC transfer standard
 %
 %    Example:
-%      [acdc_diff acdctransfer] = get_ACDC_corrections(G_FR(), 1);
+%      [acdc_diff u_acdc_diff acdctransfer] = get_ACDC_corrections(G_FR(), 1);
 
-function [acdc_diff acdctransfer] = get_ACDC_corrections(M_FR, verbose)
+function [acdc_diff u_acdc_diff acdctransfer] = get_ACDC_corrections(M_FR, verbose)
     % Check inputs %<<<1
     if not(isstruct(M_FR))
         error('correct_M_FR_for_ACDC: first input must be a structure!')
@@ -39,7 +40,8 @@ function [acdc_diff acdctransfer] = get_ACDC_corrections(M_FR, verbose)
     % interpolate
     tbl = correction_interp_table(acdctransfer.acdc_diff, M_FR.A.v, M_FR.f.v, '', '', 'linear');
     % reshape ACDC errors to proper size:
-    acdc_diff = reshape(tbl.acdc_diff, size(M_FR.A.v, 1), []);
+    acdc_diff   = reshape(tbl.acdc_diff,   size(M_FR.A.v, 1), []);
+    u_acdc_diff = reshape(tbl.u_acdc_diff, size(M_FR.A.v, 1), []);
     % check output
     if any(isnan(acdc_diff))
         warning('correct_M_FR_for_ACDC: Interpolation of AC/DC errors returned NaN values. Check the AC/DC transfer standard file if it covers all measured values.');
@@ -49,8 +51,18 @@ function [acdc_diff acdctransfer] = get_ACDC_corrections(M_FR, verbose)
     else
         idx = false(size(acdc_diff));
     end
+    if any(isnan(u_acdc_diff))
+        warning('correct_M_FR_for_ACDC: Interpolation of AC/DC uncertainties returned NaN values. Check the AC/DC transfer standard file if it covers all measured values.');
+        warning('correct_M_FR_for_ACDC: NaN values will be replaced with zero (no uncertainty!).');
+        u_idx = isnan(u_acdc_diff);
+        u_acdc_diff(idx) = 0; % set NaN to zero
+    else
+        u_idx = false(size(u_acdc_diff));
+    end
     % apply errors
     M_FR.A.v = M_FR.A.v.*(1 + acdc_diff);
+    % apply uncertainties
+    M_FR.A.u = sqrt( M_FR.A.u.^2 + u_acdc_diff.^2 ); % TODO not sure if this is correct. is it relative uncertainty of relative number, or absolute uncertainty?
 
     % Plot corrections if verbose %<<<1
     if verbose
@@ -58,6 +70,7 @@ function [acdc_diff acdctransfer] = get_ACDC_corrections(M_FR, verbose)
         hold on;
         plot(M_FR.f.v(not(idx)), 1e6.*acdc_diff(not(idx)), 'bx');
         plot(M_FR.f.v(idx),      1e6.*acdc_diff(idx),      'ro');
+        errorbar(M_FR.f.v(not(idx)), 1e6.*acdc_diff(not(idx)), 1e6.*u_acdc_diff(not(idx)), 'bx');
         hold off;
         xlabel('Frequency (Hz)');
         ylabel('AC/DC correction (uV/V)');

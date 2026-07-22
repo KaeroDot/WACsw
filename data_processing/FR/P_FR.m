@@ -63,7 +63,7 @@ function [f, digitizer_FR, ac_source_stability, FR_fit] = P_FR(M_FR, acdc_correc
         M_FR.acdc_corrections_path.v = acdc_corrections_path;
     end
 
-    [acdc_difference ~] = get_ACDC_corrections(M_FR, verbose);
+    [acdc_difference u_acdc_difference ~] = get_ACDC_corrections(M_FR, verbose);
 
     % Reshape data %<<<1
     % Now samples are processed into M_FR.A.v and M_FR.A.u
@@ -74,8 +74,11 @@ function [f, digitizer_FR, ac_source_stability, FR_fit] = P_FR(M_FR, acdc_correc
     f_meas = reshape(M_FR.f.v, 2, [])'; % signal frequencies
     tv = reshape(M_FR.t.v, 2, [])'; % time of reading
     Av = reshape(M_FR.A.v, 2, [])'; % amplitude as measured by digitizer
-    Udc = reshape(M_FR.Udc.v, 2, [])'; % ACDC standard dc voltage output as as measured by voltmeter
+    Au = reshape(M_FR.A.u, 2, [])';
+    Udc  = reshape(M_FR.Udc.v, 2, [])'; % ACDC standard dc voltage output as as measured by voltmeter
+    Udcu = reshape(M_FR.Udc.u, 2, [])';
     acdc_difference = reshape(acdc_difference, 2, [])'; % ACDC standard errors
+    u_acdc_difference = reshape(u_acdc_difference, 2, [])';
 
     % Calculate results %<<<1
     % measured frequency response of the digitizer, calculated as:
@@ -88,6 +91,16 @@ function [f, digitizer_FR, ac_source_stability, FR_fit] = P_FR(M_FR, acdc_correc
     %   AC/DC error at measured frequency /
     %   AC/DC error at reference frequency
     digitizer_FR.v = Av(:, 1)./Av(:, 2) .* Udc(:, 2)./Udc(:, 1) .* (1 + acdc_difference(:, 1))./(1 + acdc_difference(:, 2));
+    % uncertainty:
+    rel_uncertainty = sqrt( (Au(:,1)./Av(:,1)).^2 + ...
+                            (Au(:,2)./Av(:,2)).^2 + ...
+                            (Udcu(:,1)./Udc(:,1)).^2 + ...
+                            (Udcu(:,2)./Udc(:,2)).^2 + ...
+                            (u_acdc_difference(:,1)./(1 + acdc_difference(:,1))).^2 + ...
+                            (u_acdc_difference(:,2)./(1 + acdc_difference(:,2))).^2 ...
+                          );
+    digitizer_FR.u = digitizer_FR.v .* rel_uncertainty;
+
     % freuencies of measurement points:
     f.v = f_meas(:,1);
 
@@ -96,7 +109,7 @@ function [f, digitizer_FR, ac_source_stability, FR_fit] = P_FR(M_FR, acdc_correc
 
     % fit frequency response by a piecewise polynomial:
     % (value of regions set to nominal)
-    FR_fit = piecewise_FR_fit(f, digitizer_FR, M_FR, verbose);
+    FR_fit = piecewise_FR_fit(digitizer_FR, M_FR, verbose);
 
     % Export results %<<<1
     % create filename:
@@ -107,7 +120,8 @@ function [f, digitizer_FR, ac_source_stability, FR_fit] = P_FR(M_FR, acdc_correc
 
     if verbose
         figure
-        plot(f.v, digitizer_FR.v - 1, '-')
+        % plot(f.v, digitizer_FR.v - 1, '-')
+        errorbar(f.v, digitizer_FR.v - 1, digitizer_FR.u, '-')
         xlabel('signal frequency (Hz)')
         ylabel('gain error (V/V)')
         title(sprintf('P_FR.m\nFrequency response of the digitizer `%s`', M_FR.digitizer_id.v), 'interpreter', 'none')

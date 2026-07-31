@@ -17,7 +17,7 @@
 function [acdc_diff u_acdc_diff acdctransfer] = get_ACDC_corrections(M_FR, verbose)
     % Check inputs %<<<1
     if not(isstruct(M_FR))
-        error('correct_M_FR_for_ACDC: first input must be a structure!')
+        error('get_ACDC_corrections: first input must be a structure!')
     end
 
     if ~exist('verbose', 'var')
@@ -44,16 +44,16 @@ function [acdc_diff u_acdc_diff acdctransfer] = get_ACDC_corrections(M_FR, verbo
     u_acdc_diff = reshape(tbl.u_acdc_diff, size(M_FR.A.v, 1), []);
     % check output
     if any(isnan(acdc_diff))
-        warning('correct_M_FR_for_ACDC: Interpolation of AC/DC errors returned NaN values. Check the AC/DC transfer standard file if it covers all measured values.');
-        warning('correct_M_FR_for_ACDC: NaN values will be replaced with zero (no correction).');
+        warning('get_ACDC_corrections: Interpolation of AC/DC errors returned NaN values. Check the AC/DC transfer standard file if it covers all measured values.');
+        warning('get_ACDC_corrections: NaN values will be replaced with zero (no correction).');
         idx = isnan(acdc_diff);
         acdc_diff(idx) = 0; % set NaN to zero
     else
         idx = false(size(acdc_diff));
     end
     if any(isnan(u_acdc_diff))
-        warning('correct_M_FR_for_ACDC: Interpolation of AC/DC uncertainties returned NaN values. Check the AC/DC transfer standard file if it covers all measured values.');
-        warning('correct_M_FR_for_ACDC: NaN values will be replaced with zero (no uncertainty!).');
+        warning('get_ACDC_corrections: Interpolation of AC/DC uncertainties returned NaN values. Check the AC/DC transfer standard file if it covers all measured values.');
+        warning('get_ACDC_corrections: NaN values will be replaced with zero (no uncertainty!).');
         u_idx = isnan(u_acdc_diff);
         u_acdc_diff(idx) = 0; % set NaN to zero
     else
@@ -68,15 +68,21 @@ function [acdc_diff u_acdc_diff acdctransfer] = get_ACDC_corrections(M_FR, verbo
     if verbose
         figure;
         hold on;
-        plot(M_FR.f.v(not(idx)), 1e6.*acdc_diff(not(idx)), 'bx');
-        plot(M_FR.f.v(idx),      1e6.*acdc_diff(idx),      'ro');
-        errorbar(M_FR.f.v(not(idx)), 1e6.*acdc_diff(not(idx)), 1e6.*u_acdc_diff(not(idx)), 'bx');
+        h = errorbar(M_FR.f.v(not(idx)), 1e6.*acdc_diff(not(idx)), 1e6.*u_acdc_diff(not(idx)), 'bx');
+        set(h, 'displayname', 'interpolated ACDC correction with uncertainty bars');
+        % sort for uncertainty otherwise the line will be jagged
+        [f_sorted, idxsorted] = sort(M_FR.f.v(not(idx)));
+        u_sorted = u_acdc_diff(not(idx))(idxsorted);
+        plot(f_sorted,     1e6.*u_sorted, 'r-', 'displayname', 'value of uncertainty');
+        plot(M_FR.f.v(idx),          1e6.*acdc_diff(idx),      'ro', 'displayname', 'AC/DC correction value causing NaN in interpolation and set to 0');
         hold off;
         xlabel('Frequency (Hz)');
         ylabel('AC/DC correction (uV/V)');
-        title(sprintf('correct_M_FR_for_ACDC\napplied AC/DC corrections using file:\n"%s"', M_FR.acdc_corrections_path.v), 'interpreter', 'none');
-        legend('value interpolated using data from the file', 'value causing NaN in interpolation and set to 0');
+        title(sprintf('get_ACDC_corrections\napplied AC/DC corrections using file:\n"%s"', M_FR.acdc_corrections_path.v), 'interpreter', 'none');
+        legend();
         grid on;
+        saveas(gcf(), [M_FR.label.v '_acdc_corrections.png'])
+        saveas(gcf(), [M_FR.label.v '_acdc_corrections.fig'])
     end
 end % function
 

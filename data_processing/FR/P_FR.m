@@ -125,6 +125,8 @@ function [f, digitizer_FR, ac_source_stability, FR_fit] = P_FR(M_FR, acdc_correc
         xlabel('signal frequency (Hz)')
         ylabel('gain error (V/V)')
         title(sprintf('P_FR.m\nFrequency response of the digitizer `%s`', M_FR.digitizer_id.v), 'interpreter', 'none')
+        saveas(gcf(), [M_FR.label.v '_gain_error.png'])
+        saveas(gcf(), [M_FR.label.v '_gain_error.fig'])
 
         % ac source stability
         figure
@@ -132,13 +134,24 @@ function [f, digitizer_FR, ac_source_stability, FR_fit] = P_FR(M_FR, acdc_correc
         xlabel('time from the first measurement (h)')
         ylabel('change of signal amplitude from the first reading (V)')
         title(sprintf('P_FR.m\nstability of AC source `%s`\n as measured by AC-DC standard and DC voltmeter `%s`', M_FR.ac_source_id.v, M_FR.dc_meter_id.v), 'interpreter', 'none')
+        saveas(gcf(), [M_FR.label.v '_instability_of_AC_source.png'])
+        saveas(gcf(), [M_FR.label.v '_instability_of_AC_source.fig'])
 
-		% % This figure is not usefull and probably nonsense
-		% figure
-		% semilogx(f_meas(:,1), Udc(:,1)./Udc(:,2) - 1)
-		% xlabel('signal frequency (Hz)')
-		% ylabel('error (V)')
-		% title(sprintf('P_FR.m\nAC/DC error of `%s`\n(if amplitude of AC source is frequency independent)\n as measured by AC/DC standard and voltmeter `%s`', M_FR.ac_source_id.v, M_FR.dc_meter_id.v), 'interpreter', 'none')
+        % plot with relative uncertainties
+        figure
+        hold on
+        plot(f.v, Au(:, 1), '-r', 'displayname', 'uncertainty of amplitude estimation at measurement freq.')
+        plot(f.v, Au(:, 2), '--r', 'displayname', 'uncertainty of amplitude estimation at reference freq.')
+        plot(f.v, Udcu(:, 1), '-g', 'displayname', 'voltmeter uncertainty at measured frequency')
+        plot(f.v, Udcu(:, 2), '--g', 'displayname', 'voltmeter uncertainty at reference frequency')
+        plot(f.v, u_acdc_difference(:, 1), '-b', 'displayname', 'ACDC difference uncertainty at measured frequency')
+        plot(f.v, u_acdc_difference(:, 2), '--b', 'displayname', 'ACDC difference uncertainty at reference frequency')
+        plot(f.v, rel_uncertainty, '-k', 'displayname', 'total relative uncertainty of the measurement')
+        xlabel('signal frequency (Hz)')
+        ylabel('relative uncertainty (V/V)')
+        title(sprintf('P_FR.m\nrelative uncertainties of the measurement of frequency response of the digitizer `%s`', M_FR.digitizer_id.v), 'interpreter', 'none')
+        saveas(gcf(), [M_FR.label.v '_relative_unc.png'])
+        saveas(gcf(), [M_FR.label.v '_relative_unc.fig'])
     end
 
 end % function P_FR

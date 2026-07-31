@@ -12,7 +12,7 @@
 %   fs - sampling-frequency structure used to normalize f
 %   randomize - number of Monte Carlo evaluations to return in y.r; if
 %       omitted, all available Monte Carlo realizations are used
-function [y, y_mcm] = piecewise_FR_evaluate(ppfit, f, fs, randomize)
+function y = piecewise_FR_evaluate(ppfit, f, fs, randomize)
     % Check inputs %<<<1
     % XXX
     if not(exist('randomize', 'var'))

@@ -174,6 +174,7 @@ function M_FR = read_M_FR_from_spreadsheet(filename, verbose)
         end
     end
     M_FR.label.v = filename;
+    M_FR.no_fit_regions.v = 60; % TODO what if some other value is optimal?
 
 end % function read_M_FR_from_spreadsheet(filename)
 

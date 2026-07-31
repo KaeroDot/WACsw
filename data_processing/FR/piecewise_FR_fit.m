@@ -27,7 +27,7 @@
 function ppfit = piecewise_FR_fit(FR, M_FR, verbose)
     % Constants %<<<1
     method = 'spline'; % method will be always spline. Polynomial deliver worse results.
-    MCM = 1e3; % Monte Carlo iterations
+    MCM = 100e3; % Monte Carlo iterations
 
     % Check inputs %<<<1
     % validate verbose
@@ -104,6 +104,8 @@ function ppfit = piecewise_FR_fit(FR, M_FR, verbose)
         title(sprintf('piecewise_FR_fit.m\nmeasured data and fit\ntotal error trapz(abs((fit - measured))) = %.3g',...
                       ppfit.total_error), 'interpreter', 'none')
         hold off
+        saveas(gcf(), [M_FR.label.v '_fit.png'])
+        saveas(gcf(), [M_FR.label.v '_fit.fig'])
 
         % error plot
         figure()
@@ -125,6 +127,8 @@ function ppfit = piecewise_FR_fit(FR, M_FR, verbose)
         title(sprintf('piecewise_FR_fit.m\nfit errors\ntotal error trapz(abs((fit - measured))) = %.3g',...
                       ppfit.total_error), 'interpreter', 'none')
         hold off
+        saveas(gcf(), [M_FR.label.v '_fit_errors.png'])
+        saveas(gcf(), [M_FR.label.v '_fit_errors.fig'])
     end
 
 end % function fit_FR_piecewise

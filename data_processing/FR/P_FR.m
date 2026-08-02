@@ -120,20 +120,24 @@ function [f, digitizer_FR, ac_source_stability, FR_fit] = P_FR(M_FR, acdc_correc
 
     if verbose
         figure
+        hold on
         % plot(f.v, digitizer_FR.v - 1, '-')
         errorbar(f.v, digitizer_FR.v - 1, digitizer_FR.u, '-')
         xlabel('signal frequency (Hz)')
         ylabel('gain error (V/V)')
         title(sprintf('P_FR.m\nFrequency response of the digitizer `%s`', M_FR.digitizer_id.v), 'interpreter', 'none')
+        hold off
         saveas(gcf(), [M_FR.label.v '_gain_error.png'])
         saveas(gcf(), [M_FR.label.v '_gain_error.fig'])
 
         % ac source stability
         figure
+        hold on
         plot((tv(:,1) - tv(1,1))./3600, ac_source_stability.v - ac_source_stability.v(1))
         xlabel('time from the first measurement (h)')
         ylabel('change of signal amplitude from the first reading (V)')
         title(sprintf('P_FR.m\nstability of AC source `%s`\n as measured by AC-DC standard and DC voltmeter `%s`', M_FR.ac_source_id.v, M_FR.dc_meter_id.v), 'interpreter', 'none')
+        hold off
         saveas(gcf(), [M_FR.label.v '_instability_of_AC_source.png'])
         saveas(gcf(), [M_FR.label.v '_instability_of_AC_source.fig'])
 
@@ -150,6 +154,7 @@ function [f, digitizer_FR, ac_source_stability, FR_fit] = P_FR(M_FR, acdc_correc
         xlabel('signal frequency (Hz)')
         ylabel('relative uncertainty (V/V)')
         title(sprintf('P_FR.m\nrelative uncertainties of the measurement of frequency response of the digitizer `%s`', M_FR.digitizer_id.v), 'interpreter', 'none')
+        hold off
         saveas(gcf(), [M_FR.label.v '_relative_unc.png'])
         saveas(gcf(), [M_FR.label.v '_relative_unc.fig'])
     end

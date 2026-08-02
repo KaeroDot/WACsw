@@ -5,3 +5,8 @@ control_software/Filter function meter/Filter function meter.aliases
 control_software/Filter function meter/Template/~$Example of FF meter template.xlsx
 control_software/LV_source/wacsw_settings.xml
 data_processing/evaluation_results/
+doc/Frequency Response/FR.aux
+doc/Frequency Response/FR.fdb_latexmk
+doc/Frequency Response/FR.fls
+doc/Frequency Response/FR.log
+doc/Frequency Response/FR.synctex.gz

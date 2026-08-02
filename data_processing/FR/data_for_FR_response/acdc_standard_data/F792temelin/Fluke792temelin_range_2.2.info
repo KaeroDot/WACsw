@@ -1,0 +1,11 @@
+% type of the correction
+type:: acdctransfer
+
+% name of the transfer standard
+name:: Fluke 792 temelin
+
+% serial number of the transducer
+serial number:: serialnumber007
+
+% AC/DC difference
+AC/DC difference path:: csv\2.2.csv

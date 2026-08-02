@@ -767,7 +767,7 @@
 				<Property Name="Bld_modifyLibraryFile" Type="Bool">true</Property>
 				<Property Name="Bld_previewCacheID" Type="Str">{F9D6AE93-6E67-4B1A-BB85-67503D78EECB}</Property>
 				<Property Name="Bld_version.minor" Type="Int">3</Property>
-				<Property Name="Bld_version.patch" Type="Int">4</Property>
+				<Property Name="Bld_version.patch" Type="Int">5</Property>
 				<Property Name="Destination[0].destName" Type="Str">WACsw.exe</Property>
 				<Property Name="Destination[0].path" Type="Path">../WACsw builds/ver. [VersionNumber]/NI_AB_PROJECTNAME.exe</Property>
 				<Property Name="Destination[0].preserveHierarchy" Type="Bool">true</Property>
@@ -776,7 +776,7 @@
 				<Property Name="Destination[1].path" Type="Path">../WACsw builds/ver. [VersionNumber]/data</Property>
 				<Property Name="DestinationCount" Type="Int">2</Property>
 				<Property Name="Exe_iconItemID" Type="Ref">/My Computer/resources/wac.ico</Property>
-				<Property Name="Source[0].itemID" Type="Str">{44F915DB-67E5-4BE0-9804-0549B1C51482}</Property>
+				<Property Name="Source[0].itemID" Type="Str">{55542AE2-BC45-4390-8F1D-42C0777E83D4}</Property>
 				<Property Name="Source[0].type" Type="Str">Container</Property>
 				<Property Name="Source[1].destinationIndex" Type="Int">0</Property>
 				<Property Name="Source[1].itemID" Type="Ref">/My Computer/Main GUI/GUI main.vi</Property>

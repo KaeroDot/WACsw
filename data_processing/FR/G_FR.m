@@ -97,12 +97,12 @@ function [M_FR, simulated_digitizer_FR] = G_FR(S_FR, verbose);
     % list of frequencies where transfer function was measured:
     f_real.v = linspace(1e4, 1e6, S_FR.f_points.v);
     % measurement was interleaved by 'basic' frequency for AC-AC method:
-    f_real.v = [f_real.v(:)'; S_FR.f_basic.v.*ones(size(f_real.v(:)'))];
-    f_real.v = f_real.v(:);
+    f_real.v = [f_real.v(:), S_FR.f_basic.v.*ones(size(f_real.v(:)))];
+    f_real.v = f_real.v'(:);
 
     % times of readings:
     starttime.v = time();
-    t.v = starttime.v + S_FR.t_one_reading.v .* [1 : 1 : numel(f_real.v)] - S_FR.t_one_reading.v;
+    t.v = starttime.v + S_FR.t_one_reading.v .* [1 : 1 : numel(f_real.v)](:) - S_FR.t_one_reading.v;
     t.v = t.v(:);
 
     % amplitude of the source - time dependent linear drift that starts at nominal amplitude:
@@ -118,7 +118,7 @@ function [M_FR, simulated_digitizer_FR] = G_FR(S_FR, verbose);
     [acdc_difference dc_voltage.v acdc_corrections_path] = ACDC_simulator(f_real.v);
 
     % voltage measured by digitizer:
-    simulated_digitizer_FR.v = NI5922_FR_simulator(f_real.v, S_FR.fs.v);
+    simulated_digitizer_FR = NI5922_FR_simulator(f_real, S_FR.fs, 0, 0);
     % apply slope error to the frequency response:
     simulated_digitizer_FR.v = (1 + S_FR.FR_slope.v.*f_real.v).*simulated_digitizer_FR.v;
     A_digitizer.v = A_source.v .* simulated_digitizer_FR.v;

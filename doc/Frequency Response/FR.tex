@@ -2,6 +2,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{xcolor}
+\usepackage{graphicx}
 
 \title{Frequency response measurement}
 \author{WAC consortium}
@@ -82,5 +83,69 @@ With:
 \begin{align}
 	\delta_{792} = \frac{U_{\rm out_{AC}} - U_{\rm out_{DC}}}{n\cdot U_{\rm out_{DC}}}
 \end{align}
+
+\section{Interpolation of the FR function}
+The FR of the National Instruments 5922 digitizer is of a complex shape. For
+calculation of SS data, the interpolation of the measured FR data is needed,
+because the calibration of FR can happen at different frequencies than required
+for SS measurement.
+
+The FR shape can be interpolated by using polynomial interpolation, however the
+FR response would require polynomials of a high degree. Such polynomials tends to
+oscillate between the measured points and especially at leftmost and rightmost
+parts of the function. The leftmost part of the function is at lower frequency
+and has the highest impact on the rms value obtained from SS data, thus such
+interpolation is not suitable.
+
+The possibility is to use piece-wise polynomial interpolation, that mitigates
+the issue of using high degree polynomials. Naive use of piece-wise polynomial
+interpolation (just splitting into pieces) does not guarantee smoothness of the whole interpolated function at the
+edges of the pieces.  Later the interpolated curve has to be used also during the
+Monte Carlo method. Typically when fitting data, the measured points are
+randomized, multiple fits are estimated, and mean and unceratinty of the fit
+coefficients are calculated. Later the coefficients are randomized according to
+the estimated uncertainty, and the uncertainty is propagated through the fit.
+Randomizing the coefficients of piece-wise polynomials independently
+cause large discontinuities at the edges of the pieces, see figures~\ref{fig:badpolynomial1}
+~\ref{fig:badpolynomial2} and~\ref{fig:badpolynomial3}.
+To prevent the errors, the randomization of the fit coefficients would need to
+take into account the requirement of smoothness at the boundaries of the
+pieces.
+
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=0.95\textwidth]{fig/why_MCM_on_polynomial_is_bad_1.png}
+	\end{center}
+	\caption{Piece-wise fit of a part of frequency response of a digitizer. The ligth red represents variations after using Monte Carlo method on the measured data and repeating fit. The vertical lines show boundaries of the pieces.}
+	\label{fig:badpolynomial1}
+\end{figure}
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=0.95\textwidth]{fig/why_MCM_on_polynomial_is_bad_2.png}
+	\end{center}
+	\caption{Piece-wise fit of a part of frequency response of a digitizer. The ligth red represents variations after using Monte Carlo method on the measured data and repeating fit. The vertical lines show boundaries of the pieces.}
+	\label{fig:badpolynomial2}
+\end{figure}
+
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=0.95\textwidth]{fig/why_MCM_on_polynomial_is_bad_3.png}
+	\end{center}
+	\caption{Error of the piece-wise fit compared to the measurement data. The ligth red represents variations after using Monte Carlo method on the measured data and repeating fit. The vertical lines show boundaries of the pieces.}
+	\label{fig:badpolynomial3}
+\end{figure}
+
+
+GNU Octave function \texttt{splinefit} provides simple way to use piece-wise spline (third
+order polynomials) interpolation, and assures smoothness at
+the boundaries of the pieces. However still the coefficients cannot be
+randomized independently. To circumvent the issue, following approach is used.
+The FR measurement data are randomized and multiple spline piece-wise fits are
+estimated. Coefficients of the all fits are saved into an intermediate file. The
+intermediate file has to consist of sufficient number of fits to provide good
+statistics for the uncertainty propagation using Monte Carlo method. Later, when
+uncertainty has to be propagated throught the spline fit, coefficients are
+loaded and a random selection of the coefficients provides the Monte Carlo
+method propagation of uncertainties throught the fit.
 
 \end{document}

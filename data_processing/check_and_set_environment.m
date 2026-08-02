@@ -26,11 +26,12 @@ if not(exist('csv2cell'))
     if isOctave()
         % check if octave io package is installed:
         listout = pkg('list');
-        packages = {};
-        for j = 1:numel(listout)
-            packages{j} = listout(j).name;
+        if iscell(listout)
+            packages = cellfun(@(p) p.name, listout, 'UniformOutput', false);
+        else
+            packages = {listout.name};
         end
-        if strmatch('io', packages)
+        if any(strcmp('io', packages))
             % io package is installed
             pkg load io
         else

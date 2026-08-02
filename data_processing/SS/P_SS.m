@@ -81,7 +81,8 @@ function [A_rms, A_fft, t_sorted, y] = P_SS(M_SS, FR_fit, CE_fit, verbose);
 
         % Calculate amplitude %<<<1
         % amplitude from RMS:
-        A_rms(p) = sqrt(mean(y_avg .^ 2)) .* sqrt(2);
+        % A_rms(p) = sqrt(mean(y_avg .^ 2)) .* sqrt(2); % TODO THAT IS STRANGE!
+        A_rms(p) = sqrt(mean(y_avg .^ 2));
         % amplitude from FFT:
         % [tmp1, tmp2] = ampphspectrum(y_avg, M_SS.fs.v, verbose, 'log'); % XXX this verbose cause two plots per every period!
         [tmp1, tmp2] = ampphspectrum(y_avg, M_SS.fs.v, 0, 'log'); % XXX this verbose cause two plots per every period!
@@ -123,6 +124,8 @@ function [A_rms, A_fft, t_sorted, y] = P_SS(M_SS, FR_fit, CE_fit, verbose);
                 % ylabel('voltage (V)')
                 % title(sprintf('P_SS.m\nDUT signal (samples withjjt PJVS steps)'), 'interpreter', 'none')
     end % if verbose
+
+    t_sorted = []; % XXX TODO what is this?
 
 end % function P_SS
 

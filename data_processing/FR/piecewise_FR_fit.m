@@ -27,7 +27,7 @@
 function ppfit = piecewise_FR_fit(FR, M_FR, verbose)
     % Constants %<<<1
     method = 'spline'; % method will be always spline. Polynomial deliver worse results.
-    MCM = 100e3; % Monte Carlo iterations
+    MCM = 10e3; % Monte Carlo iterations TODO XXX select some value? settings of M_FR? What about actual measurement? some default value?
 
     % Check inputs %<<<1
     % validate verbose
@@ -72,24 +72,24 @@ function ppfit = piecewise_FR_fit(FR, M_FR, verbose)
     fprintf('\npiecewise_FR_fit.m: finished monte carlo\n', MCM);
 
     % Calculate total fit error for the non-randomized fit:
-    fit_at_data = piecewise_FR_evaluate(ppfit, f.v, M_FR.fs, 100);
+    fit_at_data = piecewise_FR_evaluate(ppfit, f, M_FR.fs, 100);
     idx = not(isnan(fit_at_data.v));
     ppfit.total_error = trapz(f.v, abs(fit_at_data.v(idx) - FR.v(idx)));
 
     % Verbose plots %<<<1
     if verbose
         % fit for 10x multiple points to make a line:
-        interpolated_x = linspace(min(f_rel), max(f_rel), 10*numel(f_rel));
-        interpolated_x = interpolated_x.*M_FR.fs.v;
+        interpolated_x.v = linspace(min(f_rel), max(f_rel), 10*numel(f_rel))(:);
+        interpolated_x.v = interpolated_x.v.*M_FR.fs.v;
         interpolated_fit = piecewise_FR_evaluate(ppfit, interpolated_x, M_FR.fs, 1e2);
 
         % overview plot
         figure()
         hold on
         plot(f.v, FR.v, '-xb', 'displayname', 'measured data');
-        plot(interpolated_x, interpolated_fit.v, '-r', 'displayname', 'fit');
-        plot(interpolated_x, interpolated_fit.v + interpolated_fit.u, '--r', 'displayname', 'fit uncertainty');
-        plot(interpolated_x, interpolated_fit.v - interpolated_fit.u, '--r', 'displayname', 'fit uncertainty');
+        plot(interpolated_x.v, interpolated_fit.v, '-r', 'displayname', 'fit');
+        plot(interpolated_x.v, interpolated_fit.v + interpolated_fit.u, '--r', 'displayname', 'fit uncertainty');
+        plot(interpolated_x.v, interpolated_fit.v - interpolated_fit.u, '--r', 'displayname', 'fit uncertainty');
         for jj = 1:numel(ppfit.breaks)
             if jj == 1
                 leg = {'displayname', 'breaks of fit regions'};

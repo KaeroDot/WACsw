@@ -54,9 +54,9 @@ function [M_CE] = G_CE(FR_fit, S_CE, verbose);
     % Set default simulation parameters %<<<1
     % vector of measurement frequencies (Hz):
     if ~isfield(S_CE, 'f_signal') || ~isfield(S_CE.f_signal, 'v') || isempty(S_CE.f_signal.v)
-        S_CE.f_signal.v = linspace(50, 100e3, 10)(:)';
+        S_CE.f_signal.v = linspace(50, 100e3, 10)(:);
     end
-    S_CE.f_signal.v = S_CE.f_signal.v(:)'; % ensure it's a row vector
+    S_CE.f_signal.v = S_CE.f_signal.v(:); % ensure it's a collumn vector
     % length of the cable to the PJVS chip (m):
     if ~isfield(S_CE, 'L_long') || ~isfield(S_CE.L_long, 'v') || isempty(S_CE.L_long.v)
         S_CE.L_long.v = 5.1;
@@ -91,21 +91,24 @@ function [M_CE] = G_CE(FR_fit, S_CE, verbose);
         error('G_CE: S_CE.f_signal.v must contain finite positive frequencies only.')
     end
     % double the frequencies because two readings per frequency (short and PJVS):
-    f_signal_all_meas = [S_CE.f_signal.v; S_CE.f_signal.v](:)';
+    f_signal_all_meas.v = [S_CE.f_signal.v(:), S_CE.f_signal.v(:)];
+    f_signal_all_meas.v = f_signal_all_meas.v'(:);
 
     % Simulate measurement %<<<1
     % get voltages of the drifting AC source:
-    [A_source, total_err_rel_ppm, t] = AC_source_error_simulator(f_signal_all_meas, S_CE.A_nominal.v, [], S_CE.t_one_reading.v);
+    [A_source, total_err_rel_ppm, t] = AC_source_error_simulator(f_signal_all_meas.v, S_CE.A_nominal.v, [], S_CE.t_one_reading.v);
     % generate voltage ratios at end of cable for both short and long (PJVS) cable lengths:
     V_ratio_long = simulate_cable(S_CE.f_signal.v, S_CE.L_long.v);
     V_ratio_short = simulate_cable(S_CE.f_signal.v, S_CE.L_short.v);
     % get all voltage ratios according the measurement order (first long (PJVS), then short):
-    V_ratio_no_FR = [V_ratio_long; V_ratio_short](:)';
+    V_ratio_no_FR = [V_ratio_long(:), V_ratio_short(:)];
+    V_ratio_no_FR = V_ratio_no_FR'(:);
+
     % only for plotting purposes:
     A_no_FR = A_source .* V_ratio_no_FR;
     % get digitizer gain  from FR fit to simulate measurement by a real digitizer:
     FR_gain = piecewise_FR_evaluate(FR_fit, f_signal_all_meas, S_CE.fs);
-    V_ratio = FR_gain .* V_ratio_no_FR;
+    V_ratio = FR_gain.v .* V_ratio_no_FR;
     A = A_source .* V_ratio;
 
     % Set output structure %<<<1
@@ -114,8 +117,8 @@ function [M_CE] = G_CE(FR_fit, S_CE, verbose);
     M_CE.alg_id.v = 'TWM-WRMS';
     M_CE.ac_source_id.v = 'simulated_AC_source';
     M_CE.digitizer_id.v = 'simulated_digitizer';
-    M_CE.f.v = f_signal_all_meas;
-    M_CE.M.v = f_signal_all_meas; % multiples of periods in record - same number of periods as the frequency
+    M_CE.f = f_signal_all_meas;
+    M_CE.M = f_signal_all_meas; % multiples of periods in record - same number of periods as the frequency
     M_CE.t.v = t;
     M_CE.A.v = A;
     M_CE.FR_fit = FR_fit;

@@ -24,24 +24,25 @@ function [CE_fit] = P_CE(M_CE, verbose);
     % suppose first measurement is for L_long (PJVS), every second measurement is for L_short
     % reshape measurement points
     % (first collumn will be L_long (PJVS) frequency, second collumn will be L_short frequency)
-    f = reshape(M_CE.f.v, 2, [])'; % signal frequencies
+    f.v = reshape(M_CE.f.v, 2, [])'; % signal frequencies
     %TODO t is not needed at all, remove!
     % t = reshape(M_CE.t.v, 2, [])'; % time of reading
-    A = reshape(M_CE.A.v, 2, [])'; % amplitude as measured by digitizer, already corrected for digitizer FR
+    A.v = reshape(M_CE.A.v, 2, [])'; % amplitude as measured by digitizer, already corrected for digitizer FR
 
     % Correct for digitizer frequency response %<<<1
     % TODO change to existing function:
     % evaluate FR fit at measurement frequencies:
     % Evaluate FR fit for fft frequencies:
-    fitfreqs = piecewise_FR_evaluate(M_CE.FR_fit, f, M_CE.fs);
+    fitfreqs = piecewise_FR_evaluate(M_CE.FR_fit, f, M_CE.fs, 0); % TODO no monte carlo for now
     % Get inverse values to achieve compensation of the digitizer frequency response:
-    fitfreqs = -1.*(fitfreqs - 1) + 1;
+    fitfreqs.v = -1.*(fitfreqs.v - 1) + 1;
+    % TODO missing uncertainty for fitfreqs.u
     % Get corrected amplitudes:
-    A = A .* fitfreqs;
+    A.v = A.v .* fitfreqs.v;
 
     % Calculate cable error %<<<1
     % Make the fit:
-    CE_fit = CE_fit_make(f(:, 1), A(:, 1), A(:, 2), M_CE.L.v(1), M_CE.L.v(2));
+    CE_fit = CE_fit_make(f.v(:, 1), A.v(:, 1), A.v(:, 2), M_CE.L.v(1), M_CE.L.v(2));
 
     % Export results %<<<1
     % create filename:
@@ -53,15 +54,15 @@ function [CE_fit] = P_CE(M_CE, verbose);
     % plot figures if verbose %<<<1
     if verbose
         % fit at measurement points:
-        fit_data_y = CE_fit_evaluate(CE_fit, f(:, 1));
+        fit_data_y = CE_fit_evaluate(CE_fit, f.v(:, 1));
         % fit for 10x multiple points to make a line:
-        fit_line_x = linspace(min(f(:, 1)), max(f(:, 1)), 10*numel(f(:, 1)));
+        fit_line_x = linspace(min(f.v(:, 1)), max(f.v(:, 1)), 10*numel(f.v(:, 1)))(:);
         fit_line_y = CE_fit_evaluate(CE_fit, fit_line_x);
 
         figure;
         hold on;
-        plot(f(:, 1), 1e6.*(A(:, 1)./A(:, 2) - 1), 'bo', 'DisplayName', 'Measured voltage error');
-        plot(f(:, 1), 1e6.*(fit_data_y - 1), 'r*', 'DisplayName', 'Fitted voltage error at measurement points');
+        plot(f.v(:, 1), 1e6.*(A.v(:, 1)./A.v(:, 2) - 1), 'bo', 'DisplayName', 'Measured voltage error');
+        plot(f.v(:, 1), 1e6.*(fit_data_y - 1), 'r*', 'DisplayName', 'Fitted voltage error at measurement points');
         plot(fit_line_x, 1e6.*(fit_line_y - 1), 'k-', 'DisplayName', 'Fitted voltage error model line');
         xlabel('Frequency (Hz)');
         ylabel('Voltage error error (uV/V)');

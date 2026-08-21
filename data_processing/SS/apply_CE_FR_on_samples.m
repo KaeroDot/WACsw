@@ -35,24 +35,25 @@ function y_filtered = apply_CE_FR_on_samples(M_SS, FR_fit, CE_fit, direction, ve
     % Build frequency vector (spacing is df=fs/N):
     N = numel(M_SS.y.v);
     % XXX suppose even number of samples!
-    f = M_SS.fs.v./N.*[0:N/2 - 1];
+    f.v = M_SS.fs.v./N.*[0:N/2 - 1];
 
     % create DFT filter %<<<1
     % initialize:
-    err_rel_total = ones(size(f));
+    err_rel_total = ones(size(f.v));
     % freuncy response of the digitizer
     if not(isempty(FR_fit))
         % Evaluate FR fit for DFT frequencies:
         FR_gain = piecewise_FR_evaluate(FR_fit, f, M_SS.fs);
         if direction
             % add the effect of FR:
-            err_rel_total = err_rel_total ./ FR_gain;
+            err_rel_total = err_rel_total ./ FR_gain.v;
         else
             % remove the effect of FR:
-            err_rel_total = err_rel_total .* FR_gain;
+            err_rel_total = err_rel_total .* FR_gain.v;
         end
     else
-        FR_gain = ones(size(f));
+        FR_gain.v = ones(size(f.v));
+        % TODO uncertainties
         if verbose
             warning('apply_CE_FR_on_samples: FR_fit is empty! FR response will not be applied to the samples!')
         end
@@ -60,7 +61,7 @@ function y_filtered = apply_CE_FR_on_samples(M_SS, FR_fit, CE_fit, direction, ve
     % cable error:
     if not(isempty(CE_fit))
         % Evaluate CE fit for DFT frequencies:
-        CE_gain = CE_fit_evaluate(CE_fit, f);
+        CE_gain = CE_fit_evaluate(CE_fit, f.v);
         if direction
             % add the effect of CE:
             err_rel_total = err_rel_total ./ (CE_gain);
@@ -69,7 +70,7 @@ function y_filtered = apply_CE_FR_on_samples(M_SS, FR_fit, CE_fit, direction, ve
             err_rel_total = err_rel_total .* (CE_gain);
         end
     else
-        CE_gain = ones(size(f));
+        CE_gain = ones(size(f.v));
         if verbose
             warning('apply_CE_FR_on_samples: CE_fit is empty! CE response will not be applied to the samples!')
         end
@@ -114,9 +115,9 @@ function y_filtered = apply_CE_FR_on_samples(M_SS, FR_fit, CE_fit, direction, ve
         % plot figure showing full filter in frequency domain %<<<2
         figure;
         hold on
-        plot(f, abs(CE_gain), '-b');
-        plot(f, abs(FR_gain), '-r');
-        plot(f, abs(err_rel_total), '-k', 'linewidth', 2);
+        plot(f.v, abs(CE_gain), '-b');
+        plot(f.v, abs(FR_gain.v), '-r');
+        plot(f.v, abs(err_rel_total), '-k', 'linewidth', 2);
         legend('CE fit', 'FR fit', 'Total DFT filter');
         xlabel('Frequency (Hz)');
         ylabel('Filter Magnitude');

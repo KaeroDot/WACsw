@@ -119,6 +119,7 @@ function [A_rms, A_fft, t_sorted, y] = P_SS(M_SS, FR_fit, CE_fit, verbose);
                 % figure()
                 % hold on
                 % plot(yf,'.r')
+                % plot(y, 'o', 'markersize', 2, 'linewidth', 2) % <- probably better
                 % hold off
                 % xlabel('sample count')
                 % ylabel('voltage (V)')

@@ -95,7 +95,7 @@ function [M_FR, simulated_digitizer_FR] = G_FR(S_FR, verbose);
 
     % Make measurement %<<<1
     % list of frequencies where transfer function was measured:
-    f_real.v = linspace(1e4, 1e6, S_FR.f_points.v);
+    f_real.v = linspace(1e4, 1.6e6, S_FR.f_points.v);
     % measurement was interleaved by 'basic' frequency for AC-AC method:
     f_real.v = [f_real.v(:), S_FR.f_basic.v.*ones(size(f_real.v(:)))];
     f_real.v = f_real.v'(:);

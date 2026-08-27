@@ -1,15 +1,4 @@
-\documentclass[a4paper, 12pt]{article}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{xcolor}
-\usepackage{graphicx}
-
-\title{Frequency response measurement}
-\author{WAC consortium}
-\begin{document}
-\maketitle
-
-\section*{Equations}
+\section{Equations}
 Definitions:
 \begin{itemize}
 	\item Digitizer: measures amplitude $D(f)$, have got frequency dependent gain $G(f)$. Time dependence of the gain is neglected.
@@ -114,14 +103,14 @@ pieces.
 
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=0.95\textwidth]{fig/why_MCM_on_polynomial_is_bad_1.png}
+		\includegraphics[width=0.95\textwidth]{fig_FR/why_MCM_on_polynomial_is_bad_1.png}
 	\end{center}
 	\caption{Piece-wise fit of a part of frequency response of a digitizer. The ligth red represents variations after using Monte Carlo method on the measured data and repeating fit. The vertical lines show boundaries of the pieces.}
 	\label{fig:badpolynomial1}
 \end{figure}
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=0.95\textwidth]{fig/why_MCM_on_polynomial_is_bad_2.png}
+		\includegraphics[width=0.95\textwidth]{fig_FR/why_MCM_on_polynomial_is_bad_2.png}
 	\end{center}
 	\caption{Piece-wise fit of a part of frequency response of a digitizer. The ligth red represents variations after using Monte Carlo method on the measured data and repeating fit. The vertical lines show boundaries of the pieces.}
 	\label{fig:badpolynomial2}
@@ -129,7 +118,7 @@ pieces.
 
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=0.95\textwidth]{fig/why_MCM_on_polynomial_is_bad_3.png}
+		\includegraphics[width=0.95\textwidth]{fig_FR/why_MCM_on_polynomial_is_bad_3.png}
 	\end{center}
 	\caption{Error of the piece-wise fit compared to the measurement data. The ligth red represents variations after using Monte Carlo method on the measured data and repeating fit. The vertical lines show boundaries of the pieces.}
 	\label{fig:badpolynomial3}
@@ -147,5 +136,3 @@ statistics for the uncertainty propagation using Monte Carlo method. Later, when
 uncertainty has to be propagated throught the spline fit, coefficients are
 loaded and a random selection of the coefficients provides the Monte Carlo
 method propagation of uncertainties throught the fit.
-
-\end{document}

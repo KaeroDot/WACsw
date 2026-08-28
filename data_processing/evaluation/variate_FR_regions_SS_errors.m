@@ -4,7 +4,7 @@ clear all, close all
 
 %% Constants %<<<1
 results_dir_name = 'variate_FR_regions_SS_errors_results';
-ref_no_fit_regions = 50;
+ref_no_fit_regions = 90;
 
 %% Setup environment %<<<1
 % set environment for data processing:
@@ -36,7 +36,7 @@ S_FR.no_fit_regions.v = ref_no_fit_regions; % This value should be larger or sam
 [f, measured_digitizer_FR, ac_source_stability, FR_fit] = P_FR(M_FR, '', 0);
 
 % Generate simulated CE measurement before SS and process it:
-M_CE(1) = G_CE(FR_fit, 0);
+M_CE(1) = G_CE(FR_fit, [], 0);
 [CE_fit(1)] = P_CE(M_CE(1), 0);
 % Generate simulated subsampling measurement:
 % Use set of prefefined values no. 2:
@@ -44,6 +44,10 @@ M_SS = G_SS(2, 0);
 
 y_filtered = apply_CE_FR_on_samples(M_SS, FR_fit, CE_fit, 1, 0);
 M_SS.y.v = y_filtered;
+
+% get reference amplitude RMS value of subsampling measurement:
+ref_A_rms = P_SS(M_SS, FR_fit, CE_fit, 0);
+ref_A_rms = ref_A_rms(1); % use only first triangle, the second one should be the same anyway
 
 %% Process measured data using different no of regions %<<<1
 for k = 1:numel(regions_list)
@@ -53,7 +57,8 @@ for k = 1:numel(regions_list)
     % Calculate cable error:
     [CE_fit_reg(1)] = P_CE(M_CE(1), 0);
     % Process simulated subsampling measurement:
-    [A_rms_values(k), A_fft] = P_SS(M_SS, FR_fit_reg{k}, CE_fit_reg, 0);
+    [tmp1, tmp2] = P_SS(M_SS, FR_fit_reg{k}, CE_fit_reg, 0);
+    A_rms_values(k) = mean(tmp1); % what to do with multiple triangles in record? nominal signals from G_FR/CE/SS should result in the same values for all triangles.
     % Process simulated subsampling measurement:
 
     fprintf('[%2d/%2d] No of regions: %g, RMS: %.7f V\n', k, numel(regions_list), regions_list(k), A_rms_values(k));
@@ -62,7 +67,7 @@ end
 %% Plotting %<<<1
 % Plot RMS error vs. no of fit regions %<<<2
 figure;
-[ax, h1, h2] = plotyy(regions_list, (A_rms_values - 1).*1e6, ...
+[ax, h1, h2] = plotyy(regions_list, (A_rms_values - ref_A_rms).*1e6, ...
     regions_list, [[FR_fit_reg{:}].total_error].*1e6);
 xlabel('No of regions in FR data processing');
 ylabel(ax(1), 'Error of RMS amplitude (ppm)');
@@ -75,7 +80,7 @@ close(gcf);
 
 % Plot RMS error vs total fit error %<<<2
 figure;
-plot([[FR_fit_reg{:}].total_error].*1e6, (A_rms_values - 1).*1e6);
+plot([[FR_fit_reg{:}].total_error].*1e6, (A_rms_values - ref_A_rms).*1e6);
 xlabel('Total fit error (x10E-6');
 ylabel('Error of RMS amplitude (ppm)');
 title(sprintf('Error of RMS amplitude caused by data processing\nvs total fit error of FR fit.\nRef number of fit regions: %d', ref_no_fit_regions));
@@ -87,15 +92,15 @@ close(gcf);
 
 % Plot all fits together %<<<2
 figure;
-freqs = linspace(10, 0.4.*M_FR.fs.v, 1000);
+freqs.v = linspace(10, 0.4.*M_FR.fs.v, 1000);
 hold on
 for k = 1:numel(regions_list)
     tmp = piecewise_FR_evaluate(FR_fit_reg{k}, freqs, M_FR.fs);
     % this is needed so the plotting library do not complain about extremely
     % large numbers:
-    tmp(tmp>1e3) = NaN;
-    tmp(tmp<1e-3) = NaN;
-    plot(freqs, tmp, 'displayname', sprintf('%d', regions_list(k)))
+    tmp.v(tmp.v>1e3) = NaN;
+    tmp.v(tmp.v<1e-3) = NaN;
+    plot(freqs.v, tmp.v, 'displayname', sprintf('%d', regions_list(k)))
 end
 legend();
 xlabel('Frequency (Hz)');
@@ -108,11 +113,13 @@ close(gcf);
 
 % Plot difference of all fits to reference fit together %<<<2
 figure;
-freqs = linspace(10, 0.4.*M_FR.fs.v, 1000);
+freqs.v = linspace(10, 0.4.*M_FR.fs.v, 1000);
 hold on
 for k = 1:numel(regions_list)
-    tmp = piecewise_FR_evaluate(FR_fit_reg{k}, freqs, M_FR.fs) - piecewise_FR_evaluate(FR_fit, freqs, M_FR.fs);
-    plot(freqs, tmp, 'displayname', sprintf('%d', regions_list(k)))
+    tmp1 = piecewise_FR_evaluate(FR_fit_reg{k}, freqs, M_FR.fs);
+    tmp2 = piecewise_FR_evaluate(FR_fit, freqs, M_FR.fs);
+    tmp.v = tmp1.v - tmp2.v;
+    plot(freqs.v, tmp.v, 'displayname', sprintf('%d', regions_list(k)))
 end
 legend();
 xlabel('Frequency (Hz)');
@@ -123,3 +130,6 @@ ylim([-1e-3 1e-3])
 saveas(gcf, fullfile(results_dir, sprintf('difference_to_ref_fit_%d_ref_regions.png', ref_no_fit_regions)));
 saveas(gcf, fullfile(results_dir, sprintf('difference_to_ref_fit_%d_ref_regions.fig', ref_no_fit_regions)));
 close(gcf);
+
+% save whole memory to a file:
+save( fullfile(results_dir, sprintf('variate_FR_regions_SS_errors_%d_ref_regions.mat', ref_no_fit_regions)) );

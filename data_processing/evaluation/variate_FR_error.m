@@ -13,9 +13,6 @@ if not(exist(results_dir, 'dir'))
 end
 
 %% Calculation %<<<1
-% Generate SS measurement structure for testing
-M_SS = G_SS(1, 0);
-
 % Define range of FR slope errors to test
 slope_error_list = [-3e-9:0.1e-9:3e-9];
 
@@ -29,7 +26,7 @@ for k = 1:numel(slope_error_list)
     [f, measured_digitizer_FR, ac_source_stability, FR_fit] = P_FR(M_FR, '', 0);
 
     % Generate simulated CE measurement before SS and process it:
-    M_CE(1) = G_CE(FR_fit, 0);
+    M_CE(1) = G_CE(FR_fit, [], 0);
     [CE_fit(1)] = P_CE(M_CE(1), 0);
     % Generate simulated subsampling measurement:
     % Use set of prefefined values no. 2:
@@ -51,7 +48,8 @@ for k = 1:numel(slope_error_list)
     close(gcf);
 
     % Process simulated subsampling measurement with erroneous FR:
-    [A_rms_values(k), A_fft] = P_SS(M_SS, FR_fit_err, CE_fit(1), 0);
+    [tmp_A_rms, tmp_A_fft] = P_SS(M_SS, FR_fit_err, CE_fit(1), 0);
+    A_rms_values(k) = mean(tmp_A_rms); % take mean of all triangle periods
 
     fprintf('[%2d/%2d] Slope error: %g, RMS: %.7f V\n', k, numel(slope_error_list), slope_error_list(k), A_rms_values(k));
 end
@@ -60,7 +58,7 @@ A_rms_values - A_rms_values(1)
 
 % Plot RMS values vs. slope error
 figure;
-plot(slope_error_list.*1e9, (A_rms_values - 1).*1e6, '-o');
+plot(slope_error_list.*1e9, (A_rms_values - 1/sqrt(2)).*1e6, '-o', 'linewidth', 2);
 xlabel('FR Slope Error x10^{-9}, multiplicator of the frequency value');
 ylabel('Measured RMS error (ppm)');
 title('Effect of FR Slope Error on Measured RMS Value');
@@ -68,4 +66,8 @@ xlim([-0.5 0.5])
 ylim([-22 22])
 grid on;
 saveas(gcf, fullfile(results_dir, 'FR_slope_error_dependence.png'));
+saveas(gcf, fullfile(results_dir, 'FR_slope_error_dependence.fig'));
+saveas(gcf, fullfile(results_dir, 'FR_slope_error_dependence.pdf'));
 csvwrite(fullfile(results_dir, 'FR_slope_error_dependence.csv'), [slope_error_list(:).*1e9, (A_rms_values(:) - 1).*1e6]);
+
+% vim settings modeline: vim: foldmarker=%<<<,%>>> fdm=marker fen ft=matlab textwidth=80 tabstop=4 shiftwidth=4

@@ -1,10 +1,14 @@
 % This script investigates the impact of number of FR regions on RMS
 % values calculated in subsampling measurements.
+%
 clear all, close all
 
 %% Constants %<<<1
 results_dir_name = 'variate_FR_regions_SS_errors_results';
-ref_no_fit_regions = 90;
+ref_no_fit_regions = 70;
+samp_f = 4e6; % sampling frequency (Hz), use 4, 10, 15 MHz
+% samp_f = 10e6; % sampling frequency (Hz), use 4, 10, 15 MHz
+% samp_f = 15e6; % sampling frequency (Hz), use 4, 10, 15 MHz
 
 %% Setup environment %<<<1
 % set environment for data processing:
@@ -15,6 +19,9 @@ results_dir = fullfile(fileparts(fileparts(mfilename('fullpath'))), 'evaluation_
 if not(exist(results_dir, 'dir'))
     mkdir(results_dir);
 end
+
+% Format sampling frequency for file naming (convert to MHz)
+samp_f_str = sprintf('%.0fMHz', samp_f/1e6);
 
 %% Prepare %<<<1
 % variate number of regions:
@@ -30,6 +37,7 @@ FR_fit_reg = cell(size(regions_list));
 
 %% First generate all measurements with reference number of FR fit regions %<<<1
 % (same process as in selftest_SS)
+S_FR.fs.v = samp_f; % sampling frequency
 S_FR.no_fit_regions.v = ref_no_fit_regions; % This value should be larger or same as maximum of regions_list
 % Generate simulated FR measurement and process it:
 [M_FR, simulated_digitizer_FR] = G_FR(S_FR, 0);
@@ -48,6 +56,7 @@ M_SS.y.v = y_filtered;
 % get reference amplitude RMS value of subsampling measurement:
 ref_A_rms = P_SS(M_SS, FR_fit, CE_fit, 0);
 ref_A_rms = ref_A_rms(1); % use only first triangle, the second one should be the same anyway
+ref_A_rms = 1/sqrt(2)
 
 %% Process measured data using different no of regions %<<<1
 for k = 1:numel(regions_list)
@@ -61,33 +70,33 @@ for k = 1:numel(regions_list)
     A_rms_values(k) = mean(tmp1); % what to do with multiple triangles in record? nominal signals from G_FR/CE/SS should result in the same values for all triangles.
     % Process simulated subsampling measurement:
 
-    fprintf('[%2d/%2d] No of regions: %g, RMS: %.7f V\n', k, numel(regions_list), regions_list(k), A_rms_values(k));
+    fprintf('[%2d/%2d] No. of regions: %g, RMS: %.7f V\n', k, numel(regions_list), regions_list(k), A_rms_values(k));
 end
 
 %% Plotting %<<<1
-% Plot RMS error vs. no of fit regions %<<<2
+% Plot RMS error vs. no. of fit regions %<<<2
 figure;
 [ax, h1, h2] = plotyy(regions_list, (A_rms_values - ref_A_rms).*1e6, ...
     regions_list, [[FR_fit_reg{:}].total_error].*1e6);
-xlabel('No of regions in FR data processing');
+xlabel('No. of regions in FR data processing');
 ylabel(ax(1), 'Error of RMS amplitude (ppm)');
 ylabel(ax(2), 'Total fit error (x10E-6');
-title(sprintf('Error of RMS amplitude caused by data processing\nvs no of regions in FR data processing.\nRef number of fit regions: %d', ref_no_fit_regions));
+title(sprintf('Error of RMS amplitude caused by data processing\nvs no. of regions in FR data processing.\nRef number of fit regions: %d, Sampling freq: %s', ref_no_fit_regions, samp_f_str));
 grid on;
 ylim([-100 100])
-saveas(gcf, fullfile(results_dir, sprintf('RMS_vs_regions_%d_ref_regions.png', ref_no_fit_regions)));
+saveas(gcf, fullfile(results_dir, sprintf('RMS_vs_regions_%d_ref_regions_%s.png', ref_no_fit_regions, samp_f_str)));
 close(gcf);
 
 % Plot RMS error vs total fit error %<<<2
 figure;
-plot([[FR_fit_reg{:}].total_error].*1e6, (A_rms_values - ref_A_rms).*1e6);
-xlabel('Total fit error (x10E-6');
+plot([[FR_fit_reg{:}].total_error].*1e6, (A_rms_values - ref_A_rms).*1e6, 'o');
+xlabel('Total fit error (ppm x Hz)');
 ylabel('Error of RMS amplitude (ppm)');
-title(sprintf('Error of RMS amplitude caused by data processing\nvs total fit error of FR fit.\nRef number of fit regions: %d', ref_no_fit_regions));
+title(sprintf('Error of RMS amplitude caused by data processing\nvs total fit error of FR fit.\nRef number of fit regions: %d, Sampling freq: %s', ref_no_fit_regions, samp_f_str));
 grid on;
 ylim([-100 100])
-saveas(gcf, fullfile(results_dir, sprintf('RMS_vs_fit_error_%d_ref_regions.png', ref_no_fit_regions)));
-saveas(gcf, fullfile(results_dir, sprintf('RMS_vs_fit_error_%d_ref_regions.fig', ref_no_fit_regions)));
+saveas(gcf, fullfile(results_dir, sprintf('RMS_vs_fit_error_%d_ref_regions_%s.png', ref_no_fit_regions, samp_f_str)));
+saveas(gcf, fullfile(results_dir, sprintf('RMS_vs_fit_error_%d_ref_regions_%s.fig', ref_no_fit_regions, samp_f_str)));
 close(gcf);
 
 % Plot all fits together %<<<2
@@ -105,10 +114,11 @@ end
 legend();
 xlabel('Frequency (Hz)');
 ylabel('Frequency response (V/V)');
-title(sprintf('Frequency response fits for different number of regions.\nRef number of fit regions: %d', ref_no_fit_regions));
+title(sprintf('Frequency response fits for different number of regions.\nRef number of fit regions: %d, Sampling freq: %s', ref_no_fit_regions, samp_f_str));
 grid on;
 ylim([0.998 1.005])
-saveas(gcf, fullfile(results_dir, sprintf('all_fits_%d_ref_regions.png', ref_no_fit_regions)));
+saveas(gcf, fullfile(results_dir, sprintf('all_fits_%d_ref_regions_%s.png', ref_no_fit_regions, samp_f_str)));
+saveas(gcf, fullfile(results_dir, sprintf('all_fits_%d_ref_regions_%s.fig', ref_no_fit_regions, samp_f_str)));
 close(gcf);
 
 % Plot difference of all fits to reference fit together %<<<2
@@ -124,12 +134,39 @@ end
 legend();
 xlabel('Frequency (Hz)');
 ylabel('Difference to reference fit (V/V)');
-title(sprintf('Difference of frequency response fits to\nreference fit for different number of regions.\nRef number of fit regions: %d', ref_no_fit_regions));
+title(sprintf('Difference of frequency response fits to\nreference fit for different number of regions.\nRef number of fit regions: %d, Sampling freq: %s', ref_no_fit_regions, samp_f_str));
 grid on;
 ylim([-1e-3 1e-3])
-saveas(gcf, fullfile(results_dir, sprintf('difference_to_ref_fit_%d_ref_regions.png', ref_no_fit_regions)));
-saveas(gcf, fullfile(results_dir, sprintf('difference_to_ref_fit_%d_ref_regions.fig', ref_no_fit_regions)));
+saveas(gcf, fullfile(results_dir, sprintf('difference_to_ref_fit_%d_ref_regions_%s.png', ref_no_fit_regions, samp_f_str)));
+saveas(gcf, fullfile(results_dir, sprintf('difference_to_ref_fit_%d_ref_regions_%s.fig', ref_no_fit_regions, samp_f_str)));
 close(gcf);
 
 % save whole memory to a file:
-save( fullfile(results_dir, sprintf('variate_FR_regions_SS_errors_%d_ref_regions.mat', ref_no_fit_regions)) );
+save( fullfile(results_dir, sprintf('variate_FR_regions_SS_errors_%d_ref_regions_%s.mat', ref_no_fit_regions, samp_f_str)) );
+
+% ==== THIS part is only to make a special plot with multiple results. Just uncomment and copy into octave: %<<<1
+% % load previously calculated results:
+% clear all
+% res15 = load('../evaluation_results/variate_FR_regions_SS_errors_results/variate_FR_regions_SS_errors_70_ref_regions_15MHz.mat');
+% res10 = load('../evaluation_results/variate_FR_regions_SS_errors_results/variate_FR_regions_SS_errors_70_ref_regions_10MHz.mat');
+% res04 = load('../evaluation_results/variate_FR_regions_SS_errors_results/variate_FR_regions_SS_errors_70_ref_regions_4MHz.mat');
+% % Plot RMS error vs. no. of fit regions
+% figure;
+% hold on
+% plot(res04.regions_list, (res04.A_rms_values - res04.ref_A_rms).*1e6, '-or', 'linewidth', 2, 'DisplayName', '4 MHz');
+% plot(res10.regions_list, (res10.A_rms_values - res10.ref_A_rms).*1e6, '-og', 'linewidth', 2, 'DisplayName', '10 MHz');
+% plot(res15.regions_list, (res15.A_rms_values - res15.ref_A_rms).*1e6, '-ob', 'linewidth', 2, 'DisplayName', '15 MHz');
+% xlabel('No. of regions in FR data processing');
+% ylabel('Error of RMS amplitude (ppm)');
+% title(sprintf('Error of RMS amplitude caused by data processing\nvs no. of regions in FR data processing.\nRef number of fit regions: %d', res04.ref_no_fit_regions));
+% grid on;
+% xlim([15 70])
+% ylim([-40 40])
+% legend('Location', 'northeast');
+% saveas(gcf, '../evaluation_results/variate_FR_regions_SS_errors_results/RMS_vs_regions_70_ref_regions_multiple_sampl_freqs.png');
+% saveas(gcf, '../evaluation_results/variate_FR_regions_SS_errors_results/RMS_vs_regions_70_ref_regions_multiple_sampl_freqs.fig');
+% saveas(gcf, '../evaluation_results/variate_FR_regions_SS_errors_results/RMS_vs_regions_70_ref_regions_multiple_sampl_freqs.pdf');
+% hold off;
+% close(gcf);
+
+% vim settings modeline: vim: foldmarker=%<<<,%>>> fdm=marker fen ft=matlab textwidth=80 tabstop=4 shiftwidth=4

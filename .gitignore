@@ -10,3 +10,5 @@ doc/main.fdb_latexmk
 doc/main.fls
 doc/main.log
 doc/main.synctex.gz
+data_processing/evaluation/acdc_standard_data/simulated_acdc/csv/1000.csv
+data_processing/evaluation/acdc_standard_data/simulated_acdc/simulated_acdc.info

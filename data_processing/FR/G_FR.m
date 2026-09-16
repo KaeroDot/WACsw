@@ -95,7 +95,7 @@ function [M_FR, simulated_digitizer_FR] = G_FR(S_FR, verbose);
 
     % Make measurement %<<<1
     % list of frequencies where transfer function was measured:
-    f_real.v = linspace(1e4, 1.6e6, S_FR.f_points.v);
+    f_real.v = linspace(S_FR.f_basic.v, 0.4.*S_FR.fs.v, S_FR.f_points.v);
     % measurement was interleaved by 'basic' frequency for AC-AC method:
     f_real.v = [f_real.v(:), S_FR.f_basic.v.*ones(size(f_real.v(:)))];
     f_real.v = f_real.v'(:);
@@ -166,6 +166,17 @@ function [M_FR, simulated_digitizer_FR] = G_FR(S_FR, verbose);
 		legend('amplitude of drifting ac source', 'th. trans. standard dc voltage as simulated by AC/DC simulator',  'final dc voltage of th. transf. standard with drift of the ac source')
 		title(sprintf('G_FR.m\nproperties of ac voltage source `%s`', M_FR.ac_source_id.v), 'interpreter', 'none')
 		hold off
+		
+		% Plot simulated frequency response
+		figure
+		% Get unique frequencies and their corresponding FR values
+		[f_unique, idx_unique] = unique(f_real.v);
+		FR_unique = simulated_digitizer_FR.v(idx_unique);
+		plot(f_unique, FR_unique, 'o-')
+		xlabel('Frequency (Hz)')
+		ylabel('Frequency Response (V/V)')
+		title(sprintf('G_FR.m\nSimulated frequency response of digitizer `%s`\nfs = %.2f MHz', M_FR.digitizer_id.v, M_FR.fs.v./1e6), 'interpreter', 'none')
+		grid on
 	end
 
 end % function G_FR

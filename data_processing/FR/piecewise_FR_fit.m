@@ -27,7 +27,7 @@
 function ppfit = piecewise_FR_fit(FR, M_FR, verbose)
     % Constants %<<<1
     method = 'spline'; % method will be always spline. Polynomial deliver worse results.
-    MCM = 10e3; % Monte Carlo iterations TODO XXX select some value? settings of M_FR? What about actual measurement? some default value?
+    MCM = 1e2; % Monte Carlo iterations TODO XXX select some value? settings of M_FR? What about actual measurement? some default value?
 
     % Check inputs %<<<1
     % validate verbose

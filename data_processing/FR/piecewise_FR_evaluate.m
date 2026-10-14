@@ -20,10 +20,9 @@
 %          (empty if randomize=0)
 
 function y = piecewise_FR_evaluate(ppfit, f, fs, randomize)
-
     % Check inputs %<<<1
     if not(exist('randomize', 'var'))
-        randomize = Inf;
+        randomize = 0; % this is default value, no randomization
     end
     randomize = round(randomize);
     if randomize < 0

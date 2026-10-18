@@ -43,7 +43,13 @@ y_filtered = apply_CE_FR_on_samples(M_SS, FR_fit, CE_fit_int, 1, verbose);
 M_SS.y.v = y_filtered;
 
 % Process simulated subsampling measurement:
-[A_rms, A_fft] = P_SS(M_SS, FR_fit, CE_fit_int, verbose);
+M_SS.verbose.v = 1;
+M_SS.plot.v = 2;
+M_SS.label.v = 'selftest_SS';
+M_SS.plot_visible.v = 'off';
+M_SS.output_path.v = '.';
+
+[A_rms, A_fft] = P_SS(M_SS, FR_fit, CE_fit_int);
 disp('---')
 disp('SS selftest results:')
 % printf('Nominal amplitude (V): %.7f\n')

@@ -111,6 +111,15 @@ function [M_SS, FR_fit, CE_fit] = read_M_SS_from_sampled_data(SS_info_filename, 
     M_SS.t.v = [0 : numel(M_SS.y.v) - 1] ./ M_SS.fs.v;
     M_SS.t.v = reshape(M_SS.t.v, size(M_SS.y.v));
 
+    % add verbosity, plot, label, plot_visible, output_path fields to M_SS:
+    M_SS.verbose.v = verbose;
+    N
+    M_SS.label.v = SS_info_filename;
+    M_SS.verbose.v = verbose;
+    M_SS.plot.v = verbose;
+    M_SS.plot_visible.v = 'on';
+    [M_SS.output_path.v, ~, ~] = fileparts(SS_info_filename);
+
 end % function read_M_SS_from_sampled_data
 
 %!demo
@@ -118,6 +127,6 @@ end % function read_M_SS_from_sampled_data
 %! addpath('../FR/info')
 %! addpath('../CE')
 %! [M_SS, FR_fit, CE_fit] = read_M_SS_from_sampled_data('SS_measurement/SS_measurement_001.info', 0);
-%! P_SS(M_SS, FR_fit, CE_fit, 0);
+%! P_SS(M_SS, FR_fit, CE_fit);
 
 % vim settings modeline: vim: foldmarker=%<<<,%>>> fdm=marker fen ft=matlab

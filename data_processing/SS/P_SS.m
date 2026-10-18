@@ -1,23 +1,15 @@
-function [A_rms_full, A_fft_full, y_without_nans] = P_SS(M_SS, FR_fit, CE_fit, verbose);
+function [A_rms_full, A_fft_full, y_without_nans] = P_SS(M_SS, FR_fit, CE_fit);
     % ensure nan package is loaded:
     % This should be in some top-layer script XXX
     pkg load nan
 
     % Check inputs %<<<1
     % XXX check M_SS
-    if ~exist('verbose', 'var')
-        verbose = [];
-    end
-    if isempty(verbose)
-        verbose = 0;
-    end
-    % ensure verbose is logical:
-    verbose = ~(~(verbose));
 
     % Correct for cable error and digitizer freqquency response %<<<1
     % direction set to zero to remove errors
     % This takes a looooong time: TODO FIX IMPROVE XXX
-    y = apply_CE_FR_on_samples(M_SS, FR_fit, CE_fit, 0, verbose);
+    y = apply_CE_FR_on_samples(M_SS, FR_fit, CE_fit, 0, M_SS.verbose.v);
 
     % Process the waveform %<<<1
     % Calculate constants %<<<2
@@ -72,7 +64,7 @@ function [A_rms_full, A_fft_full, y_without_nans] = P_SS(M_SS, FR_fit, CE_fit, v
     % Replace data with too high absolute voltage by NaN %<<<2
     % (thus remove samples too much influenced by digitizer gain)
     idx = not(and(y <= limit, y > -1.*limit));
-    if verbose y_corrected = y; end % save data for plotting if needed
+    if M_SS.verbose.v y_corrected = y; end % save data for plotting if needed
     y = y;
     y(idx) = NaN;
     % Check that at least some data are not NaN after applying the limit:
@@ -92,12 +84,12 @@ function [A_rms_full, A_fft_full, y_without_nans] = P_SS(M_SS, FR_fit, CE_fit, v
     y(:, 1 : M_SS.Rs.v) = NaN;
     y(:, end - M_SS.Re.v + 1 : end) = NaN;
     % save data for plotting if needed:
-    if verbose y_filtered_no_pjvs = y; end
+    if M_SS.verbose.v y_filtered_no_pjvs = y; end
 
     % Remove PJVS voltages from the whole signal %<<<2
     y = y - repmat(M_SS.Upjvs1period.v(:), triangles_in_record, 1);
     % save data for plotting if needed
-    if verbose y_filtered_w_pjvs = y; end
+    if M_SS.verbose.v y_filtered_w_pjvs = y; end
 
     % Calculate results from whole data %<<<2
     y_reconstructed = mean(y, 1);
@@ -129,30 +121,36 @@ function [A_rms_full, A_fft_full, y_without_nans] = P_SS(M_SS, FR_fit, CE_fit, v
 
         % Calculate amplitude
         % amplitude from RMS:
-        % A_rms(p) = sqrt(mean(y_avg .^ 2)) .* sqrt(2); % TODO THAT IS STRANGE!
         A_rms(p) = sqrt(mean(y_avg .^ 2));
     end % for p = 1:trianginrecord
 
     % Verbose info and figure %<<<1
-    if verbose
+    if M_SS.verbose.v
         % some informations %<<<2
-        disp('---')
-        disp('P_SS verbose informations:')
-        printf('applied limit: %.7f\n', limit)
-        printf('number of steps in one PJVS triangle period: %.3f\n', steps_in_triangle)
-        printf('number of samples in one PJVS triangle period: %.3f\n', samples_in_triangle)
-        printf('number of PJVS triangles in record: %.3f\n', triangles_in_record)
-        printf('number of samples in one PJVS step: %d\n', samples_in_step)
-        printf('number of samples in one DUT signal period: %d\n', samples_in_period)
-        printf('number of DUT signal periods in one PJVS step: %.3f\n', signal_periods_in_step)
-        printf('RMS amplitude based on the whole record: %.7f\n', A_rms_full)
-        printf('RMS amplitude by triangles:\n')
-        printf('%s\n', mat2str(A_rms, 7))
-        printf('FFT amplitude based on the whole record: %.7f\n', A_fft_full)
+        res = '';
+        res = [res sprintf('--- %s, %s ---\n', M_SS.label.v, datestr(now, 'yyyy-mm-dd HH:MM:SS'))];
+        res = [res sprintf('P_SS verbose informations:\n')];
+        res = [res sprintf('applied limit (V): %.7f\n', limit)];
+        res = [res sprintf('number of steps in one PJVS triangle period: %.3f\n', steps_in_triangle)];
+        res = [res sprintf('number of samples in one PJVS triangle period: %.3f\n', samples_in_triangle)];
+        res = [res sprintf('number of PJVS triangles in record: %.3f\n', triangles_in_record)];
+        res = [res sprintf('number of samples in one PJVS step: %d\n', samples_in_step)];
+        res = [res sprintf('number of samples in one DUT signal period: %d\n', samples_in_period)];
+        res = [res sprintf('number of DUT signal periods in one PJVS step: %.3f\n', signal_periods_in_step)];
+        res = [res sprintf('RMS amplitude based on the whole record (V): %.7f\n', A_rms_full)];
+        res = [res sprintf('RMS amplitude by triangles (V):\n')];
+        res = [res sprintf('%s\n', mat2str(A_rms, 7))];
+        res = [res sprintf('FFT amplitude based on the whole record (V): %.7f\n', A_fft_full)];
+        disp(res)
+        fid = fopen(fullfile(M_SS.output_path.v, [M_SS.label.v '_result.txt']), 'w');
+        fdisp(fid, res);
+        fclose(fid);
+    end % if M_SS.verbose.v
 
+    if M_SS.plot.v > 0
         % overview plots %<<<2
         % reconstructed whole waveform:
-        figure()
+        figure('visible', M_SS.plot_visible.v)
         hold on
         tmpt = [0 : 1 : size(y_reconstructed, 2) - 1]./M_SS.fs.v;
         % plot averaged waveform and standard deviation of the averaged waveform:
@@ -162,10 +160,14 @@ function [A_rms_full, A_fft_full, y_without_nans] = P_SS(M_SS, FR_fit, CE_fit, v
         ylabel(ax(1), 'signal voltage (V)')
         ylabel(ax(2), 'signal std (uV)')
         title(sprintf('P_SS.m, reconstructed subsampled signal (overlaps averaged)\nall signal periods (%g) in single PJVS step, from whole record\nA_rms_full = %.7f', signal_periods_in_step, A_rms_full), 'interpreter', 'none')
+        saveas(gcf(), fullfile(M_SS.output_path.v, [M_SS.label.v '_reconstructed_averaged.png']))
+        saveas(gcf(), fullfile(M_SS.output_path.v, [M_SS.label.v '_reconstructed_averaged.fig']))
         hold off
+    end % if M_SS.plot.v > 0
 
+    if M_SS.plot.v > 1
         % reconstructed averaged waveform:
-        figure()
+        figure('visible', M_SS.plot_visible.v)
         hold on
         % plot averaged waveform and standard deviation of the averaged waveform:
         ax = plotyy(t, y_avg, t, 1e6.*y_std);
@@ -174,10 +176,12 @@ function [A_rms_full, A_fft_full, y_without_nans] = P_SS(M_SS, FR_fit, CE_fit, v
         ylabel(ax(2), 'signal std (uV)')
         legend('signal', 'std')
         title(sprintf('P_SS.m, reconstructed subsampled signal (overlaps averaged)\naveraged to single signal period, from last PJVS triangle\nA_rms = %.7f', A_rms(p)), 'interpreter', 'none')
+        saveas(gcf(), fullfile(M_SS.output_path.v, [M_SS.label.v '_reconstructed_averaged_to_single_period.png']))
+        saveas(gcf(), fullfile(M_SS.output_path.v, [M_SS.label.v '_reconstructed_averaged_to_single_period.fig']))
         hold off
 
         % signal in last triangle period:
-        figure()
+        figure('visible', M_SS.plot_visible.v)
         hold on
         % last triangle period of the original signal:
         tmpt = M_SS.t.v(samples_in_triangle .* (p-1) + 1 : samples_in_triangle .* p);
@@ -194,6 +198,8 @@ function [A_rms_full, A_fft_full, y_without_nans] = P_SS(M_SS, FR_fit, CE_fit, v
         ylabel('voltage (V)')
         legend()
         title(sprintf('P_SS.m\nsignals in last triangle period\nvoltage limit = %g, Rs = %d, Re = %d', limit, M_SS.Rs.v, M_SS.Re.v), 'interpreter', 'none')
+        saveas(gcf(), fullfile(M_SS.output_path.v, [M_SS.label.v '_signals_in_last_triangle.png']))
+        saveas(gcf(), fullfile(M_SS.output_path.v, [M_SS.label.v '_signals_in_last_triangle.fig']))
         hold off
 
         % FFT spectrum of the averaged signal:
@@ -210,8 +216,10 @@ function [A_rms_full, A_fft_full, y_without_nans] = P_SS(M_SS, FR_fit, CE_fit, v
         ylabel('amplitude (V)')
         legend()
         title(sprintf('P_SS.m, FFT spectrum\nof reconstructed subsampled signal (overlaps averaged)\nA_fft_full = %.7f', A_fft_full), 'interpreter', 'none')
+        saveas(gcf(), fullfile(M_SS.output_path.v, [M_SS.label.v '_spectrum_of_reconstructed.png']))
+        saveas(gcf(), fullfile(M_SS.output_path.v, [M_SS.label.v '_spectrum_of_reconstructed.fig']))
         hold off
-    end % if verbose
+    end % if M_SS.plot.v > 1
 
 end % function P_SS
 
